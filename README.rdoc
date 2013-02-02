@@ -1,0 +1,16 @@
+= Cardboard
+
+== Installation
+```
+ rake Cardboard:install:migrations
+ rake Cardboard:install:assets
+```
+
+Add to the BOTTOM of your routes file
+
+```
+mount Cardboard::Engine => "/"
+```
+
+== License
+This project rocks and uses MIT-LICENSE.
