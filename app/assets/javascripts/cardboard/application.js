@@ -12,4 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-button
+//= require bootstrap-wysihtml5
 //= require_tree .
+
+$(function(){
+
+  $('.wysihtml5').each(function(i, elem) {
+    $(elem).wysihtml5();
+  });
+  
+})
