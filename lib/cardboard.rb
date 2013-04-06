@@ -1,4 +1,7 @@
 require "cardboard/engine"
-
-module Cardboard
-end
+require 'rubygems'
+require 'simple_form'
+require 'stringex'
+require 'ranked-model'
+require 'devise'
+require 'cocoon'

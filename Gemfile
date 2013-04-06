@@ -20,3 +20,9 @@ gem 'pry-rails'
 gem 'pry-nav'
 gem 'better_errors'
 gem 'binding_of_caller'
+
+# should be dependencies
+gem 'haml'
+gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-sass'
+gem 'devise'

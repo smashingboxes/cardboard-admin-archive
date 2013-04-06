@@ -1,0 +1,4 @@
+%ul.nav.nav-stacked
+  - for page in cardboard_pages
+    %li
+      = link_to page.title, edit_page_path(page)

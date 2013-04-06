@@ -1,0 +1,46 @@
+@import "bootstrap";
+@import "bootstrap-wysihtml5";
+
+header {
+  .navbar {
+    margin-bottom: 0px;
+    .navbar-inner {
+      .brand {
+        /*color: white;*/
+        padding-bottom: 0;
+        text-shadow: none;
+      }
+      /*background: blue;*/
+    }
+  }
+
+   .navbar.navbar-fixed-top .navbar-inner {
+    padding: 0 10px;
+    
+  }
+}
+
+nav {
+  position: fixed;
+  float: left;
+  width: 200px;
+  display: block;
+  position: absolute;
+  height: 100%;
+  background: #0d2231;
+  .navigation {
+    width: 100%;
+    height: 100%;
+   .nav {
+      margin-bottom: 0;
+      border-bottom: 1px solid #0b1c29;
+      background: #0d2231;
+    }
+  }
+}
+
+body #content {
+  margin-left: 200px;
+  background: #f4f7f9;
+  min-height: 100%;
+}

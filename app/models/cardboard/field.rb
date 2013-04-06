@@ -1,18 +1,24 @@
 module Cardboard
   class Field < ActiveRecord::Base
-    belongs_to :group, class_name: "FieldGroup"
+    belongs_to :part, class_name: "PagePart"
 
-    attr_accessible :display_name, :element_name, :position, :required, :type, :value
+    attr_accessible :label, :identifier, :position, :required, :type, :value, :hint, :placeholder
+    alias_attribute :value, :value_uid # workaround for dragonfly (make sure to use super to overwrite value)
 
     #gem
-    ranks :position, :with_same => :field_group_id
+    include RankedModel
+    ranks :position, :with_same => :part_id
 
     #validations
-    validates :name, :type, presence:true
+    validates :identifier, :type, presence:true
 
     #overwritten setter
-    def type=(value)
-      self[:type] = "Field::#{value.camelize}"
+    def type=(val)
+      return nil unless val
+      self[:type] = "Field::#{val.to_s.camelize}"
     end
+
+
+
   end
 end

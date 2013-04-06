@@ -2,14 +2,39 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class PagesController < ApplicationController
+    before_filter :authenticate_user!, except: [:show, :index]
+
     def show
-      @pages = Page.all
-      url = params[:id].split("/")
-      if url.size == 1
-        @page = Page.find_by(url: params[:id])
-      elsif url.size == 2
-        @page = Collection.find_by!(url: url[0]).documents.find_by(url: url[1])
+      # for nav
+      # @pages = Cardboard::Page.all
+
+      # rest of page
+      @page = Cardboard::Page.find_by_url(params[:id])
+      render layout: "layouts/application" #TODO: Make the layout name variable
+    end
+
+    def index
+      @page = Cardboard::Page.root
+      render :show, layout: "layouts/application"
+    end
+
+
+    def edit
+      @page = Cardboard::Page.find(params[:id])
+    end
+
+    def update
+      @page = Cardboard::Page.find(params[:id])
+      if @page.update_attributes(params[:page])
+        flash[:success] = "Your page at \"#{@page.url}\" was updated"
+        redirect_to dashboard_path
+      else
+        render :edit
       end
     end
+
+    def destroy
+    end
+
   end
 end

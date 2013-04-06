@@ -1,0 +1,5 @@
+home:
+  intro: text
+  slideshow:
+    image: image
+    description: string

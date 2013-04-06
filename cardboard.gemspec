@@ -20,12 +20,13 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  #don't forget to require them in lib/cardboard/engine.rb
   s.add_dependency "rails", ">= 3.2.11"
   s.add_dependency "pg"
   s.add_dependency "activerecord-postgres-hstore"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails"
-  s.add_dependency 'haml-rails'
+  s.add_dependency 'haml'
   s.add_dependency "jquery-rails"
   s.add_dependency 'bootstrap-sass', '>= 2.2'
   s.add_dependency 'bootstrap-wysihtml5-rails'
@@ -34,8 +35,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form'
   s.add_dependency 'kaminari'
   s.add_dependency 'inherited_resources'
+  s.add_dependency 'ranked-model'
+  s.add_dependency 'rabl'
+  s.add_dependency 'cocoon'
   # s.add_dependency 'dragonfly'
 
+  s.add_development_dependency 'haml-rails'
   s.add_development_dependency "guard-minitest"
   s.add_development_dependency "minitest-rails"
   s.add_development_dependency "minitest-rails-capybara"

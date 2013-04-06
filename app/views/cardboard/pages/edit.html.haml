@@ -1,0 +1,13 @@
+= debug @page
+
+= simple_form_for @page do |f|
+  = f.input :title
+
+  -# TODO: put the parent and slug side by side and name the new field URL
+  -#       also maybe change the dropdown to an autocomplete
+  = f.input :parent_id, :collection => _pages.map{|x| [x.url, x.id]}
+  = f.input :slug, label: "Page Path", hint: "Changing the url is not recommended if your page is public"
+
+  
+  = f.button :submit, "Save", class:"btn-primary"
+  = link_to "Cancel", dashboard_path, class:"btn"

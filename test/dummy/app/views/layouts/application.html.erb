@@ -7,7 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to "Home", root_path %> 
+  <%= link_to "Pianos", pianos_path %> 
+  <% for page in cardboard_pages %>
+    <%= link_to page.title, page.url %>
 
+    <ul>
+      <% for child in page.children %>
+        <li><%= child.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= link_to_page cardboard_index.id do |page| %>
+  Root Page
+  <% end %>
+  <br>
+This is the application's layout (not the engine)
 <%= yield %>
 
 </body>

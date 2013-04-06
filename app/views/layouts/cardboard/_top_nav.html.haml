@@ -1,0 +1,23 @@
+
+%a.brand 
+  %span Cardboard
+
+%ul.nav.pull-right
+
+  %li.dropdown.first.only-icon
+  %li= link_to "Dashboard", dashboard_path
+                       
+  %li.divider
+
+  %li.dropdown.third
+    %a.dropdown-toggle{"data-toggle"=>"dropdown"}
+      <img alt="Avatar" height="23" src="assets/img/avatar.jpg" width="23">
+      %span.user-name.hidden-phone
+        = current_user.email
+      <b class="caret"></b>
+
+      %ul.dropdown-menu
+        %li= link_to "Account", user_account_path 
+        %li= link_to "Logout", destroy_user_session_path, :method => :delete
+                
+

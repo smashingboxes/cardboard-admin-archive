@@ -1,4 +1,3 @@
-require "simple_form"
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Wrappers are used by the form builder to generate a

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
 
-  mount Cardboard::Engine => "/cardboard"
+  resources :pianos
+
+
+  mount Cardboard::Engine => "/"
+
+  root :to => "main#index"
 end
