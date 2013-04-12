@@ -1,4 +1,3 @@
-# This migration comes from cardboard (originally 20130206191721)
 class CreateCardboardPages < ActiveRecord::Migration
   def change
     create_table :cardboard_pages do |t|
@@ -7,7 +6,8 @@ class CreateCardboardPages < ActiveRecord::Migration
       t.string :slug
       t.integer :position
       t.text :meta_seo
-      t.string :identifier, :unique => true
+      t.boolean :in_menu, default: true
+      t.string :identifier, unique: true
 
       t.timestamps
     end

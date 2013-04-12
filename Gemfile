@@ -15,14 +15,22 @@ gemspec
 # Gems used by the dummy application
 gem "jquery-rails"
 
-gem "thin"
-gem 'pry-rails'
-gem 'pry-nav'
-gem 'better_errors'
-gem 'binding_of_caller'
+
 
 # should be dependencies
 gem 'haml'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'slim'
+
+
+gem "thin"
+gem 'letter_opener'
+gem 'quiet_assets'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'meta_request'
+gem 'pry-rails'
+gem 'pry-debugger'
+

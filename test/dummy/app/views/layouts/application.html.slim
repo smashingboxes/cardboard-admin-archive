@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    = meta_and_title(@page)
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    .span4
+      = link_to "Home", root_path
+      = link_to "Pianos", pianos_path
+
+      = nested_nav(cardboard_pages)
+    
+
+    .span8
+      | This is the application's layout (not the engine)
+      == yield

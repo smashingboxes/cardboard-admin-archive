@@ -1,4 +1,3 @@
-# This migration comes from cardboard (originally 20130206191433)
 class CreateCardboardPageParts < ActiveRecord::Migration
   def change
     create_table :cardboard_page_parts do |t|

@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "0a48fb6a3bc1803e8ed5761e76fdadddabc9ef82ec1812408c90ef54d296a4d955dda7f99d637075776ab73442e2923038d2b12ac2cdde471cd37f8c71ec1614"
+  # config.pepper = "7ff6fcac456248b4c12b485e0baa02357412cd9fefacc4866aa7967241c019c3f37eefd1c7e658fb1a1dcb5790f7cd359c87d14e6110b269ae8a0581be5dfe59"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -232,7 +232,7 @@ Devise.setup do |config|
   #     mount MyEngine, at: "/my_engine"
   #
   # The router that invoked `devise_for`, in the example above, would be:
-  config.router_name = :cardboard
+  # config.router_name = :my_engine
   #
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:

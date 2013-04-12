@@ -1,7 +1,7 @@
 class CreateCardboardFields < ActiveRecord::Migration
   def change
     create_table :cardboard_fields do |t|
-      t.string :indentifier
+      t.string :identifier
       t.string :label
       t.string :type
       t.boolean :required
@@ -13,7 +13,7 @@ class CreateCardboardFields < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :cardboard_fields, :indentifier
+    add_index :cardboard_fields, :identifier
     add_index :cardboard_fields, :page_part_id
   end
 end

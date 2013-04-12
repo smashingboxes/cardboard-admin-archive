@@ -1,4 +1,3 @@
-# This migration comes from cardboard (originally 20130401180043)
 class CreateCardboardSettings < ActiveRecord::Migration
   def change
     create_table :cardboard_settings do |t|

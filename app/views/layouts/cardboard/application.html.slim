@@ -1,20 +1,20 @@
+doctype html
+html
+  head
+    = render "layouts/cardboard/head", title: "Dashboard"
+  body
 
-!!! 5
-%html{ lang: "en"}
-  = render "layouts/cardboard/head", title: "Dashboard"
-  %body
-
-    %header
+    header
       .navbar
         .navbar-inner
           .container-fluid= render 'layouts/cardboard/top_nav'
 
     = render "layouts/cardboard/flash"
     
-    %nav
+    nav
       .navigation
         = render 'layouts/cardboard/sidebar'
 
-    %section#content
+    section#content
       .container-fluid
         = yield

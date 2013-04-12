@@ -1,5 +1,6 @@
 module Cardboard
   class Setting < ActiveRecord::Base
+    self.set_table_name "cardboard_settings"
     attr_accessible :default_value, :description, :format, :name, :value
 
     def value

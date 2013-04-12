@@ -1,5 +1,13 @@
 [{"id":1,
   "title":"index",
   "parent_id":null,
-  "parts":[]
+  "parts":[
+    {"identifier": "slideshow",
+      "fields": [
+      {"type":"string",
+        "identifier": "src"
+      }
+      ]
+    }
+  ]
 }]

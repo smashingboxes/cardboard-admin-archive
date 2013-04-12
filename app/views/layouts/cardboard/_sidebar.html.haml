@@ -1,4 +1,6 @@
-%ul.nav.nav-stacked
-  - for page in cardboard_pages
-    %li
-      = link_to page.title, edit_page_path(page)
+-# %ul.nav.nav-stacked
+-#   - for page in cardboard_pages
+-#     %li
+-#       = link_to page.title, edit_page_path(page)
+
+= admin_nested_nav(cardboard_pages)

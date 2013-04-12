@@ -1,5 +1,0 @@
-module PublicHelper
-
-
-
-end

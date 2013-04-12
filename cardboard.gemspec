@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-
 $:.push File.expand_path("../lib", __FILE__)
 require "cardboard/version"
 
@@ -21,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   #don't forget to require them in lib/cardboard/engine.rb
-  s.add_dependency "rails", ">= 3.2.11"
+  s.add_dependency "rails", ">= 3.2.0"
   s.add_dependency "pg"
   s.add_dependency "activerecord-postgres-hstore"
   s.add_dependency "stringex"
@@ -48,4 +47,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rb-fsevent"
   s.add_development_dependency "nifty-generators"
   s.add_development_dependency "better_errors"
+  s.add_development_dependency "hashdiff"
 end
