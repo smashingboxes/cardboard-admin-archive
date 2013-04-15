@@ -10,10 +10,12 @@ pages:
           - id: text2
       - id: slideshow
         fields:
-          - id: image_src
+          - id: image1
+            type: image
             required: true
           - id: description
             hint: This will be visible on mouse over
+            type: rich_text
   #---
   - id: about_us
     title: About us

@@ -8,6 +8,7 @@ PATH
       cocoon
       devise
       font-awesome-sass-rails (>= 3.0.0.1)
+      gon
       haml
       inherited_resources
       jquery-rails
@@ -101,6 +102,9 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    gon (4.0.2)
+      actionpack (>= 2.3.0)
+      json
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)

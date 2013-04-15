@@ -6,3 +6,12 @@ development:
   password: password
   host: localhost
   encoding: UTF8
+
+
+production:
+  adapter: postgresql
+  database: cardboard_development
+  username: postgres
+  password: password
+  host: localhost
+  encoding: UTF8

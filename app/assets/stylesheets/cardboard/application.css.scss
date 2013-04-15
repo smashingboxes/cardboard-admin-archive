@@ -1,5 +1,21 @@
+//Only for Cardboard Admin Area
 @import "bootstrap";
 @import "bootstrap-wysihtml5";
+
+
+// Bootstrap overwrite
+legend + .control-group {
+  margin-top: 0px;
+}
+
+input, textarea, .uneditable-input {
+  width: 90%;
+}
+textarea {
+  height: 180px;
+}
+
+// END bootstrap overwrite
 
 header {
   .navbar {

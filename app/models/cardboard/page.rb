@@ -2,12 +2,12 @@ module Cardboard
   class Page < ActiveRecord::Base
     self.set_table_name "cardboard_pages"
 
-    has_many :parts, class_name: "PagePart"
-    has_many :fields, :through => :parts
+    has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
+    # has_many :fields, :through => :parts, class_name: "Cardboard::Field"
       
     attr_accessible :position, :title, :path, :slug, :parent_id, :parts_attributes, :meta_seo, :in_menu
     attr_accessor :parent_url
-    accepts_nested_attributes_for :parts, :allow_destroy => true
+    accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     serialize :meta_seo, Hash
 
     before_validation :default_values
@@ -127,18 +127,20 @@ module Cardboard
     #    #<Cardboard::Page => {#<Cardboard::Page => {}}
     # }}
     def self.arrange(pages = nil)
-      pages ||= self.preordered.all
+      @arrange ||= begin
+        pages ||= self.preordered.all
 
-      pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
-        (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
-          
-          insertion_hash.each do |parent, children|
-            # binding.pry if subpath == parent.slug
-            insertion_hash = children if subpath == parent.slug
-          end
-          insertion_hash
-        end[page] = ActiveSupport::OrderedHash.new
-        ordered_hash
+        pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
+          (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
+            
+            insertion_hash.each do |parent, children|
+              # binding.pry if subpath == parent.slug
+              insertion_hash = children if subpath == parent.slug
+            end
+            insertion_hash
+          end[page] = ActiveSupport::OrderedHash.new
+          ordered_hash
+        end
       end
     end   
 

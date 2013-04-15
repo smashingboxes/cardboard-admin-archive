@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :pianos
 
+  namespace :cardboard do
+    get "test", to: "test#index"
+  end
+
   mount Cardboard::Engine => "/"
 
 

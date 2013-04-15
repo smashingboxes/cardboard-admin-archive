@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ranked-model'
   s.add_dependency 'rabl'
   s.add_dependency 'cocoon'
+  s.add_dependency 'gon'
   # s.add_dependency 'dragonfly'
 
   s.add_development_dependency 'haml-rails'

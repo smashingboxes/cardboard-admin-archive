@@ -4,6 +4,6 @@
   = "#{title} | " if defined?(title)
   Cardboard
 = stylesheet_link_tag    "cardboard/application"
-= javascript_include_tag "cardboard/application"
+
 = csrf_meta_tags
--# include_gon
+= include_gon

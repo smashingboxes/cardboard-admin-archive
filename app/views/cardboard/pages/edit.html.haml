@@ -1,6 +1,6 @@
-= debug @page
+%h1 Page Edit
 
-= simple_form_for @page do |f|
+= simple_form_for @page, html: {class: "form-horizontal"} do |f|
   = f.input :title
 
   -# TODO: put the parent and slug side by side and name the new field URL
@@ -19,11 +19,24 @@
 
   = f.input :in_menu, label: false, inline_label: "Display in main menu?"
 
-  = f.input :seo do
+  = field_set_tag "SEO" do
     = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
       - for key in [:title, :description, :keywords] | seo.object.methods(nil).grep(/[^=]$/)
         = seo.input key
 
+  = field_set_tag "Fields" do  
     
-  = f.button :submit, "Save", class:"btn-primary"
-  = link_to "Cancel", cardboard_dashboard_path, class:"btn"
+    - for part in @page.parts
+      = f.fields_for :parts, part do |g|
+        = field_set_tag part.identifier.titleize do 
+
+          - for field in part.fields
+            = g.fields_for :fields, field do |w|
+              = w.input :value, label: field.identifier, as: field.type, hint: field.hint, placeholder: field.placeholder, required: field.required 
+
+  .form-actions
+    = f.button :submit, "Save", class:"btn-primary"
+    = link_to "Cancel", cardboard_dashboard_path, class:"btn"
+
+
+= debug @page

@@ -5,6 +5,8 @@ require 'stringex'
 require 'ranked-model'
 require 'devise'
 require 'cocoon'
+require 'inherited_resources'
+require 'gon'
 
 
 module Cardboard
