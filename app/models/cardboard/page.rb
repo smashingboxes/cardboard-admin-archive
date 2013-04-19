@@ -66,9 +66,9 @@ module Cardboard
     # slideshow.get("slide1")
     def get(field)
       f = field.split(".")
-      part = self.parts.where(identifier: f.first)
+      part = self.parts.where(identifier: f.first).first.subparts
       return part if f.size == 1
-      part.first.send(f.last)
+      part.first.attr(f.last)
     end
 
     # SEO

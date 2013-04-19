@@ -2,7 +2,11 @@ module Cardboard
   class Field::Date < Field
 
     def value
-      super
+      Chronic.parse(super)
+    end
+
+    def default
+      Time.now
     end
   end
 end

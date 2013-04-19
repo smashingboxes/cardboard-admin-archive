@@ -45,5 +45,19 @@ module Cardboard
       return subpart
     end
 
+    def attr(field)
+      field = field.to_s
+      @attr ||= {}
+      @attr[field] ||= begin
+        f = self.fields.where(identifier: field).first
+
+        if Rails.env.development? && f.value.nil? 
+         f.default #be careful for booleans here
+        else
+         f.value 
+        end
+      end
+    end
+
   end
 end

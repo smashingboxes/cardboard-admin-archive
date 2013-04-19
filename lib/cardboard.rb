@@ -9,6 +9,7 @@ require 'inherited_resources'
 require 'gon'
 require 'rack/cache'
 require 'dragonfly'
+require 'chronic'
 
 
 module Cardboard

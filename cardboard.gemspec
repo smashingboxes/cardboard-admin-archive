@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gon'
   s.add_dependency 'rack-cache'
   s.add_dependency 'dragonfly'
+  s.add_dependency 'chronic'
 
   s.add_development_dependency 'haml-rails'
   s.add_development_dependency "guard-minitest"

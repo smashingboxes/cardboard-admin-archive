@@ -11,6 +11,9 @@ pages:
           text2:
             type: string
             required: true
+          show_slideshow:
+            type: boolean
+            required: true
       slideshow:
         repeatable: true
         fields:

@@ -30,6 +30,10 @@ module Cardboard
       @friendly_type ||= self[:type].demodulize.underscore
     end
 
+    def default
+      #overwritten for each subclass
+    end
+
   private
 
     def required_fields
