@@ -1,0 +1,20 @@
+doctype 5
+html  lang: "en"
+  head
+    = stylesheet_link_tag    "application"
+    
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico'
+
+  body
+
+    = render "layouts/cardboard/flash_message"
+    nav.main-nav
+      .container
+        | Page Layout
+        =# render 'layouts/cardboard/nav/dashboard'
+
+    .container
+      .content= yield
+
+    = javascript_include_tag "cardboard/application"
