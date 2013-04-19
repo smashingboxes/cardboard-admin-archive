@@ -1,6 +1,6 @@
 module Cardboard
   class PagePart < ActiveRecord::Base
-    self.set_table_name "cardboard_page_parts"
+    self.table_name = "cardboard_page_parts"
 
     has_many :fields, class_name: "Cardboard::Field", :dependent => :destroy, :autosave => true, :foreign_key => "page_part_id"
     has_many :subparts, class_name: "Cardboard::PagePart", :dependent => :destroy, :foreign_key => "parent_part_id", :validate => true

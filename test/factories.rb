@@ -1,3 +1,7 @@
+require 'factory_girl'
+
 FactoryGirl.define do
-  #just enough to make validations pass!
+  factory :page, class: Cardboard::Page do 
+    sequence(:identifier) { |n| "page#{n}" }
+  end
 end

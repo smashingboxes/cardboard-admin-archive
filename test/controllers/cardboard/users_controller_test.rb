@@ -1,4 +1,4 @@
-require "minitest_helper"
+require "test_helper"
 
 class UsersControllerTest < ActionController::TestCase
   # test "the truth" do

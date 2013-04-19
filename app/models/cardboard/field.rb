@@ -1,6 +1,6 @@
 module Cardboard
   class Field < ActiveRecord::Base
-    self.set_table_name "cardboard_fields"
+    self.table_name = 'cardboard_fields'
     belongs_to :part, class_name: "Cardboard::PagePart", :foreign_key => "page_part_id", :inverse_of => :fields
 
     attr_accessible :position, :value

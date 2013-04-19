@@ -1,4 +1,4 @@
-require "minitest_helper"
+require "test_helper"
 
 class FieldGroupTest < ActiveSupport::TestCase
   # test "the truth" do
