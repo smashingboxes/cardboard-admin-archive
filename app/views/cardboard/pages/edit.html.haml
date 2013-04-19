@@ -1,42 +1,36 @@
 %h1 Page Edit
 
-= simple_form_for @page, html: {class: "form-horizontal"} do |f|
+= simple_form_for @page, html: {class: "form-horizontal", :multipart => true} do |f|
+  = f.error_notification
   = f.input :title
 
-  -# TODO: put the parent and slug side by side and name the new field URL
-  -#       also maybe change the dropdown to an autocomplete
-
-  =# f.input :parent_url, :collection => Cardboard::Page.preordered.all.inject(["/"]){|result, elm| result << elm.url unless elm.id == @page.id; result}, include_blank: false
-  = f.input :url, hint: "It is not recommended to update the url once the site is live" do
-    .input-prepend
-      .add-on
-        - if @page.new_record?
-          = f.select :parent_url, options_for_select(@page.parent_url_options, f.object.parent_url)
-        - else
-          = f.object.parent_url
-
-      = f.text_field :slug #, label: "Page Path", hint: "Changing the url is not recommended if your page is public"
+  = render "url_field", f: f
 
   = f.input :in_menu, label: false, inline_label: "Display in main menu?"
 
   = field_set_tag "SEO" do
     = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
       - for key in [:title, :description, :keywords] | seo.object.methods(nil).grep(/[^=]$/)
-        = seo.input key
+        = seo.input key, required: false
 
   = field_set_tag "Fields" do  
     
-    - for part in @page.parts
-      = f.fields_for :parts, part do |g|
+    - for part in @page.parts #.rank(:part_position) don't rank, it prevents validations
+      = f.simple_fields_for :parts, part do |g|
+
         = field_set_tag part.identifier.titleize do 
 
-          - for field in part.fields
-            = g.fields_for :fields, field do |w|
-              = w.input :value, label: field.identifier, as: field.type, hint: field.hint, placeholder: field.placeholder, required: field.required 
+          - for subpart in part.subparts #.rank(:subpart_position)
+            = g.simple_fields_for :subparts, subpart do |y|
+
+              = render "subpart_fields", f: y, subpart: subpart
+          
+          - if part.repeatable?
+            .links
+              -# the "links" class is important for the cocoon gem
+              = link_to_add_association "Add another #{part.identifier.singularize.titleize}", g, :subparts, :render_options => {:locals => {:subpart => part.new_subpart }}, class: "btn btn-block"
 
   .form-actions
     = f.button :submit, "Save", class:"btn-primary"
     = link_to "Cancel", cardboard_dashboard_path, class:"btn"
 
-
-= debug @page

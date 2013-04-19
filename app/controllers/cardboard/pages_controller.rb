@@ -24,16 +24,38 @@ module Cardboard
 
     def update
       @page = Cardboard::Page.find(params[:id])
+      fix_new_subparts
 
       if @page.update_attributes(params[:cardboard_page])
-        flash[:success] = "Your page at \"#{@page.url}\" was updated"
-        redirect_to cardboard_dashboard_path
+        flash[:success] = "Your page was updated successfully"
+
+        redirect_to edit_cardboard_page_path(@page)
       else
         render :edit
       end
     end
 
     def destroy
+    end
+
+  private
+
+    def fix_new_subparts
+      params[:cardboard_page][:parts_attributes].each do |k, p| 
+        parent_part_id = p["id"]
+        parent = @page.parts.find(parent_part_id)
+
+        p["subparts_attributes"].each do |k,sub| 
+          next unless sub["id"].blank?
+          
+          subpart = parent.new_subpart
+          subpart.save! #TODO: find a way to initialize instead of save while avoiding mass assignment issues
+          sub.reverse_merge!({"id" => "#{subpart.id}"})
+          subpart.fields.each_with_index do |field, i|
+            sub["fields_attributes"]["#{i}"].reverse_merge!({"id" => "#{field.id}"})
+          end
+        end
+      end
     end
 
   end

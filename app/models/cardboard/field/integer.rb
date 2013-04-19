@@ -5,5 +5,9 @@ module Cardboard
     def value
       super.to_i
     end
+
+    def default
+      12321454
+    end
   end
 end

@@ -9,7 +9,7 @@ html
         .navbar-inner
           .container-fluid= render 'layouts/cardboard/top_nav'
 
-    = render "layouts/cardboard/flash"
+    
 
     nav
       .navigation
@@ -17,6 +17,7 @@ html
 
     section#content
       .container-fluid
+        = render "layouts/cardboard/flash_message"
         = yield
 
     = javascript_include_tag "cardboard/application"

@@ -4,6 +4,7 @@ class CreateCardboardPages < ActiveRecord::Migration
       t.string :title
       t.string :path
       t.string :slug
+      t.text :slugs_backup
       t.integer :position
       t.text :meta_seo
       t.boolean :in_menu, default: true

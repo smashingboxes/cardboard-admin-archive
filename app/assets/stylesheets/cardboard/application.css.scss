@@ -12,7 +12,15 @@ input, textarea, .uneditable-input {
   width: 90%;
 }
 textarea {
-  height: 180px;
+  height: 150px;
+}
+.right{
+  float:right;
+}
+.nested-fields{
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #EFEFEF;
 }
 
 // END bootstrap overwrite

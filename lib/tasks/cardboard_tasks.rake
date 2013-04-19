@@ -20,30 +20,32 @@ task :cardboard_seed => :environment do
     puts "Error: You must first create a pages.yaml file in your application config folder"
   end
 
-  for page in file_hash[:pages]
-    id = page.delete(:id)
-    db_page = Cardboard::Page.where(identifier: id).first_or_initialize
+  file_hash[:pages].each do |id, page|
+
+    db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
     db_page.update_attributes!(page.filter(:title, :parent_id), :without_protection => true) 
 
-    for part in page[:parts] || []
-      id = part.delete(:id)
-      db_part = db_page.parts.where(identifier: id).first_or_initialize
-      db_part.update_attributes!(part.filter(:parent_id), :without_protection => true) 
+    (page[:parts] || {}).each do |id, part|
+      db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
+      db_part.update_attributes!(part.filter(:repeatable), :without_protection => true) 
 
-      #add new fields
-      for f in part[:fields] || []
-        field = f.dup
-        id = field.delete(:id)
-        db_field = db_part.fields.where(identifier: id).first_or_initialize
-        db_field.update_attributes!(field.reverse_merge!(type: "string"), :without_protection => true) 
+      db_part.subparts.first_or_create! 
+
+      db_part.subparts.each do |db_part|
+
+        #add new fields
+        (part[:fields] || {}).each do |id, field|
+          field.reverse_merge!(type: "string")
+          db_field = db_part.fields.where(identifier: id.to_s).first_or_initialize
+          db_field.update_attributes!(field, :without_protection => true) 
+        end
       end
-
+      
       #remove ones no longer in the seed file
-      for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|x|x[:id]}  
+      for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
         db_part.fields.where(identifier: remove_field).first.destroy
       end
     end
-
   end
 
 end

@@ -1,67 +1,78 @@
 
 pages:
   #---
-  - id: home
+  home:
     title: Welcome
     parts:
-      - id: intro
+      intro:
         fields:
-          - id: text1
-          - id: text2
-      - id: slideshow
+          text1:
+            type: string
+          text2:
+            type: string
+            required: true
+      slideshow:
+        repeatable: true
         fields:
-          - id: image1
+          image1:
             type: image
             required: true
-          - id: description
+            position: 0
+          description:
             hint: This will be visible on mouse over
             type: rich_text
+            position: 1
+          description2:
+            label: Second Description
+            type: rich_text
+
   #---
-  - id: about_us
+  about_us:
     title: About us
 
-  - id: cmg_primary
+  cmg_primary:
     title: CMG Primary
     parent_id: about_us
-  - id: cmg_specialty
+
+  cmg_specialty:
     title: CMG Specialty
     parent_id: about_us
-  - id: cm_surgery
+  cm_surgery:
     title: CM Surgery
     parent_id: about_us
-  - id: clic_immediate
+  clic_immediate:
     title: CLIC Immediate
     parent_id: about_us
-  - id: gaston_hospice
+  gaston_hospice:
     title: Gaston Hospice
     parent_id: about_us
-  - id: cmg_specialty
+  cmg_specialty:
     title: CMG Specialty
     parent_id: about_us
-  - id: cmg_specialty
+  cmg_specialty:
     title: CMG Specialty
     parent_id: about_us
-  - id: cmg_specialty_two
+  cmg_specialty_two:
     title: CMG Specialty2
     parent_id: cmg_specialty
   #---
-  - id: contact_us
+  contact_us:
     title: Contact Us
   #---
-  - id: history
+  history:
     title: History
   #---
-  - id: mission
+  mission:
     title: Mission
   #---
-  - id: leadership
+  leadership:
     title: Leadership
   #---
-  - id: clinical_research
+  clinical_research:
     title: Clinical Research
   #---
-  - id: shine_stories
+  shine_stories:
     title: SHINE Stories
   #---
-  - id: press
+  press:
     title: Press

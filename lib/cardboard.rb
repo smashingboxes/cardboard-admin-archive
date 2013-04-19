@@ -7,6 +7,8 @@ require 'devise'
 require 'cocoon'
 require 'inherited_resources'
 require 'gon'
+require 'rack/cache'
+require 'dragonfly'
 
 
 module Cardboard

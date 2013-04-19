@@ -1,13 +1,22 @@
 li
   .bootstrap-wysihtml5-insert-link-modal.modal.hide.fade
     .modal-header
-      <a class='close' data-dismiss='modal'>&times;</a>
-      <h3>Insert link</h3>
+      a class='close' data-dismiss='modal' &times;
+      h3 Insert link
 
     .modal-body
+    ul
+      = nested_pages do |page, subpages|
+        li
+          = link_to page.title, "#", "data-url" => page.url
+          = content_tag(:ul, subpages) if subpages
+
       input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'
     .modal-footer
-      <a href='#' class='btn' data-dismiss='modal'>locale.link.cancel</a>
-      <a href='#' class='btn btn-primary' data-dismiss='modal'> locale.link.insert</a>
+      a href='#' class='btn' data-dismiss='modal' Cancel
+      a href='#' class='btn btn-primary' data-dismiss='modal' Insert Link
 
-  <a class='btn" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "' tabindex='-1'><i class='icon-share'></i></a>
+
+  / Editor button
+  a.btn data-wysihtml5-command='createLink' title='Link' tabindex='-1'
+    i class='icon-share'

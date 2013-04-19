@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412175502) do
+ActiveRecord::Schema.define(:version => 20130417134840) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -49,7 +49,8 @@ ActiveRecord::Schema.define(:version => 20130412175502) do
   create_table "cardboard_page_parts", :force => true do |t|
     t.string   "identifier"
     t.integer  "position"
-    t.boolean  "allow_multiple", :default => false
+    t.integer  "parent_part_id"
+    t.boolean  "repeatable",     :default => false
     t.string   "label"
     t.integer  "page_id"
     t.datetime "created_at",                        :null => false
@@ -58,17 +59,19 @@ ActiveRecord::Schema.define(:version => 20130412175502) do
 
   add_index "cardboard_page_parts", ["identifier"], :name => "index_cardboard_page_parts_on_identifier"
   add_index "cardboard_page_parts", ["page_id"], :name => "index_cardboard_page_parts_on_page_id"
+  add_index "cardboard_page_parts", ["parent_part_id"], :name => "index_cardboard_page_parts_on_parent_part_id"
 
   create_table "cardboard_pages", :force => true do |t|
     t.string   "title"
     t.string   "path"
     t.string   "slug"
+    t.text     "slugs_backup"
     t.integer  "position"
     t.text     "meta_seo"
-    t.boolean  "in_menu",    :default => true
+    t.boolean  "in_menu",      :default => true
     t.string   "identifier"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "cardboard_pages", ["identifier"], :name => "index_cardboard_pages_on_identifier", :unique => true

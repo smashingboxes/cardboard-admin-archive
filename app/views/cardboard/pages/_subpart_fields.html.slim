@@ -1,0 +1,13 @@
+
+.nested-fields
+  - if subpart.repeatable?
+    .right= link_to_remove_association "x", f, class: "btn btn-danger"
+
+  - for field in subpart.fields
+
+    = f.simple_fields_for :fields, field do |w|
+
+      - if %w[image file].include?(field.type)
+        = render "cardboard/fields/#{field.type}", f: w
+      - else
+        = render "cardboard/fields/base_input", f: w

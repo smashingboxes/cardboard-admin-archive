@@ -9,8 +9,10 @@ module Cardboard
     attr_accessor :parent_url
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     serialize :meta_seo, Hash
+    serialize :slugs_backup, Array
 
     before_validation :default_values
+    before_save :update_slugs_backup
 
     #gems
     acts_as_url :title, :url_attribute => :slug, :scope =>  :path, only_when_blank: true
@@ -24,6 +26,7 @@ module Cardboard
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
     :message => "Only downcase letters, numbers and underscores are allowed" }
     #validate all seo keys are valid meta keys + title
+    validates_associated :parts
 
     #scopes
     scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
@@ -40,7 +43,9 @@ module Cardboard
       full_url = full_url.sub(/^\//,'').split("/")
       slug = full_url.pop
       path = full_url.blank? ? "/" : "/#{full_url.join("/")}/"
-      where(path: path, slug: slug).first
+      page = self.where(path: path, slug: slug).first
+      page = self.where(path: path).where("slugs_backup ILIKE ?", "% #{slug}\n%").first if page.nil?
+      return page
     end
 
     def self.root
@@ -51,12 +56,20 @@ module Cardboard
 
     #instance methods
 
-    # @page.get("slideshow.image")
-    # def get(field)
-    #   #get value for a field name (document attributes take precedence (example:title))
-    #   out = self.fields_value[field.to_s]
-    #   return out.blank? ? self[field.to_sym] : out
-    # end
+    # @page.get("slideshow.image1")
+    # @page.get("slideshow").first.image1
+    # @page.get("slideshow").each...
+
+    # slideshow = @page.get("slideshow")
+    # slideshow.field("image1")
+    # slideshow.each{|p| p.field("image")}
+    # slideshow.get("slide1")
+    def get(field)
+      f = field.split(".")
+      part = self.parts.where(identifier: f.first)
+      return part if f.size == 1
+      part.first.send(f.last)
+    end
 
     # SEO
     # children inherit their parent's SEO settings (these can be overwritten)
@@ -75,7 +88,7 @@ module Cardboard
     end
 
     def parent
-      Cardboard::Page.find_by_url(path)
+      @parent ||= Cardboard::Page.find_by_url(path)
     end
 
     # Get all other pages
@@ -127,24 +140,26 @@ module Cardboard
     #    #<Cardboard::Page => {#<Cardboard::Page => {}}
     # }}
     def self.arrange(pages = nil)
-      @arrange ||= begin
-        pages ||= self.preordered.all
+      pages ||= self.preordered.all
 
-        pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
-          (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
-            
-            insertion_hash.each do |parent, children|
-              # binding.pry if subpath == parent.slug
-              insertion_hash = children if subpath == parent.slug
-            end
-            insertion_hash
-          end[page] = ActiveSupport::OrderedHash.new
-          ordered_hash
-        end
+      pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
+        (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
+          
+          insertion_hash.each do |parent, children|
+            insertion_hash = children if subpath == parent.slug
+          end
+          insertion_hash
+        end[page] = ActiveSupport::OrderedHash.new
+        ordered_hash
       end
     end   
 
   private
+
+    def update_slugs_backup
+      return nil if !self.slug_changed? || self.slug_was.nil?
+      self.slugs_backup |= [self.slug_was] #Yes, that's a single pipe...
+    end
 
     def default_values
       self.path  ||= '/'
