@@ -34,3 +34,8 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'pry-debugger'
 
+gem 'turn'
+gem 'database_cleaner'
+gem 'simplecov'
+
+
