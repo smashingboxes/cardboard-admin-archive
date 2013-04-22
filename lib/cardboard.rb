@@ -34,21 +34,12 @@ module Cardboard
 
     # Gets called within the initializer
     def setup
-      # application.setup!
+
       yield(application)
-      # application.prepare!
+
     end
-
-    # delegate :register,      :to => :application
-    # delegate :register_page, :to => :application
-    # delegate :unload!,       :to => :application
-    # delegate :load!,         :to => :application
-    # delegate :routes,        :to => :application
-
- 
   end
 
 end
 
-# Cardboard::DependencyChecker.check!
 

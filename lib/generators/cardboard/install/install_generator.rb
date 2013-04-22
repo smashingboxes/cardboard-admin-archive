@@ -27,7 +27,7 @@ module Cardboard
       end
 
       def setup_routes
-        inject_into_file "config/routes.rb", "\n  mount Cardboard::Engine => \"/\"", :after => /devise_for.*/
+        inject_into_file "config/routes.rb", "\n  mount Cardboard::Engine => \"/cardboard\"", :after => /devise_for.*/
       end
 
       def create_assets
@@ -42,9 +42,9 @@ module Cardboard
         end
       end
 
-      def setup_helpers
-        inject_into_file "app/controllers/application_controller.rb", "\n  helper Cardboard::ApplicationHelper", :after => /ApplicationController.*/
-      end
+      # def setup_helpers
+      #   inject_into_file "app/controllers/application_controller.rb", "\n  helper Cardboard::ApplicationHelper", :after => /ApplicationController.*/
+      # end
     end
   end
 end

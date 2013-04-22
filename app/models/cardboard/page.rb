@@ -1,6 +1,6 @@
 module Cardboard
   class Page < ActiveRecord::Base
-    self.table_name = "cardboard_pages"
+    # self.table_name = "cardboard_pages"
 
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
     # has_many :fields, :through => :parts, class_name: "Cardboard::Field"

@@ -29,7 +29,7 @@ module Cardboard
       if @page.update_attributes(params[:cardboard_page])
         flash[:success] = "Your page was updated successfully"
 
-        redirect_to edit_cardboard_page_path(@page)
+        redirect_to edit_page_path(@page)
       else
         render :edit
       end
@@ -39,6 +39,8 @@ module Cardboard
     end
 
   private
+
+
 
     def fix_new_subparts
       params[:cardboard_page][:parts_attributes].each do |k, p| 

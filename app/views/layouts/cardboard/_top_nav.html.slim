@@ -1,23 +1,23 @@
 
-a.brand
+a.brand 
   span Cardboard
 
 ul.nav.pull-right
 
   li.dropdown.first.only-icon
-  li= link_to "Dashboard", cardboard_dashboard_path
-                       
+  li= link_to "Dashboard", dashboard_path
+
   li.divider
 
   li.dropdown.third
     a.dropdown-toggle data-toggle="dropdown"
-      | <img alt="Avatar" height="23" src="http://www.mixcloud.com/media/images/graphics/33_Profile/default_user_300x300-v4.png?v=107" width="23">
+      img alt="Avatar" height="23" src="http://www.mixcloud.com/media/images/graphics/33_Profile/default_user_300x300-v4.png?v=107" width="23"
       span.user-name.hidden-phone
         = current_admin_user.email
-      | <b class="caret"></b>
+      b class="caret"
 
       ul.dropdown-menu
-        li= link_to "Account", cardboard_user_path
-        li= link_to "Logout", destroy_admin_user_session_path, :method => :delete
+        li= link_to "Account", user_path 
+        li= link_to "Logout", main_app.destroy_admin_user_session_path, :method => :delete
                 
 
