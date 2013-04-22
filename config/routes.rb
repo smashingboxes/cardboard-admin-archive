@@ -16,9 +16,14 @@ Cardboard::Engine.routes.draw do
   root :to => "cardboard/pages#index"
 end
 
+
+
 Rails.application.routes.draw do
   scope  :constraints => { :format => 'html' } do #:format => true,
     get "*id", to: "cardboard/pages#show", as: :page
   end
+
+
+  root :to => "cardboard/pages#index"
 end
 
