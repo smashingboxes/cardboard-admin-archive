@@ -5,17 +5,13 @@ module Cardboard
     before_filter :authenticate_admin_user!, except: [:show, :index]
 
     def show
-      # for nav
-      # @pages = Cardboard::Page.all
-
-      # rest of page
       @page = Cardboard::Page.find_by_url(params[:id])
-      render layout: "layouts/application" #TODO: Make the layout name variable
+      render_main_app_page @page
     end
 
     def index
       @page = Cardboard::Page.root
-      render :show, layout: "layouts/application"
+      render_main_app_page @page
     end
 
     def edit
@@ -26,24 +22,34 @@ module Cardboard
       @page = Cardboard::Page.find(params[:id])
       fix_new_subparts
 
-      if @page.update_attributes(params[:cardboard_page])
+      if @page.update_attributes(params[:page])
         flash[:success] = "Your page was updated successfully"
-
         redirect_to edit_page_path(@page)
       else
         render :edit
       end
     end
 
-    def destroy
-    end
 
   private
 
+    def current_page
+      @page
+    end
+    helper_method :current_page
 
+    def render_main_app_page(page)
+      #TODO: Make the layout name variable
+      render "pages/#{page.identifier}", layout: "layouts/application"
+    rescue ActionView::MissingTemplate => e
+      @missing_file = e.path
+      render "error", layout: "layouts/application"
+    end
 
     def fix_new_subparts
-      params[:cardboard_page][:parts_attributes].each do |k, p| 
+      return nil if params[:page].blank?
+
+      params[:page][:parts_attributes].each do |k, p| 
         parent_part_id = p["id"]
         parent = @page.parts.find(parent_part_id)
 
