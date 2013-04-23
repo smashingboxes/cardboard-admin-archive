@@ -21,11 +21,16 @@ $(function(){
   }
   $('.rich_text').wysihtml5({"image": false, "customTemplates":  page_links_template});
 
-  $(document).bind('cocoon:after-insert', function(e, insertedItem) {
+  $(document).on('cocoon:after-insert', function(e, insertedItem) {
     $(insertedItem).find("textarea").wysihtml5({"image": false, "customTemplates":  page_links_template});
   });
-  $(document).bind('cocoon:before-insert', function(e,insertedItem) {
+  $(document).on('cocoon:before-insert', function(e,insertedItem) {
     insertedItem.fadeIn('slow');
+  });
+
+  $(document).on('click', '.bootstrap-wysihtml5-insert-link-modal a', function(e){
+    e.preventDefault;
+    $(this).closest(".bootstrap-wysihtml5-insert-link-modal").find("input.bootstrap-wysihtml5-insert-link-url").val($(this).data("url"));
   });
   // End Rich Text Editor
 })

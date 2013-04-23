@@ -2,7 +2,7 @@ module Cardboard
   class PagePart < ActiveRecord::Base
     # self.table_name = "cardboard_page_parts"
 
-    has_many :fields, class_name: "Cardboard::Field", :dependent => :destroy, :autosave => true, :foreign_key => "page_part_id"
+    has_many :fields, class_name: "Cardboard::Field", :dependent => :destroy, :validate => true, :foreign_key => "page_part_id"
     has_many :subparts, class_name: "Cardboard::PagePart", :dependent => :destroy, :foreign_key => "parent_part_id", :validate => true
 
     belongs_to :parent, class_name: "Cardboard::PagePart",  :foreign_key => "parent_part_id"
@@ -15,13 +15,13 @@ module Cardboard
     validates :identifier, uniqueness: {:case_sensitive => false, :scope => :page_id}, 
                            :format => {:with => /\A[a-z\_0-9]+\z/, :message => "Only downcase letters, numbers and underscores are allowed"}, 
                            :unless => :subpart?
-    validates_associated :fields
+    # validates_associated :fields
     
     #gem
     include RankedModel
     ranks :subpart_position, :with_same => :parent_part_id, :column => :position
     ranks :part_position, :with_same => :page_id, :column => :position
-
+    default_scope order("position ASC")
 
 
     def subpart?

@@ -1,5 +1,7 @@
 module Cardboard
   class Field::RichText < Field
+    validates :value, presence:true, :if => :required_field?
+
 
     def value=(val)
       #remove bad html

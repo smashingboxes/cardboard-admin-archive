@@ -60,7 +60,7 @@ module Cardboard
           subpart.save! #TODO: find a way to initialize instead of save while avoiding mass assignment issues
           sub.reverse_merge!({"id" => "#{subpart.id}"})
           subpart.fields.each_with_index do |field, i|
-            sub["fields_attributes"]["#{i}"].reverse_merge!({"id" => "#{field.id}"})
+            sub["fields_attributes"][i.to_s].reverse_merge!({"id" => "#{field.id}"}) if sub["fields_attributes"][i.to_s]
           end
         end
       end

@@ -4,7 +4,7 @@ class CreateCardboardFields < ActiveRecord::Migration
       t.string :identifier
       t.string :label
       t.string :type
-      t.boolean :required
+      t.boolean :required, default: true
       t.belongs_to :page_part
       t.integer :position
       t.text :value_uid

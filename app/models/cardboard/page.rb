@@ -26,7 +26,7 @@ module Cardboard
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
     :message => "Only downcase letters, numbers and underscores are allowed" }
     #validate all seo keys are valid meta keys + title
-    validates_associated :parts
+    # validates_associated :parts
 
     #scopes
     scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")

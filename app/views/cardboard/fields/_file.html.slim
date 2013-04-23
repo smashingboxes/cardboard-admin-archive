@@ -1,5 +1,8 @@
 = f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
-  = f.input :retained_value, as: :hidden
-  = f.input :remove_value, as: :boolean, inline_label: "Delete file?", label: false, :wrapper => :default
+  = f.input :value, as: :file, label:false, :wrapper => :default
+
+  - if f.object.value_uid.present?
+    = f.input :remove_value, as: :boolean, inline_label: "Delete file?", label: false, :wrapper => :default
+  = f.hidden_field :retained_value
 
 / = render "cardboard/fields/base_input", f: f

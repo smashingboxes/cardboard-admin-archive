@@ -1,19 +1,17 @@
 Cardboard::Engine.routes.draw do
 
-  # devise_for :users, :class_name => "Cardboard::User", :module => :devise
-
-
-  get "/", to: "dashboard#index", as: "dashboard"
   get "account", to: "users#edit", as: "user"
-  # resources :users
+  get "pages/:id", to: "pages#edit"
   resources :pages
 
 
   # scope "/super_admin" do
   #   get "/", to: "super_admin#index", as: "super_admin"
   # end
+  get "/yoda", to: "super_user#index"
 
-  root :to => "cardboard/pages#index"
+  get "/", to: "dashboard#index", as: "dashboard"
+  #Don't put a root path here, use "/" instead...
 end
 
 

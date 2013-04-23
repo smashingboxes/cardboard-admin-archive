@@ -1,0 +1,10 @@
+= nested_pages do |page, subpages|
+  hr
+  h1= page.identifier
+  - for part in page.parts
+    .indent
+      h3= part.identifier
+      - for field in part.subparts.first.fields
+        .indent= field.identifier
+
+  = content_tag(:div, subpages, class: "indent") if subpages.present?
