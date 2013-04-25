@@ -1,0 +1,17 @@
+html, body{
+  font-family: 'Lato';
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+
+#main_content{
+  min-height: 100%;
+  // margin-top: -$main_topbar_height;
+  // padding-top: $main_topbar_height;
+  position:relative;
+  background: $content_background;
+  box-sizing: border-box;
+  // background: url(image) rgba(1,2,3,0.5);
+
+}

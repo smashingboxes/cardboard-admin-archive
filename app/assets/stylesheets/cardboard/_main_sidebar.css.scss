@@ -1,0 +1,48 @@
+#main_sidebar{
+  height: 100%;
+  // float: left;
+  position: absolute;
+  left: 0px;
+  background: image-url("cardboard/bg.png") lighten($black, 20%);
+  // padding-top: $main_topbar_height;
+  // margin-top: -$main_topbar_height;
+  width: $main_sidebar_width;
+  // box-sizing: border-box;
+  // z-index: 1;
+
+
+  #menu{
+    .item{
+      a{
+        padding: 8px 2px;
+        display: block;
+        border-bottom: 1px solid lighten($black, 25%);
+        border-top: 1px solid lighten($black, 15%);
+        text-align: center;
+        word-wrap:break-word;
+
+        color: $white;
+      
+        &:hover, &.active{
+          background: lighten($black, 10%);
+          border-top: 1px solid  lighten($black, 10%);
+          border-bottom: 1px solid  lighten($black, 10%);
+          text-decoration: none;
+          // color: saturate($brand_color, 80%);
+          cursor: pointer;
+          cursor: hand;
+      }
+        i{
+          @include inline-block;
+          font-size: 28px;
+        }
+        span{
+          display: block;
+          margin-top: 5px;
+          font-size: 11px;
+          line-height: 13px;
+        }
+      }   
+    }
+  }
+}

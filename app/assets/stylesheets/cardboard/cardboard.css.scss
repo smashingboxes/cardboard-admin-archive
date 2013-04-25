@@ -1,6 +1,20 @@
 //Only for Cardboard Admin Area
+
+@import "variables";
+
 @import "bootstrap";
+
 @import "bootstrap-wysihtml5";
+@import "bootstrap_override";
+@import "burbon_mixins";
+@import "font-awesome";
+
+@import "main";
+@import "main_topbar";
+@import "main_sidebar";
+@import "content";
+@import "content_sidebar";
+
 
 .indent {
   display: block;
@@ -12,68 +26,11 @@
   }
 }
 
-// Bootstrap overwrite
-legend + .control-group {
-  margin-top: 0px;
-}
-
-input, textarea, .uneditable-input {
-  width: 90%;
-}
-textarea {
-  height: 150px;
-}
-.right{
-  float:right;
-}
 .nested-fields{
   margin-bottom: 20px;
   padding: 20px;
   background: #EFEFEF;
 }
 
-// END bootstrap overwrite
 
-header {
-  .navbar {
-    margin-bottom: 0px;
-    .navbar-inner {
-      .brand {
-        /*color: white;*/
-        padding-bottom: 0;
-        text-shadow: none;
-      }
-      /*background: blue;*/
-    }
-  }
 
-   .navbar.navbar-fixed-top .navbar-inner {
-    padding: 0 10px;
-    
-  }
-}
-
-nav {
-  position: fixed;
-  float: left;
-  width: 200px;
-  display: block;
-  position: absolute;
-  height: 100%;
-  background: #0d2231;
-  .navigation {
-    width: 100%;
-    height: 100%;
-   .nav {
-      margin-bottom: 0;
-      border-bottom: 1px solid #0b1c29;
-      background: #0d2231;
-    }
-  }
-}
-
-body #content {
-  margin-left: 200px;
-  background: #f4f7f9;
-  min-height: 100%;
-}

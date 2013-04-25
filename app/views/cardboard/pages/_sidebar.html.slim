@@ -1,0 +1,12 @@
+form class="form-search"
+  .input-append
+    input type="text" class="span2 search-query"
+    button type="submit" class="btn"
+      i.icon-search
+
+
+
+= nested_pages do |page, subpages|
+  .indent
+    = link_to page.title, edit_page_path(page)
+    = content_tag(:div, subpages, class:"indent") if subpages

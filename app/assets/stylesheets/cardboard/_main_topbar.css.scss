@@ -1,0 +1,42 @@
+$main_topbar_color: $white;
+
+#main_topbar{
+  @extend .navbar;
+  @extend .navbar-inverse;
+  z-index: 100;
+  margin-bottom: 0px;
+  position: relative;
+
+  .navbar-inner{
+    box-sizing: border-box;
+    // background: lighten($black, 15%);
+    background: $brand_color;
+    // box-shadow: none;
+    @include border-radius(0px);
+    border: none;
+    padding: 0 10px;
+    height: $main_topbar_height;
+    a{color: $main_topbar_color;}
+    
+    .brand{
+      font-weight: 700;
+      font-size: 20px;
+
+    }
+    i{
+      color: $main_topbar_color;
+      margin-right: 5px;
+    }
+  }
+  .nav > li > a {
+    padding: 10px 15px 7px;
+    font-weight: 700;
+    color: $main_topbar_color;
+  }
+  .dropdown-menu > li > a{
+    color: $black;
+    &:hover{
+      color: $main_topbar_color;
+    }
+  }
+}

@@ -1,6 +1,0 @@
-
-%ul
-  = nested_pages do |page, subpages|
-    %li
-      = link_to page.title, edit_page_path(page)
-      = content_tag(:ul, subpages) if subpages

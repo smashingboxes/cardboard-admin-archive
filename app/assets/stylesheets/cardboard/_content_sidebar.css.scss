@@ -1,0 +1,21 @@
+#content_sidebar{
+  z-index: 1;
+  position: relative;
+
+  box-sizing: border-box;
+  // padding-top: $main_topbar_height;
+  // margin-top: -$main_topbar_height;
+  // float: left;
+  position: absolute;
+  left: $main_sidebar_width;
+  width: $content_sidebar_width;
+  // overflow: auto;
+  height: 100%;
+  background: lighten($black, 95%);
+  padding: 18px 15px 10px 15px;
+  .indent{
+    margin-top: 10px;}
+
+  .indent > .indent{
+    margin-left: 10px;}
+}

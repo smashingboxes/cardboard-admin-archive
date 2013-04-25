@@ -6,6 +6,7 @@
 //= require bootstrap-button
 //= require bootstrap-dropdown
 //= require bootstrap-modal
+//= require bootstrap-alert
 //= require bootstrap-wysihtml5
 //= require cocoon
 
@@ -29,8 +30,9 @@ $(function(){
   });
 
   $(document).on('click', '.bootstrap-wysihtml5-insert-link-modal a', function(e){
-    e.preventDefault;
     $(this).closest(".bootstrap-wysihtml5-insert-link-modal").find("input.bootstrap-wysihtml5-insert-link-url").val($(this).data("url"));
+    e.preventDefault;
+    return false;
   });
   // End Rich Text Editor
 })

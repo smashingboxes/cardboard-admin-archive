@@ -1,0 +1,12 @@
+// Burbon Mixins
+// https://github.com/thoughtbot/bourbon/tree/master/app/assets/stylesheets/css3
+// make sure to check Bootstrap's mixins first!
+// https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss
+
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}

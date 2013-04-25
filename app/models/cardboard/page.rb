@@ -44,7 +44,7 @@ module Cardboard
       slug = full_url.pop
       path = full_url.blank? ? "/" : "/#{full_url.join("/")}/"
       page = self.where(path: path, slug: slug).first
-      page = self.where(path: path).where("slugs_backup ILIKE ?", "% #{slug}\n%").first if page.nil?
+      page = self.where(path: path).where("slugs_backup ILIKE ?", "% #{slug}\n%").first if page.nil? && slug
       return page
     end
 
@@ -84,7 +84,8 @@ module Cardboard
     end
 
     def split_path
-      path.sub(/^\//,'').split("/") # "/path/" => ["path"]
+      # path.sub(/^\//,'').split("/") # "/path/" => ["path"]
+      path[1..-1].split("/")
     end
 
     def parent
@@ -93,10 +94,12 @@ module Cardboard
 
     # Get all other pages
     def parent_url_options
-      Cardboard::Page.all.inject(["/"]) do |result, elm| 
-        result << elm.url unless elm.id == self.id
-        result
-      end.sort
+      @parent_url_options ||= begin
+        Cardboard::Page.all.inject(["/"]) do |result, elm| 
+          result << elm.url unless elm.id == self.id
+          result
+        end.sort
+      end
     end
 
     def parent_url

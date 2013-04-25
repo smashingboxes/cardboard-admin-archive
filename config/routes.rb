@@ -1,6 +1,8 @@
 Cardboard::Engine.routes.draw do
 
   get "account", to: "users#edit", as: "user"
+  put "account", to: "users#update", as: "user"
+
   get "pages/:id", to: "pages#edit"
   resources :pages
 
@@ -22,6 +24,6 @@ Rails.application.routes.draw do
   end
 
 
-  root :to => "cardboard/pages#index"
+  root :to => "cardboard/pages#show"
 end
 

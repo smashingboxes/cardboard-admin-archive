@@ -1,0 +1,24 @@
+
+
+#content {
+  box-sizing: border-box;
+  //background: use $content_background instead
+  height: 100%;
+  display: block;
+  // padding: 10px 30px;
+  // overflow: auto;
+  margin-left: $main_sidebar_width;
+}
+#content_sidebar{
+  display: none;
+}
+
+#cardboard_pages{ //add all controllers that have a sidebar here
+
+  #content{
+    margin-left: $main_sidebar_width + $content_sidebar_width;
+  }
+  #content_sidebar{
+    display: block;
+  }
+}

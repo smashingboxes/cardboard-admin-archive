@@ -2,17 +2,19 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class PagesController < ApplicationController
-    before_filter :authenticate_admin_user!, except: [:show, :index]
+    before_filter :authenticate_admin_user!, except: [:show]
 
     def show
-      @page = Cardboard::Page.find_by_url(params[:id])
+      if params[:id].present?
+        @page = Cardboard::Page.find_by_url(params[:id])
+      else
+        @page = Cardboard::Page.root
+      end
       render_main_app_page @page
     end
 
-    def index
-      @page = Cardboard::Page.root
-      render_main_app_page @page
-    end
+    # def index      
+    # end
 
     def edit
       @page = Cardboard::Page.find(params[:id])
@@ -47,7 +49,7 @@ module Cardboard
     end
 
     def fix_new_subparts
-      return nil if params[:page].blank?
+      return nil if params[:page].blank? || params[:page][:parts_attributes].blank?
 
       params[:page][:parts_attributes].each do |k, p| 
         parent_part_id = p["id"]

@@ -1,0 +1,26 @@
+
+
+legend + .control-group {
+  margin-top: 0px;
+}
+
+input, textarea, select, .uneditable-input{
+  // box-sizing: border-box;
+  width: 80%;
+}
+
+textarea {
+  height: 100px;
+}
+
+.right{
+  float: right;
+  margin-right: 1.5em;
+}
+.nav li img{
+  margin-right: 6px;
+}
+
+.alert{
+  @include border-top-radius(0px);
+}

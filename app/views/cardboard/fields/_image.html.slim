@@ -1,6 +1,6 @@
 = f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
 
-  - if f.object.value_uid.present?
+  - if f.object.value.present?
     = image_tag f.object.value.thumb('600x150>').url
     / br
     / = f.input :remove_value, inline_label: "Delete file?", label: false, as: :boolean, :wrapper => :default

@@ -33,10 +33,10 @@ This means that regular Rails methods such as `where`, `limit`, `first`, `each`,
 ```ruby
 @page.get("intro").first.attr("text1")
 ```
-Or
+<!-- Or
 ```ruby
 @page.get("slideshow").fetch("pepople_count > 5")
-```
+``` -->
 
 If this part is **not repeatable** you can use the shorthand notation
 ```ruby

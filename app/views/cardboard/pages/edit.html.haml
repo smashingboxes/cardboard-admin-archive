@@ -1,6 +1,7 @@
-%h1 Page Edit
 
-= simple_form_for @page, html: {class: "form-horizontal", :multipart => true} do |f|
+%h2 Editing #{@page.url}
+
+= simple_form_for @page, html: {:multipart => true} do |f|
   = f.error_notification
   = f.input :title
 
@@ -10,7 +11,10 @@
 
   = field_set_tag "SEO" do
     = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
-      - for key in [:title, :description, :keywords] | seo.object.methods(nil).grep(/[^=]$/)
+      = seo.input :title, label: "Browser titlebar"
+      = seo.input :description, as: :text
+      = seo.input :keywords
+      - for key in  seo.object.methods(nil).grep(/[^=]$/) - [:title, :description, :keywords]
         = seo.input key, required: false
 
   = field_set_tag "Fields" do  

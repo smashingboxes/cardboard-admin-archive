@@ -10,6 +10,10 @@ require 'gon'
 require 'rack/cache'
 require 'dragonfly'
 require 'chronic'
+require 'font-awesome-sass-rails'
+require 'bootstrap-sass'
+require 'bootstrap-wysihtml5-rails'
+require 'slim'
 
 
 module Cardboard
