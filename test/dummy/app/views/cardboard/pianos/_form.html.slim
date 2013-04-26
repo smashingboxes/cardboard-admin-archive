@@ -1,0 +1,6 @@
+= simple_form_for @piano, url: admin_piano_path(@piano) do |f|
+
+  - for field in @piano.attributes.keys
+    = f.input field
+
+  = f.button :submit

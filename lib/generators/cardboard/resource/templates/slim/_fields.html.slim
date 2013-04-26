@@ -1,0 +1,5 @@
+
+- for field in <%= resource_name.classify %>.accessible_attributes.to_a.reject{|c|c.empty?}
+  = f.input field
+
+= f.button :submit

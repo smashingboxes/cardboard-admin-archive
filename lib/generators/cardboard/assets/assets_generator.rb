@@ -10,8 +10,8 @@ module Cardboard
         require 'rails'
         require 'cardboard'
 
-        template 'cardboard.js', 'app/assets/javascripts/cardboard.js'
-        template 'cardboard.css.scss', 'app/assets/stylesheets/cardboard.css.scss'
+        # template 'cardboard.js', 'app/assets/javascripts/cardboard.js'
+        # template 'cardboard.css.scss', 'app/assets/stylesheets/cardboard.css.scss'
       end
     end
   end

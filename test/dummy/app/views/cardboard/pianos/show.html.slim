@@ -1,0 +1,11 @@
+p#notice = notice
+
+- @piano.attributes.keys.each do |attribute| 
+  p
+    strong #{attribute.titleize}:
+    = @piano.attributes[attribute]
+
+
+= link_to 'Edit', edit_admin_piano_path(@piano)
+'|
+= link_to 'Back', admin_pianos_path

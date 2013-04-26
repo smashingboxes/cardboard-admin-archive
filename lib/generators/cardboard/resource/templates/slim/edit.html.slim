@@ -1,0 +1,6 @@
+h1 Editing <%= singular_table_name %>
+
+= simple_form_for @<%= singular_table_name %>, url: admin_<%= singular_table_name %>_path(@<%= singular_table_name %>) do |f|
+  == render 'fields', f: f
+
+= link_to 'Back', admin_<%= plural_table_name %>_path

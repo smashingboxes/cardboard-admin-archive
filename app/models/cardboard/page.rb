@@ -155,7 +155,11 @@ module Cardboard
         end[page] = ActiveSupport::OrderedHash.new
         ordered_hash
       end
-    end   
+    end 
+
+  # def to_param
+  #   "#{id}-#{slug}"
+  # end  
 
   private
 

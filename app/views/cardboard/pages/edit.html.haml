@@ -1,5 +1,7 @@
 
-%h2 Editing #{@page.url}
+%h2
+  Editing 
+  = link_to @page.url, @page.url
 
 = simple_form_for @page, html: {:multipart => true} do |f|
   = f.error_notification

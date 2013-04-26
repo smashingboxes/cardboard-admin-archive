@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
+  get "news", to: "cardboard/news_posts#index"
+
   devise_for :admin_users, Cardboard::Devise.config
 
   resources :pianos
 
-  namespace :cardboard do
-    get "test", to: "test#index"
-  end
+
 
   mount Cardboard::Engine => "/admin"
 

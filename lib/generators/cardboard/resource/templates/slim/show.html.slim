@@ -1,0 +1,11 @@
+p#notice = notice
+
+- @<%= singular_table_name %>.attributes.keys.each do |attribute| 
+  p
+    strong #{attribute.titleize}:
+    = @<%= singular_table_name %>.attributes[attribute]
+
+
+= link_to 'Edit', edit_admin_<%= singular_table_name %>_path(@<%= singular_table_name %>)
+'|
+= link_to 'Back', admin_<%= plural_table_name %>_path

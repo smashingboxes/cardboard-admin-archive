@@ -1,0 +1,21 @@
+h1 Listing Pianos
+
+table
+  tr
+    - for field in @pianos.column_names
+      th= field
+    th
+    th
+    th
+
+  - @pianos.each do |piano|
+    tr
+      - for field in piano.attributes.keys
+        td = piano.attributes[field]
+
+      td = link_to 'Edit', edit_admin_piano_path(piano)
+      td = link_to 'Destroy', piano, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Piano', new_admin_piano_path

@@ -2,7 +2,7 @@ module Cardboard
   class ApplicationController < ActionController::Base
 
     before_filter :for_gon
-
+    protect_from_forgery
     
     private
 
