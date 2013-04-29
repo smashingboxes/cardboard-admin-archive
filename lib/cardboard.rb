@@ -13,6 +13,7 @@ require 'chronic'
 require 'font-awesome-sass-rails'
 require 'bootstrap-sass'
 require 'bootstrap-wysihtml5-rails'
+require 'bootstrap-datepicker-rails'
 require 'slim'
 
 

@@ -4,9 +4,11 @@ legend + .control-group {
   margin-top: 0px;
 }
 
-input, textarea, select, .uneditable-input{
-  // box-sizing: border-box;
-  width: 80%;
+.simple_form{
+  input:not(.btn), textarea, select, .uneditable-input{
+    // box-sizing: border-box;
+    width: 80%;
+  }
 }
 
 textarea {

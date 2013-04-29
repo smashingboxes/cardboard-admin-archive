@@ -1,10 +1,11 @@
 //Only for Cardboard Admin Area
-
+//= require fancygrid
 @import "variables";
 
 @import "bootstrap";
-
 @import "bootstrap-wysihtml5";
+@import "bootstrap-datepicker";
+
 @import "bootstrap_override";
 @import "burbon_mixins";
 @import "font-awesome";

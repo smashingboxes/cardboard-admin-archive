@@ -8,9 +8,15 @@
 //= require bootstrap-modal
 //= require bootstrap-alert
 //= require bootstrap-wysihtml5
+//= require bootstrap-datepicker
 //= require cocoon
+//= require fancygrid
 
 $(function(){
+
+  $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){
+    $(this).datepicker({format: 'yyyy-mm-dd'});
+  });
 
   ////
   // Rich text editor

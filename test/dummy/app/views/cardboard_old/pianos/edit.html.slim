@@ -1,0 +1,6 @@
+h1 Editing piano
+
+= simple_form_for @piano, url: admin_piano_path(@piano) do |f|
+  == render 'fields', f: f
+
+= link_to 'Back', admin_pianos_path

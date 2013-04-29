@@ -1,10 +1,9 @@
 h1 Listing Pianos
 
-table
+table class="table table-striped"
   tr
     - for field in @pianos.column_names
       th= field
-    th
     th
     th
 
@@ -14,8 +13,8 @@ table
         td = piano.attributes[field]
 
       td = link_to 'Edit', edit_admin_piano_path(piano)
-      td = link_to 'Destroy', piano, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Destroy', admin_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
 
 br
 
-= link_to 'New Piano', new_admin_piano_path
+= link_to 'New Piano', new_admin_piano_path, class: "btn btn-primary"

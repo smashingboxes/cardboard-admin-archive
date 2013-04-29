@@ -22,6 +22,8 @@ gem 'haml'
 
 gem 'devise'
 gem 'slim'
+gem 'fancygrid'
+gem 'ransack'
 
 
 gem "thin"

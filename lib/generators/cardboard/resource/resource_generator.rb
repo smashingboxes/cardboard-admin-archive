@@ -11,10 +11,12 @@ module Cardboard
       end
 
       def generate_controller_file
+        empty_directory "app/controllers/cardboard"
         template "admin_controller.rb", "app/controllers/#{controller_name}.rb"
       end
 
       def generate_view_files
+        empty_directory "app/views/cardboard/#{plural_table_name}"
         template "#{options.markup}/index.html.slim", "app/views/cardboard/#{plural_table_name}/index.html.#{options.markup}"
         template "#{options.markup}/_fields.html.slim", "app/views/cardboard/#{plural_table_name}/_fields.html.#{options.markup}"
         template "#{options.markup}/edit.html.slim", "app/views/cardboard/#{plural_table_name}/edit.html.#{options.markup}"

@@ -1,10 +1,9 @@
 h1 Listing <%= plural_table_name.titleize %>
 
-table
+table class="table table-striped"
   tr
     - for field in @<%= plural_table_name %>.column_names
       th= field
-    th
     th
     th
 
@@ -14,8 +13,8 @@ table
         td = <%= singular_table_name %>.attributes[field]
 
       td = link_to 'Edit', edit_admin_<%= singular_table_name %>_path(<%= singular_table_name %>)
-      td = link_to 'Destroy', <%= singular_table_name %>, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Destroy', admin_<%= singular_table_name %>_path(<%= singular_table_name %>), :confirm => 'Are you sure?', :method => :delete
 
 br
 
-= link_to 'New <%= singular_table_name.titleize %>', new_admin_<%= singular_table_name %>_path
+= link_to 'New <%= singular_table_name.titleize %>', new_admin_<%= singular_table_name %>_path, class: "btn btn-primary"
