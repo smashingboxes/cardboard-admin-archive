@@ -18,10 +18,8 @@ gem "jquery-rails"
 
 
 # should be dependencies
-gem 'haml'
 
 gem 'devise'
-gem 'slim'
 gem 'fancygrid'
 gem 'ransack'
 
