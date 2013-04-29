@@ -19,15 +19,15 @@ module Cardboard
       link_to(capture(page, &block), page.url, html_options)
     end
 
-    def nested_nav(pages)
-      pages.map do |page, sub_pages|
-        if page.in_menu?
-          html =  content_tag(:div, link_to(page.title, page.url) , :class => "indent")
-          html += content_tag(:div, nested_nav(sub_pages), :class => "indent") unless sub_pages.blank? 
-          html
-        end
-      end.join.html_safe
-    end
+    # def nested_nav(pages)
+    #   pages.map do |page, sub_pages|
+    #     if page.in_menu?
+    #       html =  content_tag(:div, link_to(page.title, page.url) , :class => "indent")
+    #       html += content_tag(:div, nested_nav(sub_pages), :class => "indent") unless sub_pages.blank? 
+    #       html
+    #     end
+    #   end.join.html_safe
+    # end
 
     def meta_and_title(page)
       return nil unless page
@@ -40,5 +40,23 @@ module Cardboard
       html.html_safe
     end
 
+    # Example 1:
+    # = nested_pages Cardboard::Page.arrange do |page, subpages|
+    #   .indent
+    #     = link_to(page.title, edit_page_path(page))
+    #     = subpages
+    # end
+    # Example 2:
+    # %ul
+    #   = nested_pages do |page, subpages|
+    #     %li
+    #       = link_to page.title, edit_page_path(page)
+    #       = content_tag(:ul, subpages) if subpages.present?
+    def nested_pages(pages = Cardboard::Page.arrange, &block)
+      raise ArgumentError, "Missing block" unless block_given?
+      pages.map do |page, sub_pages|
+        capture(page, sub_pages.present? ? nested_pages(sub_pages, &block) : nil, &block)
+      end.join.html_safe
+    end
   end
 end
