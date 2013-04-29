@@ -37,6 +37,7 @@ task :cardboard_seed => :environment do
         (part[:fields] || {}).each do |id, field|
           field.reverse_merge!(type: "string")
           db_field = db_part.fields.where(identifier: id.to_s).first_or_initialize
+          db_field.seeding = true
           db_field.update_attributes!(field, :without_protection => true) 
         end
       end

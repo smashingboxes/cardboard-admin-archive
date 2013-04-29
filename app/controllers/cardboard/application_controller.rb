@@ -1,13 +1,18 @@
 module Cardboard
   class ApplicationController < ActionController::Base
 
-    before_filter :for_gon
+    before_filter :for_gon, :bypass_strong_params
     protect_from_forgery
     
     private
 
     def for_gon
       gon.rich_text_links_modal = render_to_string(:partial => "cardboard/rich_editor/links_modal", :layout => false)
+    end
+
+    def bypass_strong_params
+      #remove once conversion to strong params is complete
+      params.permit!
     end
 
   end

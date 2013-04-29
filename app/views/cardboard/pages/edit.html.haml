@@ -19,22 +19,22 @@
       - for key in  seo.object.methods(nil).grep(/[^=]$/) - [:title, :description, :keywords]
         = seo.input key, required: false
 
-  = field_set_tag "Fields" do  
-    
-    - for part in @page.parts #.rank(:part_position) don't rank, it prevents validations
-      = f.simple_fields_for :parts, part do |g|
 
-        = field_set_tag part.identifier.titleize do 
+  
+  - for part in @page.parts #.rank(:part_position) don't rank, it prevents validations
+    = f.simple_fields_for :parts, part do |g|
 
-          - for subpart in part.subparts #.rank(:subpart_position)
-            = g.simple_fields_for :subparts, subpart do |y|
+      = field_set_tag part.identifier.titleize do 
 
-              = render "subpart_fields", f: y, subpart: subpart
-          
-          - if part.repeatable?
-            .links
-              -# the "links" class is important for the cocoon gem
-              = link_to_add_association "Add another #{part.identifier.singularize.titleize}", g, :subparts, :render_options => {:locals => {:subpart => part.new_subpart }}, class: "btn btn-block"
+        - for subpart in part.subparts #.rank(:subpart_position)
+          = g.simple_fields_for :subparts, subpart do |y|
+
+            = render "subpart_fields", f: y, subpart: subpart
+        
+        - if part.repeatable?
+          .links
+            -# the "links" class is important for the cocoon gem
+            = link_to_add_association "Add another #{part.identifier.singularize.titleize}", g, :subparts, :render_options => {:locals => {:subpart => part.new_subpart }}, class: "btn btn-block"
 
   .form-actions
     = f.button :submit, "Save", class:"btn-primary"

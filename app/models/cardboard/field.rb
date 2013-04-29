@@ -1,5 +1,6 @@
 module Cardboard
   class Field < ActiveRecord::Base
+    attr_accessor :seeding
     # self.table_name = 'cardboard_fields'
     belongs_to :part, class_name: "Cardboard::PagePart", :foreign_key => "page_part_id"
 
@@ -35,7 +36,7 @@ module Cardboard
 
   private
     def required_field?
-      self.required? && !self.new_record?
+      self.required? && !self.new_record? && !self.seeding
     end
 
     def required_fields

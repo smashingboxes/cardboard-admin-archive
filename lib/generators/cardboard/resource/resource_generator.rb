@@ -21,7 +21,6 @@ module Cardboard
         template "#{options.markup}/_fields.html.slim", "app/views/cardboard/#{plural_table_name}/_fields.html.#{options.markup}"
         template "#{options.markup}/edit.html.slim", "app/views/cardboard/#{plural_table_name}/edit.html.#{options.markup}"
         template "#{options.markup}/new.html.slim", "app/views/cardboard/#{plural_table_name}/new.html.#{options.markup}"
-        template "#{options.markup}/new.html.slim", "app/views/cardboard/#{plural_table_name}/new.html.#{options.markup}"
         template "#{options.markup}/show.html.slim", "app/views/cardboard/#{plural_table_name}/show.html.#{options.markup}"
       end
 

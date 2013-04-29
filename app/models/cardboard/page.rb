@@ -54,6 +54,11 @@ module Cardboard
     end
     def self.homepage; self.root; end
 
+    def root?
+      @root_id ||= Page.root.id
+      @root_id == self.id
+    end
+
     #instance methods
 
     # @page.get("slideshow.image1")
@@ -74,12 +79,14 @@ module Cardboard
     # SEO
     # children inherit their parent's SEO settings (these can be overwritten)
     def seo
-      parent ? parent.seo.merge(meta_seo) : meta_seo
+      seo = parent ? parent.seo.merge(meta_seo) : meta_seo
+      seo.merge!(Page.root.seo) unless root?
+      seo
     end
     def seo=(hash); self.meta_seo = hash; end
     
     def url
-      return "/" if slug.blank?
+      return "/" if slug.blank? || self.root?
       "#{path}#{slug}/"
     end
 

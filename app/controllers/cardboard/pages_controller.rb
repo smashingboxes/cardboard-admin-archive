@@ -46,6 +46,8 @@ module Cardboard
     rescue ActionView::MissingTemplate => e
       @missing_file = e.path
       render "error", layout: "layouts/application"
+    rescue NoMethodError => e
+      raise ActionController::RoutingError.new("Page Not Found")
     end
 
     def fix_new_subparts

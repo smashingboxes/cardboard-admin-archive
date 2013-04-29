@@ -10,7 +10,6 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-datepicker
 //= require cocoon
-//= require fancygrid
 
 $(function(){
 
