@@ -7,11 +7,9 @@ module Cardboard
       super == "true"
     end
 
-    def value=(v)
-      self.value_uid = "true" if v == true || v =~ (/^(true|t|yes|y|1)$/i)
-      self.value_uid = "false" if v == false || v.blank? || v =~ (/^(false|f|no|n|0)$/i)
+    def value=(val)
+      self[:value_uid] = val.to_boolean.to_s
     end
-
 
     def default
       [true, false].sample

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426021522) do
+ActiveRecord::Schema.define(:version => 20130430170018) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20130426021522) do
     t.text     "value_uid"
     t.string   "hint"
     t.string   "placeholder"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "object_with_field_id"
+    t.string   "object_with_field_type"
   end
 
   add_index "cardboard_fields", ["identifier"], :name => "index_cardboard_fields_on_identifier"

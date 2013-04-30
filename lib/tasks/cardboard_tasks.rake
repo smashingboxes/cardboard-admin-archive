@@ -49,5 +49,17 @@ task :cardboard_seed => :environment do
     end
   end
 
+  db_settings = Cardboard::Setting.first_or_create
+  file_hash[:settings].each do |id, field|
+    field.reverse_merge!(type: "string")
+    db_field = db_settings.fields.where(identifier: id.to_s).first_or_initialize
+    db_field.seeding = true
+    db_field.update_attributes!(field, :without_protection => true) 
+  end
+  for remove_field in db_settings.fields.map(&:identifier) - file_hash[:settings].map{|k,v|k.to_s} - ["company_name"] 
+    db_settings.fields.where(identifier: remove_field).first.destroy
+  end
+  Cardboard::Setting.add("company_name", type: "string", value: "Company Name", position_position: :first)
+
 end
 

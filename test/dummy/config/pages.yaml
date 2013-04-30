@@ -88,6 +88,6 @@ settings:
     type: string
     default: Idea
     hint: Only used for the admin panel
-  allow_fun:
+  more_fun:
     type: boolean
     default: true

@@ -1,37 +1,48 @@
 module Cardboard
   class Setting < ActiveRecord::Base
     # self.table_name = "cardboard_settings"
-    attr_accessible :default_value, :description, :format, :name, :value
+    attr_accessible :name, :fields_attributes
 
-    def value
-      self[:value] = self.default_value unless self[:value].present?
-      formatted(self[:value])
-    end
+    has_many :fields, :as => :object_with_field
+    accepts_nested_attributes_for :fields, :allow_destroy => true
 
-    private
+    # thread save caching of the settings
+    @lock = ::Mutex.new
+    after_save :clear_cached
 
-    def self.method_missing(sym, *args, &block)
-      begin
-        super
-      rescue
-        field = self.where(name: sym).first
+    class << self
+      def add(id, hash_attributes)
+        field = self.first.fields.where(identifier: id).first_or_initialize
+        field.update_attributes!(hash_attributes, :without_protection => true)
       end
-      raise ActiveRecord::NoMethodError if field.nil?
-      field.value
+
+      def clear_saved_settings
+        @lock.synchronize do
+          @_settings = nil
+        end
+      end
+
+      def method_missing(sym, *args, &block)
+        begin
+          super
+        rescue
+          @lock.synchronize do
+            @_settings ||= {}
+            @_settings[sym.to_sym] ||= begin 
+              s = self.first.fields.where(identifier: sym).first
+              raise ::ActiveRecord::NoMethodError if s.nil?
+              s.value
+            end
+          end
+        end
+      end
     end
 
-    def formatted(val)
-      out = case self.format.to_sym
-      when :string
-        val.to_s
-      when :integer
-        val.to_i
-      when :boolean
-        val.to_bool
-      else
-        val
-      end 
-      return out
+  private
+
+    def clear_cached
+      Setting.clear_saved_settings
     end
+
   end
 end
