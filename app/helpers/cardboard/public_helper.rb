@@ -43,7 +43,7 @@ module Cardboard
     # Example 1:
     # = nested_pages Cardboard::Page.arrange do |page, subpages|
     #   .indent
-    #     = link_to(page.title, edit_page_path(page))
+    #     = link_to(page.title, page.url) 
     #     = subpages
     # end
     # Example 2:

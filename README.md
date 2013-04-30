@@ -97,5 +97,10 @@ Then you can use this setting in your views or controllers like so:
 Cardboard::Setting.my_custom_setting
 ```
 
+## Troubleshoot
+### IO Error
+There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:
+https://github.com/dejan/rails_panel/issues/51
+
 ## License
 This project rocks and uses MIT-LICENSE.

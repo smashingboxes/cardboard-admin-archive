@@ -10,7 +10,10 @@ html
       = link_to "Home", root_path
       = link_to "Pianos", pianos_path
 
-      = nested_nav(cardboard_pages)
+      = nested_pages do |page, subpages|
+        .indent
+          = link_to(page.title, page.url) 
+          = subpages
     
 
     .span8

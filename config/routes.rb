@@ -9,6 +9,9 @@ Cardboard::Engine.routes.draw do
 
   get "/yoda", to: "super_user#index"
 
+  get "/settings", to: "settings#index"
+  put "/settings/update", to: "settings#update", as: "update_settings"
+
   get "/", to: "dashboard#index", as: "dashboard"
   #Don't put a root path here, use "/" instead... (to be able to use root_path in the pages)
 

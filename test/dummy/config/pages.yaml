@@ -82,3 +82,12 @@ pages:
   #---
   press:
     title: Press
+
+settings:
+  site_title:
+    type: string
+    default: Idea
+    hint: Only used for the admin panel
+  allow_fun:
+    type: boolean
+    default: true
