@@ -5,12 +5,14 @@ legend + .control-group {
 }
 
 .simple_form{
-  input:not(.btn), textarea, .uneditable-input{
-    // box-sizing: border-box;
-    width: 80%;
+  input:not(.btn):not(.boolean), textarea, .uneditable-input{
+    box-sizing: border-box;
+    width: 100%;
+  }
+  input:not(.btn):not(.boolean){
+    height: 30px;
   }
 }
-
 textarea {
   height: 100px;
 }

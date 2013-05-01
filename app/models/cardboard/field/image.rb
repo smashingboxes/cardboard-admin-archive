@@ -14,7 +14,7 @@ module Cardboard
 
       # image = Dragonfly[:images].generate(:plasma, 800, 600, :gif) 
       # image = Dragonfly[:images].generate(:plain, 600, 400, '#ccc', :format => :gif)
-      image = Dragonfly[:images].generate(:text, "Sample Image",
+      image = Dragonfly[:images].generate(:text, "#{self.identifier}",
         :font_stretch => 'expanded',
         :font_weight => 'bold',
         :padding => '30 15',

@@ -59,7 +59,8 @@ task :cardboard_seed => :environment do
   for remove_field in db_settings.fields.map(&:identifier) - file_hash[:settings].map{|k,v|k.to_s} - ["company_name"] 
     db_settings.fields.where(identifier: remove_field).first.destroy
   end
-  Cardboard::Setting.add("company_name", type: "string", value: "Company Name", position_position: :first)
+  Cardboard::Setting.add("company_name", type: "string", default: "Company Name", position_position: 0)
+  Cardboard::Setting.add("google_analytics", type: "string", position_position: 1)
 
 end
 

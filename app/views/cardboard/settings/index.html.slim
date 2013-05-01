@@ -1,9 +1,7 @@
+h1 Settings
 
 = simple_form_for @setting do |s|
   - for field in @setting.fields
     = s.fields_for :fields, field do |f|
-      - if %w[image file].include?(field.type)
-        = render "cardboard/fields/#{field.type}", f: f
-      - else
-        = render "cardboard/fields/base_input", f: f
+      = render "cardboard/fields/#{field.type}", f: f rescue render "cardboard/fields/base_input", f: f
   = s.button :submit

@@ -35,6 +35,19 @@ pages:
   #---
   about_us:
     title: About us
+    parts:
+      pianos:
+        fields:
+          piano_link:
+            type: resource_link
+            value: pianos
+            label: Click here to see your pianos
+      twitter:
+        fields:
+          twitter_link:
+            type: external_link
+            value: http://twitter.com
+            label: Edit your twitter feed
 
   cmg_primary:
     title: CMG Primary

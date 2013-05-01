@@ -1,6 +1,6 @@
 module Cardboard
   class Field::String < Field
-    validates :value, :length => { :in => 1..255 }, :allow_nil => true
+    validates :value, :length => { :maximum => 255 }
     validates :value, presence:true, :if => :required_field?
 
 
