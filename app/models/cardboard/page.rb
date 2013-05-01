@@ -31,6 +31,11 @@ module Cardboard
     #scopes
     scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
 
+    #class variables
+    @lock = Mutex.new
+    after_save do
+      Page.clear_arranged_pages
+    end
 
     #overwritten setters/getters
     def slug=(value)
@@ -79,9 +84,11 @@ module Cardboard
     # SEO
     # children inherit their parent's SEO settings (these can be overwritten)
     def seo
-      seo = parent ? parent.seo.merge(meta_seo) : meta_seo
-      seo.merge!(Page.root.seo) unless root?
-      seo
+      @_seo ||= begin
+        seo = parent ? parent.seo.merge(meta_seo) : meta_seo
+        seo.merge!(Page.root.seo) unless root?
+        seo
+      end
     end
     def seo=(hash); self.meta_seo = hash; end
     
@@ -149,26 +156,37 @@ module Cardboard
     #    #<Cardboard::Page => {}
     #    #<Cardboard::Page => {#<Cardboard::Page => {}}
     # }}
-    def self.arrange(pages = nil)
-      pages ||= self.preordered.all
+    def self.arrange
+      @lock.synchronize do
+        @_arranged_pages ||= begin
+          pages = self.preordered.all
 
-      pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
-        (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
-          
-          insertion_hash.each do |parent, children|
-            insertion_hash = children if subpath == parent.slug
+          pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
+            (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
+              
+              insertion_hash.each do |parent, children|
+                insertion_hash = children if subpath == parent.slug
+              end
+              insertion_hash
+            end[page] = ActiveSupport::OrderedHash.new
+            ordered_hash
           end
-          insertion_hash
-        end[page] = ActiveSupport::OrderedHash.new
-        ordered_hash
+        end
       end
     end 
+    def self.clear_arranged_pages
+      # clear cache when a page change
+      @lock.synchronize do
+        @_arranged_pages = nil
+      end
+    end
 
   # def to_param
   #   "#{id}-#{slug}"
   # end  
 
   private
+
 
     def update_slugs_backup
       return nil if !self.slug_changed? || self.slug_was.nil?
