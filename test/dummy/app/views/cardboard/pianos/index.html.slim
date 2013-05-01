@@ -1,20 +1,41 @@
 h1 Listing Pianos
+.right
+  = search_form_for @q, url: cardboard_pianos_path do |f| 
 
-table class="table table-striped"
-  tr
-    - for field in @pianos.column_names
-      th= field
-    th
-    th
+    - @pianos.columns.each do |c|
+      
+      - case c.type
+      - when :string
+        = f.label "#{c.name}_cont"
+        = f.text_field "#{c.name}_cont"
+      - when :integer
+        = f.label "#{c.name}_lt"
+        = f.text_field "#{c.name}_lt"
+        = f.label "#{c.name}_gteq"
+        = f.text_field "#{c.name}_gteq"
+      - when :datetime
+        = f.label "#{c.name}_lteq"
+        = f.text_field "#{c.name}_lt", class: "datepicker" , value: params["q"] ? l(params["q"]["#{c.name}_lt"]) : nil
+        = f.label "#{c.name}_gteq"
+        = f.date_field "#{c.name}_gteq", value: params["q"] ? l(params["q"]["#{c.name}_gteq"]) : nil
+    = f.submit 
 
-  - @pianos.each do |piano|
+div style="float:left"
+  table class="table table-striped"
     tr
-      - for field in piano.attributes.keys
-        td = piano.attributes[field]
+      - for field in @pianos.columns
+        th= sort_link @q, field.name
+      th
+      th
 
-      td = link_to 'Edit', edit_admin_piano_path(piano)
-      td = link_to 'Destroy', admin_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
+    - @pianos.each do |piano|
+      tr
+        - for field in piano.attributes.keys
+          td = piano.attributes[field]
 
-br
+        td = link_to 'Edit', edit_cardboard_piano_path(piano)
+        td = link_to 'Destroy', cardboard_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
 
-= link_to 'New Piano', new_admin_piano_path, class: "btn btn-primary"
+  / br
+
+  = link_to 'New Piano', new_cardboard_piano_path, class: "btn btn-primary"
