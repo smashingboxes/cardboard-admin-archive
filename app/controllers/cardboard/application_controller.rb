@@ -1,6 +1,6 @@
 module Cardboard
   class ApplicationController < ActionController::Base
-
+    before_filter :authenticate_admin_user!
     before_filter :for_gon, :bypass_strong_params
     protect_from_forgery
     
@@ -11,7 +11,8 @@ module Cardboard
     end
 
     def bypass_strong_params
-      #remove once conversion to strong params is complete
+      return if request.get? || params.blank? || params.class.to_s != "ActionController::Parameters"
+      # #remove once conversion to strong params is complete
       params.permit!
     end
 

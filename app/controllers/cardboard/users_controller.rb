@@ -2,7 +2,7 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class UsersController < ApplicationController
-    before_filter :authenticate_admin_user!
+    # before_filter :authenticate_admin_user!
     def edit
       @user =  current_admin_user
     end

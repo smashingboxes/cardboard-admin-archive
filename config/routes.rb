@@ -15,8 +15,9 @@ Cardboard::Engine.routes.draw do
   get "/", to: "dashboard#index", as: "dashboard"
   #Don't put a root path here, use "/" instead... (to be able to use root_path in the pages)
 
-  #generate routes for custom admin controllers
-  scope as: 'admin' do
+  
+  scope as: 'cardboard' do
+    #generate routes for custom cardboard resources controllers
     Cardboard::AdminController.descendants.map{|x|x.controller_name.to_sym}.each do |controller|
       resources controller
     end
@@ -28,9 +29,9 @@ end
 # Routes for public pages
 Rails.application.routes.draw do
   scope  :constraints => { :format => 'html' } do #:format => true,
-    get "*id", to: "cardboard/pages#show", as: :page
+    get "*id", to: "pages#show", as: :page
   end
 
-  root :to => "cardboard/pages#show"
+  root :to => "pages#show"
 end
 
