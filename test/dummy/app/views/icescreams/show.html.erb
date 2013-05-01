@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Flavor:</b>
+  <%= @icescream.flavor %>
+</p>
+
+<p>
+  <b>Deliciousness:</b>
+  <%= @icescream.deliciousness %>
+</p>
+
+
+<%= link_to 'Edit', edit_icescream_path(@icescream) %> |
+<%= link_to 'Back', icescreams_path %>

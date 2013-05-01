@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  flavor: MyString
+  deliciousness: 1
+
+two:
+  flavor: MyString
+  deliciousness: 1

@@ -14,7 +14,7 @@ module Cardboard
         text_field(conf, options)
       end
     end
-    
+
     # .item
     #     = link_to dashboard_path, id:"nav_dashboard_link" do
     #       i.icon-dashboard
@@ -27,5 +27,27 @@ module Cardboard
       out.html_safe
     end
 
+    def cardboard_filters(array, f)
+      html = ""
+      array.each do |c|
+        case c[1].to_sym
+        when :string
+          html += f.label "#{c[0]}_cont"
+          html += f.text_field "#{c[0]}_cont"
+        when :integer
+          html += f.label "#{c[0]}_lt"
+          html += f.text_field "#{c[0]}_lt"
+          html += f.label "#{c[0]}_gteq"
+          html += f.text_field "#{c[0]}_gteq"
+        when :datetime
+          html += f.label "#{c[0]}_lteq"
+          html += f.text_field "#{c[0]}_lt", class: "datepicker" , value: params["q"] ? l(params["q"]["#{c[0]}_lt"]) : nil
+          html += f.label "#{c[0]}_gteq"
+          html += f.date_field "#{c[0]}_gteq", value: params["q"] ? l(params["q"]["#{c[0]}_gteq"]) : nil
+        end
+      end
+      html += "<br>"
+      html.html_safe
+    end
   end
 end

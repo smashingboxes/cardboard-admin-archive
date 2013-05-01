@@ -1,0 +1,6 @@
+h1 Editing icescream
+
+= simple_form_for @icescream, url: cardboard_icescream_path(@icescream) do |f|
+  == render 'fields', f: f
+
+= link_to 'Back', cardboard_icescreams_path

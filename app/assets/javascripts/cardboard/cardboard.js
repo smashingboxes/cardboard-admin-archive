@@ -11,6 +11,16 @@
 //= require bootstrap-datepicker
 //= require cocoon
 
+// // require jquery.pjax
+// $(function(){
+
+//   $('.wysihtml5').each(function(i, elem) {
+//     $(elem).wysihtml5();
+//   });
+
+//   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]');
+  
+// })
 $(function(){
 
   $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){

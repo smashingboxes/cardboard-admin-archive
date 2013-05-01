@@ -2,22 +2,7 @@ h1 Listing Pianos
 .right
   = search_form_for @q, url: cardboard_pianos_path do |f| 
 
-    - @pianos.columns.each do |c|
-      
-      - case c.type
-      - when :string
-        = f.label "#{c.name}_cont"
-        = f.text_field "#{c.name}_cont"
-      - when :integer
-        = f.label "#{c.name}_lt"
-        = f.text_field "#{c.name}_lt"
-        = f.label "#{c.name}_gteq"
-        = f.text_field "#{c.name}_gteq"
-      - when :datetime
-        = f.label "#{c.name}_lteq"
-        = f.text_field "#{c.name}_lt", class: "datepicker" , value: params["q"] ? l(params["q"]["#{c.name}_lt"]) : nil
-        = f.label "#{c.name}_gteq"
-        = f.date_field "#{c.name}_gteq", value: params["q"] ? l(params["q"]["#{c.name}_gteq"]) : nil
+    = cardboard_filters @pianos.columns.map{|x|[x.name, x.type]}, f
     = f.submit 
 
 div style="float:left"

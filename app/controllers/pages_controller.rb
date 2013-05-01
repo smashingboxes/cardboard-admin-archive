@@ -10,6 +10,11 @@ class PagesController < ApplicationController
 
 private
 
+  def edit_link
+    cardboard.edit_page_path(@page)
+  end
+  helper_method :edit_link
+
   def current_page
     @page
   end
