@@ -15,6 +15,7 @@ module Cardboard
       def copy_initializer
         @underscored_user_name = name.underscore
         template 'cardboard.rb.erb', 'config/initializers/cardboard.rb'
+        copy_file 'cardboard.yml', 'config/cardboard.yml'
       end
 
       def setup_directory

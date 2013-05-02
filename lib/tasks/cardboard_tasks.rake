@@ -9,13 +9,11 @@ task :cardboard_seed => :environment do
 
   Cardboard::Page.create(title: "index", path: "/") if Cardboard::Page.root.nil?
 
-
-
-  @pages = Cardboard::Page.all
-  db_hash = Rabl::Renderer.new('pages_json', @pages, :view_path => Cardboard::Engine.root.join('lib'), :format => 'hash').render
+  # @pages = Cardboard::Page.all
+  # db_hash = Rabl::Renderer.new('pages_json', @pages, :view_path => Cardboard::Engine.root.join('lib'), :format => 'hash').render
 
   begin
-    file_hash = YAML.load(ERB.new(File.read(Rails.root.join('config', 'pages.yaml'))).result).with_indifferent_access
+    file_hash = YAML.load(ERB.new(File.read(Rails.root.join('config', 'cardboard.yml'))).result).with_indifferent_access
   rescue Errno::ENOENT => e
     puts "Error: You must first create a pages.yaml file in your application config folder"
   end

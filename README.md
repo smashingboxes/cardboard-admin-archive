@@ -14,7 +14,7 @@ rails g cardboard:install
 rake db:migrate
 ```
 
-Edit your `config/pages.yaml` file then run
+Edit your `config/cardboard.yml` file then run
 ```
 rake db:seed
 ```
@@ -81,12 +81,7 @@ image.thumb('40x30')              # same as image.process(:thumb, '40x30')
 ### Settings
 You can create new settings that will be editable from the admin panel. 
 
-```
-app
-|- models
-  |- cardboard
-    |- setting.rb
-```
+
 
 ```ruby
 Cardboard::Setting.create(name: "my_custom_setting", default_value: "something", format: "string")

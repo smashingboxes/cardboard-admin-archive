@@ -1,0 +1,29 @@
+# # Page and Settings admin forms
+# # Example
+# pages:
+#   home:
+#     title: Welcome
+#     parts:
+#       intro:
+#         fields:
+#           text1:
+#             type: string
+#           text2:
+#             type: string
+#           show_slideshow:
+#             type: boolean
+#       slideshow:
+#         repeatable: true
+#         fields:
+#           image1:
+#             type: image
+#             position: 0
+#           description:
+#             hint: This will be visible on mouse over
+#             type: string
+#             require: false
+#             position: 1
+# settings:
+#   more_fun:
+#     type: boolean
+#     default: true
