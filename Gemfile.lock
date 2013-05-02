@@ -20,11 +20,11 @@ PATH
       rack-cache
       rails (>= 3.2.0)
       ranked-model
+      ransack
       sass-rails
       simple_form
       slim
       stringex
-      strong_parameters
 
 GEM
   remote: http://rubygems.org/
@@ -260,10 +260,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     stringex (1.5.1)
-    strong_parameters (0.2.0)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
-      railties (~> 3.0)
     temple (0.6.4)
     thin (1.5.1)
       daemons (>= 1.0.9)

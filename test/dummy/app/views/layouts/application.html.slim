@@ -16,7 +16,7 @@ html
 
       = nested_pages do |page, subpages|
         .indent
-          = link_to(page.title, page.url) 
+          = link_to(page.title, page.url) if page.in_menu?
           = subpages
     
 
