@@ -16,7 +16,7 @@ require 'bootstrap-wysihtml5-rails'
 require 'bootstrap-datepicker-rails'
 require 'slim'
 require 'haml' #remove please! (when all templates are converted)
-require 'strong_parameters'
+require 'ransack'
 
 
 
