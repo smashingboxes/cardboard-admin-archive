@@ -98,20 +98,20 @@ pages:
 ```
 pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
 
-**pages_identifiers**: `title:`, `parts:`
-**parts_identifiers**: `fields:`
-**fields_identifiers**: `label:`, `type:`, `required:`(default == true), `position:`, `default:`(except files and images), `hint:`, `placeholder`
+**pages_identifiers**: `title:`, `parts:`, `position:`(lo)
+**parts_identifiers**: `fields:`, `position:`
+**fields_identifiers**: `label:`, `type:`, `required:`(default == true), `position:`, `default:`(except files and images), `hint:`, `placeholder`, `value` (will overwrite, use `default` instead)
 
 Allowed field types are:
 ```
 boolean
 date
 decimal
-external_link
+external_link (needs value: http://site.com)
 file
 image
 integer
-resource_link (takes the name of the resource linked)
+resource_link (needs value: resource_linked)
 rich_text
 string
 ```
