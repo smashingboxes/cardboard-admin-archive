@@ -1,3 +1,8 @@
 h1 About Us
 
-This is soooooo custom!
+| This is soooooo custom!
+
+p 
+  = current_page.get("test.string")
+p
+  = current_page.get("test").first.attr("string")

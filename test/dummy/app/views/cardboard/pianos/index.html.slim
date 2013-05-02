@@ -1,7 +1,6 @@
 h1 Listing Pianos
 .right
   = search_form_for @q, url: cardboard_pianos_path do |f| 
-
     = cardboard_filters @pianos.columns.map{|x|[x.name, x.type]}, f
     = f.submit 
 
