@@ -28,7 +28,8 @@ module Cardboard
         rescue
           @lock.synchronize do
             @_settings ||= {}
-            @_settings[sym.to_sym] ||= begin 
+            @_settings[sym.to_sym] ||= begin
+              return nil unless self.first
               s = self.first.fields.where(identifier: sym).first
               raise ::ActiveRecord::NoMethodError if s.nil?
               s.value

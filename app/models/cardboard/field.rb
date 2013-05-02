@@ -14,8 +14,9 @@ module Cardboard
 
     #validations
     validates :identifier, :type, presence:true
-    validates :identifier, uniqueness: {:case_sensitive => false, :scope => :object_with_field_id}, :format => { :with => /\A[a-z\_0-9]+\z/,
-    :message => "Only downcase letters, numbers and underscores are allowed" }
+    validates :identifier, uniqueness: {:case_sensitive => false, :scope => [:object_with_field_id, :object_with_field_type]}, 
+                          :format => { :with => /\A[a-z\_0-9]+\z/,
+                          :message => "Only downcase letters, numbers and underscores are allowed" }
 
 
 
