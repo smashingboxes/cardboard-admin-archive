@@ -19,7 +19,7 @@ module Cardboard
 
       def setup_directory
         empty_directory "app/views/pages"
-        template 'index.html.erb', 'app/views/pages/index.html.erb'
+        # template 'index.html.erb', 'app/views/pages/index.html.erb'
         # if options[:users].present?
         #   @user_class = name
         #   template 'admin_user.rb.erb', "app/admin/#{name.underscore}.rb"

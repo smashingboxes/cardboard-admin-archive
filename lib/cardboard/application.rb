@@ -83,7 +83,7 @@ module Cardboard
     # A proc to be used when a user is not authorized to view the current resource
     setting :on_unauthorized_access, :rescue_cardboard_access_denied
 
-    # Active Admin makes educated guesses when displaying objects, this is
+    # Cardboard makes educated guesses when displaying objects, this is
     # the list of methods it tries calling in order
     setting :display_name_methods, [ :display_name,
                                       :full_name,
@@ -108,7 +108,7 @@ module Cardboard
 
     # include AssetRegistration
 
-    # # Event that gets triggered on load of Active Admin
+    # # Event that gets triggered on load of Cardboard
     # BeforeLoadEvent = 'cardboard.application.before_load'.freeze
     # AfterLoadEvent = 'cardboard.application.after_load'.freeze
 
