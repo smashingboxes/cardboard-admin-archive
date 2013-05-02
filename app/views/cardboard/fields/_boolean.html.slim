@@ -1,0 +1,4 @@
+- label = ""
+- label += '<abbr title="required">*</abbr> ' if f.object.required
+- label += f.object.label || f.object.identifier.titleize
+= f.input :value, inline_label: label.html_safe, as: f.object.type, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required, label: false

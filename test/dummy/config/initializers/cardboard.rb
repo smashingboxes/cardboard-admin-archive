@@ -3,22 +3,22 @@ Cardboard.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
-  # for each of the active admin pages.
+  # for each of the Cardboard pages.
   #
   config.site_title = "Dummy"
 
   # == Current User
   #
-  # Active Admin will associate actions with the current
+  # Cardboard will associate actions with the current
   # user performing them.
   #
-  # This setting changes the method which Active Admin calls
+  # This setting changes the method which Cardboard calls
   # to return the currently logged in user.
   config.current_admin_user_method = :current_admin_user
 
   # == Logging Out
   #
-  # Active Admin displays a logout link on each screen. These
+  # Cardboard displays a logout link on each screen. These
   # settings configure the location and method used for the link.
   #
   # This setting changes the path where the link points to. If it's

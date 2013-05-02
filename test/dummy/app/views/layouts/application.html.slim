@@ -6,8 +6,10 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    - if current_admin_user
-      = link_to "Click here to edit this page", edit_link
+    - if current_admin_user && @page
+      div style="float:right;background:#CCC;padding:8px;"
+        = link_to "Edit this page", cardboard.edit_page_path(@page)
+        
     .span4
       = link_to "Home", root_path
       = link_to "Pianos", pianos_path

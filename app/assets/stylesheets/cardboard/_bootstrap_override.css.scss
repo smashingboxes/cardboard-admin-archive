@@ -5,8 +5,10 @@ legend + .control-group {
 }
 
 .simple_form{
-  input:not(.btn):not(.boolean), textarea, .uneditable-input{
+  input, textarea{
     box-sizing: border-box;
+  }
+  input.string, textarea, .uneditable-input{
     width: 100%;
   }
   input:not(.btn):not(.boolean){
@@ -15,6 +17,10 @@ legend + .control-group {
 }
 textarea {
   height: 100px;
+}
+.date_picker input{
+  padding-right: 27px;
+  background: white url("http://demo.activeadmin.info/images/active_admin/datepicker/datepicker-input-icon.png") no-repeat 100% 7px;
 }
 
 .right{

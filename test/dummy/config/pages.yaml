@@ -48,6 +48,20 @@ pages:
             type: external_link
             value: http://twitter.com
             label: Edit your twitter feed
+      test:
+        fields:
+          boolean:
+            type: boolean
+          string:
+            type: string
+          date:
+            type: date
+          decimal:
+            type: decimal
+          file:
+            type: file
+          integer:
+            type: integer
 
   cmg_primary:
     title: CMG Primary
