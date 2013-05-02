@@ -29,9 +29,11 @@ rake db:seed
 Get returns an active record collection. 
 This means that regular Rails methods such as `where`, `limit`, `first`, `each`, etc can be used on page parts
 
+### Fetch a repeatable page part
+
 ### Fetch a single field
 ```ruby
-@page.get("intro").first.attr("text1")
+@page.get("intro").attr("text1")
 ```
 <!-- Or
 ```ruby
@@ -78,14 +80,63 @@ image.thumb('40x30')              # same as image.process(:thumb, '40x30')
 
 ## Customization
 
+### Pages
+To add pages to cardboard edit `config/cardboard.yml`
+
+```
+pages:
+  home_page:
+    title: Default page title
+    parts:
+      slideshow:
+        repeatable: true
+        fields:
+          image1:
+            type: image
+            required: true
+            position: 0
+```
+pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
+
+**pages_identifiers**: `title:`, `parts:`
+**parts_identifiers**: `fields:`
+**fields_identifiers**: `label:`, `type:`, `required:`(default == true), `position:`, `default:`(except files and images), `hint:`, `placeholder`
+
+Allowed field types are:
+```
+boolean
+date
+decimal
+external_link
+file
+image
+integer
+resource_link (takes the name of the resource linked)
+rich_text
+string
+```
+
+### Resources
+To add an admin area for a model simply type (make sure the model exists first)
+```
+rails g cardboard:resource model_name
+```
+
+Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire
+
+
 ### Settings
 You can create new settings that will be editable from the admin panel. 
 
+In your `config/cardboard.yml`
 
-
-```ruby
-Cardboard::Setting.create(name: "my_custom_setting", default_value: "something", format: "string")
 ```
+settings:
+  more_fun:
+    type: boolean
+    default: true
+```
+all options/types from fields are available
 
 Then you can use this setting in your views or controllers like so:
 ```ruby

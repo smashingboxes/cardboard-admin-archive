@@ -76,9 +76,14 @@ module Cardboard
     # slideshow.get("slide1")
     def get(field)
       f = field.split(".")
-      part = self.parts.where(identifier: f.first).first.subparts
-      return part if f.size == 1
-      part.first.attr(f.last)
+      parent_part = self.parts.where(identifier: f.first).first
+      part = parent_part.subparts
+      if parent_part.repeatable? 
+        raise "Part is repeatable, expected each loop" unless f.size == 1 
+        part
+      else
+        f.size == 1 ? part.first : part.first.attr(f.last)
+      end
     end
 
     # SEO
