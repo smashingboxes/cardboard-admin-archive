@@ -37,4 +37,5 @@ gem 'turn'
 gem 'database_cleaner'
 gem 'simplecov'
 
+gem 'pg'
 
