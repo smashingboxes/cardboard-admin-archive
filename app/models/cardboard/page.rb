@@ -5,7 +5,7 @@ module Cardboard
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
     # has_many :fields, :through => :parts, class_name: "Cardboard::Field"
       
-    attr_accessible :position, :title, :path, :slug, :parent_id, :parts_attributes, :meta_seo, :in_menu
+    attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
     attr_accessor :parent_url
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     serialize :meta_seo, Hash
@@ -102,7 +102,7 @@ module Cardboard
     end
     
     def url
-      return "/" if slug.blank? || self.root?
+      return "/" if slug.blank? #|| self.root?
       "#{path}#{slug}/"
     end
 
@@ -117,12 +117,12 @@ module Cardboard
 
     # Get all other pages
     def parent_url_options
-      @parent_url_options ||= begin
+      # @parent_url_options ||= begin
         Cardboard::Page.all.inject(["/"]) do |result, elm| 
           result << elm.url unless elm.id == self.id
           result
         end.sort
-      end
+      # end
     end
 
     def parent_url

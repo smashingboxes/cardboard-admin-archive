@@ -4,12 +4,12 @@ module Cardboard
     # don't validate presence, nil == false
 
     def value
-      super == "true"
+      super.to_s.to_boolean
     end
 
-    def value=(val)
-      self[:value_uid] = val.to_boolean.to_s
-    end
+    # def value=(val)
+    #   self[:value_uid] = val
+    # end
 
     def default
       [true, false].sample

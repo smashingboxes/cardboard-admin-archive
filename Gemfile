@@ -14,27 +14,29 @@ gemspec
 
 # Gems used by the dummy application
 gem "jquery-rails"
+gem "pg"
 
 
 
 # should be dependencies
 
 gem 'devise'
-gem 'fancygrid'
-gem 'ransack'
 
 
-gem "thin"
-gem 'letter_opener'
-gem 'quiet_assets'
-gem 'better_errors'
-gem 'binding_of_caller'
-# gem 'meta_request' #conflict with dragonfly
-gem 'pry-rails'
-gem 'pry-debugger'
-
-gem 'turn'
-gem 'database_cleaner'
-gem 'simplecov'
+group :development do
+  gem "thin"
+  gem 'letter_opener'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  # gem 'meta_request' #conflict with dragonfly
+  gem 'pry-rails'
+  gem 'pry-debugger'
+end
+group :test do
+  gem 'turn'
+  gem 'database_cleaner'
+  gem 'simplecov'
+end
 
 

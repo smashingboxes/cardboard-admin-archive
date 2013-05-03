@@ -1,9 +1,9 @@
-require "test_helper"
+# require "test_helper"
 
-class AdminHelperTest < ActionView::TestCase
+# class AdminHelperTest < ActionView::TestCase
 
-  def test_sanity
-    assert true
-  end
+#   def test_sanity
+#     assert true
+#   end
 
-end
+# end

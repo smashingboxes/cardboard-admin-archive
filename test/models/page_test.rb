@@ -54,11 +54,12 @@ describe Cardboard::Page do
       it "Preorder of results" do
         DatabaseCleaner.clean
 
-        page1 = create :page, position: 1
-        page2 = create :page, position: 2
-        subpage1 = create :page, parent: page1, position: 1
-        subpage2 = create :page, parent_id: page1.identifier, position: 2
-        subpage3 = create :page, parent_url: subpage2.parent_url, position: 3
+        page1 = create :page, position_position: 1
+        page2 = create :page, position_position: 2
+        subpage1 = create :page, parent: page1, position_position: 1
+        subpage2 = create :page, parent_id: page1.identifier, position_position: 2
+        subpage3 = create :page, parent_url: subpage2.parent_url, position_position: 3
+        subpage4 = create :page, parent_url: page2.url
 
         Cardboard::Page.arrange.must_equal({
           page1 => {
@@ -66,7 +67,7 @@ describe Cardboard::Page do
             subpage2 => {}, 
             subpage3 => {}
           }, 
-          page2 => {}
+          page2 => {subpage4 => {}}
         })
 
         Cardboard::Page.root.must_equal page1
