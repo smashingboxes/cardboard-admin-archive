@@ -1,5 +1,3 @@
-require 'rabl'
-
 Rake::Task['db:seed'].enhance [:cardboard_seed]
 
 
@@ -9,14 +7,12 @@ task :cardboard_seed => :environment do
 
   Cardboard::Page.create(title: "index", path: "/") if Cardboard::Page.root.nil?
 
-  # @pages = Cardboard::Page.all
-  # db_hash = Rabl::Renderer.new('pages_json', @pages, :view_path => Cardboard::Engine.root.join('lib'), :format => 'hash').render
-
   begin
     file_hash = YAML.load(ERB.new(File.read(Rails.root.join('config', 'cardboard.yml'))).result).with_indifferent_access
   rescue Errno::ENOENT => e
-    puts "Error: You must first create a pages.yaml file in your application config folder"
+    puts "Error: You must first create a cardboard.yml file in your application config folder"
   end
+  raise "Your cardboard.yml file is not formatted correctly" if file_hash[:pages].nil?
 
   file_hash[:pages].each do |id, page|
 

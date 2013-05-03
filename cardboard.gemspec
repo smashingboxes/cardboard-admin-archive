@@ -21,8 +21,6 @@ Gem::Specification.new do |s|
 
   #don't forget to require them in lib/cardboard/engine.rb
   s.add_dependency "rails", ">= 3.2.0"
-  s.add_dependency "pg"
-  # s.add_dependency "activerecord-postgres-hstore"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails"
   s.add_dependency 'haml'
@@ -37,7 +35,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari'
   s.add_dependency 'inherited_resources'
   s.add_dependency 'ranked-model'
-  s.add_dependency 'rabl'
   s.add_dependency 'cocoon'
   s.add_dependency 'gon'
   s.add_dependency 'rack-cache'

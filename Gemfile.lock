@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cardboard (0.0.1)
+    cardboard-cms (0.0.1)
       bootstrap-datepicker-rails
       bootstrap-sass (>= 2.2)
       bootstrap-wysihtml5-rails
@@ -15,8 +15,6 @@ PATH
       inherited_resources
       jquery-rails
       kaminari
-      pg
-      rabl
       rack-cache
       rails (>= 3.2.0)
       ranked-model
@@ -183,7 +181,6 @@ GEM
     nifty-generators (0.4.6)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
-    pg (0.15.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -198,8 +195,6 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
-    rabl (0.8.4)
-      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -284,7 +279,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  cardboard!
+  cardboard-cms!
   database_cleaner
   devise
   factory_girl_rails
