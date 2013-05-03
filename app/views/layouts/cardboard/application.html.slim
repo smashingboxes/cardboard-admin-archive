@@ -1,10 +1,10 @@
 doctype html
 html
   head
-    = render "layouts/cardboard/head", title: "Dashboard"
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    = javascript_include_tag "cardboard/cardboard"
-  body id="#{params[:controller].parameterize("_")}"
+    = render 'layouts/cardboard/head', title: 'Dashboard'
+    link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css"
+    = javascript_include_tag 'cardboard/cardboard'
+  body id="#{params[:controller].parameterize('_')}"
 
     #main_topbar= render 'layouts/cardboard/main_topbar'
 
@@ -16,10 +16,9 @@ html
       /     = yield(:sidebar)
 
       #content_sidebar
-        #pages_sidebar= render "cardboard/pages/sidebar"
+        #pages_sidebar= render 'cardboard/pages/sidebar'
 
 
       #content.container-fluid
-        = render "layouts/cardboard/flash_message"
+        = render 'layouts/cardboard/flash_message'
         = yield
-
