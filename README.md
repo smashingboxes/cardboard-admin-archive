@@ -2,9 +2,9 @@
 
 ## Installation
 
-Add the gem to the gemfile
+Add the gem to the `gemfile`
 ```
-gem 'cardboard'
+gem 'cardboard-cms', git: "https://github.com/smashingboxes/cardboard.git"
 bundle install
 ```
 
@@ -85,6 +85,12 @@ image.process(:greyscale, :depth => 128)     # default depth 256
 image.process(:rotate, 45, :background_colour => 'transparent')   # default bg black
 ```
 
+### File field methods
+Similarly to images, files are also Dragonfly objects. This allows such methods as:
+```
+file.format              # => :doc
+image.image?             # => false
+```
 
 ## Customization
 
