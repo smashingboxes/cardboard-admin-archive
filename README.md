@@ -40,7 +40,7 @@ current_page.get("intro").attr("text1")
 ```
 <!-- Or
 ```ruby
-@page.get("slideshow").fetch("pepople_count > 5")
+current_page.get("slideshow").fetch("pepople_count > 5")
 ``` -->
 
 If this part is **not repeatable** you can use the shorthand notation
@@ -72,17 +72,13 @@ image.thumb('40x30').url  # same as image.process(:thumb, '40x30')
 '400x300+50+100'     # crop from the point 50,100 with width, height 400,300
 ```
 
-More options (also see http://markevans.github.io/dragonfly/file.ImageMagick.html):
+More options (also see http://markevans.github.io/dragonfly/file.ImageMagick.html ):
 ```ruby
 image.width               # => 280
 image.height              # => 355
 image.aspect_ratio        # => 0.788732394366197
 image.portrait?           # => true
 image.landscape?          # => false
-image.depth               # => 8
-image.number_of_colours   # => 34703
-image.format              # => :png
-image.image?              # => true - will return true or false for any content
 image.process(:flip)                         # flips it vertically
 image.process(:flop)                         # flips it horizontally
 image.process(:greyscale, :depth => 128)     # default depth 256
@@ -111,11 +107,11 @@ pages:
 pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
 
 #### pages_identifiers
-`title:`, `parts:`, `position:`(lowest position is the root page)
+`title`, `parts`, `position`(lowest position is the root page)
 ####parts_identifiers
-`fields:`, `position:`
+`fields`, `position`
 ####fields_identifiers
-`label:`, `type:`, `required:`(default == true), `position:`, `default:`(except files and images), `hint:`, `placeholder`, `value` (will overwrite user input, use `default` instead)
+`label`, `type`, `required`(default == true), `position`, `default`(except files and images), `hint`, `placeholder`, `value` (will overwrite user input, use `default` instead)
 
 Allowed field types are:
 ```
@@ -165,11 +161,11 @@ current_page
 ```
 ### Meta tags
 ```ruby
-= meta_and_title(@page)
+= meta_and_title(current_page)
 ```
 ### Show edit link
 ```ruby
-- if current_admin_user && @page
+- if current_admin_user && current_page
   div style="float:right;background:#CCC;padding:8px;"
     = link_to "Edit this page", cardboard.edit_page_path(current_page)
 ```
