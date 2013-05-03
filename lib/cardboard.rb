@@ -1,4 +1,4 @@
-require "cardboard-cms/engine"
+require "cardboard/engine"
 require 'rubygems'
 require 'simple_form'
 require 'stringex'
