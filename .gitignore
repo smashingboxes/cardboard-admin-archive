@@ -9,3 +9,12 @@ test/dummy/.sass-cache
 coverage/
 
 test/dummy/public/system/dragonfly/*
+
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+.rvmrc
+.project
+.DS_Store

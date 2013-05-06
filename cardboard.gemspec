@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Rails CMS made simple"
 
   # s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.files         = `git ls-files`.split("\n").sort
+  s.files         = `git ls-files`.split("\n").sort - %w(.rvmrc .gitignore)
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
