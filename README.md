@@ -5,7 +5,7 @@
 Add the gem to the `Gemfile`
 
 ```ruby
-gem 'cardboard-cms', git: 'https://github.com/smashingboxes/cardboard.git', require: 'cardboard'
+gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard'
 ```
 
 And `bundle install`. Run the generator
