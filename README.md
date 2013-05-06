@@ -143,9 +143,10 @@ current_page
 = meta_and_title(current_page)
 ```
 ### Show edit link
+Feel free to make it fit as you want in your site design
 ```slim
 - if current_admin_user && current_page
-  div style="float:right;background:#CCC;padding:8px;"
+  div style="float:right"
     = link_to "Edit this page", cardboard.edit_page_path(current_page)
 ```
 ### Page nav

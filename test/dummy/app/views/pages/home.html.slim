@@ -8,6 +8,12 @@ p
   | text 2
   = current_page.get("intro.text2") 
 
+
+p
+  = link_to_page "about_us" do
+    | About us single link
+
+
   
 
 - current_page.get("slideshow").each do |slide| 
