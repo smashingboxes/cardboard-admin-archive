@@ -52,10 +52,16 @@ module Cardboard
     #     %li
     #       = link_to page.title, edit_page_path(page)
     #       = content_tag(:ul, subpages) if subpages.present?
-    def nested_pages(pages = Cardboard::Page.arrange, &block)
+    def nested_pages(page = nil, &block)
       raise ArgumentError, "Missing block" unless block_given?
+      inner_nested_pages(Cardboard::Page.arrange(page), &block).html_safe
+    end
+
+    private
+
+    def inner_nested_pages(pages, &block)
       pages.map do |page, sub_pages|
-        capture(page, sub_pages.present? ? nested_pages(sub_pages, &block) : nil, &block)
+        capture(page, sub_pages.present? ? inner_nested_pages(sub_pages, &block) : nil, &block)
       end.join.html_safe
     end
   end

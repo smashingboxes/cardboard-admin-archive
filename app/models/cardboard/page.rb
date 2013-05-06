@@ -6,7 +6,7 @@ module Cardboard
     # has_many :fields, :through => :parts, class_name: "Cardboard::Field"
       
     attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
-    attr_accessor :parent_url
+    attr_accessor :parent_url, :is_root
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     serialize :meta_seo, Hash
     serialize :slugs_backup, Array
@@ -22,7 +22,8 @@ module Cardboard
 
     #validations
     validates :title, :path, presence:true
-    validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }
+    validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, :exclusion => { :in => ["/", nil],
+    :message => "To make a page the site root, simply change its position" }
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
     :message => "Only downcase letters, numbers and underscores are allowed" }
     #validate all seo keys are valid meta keys + title
@@ -41,6 +42,10 @@ module Cardboard
     def slug=(value)
       # the user can overwrite the auto generated slug
       self[:slug] = value.present? ? value.to_url : nil
+    end
+
+    def is_root=(val)
+      self.position_position = :first if val
     end
 
     #class methods
@@ -165,9 +170,12 @@ module Cardboard
     #    #<Cardboard::Page => {}
     #    #<Cardboard::Page => {#<Cardboard::Page => {}}
     # }}
-    def self.arrange
+    def self.arrange(root_page = nil)
+      root_page = self.root if root_page.nil?
+
       @lock.synchronize do
-        @_arranged_pages ||= begin
+        @_arranged_pages ||= {}
+        @_arranged_pages[root_page.id.to_s] ||= begin
           pages = self.preordered.all
 
           pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
