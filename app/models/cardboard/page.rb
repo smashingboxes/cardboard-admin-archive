@@ -53,7 +53,7 @@ module Cardboard
       slug = full_url.pop
       path = full_url.blank? ? "/" : "/#{full_url.join("/")}/"
       page = self.where(path: path, slug: slug).first
-      page = self.where(path: path).where("slugs_backup ILIKE ?", "% #{slug}\n%").first if page.nil? && slug
+      page = self.where(path: path).where("slugs_backup LIKE ?", "% #{slug}\n%").first if page.nil? && slug
       return page
     end
 
