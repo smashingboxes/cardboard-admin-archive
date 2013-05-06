@@ -23,16 +23,16 @@ gem "pg"
 gem 'devise'
 
 
-group :development do
-  gem "thin"
-  gem 'letter_opener'
-  gem 'quiet_assets'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  # gem 'meta_request' #conflict with dragonfly
-  gem 'pry-rails'
-  gem 'pry-debugger'
-end
+
+gem "thin"
+gem 'letter_opener'
+gem 'quiet_assets'
+gem 'better_errors'
+gem 'binding_of_caller'
+# gem 'meta_request' #conflict with dragonfly
+gem 'pry-rails'
+gem 'pry-debugger'
+
 group :test do
   gem 'turn'
   gem 'database_cleaner'
