@@ -2,7 +2,7 @@
 / -#       also maybe change the dropdown to an autocomplete
 / -# f.input :parent_url, :collection => Cardboard::Page.preordered.all.inject(["/"]){|result, elm| result << elm.url unless elm.id == @page.id; result}, include_blank: false
 
-= f.input :url, required: true do
+= f.input :url, required: true, wrapper_html:{class: f.object.errors.messages[:slug] ? "error" : nil} do
   .input-prepend
     .add-on
       - if @page.new_record?
@@ -10,4 +10,5 @@
       - else
         = f.object.parent_url
 
-    = f.text_field :slug 
+    = f.text_field :slug
+  = f.error :slug

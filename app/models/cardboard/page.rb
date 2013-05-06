@@ -22,8 +22,7 @@ module Cardboard
 
     #validations
     validates :title, :path, presence:true
-    validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, :exclusion => { :in => ["/", nil],
-    :message => "To make a page the site root, simply change its position" }
+    validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
     :message => "Only downcase letters, numbers and underscores are allowed" }
     #validate all seo keys are valid meta keys + title
