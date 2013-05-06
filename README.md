@@ -165,6 +165,15 @@ ul
       ul= subpages
 ```
 
+### Link to a page
+Use the page identifier defined in the cardboard.yml file (or see yoda)
+```ruby
+  link_to_page "page_identifier", class: "btn" do |page|
+    "hello #{page.title}"
+  end
+```
+   
+
 ## Troubleshoot
 ### IO Error
 There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:

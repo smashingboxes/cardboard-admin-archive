@@ -15,7 +15,9 @@ module Cardboard
     #   
     def link_to_page(page, html_options={}, &block)
       raise ArgumentError, "Missing block" unless block_given?
-      page = Cardboard::Page.where(id: page).first if page.is_a?(Integer)
+      page = Cardboard::Page.where(id: page).first 
+      page = Cardboard::Page.where(identifier: page).first 
+      return nil if page.blank?
       link_to(capture(page, &block), page.url, html_options)
     end
 
