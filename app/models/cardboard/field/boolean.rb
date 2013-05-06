@@ -1,6 +1,6 @@
 module Cardboard
   class Field::Boolean < Field
-    validates :value_uid, :inclusion => { :in => %w(yes true no false 0 1 y n t f), :message => "%{value} is not a boolean" }, :allow_nil => true
+    validates :value_uid, :inclusion => { :in => %w(yes true no false 0 1 y n t f) + [true, false], :message => "%{value} is not a boolean" }, :allow_nil => true
     # don't validate presence, nil == false
 
     def value
