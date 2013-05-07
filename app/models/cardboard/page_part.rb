@@ -55,10 +55,11 @@ module Cardboard
         f = self.fields.where(identifier: field).first
 
         if Rails.env.development? && f.value.nil? 
-         f.default #be careful for booleans here
+          out = f.default #be careful for booleans here
         else
-         f.value 
+          out = f.value
         end
+        f.type == "rich_text" ? out.html_safe : out
       end
     end
 
