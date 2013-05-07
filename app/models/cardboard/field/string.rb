@@ -11,7 +11,7 @@ module Cardboard
     private
 
     def truncate_long_string
-      self.value = self.value[1..255] if value
+      self.value = self.value[0..254] if value
     end
   end
 end

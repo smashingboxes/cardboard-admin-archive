@@ -28,4 +28,8 @@ class ActionDispatch::IntegrationTest
   include Rails.application.routes.url_helpers
   include Capybara::RSpecMatchers
   include Capybara::DSL
+
+  def cardboard
+    Cardboard::Engine.routes.url_helpers
+  end
 end

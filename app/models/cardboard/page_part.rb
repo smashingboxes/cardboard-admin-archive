@@ -26,7 +26,7 @@ module Cardboard
 
 
     def subpart?
-      return true if self.page_id.nil?
+      !self.parent_part_id.nil?
     end
 
     def repeatable?
