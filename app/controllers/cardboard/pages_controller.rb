@@ -2,19 +2,6 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class PagesController < ApplicationController
-    # before_filter :authenticate_admin_user!, except: [:show]
-
-    # def show
-    #   if params[:id].present?
-    #     @page = Cardboard::Page.find_by_url(params[:id])
-    #   else
-    #     @page = Cardboard::Page.root
-    #   end
-    #   render_main_app_page @page
-    # end
-
-    # def index      
-    # end
 
     def edit
       @page = Cardboard::Page.find(params[:id])
@@ -32,23 +19,7 @@ module Cardboard
       end
     end
 
-
   private
-
-    # def current_page
-    #   @page
-    # end
-    # helper_method :current_page
-
-    # def render_main_app_page(page)
-    #   #TODO: Make the layout name variable
-    #   render "pages/#{page.identifier}", layout: "layouts/application"
-    # rescue ActionView::MissingTemplate => e
-    #   @missing_file = e.path
-    #   render "error", layout: "layouts/application"
-    # rescue NoMethodError => e
-    #   raise ActionController::RoutingError.new("Page Not Found")
-    # end
 
     def fix_new_subparts
       return nil if params[:page].blank? || params[:page][:parts_attributes].blank?

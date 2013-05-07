@@ -29,7 +29,6 @@ gem 'letter_opener'
 gem 'quiet_assets'
 gem 'better_errors'
 gem 'binding_of_caller'
-# gem 'meta_request' #conflict with dragonfly
 gem 'pry-rails'
 gem 'pry-debugger'
 
