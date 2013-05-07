@@ -23,15 +23,9 @@ pages:
           image1:
             type: image
             required: true
-            position: 0
           description:
             hint: This will be visible on mouse over
-            type: rich_text
-            position: 1
-          description2:
-            label: Second Description
-            type: rich_text
-
+            type: string
   #---
   about_us:
     title: About us
@@ -62,6 +56,9 @@ pages:
             type: file
           integer:
             type: integer
+          rich_text:
+            label: Wysiwygmfk
+            type: rich_text
 
   cmg_primary:
     title: CMG Primary
