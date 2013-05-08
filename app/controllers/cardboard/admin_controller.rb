@@ -2,6 +2,8 @@ class Cardboard::AdminController <  InheritedResources::Base
   defaults :route_prefix => 'cardboard'
 
   before_filter :authenticate_admin_user!
+  before_filter :for_gon
+  
   layout "layouts/cardboard/application"
 
   def collection
@@ -12,6 +14,10 @@ class Cardboard::AdminController <  InheritedResources::Base
   end
 
   private
+
+  def for_gon
+    gon.rich_text_links_modal = render_to_string(:partial => "cardboard/rich_editor/links_modal", :layout => false)
+  end
 
   def permitted_strong_parameters
     :all
