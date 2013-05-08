@@ -18,8 +18,6 @@ guard 'minitest' do
   watch(%r|^app/helpers/cardboard/(.*)\.rb|)     { |m| "test/helpers/#{m[1]}_test.rb" }
   watch(%r|^app/models/cardboard/(.*)\.rb|)      { |m| "test/models/#{m[1]}_test.rb" }  
   
-  # Rails
-  # watch(%r|^app/controllers/(.*)\.rb|) { |m| "test/functional/#{m[1]}_test.rb" }
-  # watch(%r|^app/helpers/(.*)\.rb|)     { |m| "test/helpers/#{m[1]}_test.rb" }
-  # watch(%r|^app/models/(.*)\.rb|)      { |m| "test/unit/#{m[1]}_test.rb" }  
+  watch(%r|^lib/cardboard/helpers/seed\.rb|)   { "test/integration/seeding_test.rb" }
+
 end

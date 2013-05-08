@@ -29,22 +29,14 @@ module Cardboard
 
         db_part.subparts.first_or_create! 
         db_part.subparts.each do |db_part|
-          #add new fields
           self.populate_fields(part[:fields], db_part)
         end
-        
-        for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}
-          db_page.parts.where(identifier: remove_part).first.destroy
-        end
-        #remove ones no longer in the seed file
-        for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
-          db_part.fields.where(identifier: remove_field).first.destroy
-        end
-        db_part.subparts.each do |sub|
-          for remove_field in sub.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}
-            sub.fields.where(identifier: remove_field).first.destroy
-          end
-        end
+        # for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
+        #   db_part.fields.where(identifier: remove_field).first.destroy
+        # end
+      end
+      for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}
+        db_page.parts.where(identifier: remove_part).first.destroy
       end
     end
 
@@ -55,16 +47,16 @@ module Cardboard
         db_field.seeding = true
         db_field.update_attributes!(field, :without_protection => true) 
       end
+      #remove fields no longer in the seed file
+      for remove_field in object.fields.map(&:identifier) - fields.map{|k,v|k.to_s}
+        object.fields.where(identifier: remove_field).first.destroy
+      end
     end
 
     def self.populate_settings(settings)
       if settings
         db_settings = Cardboard::Setting.first_or_create
         self.populate_fields(settings, db_settings)
-
-        for remove_field in db_settings.fields.map(&:identifier) - settings.map{|k,v|k.to_s} - ["company_name"] 
-          db_settings.fields.where(identifier: remove_field).first.destroy
-        end
       end
       Cardboard::Setting.add("company_name", type: "string", default: Rails.application.class.name.split("::").first.titlecase, position: 0)
       Cardboard::Setting.add("google_analytics", type: "string", position: 1)
