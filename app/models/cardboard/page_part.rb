@@ -53,7 +53,7 @@ module Cardboard
       @attr ||= {}
       @attr[field] ||= begin
         f = self.fields.where(identifier: field).first
-
+        return nil unless f
         if Rails.env.development? && f.value.nil? 
           out = f.default #be careful for booleans here
         else

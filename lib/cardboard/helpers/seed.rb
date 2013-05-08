@@ -39,7 +39,9 @@ module Cardboard
         #remove ones no longer in the seed file
         for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
           db_part.fields.where(identifier: remove_field).first.destroy
-          db_part.subparts.each do |sub|
+        end
+        db_part.subparts.each do |sub|
+          for remove_field in sub.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}
             sub.fields.where(identifier: remove_field).first.destroy
           end
         end

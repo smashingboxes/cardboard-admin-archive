@@ -14,7 +14,7 @@ gemspec
 
 # Gems used by the dummy application
 gem "jquery-rails"
-gem "pg"
+gem "sqlite3"
 
 
 

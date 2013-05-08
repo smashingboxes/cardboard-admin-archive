@@ -82,7 +82,8 @@ module Cardboard
     def get(field)
       f = field.split(".")
       parent_part = self.parts.where(identifier: f.first).first
-      part = parent_part.subparts
+      part = parent_part.try(:subparts)
+      return nil unless part
       if parent_part.repeatable? 
         raise "Part is repeatable, expected each loop" unless f.size == 1 
         part
