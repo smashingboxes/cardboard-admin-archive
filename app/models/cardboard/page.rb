@@ -53,7 +53,8 @@ module Cardboard
       slug = full_url.pop
       path = full_url.blank? ? "/" : "/#{full_url.join("/")}/"
       page = self.where(path: path, slug: slug).first
-      page = self.where(path: path).where("slugs_backup LIKE ?", "% #{slug}\n%").first if page.nil? && slug
+      #use arel instead of LIKE/ILIKE
+      page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first if page.nil? && slug
       return page
     end
 
