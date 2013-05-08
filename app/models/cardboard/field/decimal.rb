@@ -1,6 +1,6 @@
 module Cardboard
   class Field::Decimal < Field
-    validates :value, :numericality  => { :only_integer => false }, :allow_nil => true
+    validates :value, :numericality  => { :only_integer => false }, :unless => :blank?
     validates :value, presence:true, :if => :required_field?
 
 
