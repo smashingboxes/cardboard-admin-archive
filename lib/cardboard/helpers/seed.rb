@@ -15,7 +15,7 @@ module Cardboard
       end
 
       for remove_page in Cardboard::Page.all.map(&:identifier) - pages.map{|k,v|k.to_s}
-        remove_page.destroy
+        Cardboard::Page.where(identifier: remove_page).first.destroy
       end
 
       Cardboard::Page.create(title: "index", path: "/") if Cardboard::Page.root.nil?
@@ -34,7 +34,7 @@ module Cardboard
         end
         
         for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}
-          remove_part.destroy
+          db_page.parts.where(identifier: remove_part).first.destroy
         end
         #remove ones no longer in the seed file
         for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
