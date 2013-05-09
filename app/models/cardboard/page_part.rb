@@ -18,11 +18,15 @@ module Cardboard
                            :unless => :subpart?
     # validates_associated :fields
     
+    # Scopes
+    scope :is_subparts, ->{ where("parent_part_id IS NOT NULL")}
+    scope :is_parent, ->{where("parent_part_id IS NULL")}
+
     #gem
     include RankedModel
-    ranks :subpart_position, :with_same => :parent_part_id, :column => :position
-    ranks :part_position, :with_same => :page_id, :column => :position
-    default_scope order("position ASC")
+    ranks :subpart_position, :with_same => :parent_part_id, :column => :position, :scope => :is_subparts
+    ranks :part_position, :with_same => :page_id, :column => :position, :scope => :is_parent
+    default_scope order("position DESC")
 
 
     def subpart?
