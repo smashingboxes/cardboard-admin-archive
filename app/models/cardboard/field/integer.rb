@@ -1,8 +1,12 @@
 module Cardboard
   class Field::Integer < Field
-    validates :value, :numericality  => { :only_integer => true }, :unless => :blank?
+    validates :value, :numericality  => { :only_integer => true }, :allow_blank => true
     validates :value, presence:true, :if => :required_field?
 
+    def value=(val)
+      self.value = nil if value == "" #bug in rails?
+      super   
+    end
 
     def value
       super.to_i

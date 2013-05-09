@@ -7,6 +7,7 @@ module Cardboard
 
     validates_property :format, :of => :value, :in => [:jpeg, :jpg, :png, :gif]
     validates_property :image?, :of => :value, :as => true
+    validates_presence_of :value, :if => :required_field?
 
 
     def default

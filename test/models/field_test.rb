@@ -10,7 +10,7 @@ describe Cardboard::Field do
   it "should accept valid boolean values" do
     @field = build :boolean_field
     assert_equal true, @field.save
-    assert_equal false, @field.update_attributes(:value => "")
+    assert_equal true, @field.update_attributes(:value => "")
     ["t", "1", "true", true].each do |val|
       assert_equal true, @field.update_attributes(:value => val)
       assert_equal true, @field.value
