@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    = render 'layouts/cardboard/head', title: 'Dashboard'
+
+  body.login-bg
+    
+
+    div class="row-fluid login-wrapper"
+      div class="logo" 
+        = Cardboard::Setting.company_name
+
+      div class="span4 box"
+        div class="content-wrap"
+          = render "layouts/cardboard/flash_message"
+          = yield
