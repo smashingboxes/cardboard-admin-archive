@@ -38,10 +38,7 @@ var wysihtml5ParserRules = {
 };
 
 var page_links_template = {
-  link: function(locale, options) {
-    var size = (options && options.size) ? ' btn-'+options.size : '';
-    return gon.rich_text_links_modal;
-  }
+  link: function() { return gon.rich_text_links_modal; }
 }
 
 $(function(){
@@ -59,9 +56,15 @@ $(function(){
     insertedItem.fadeIn('slow');
   });
 
-  $(document).on('click', '.bootstrap-wysihtml5-insert-link-modal a', function(e){
-    $(this).closest(".bootstrap-wysihtml5-insert-link-modal").find("input.bootstrap-wysihtml5-insert-link-url").val($(this).data("url"));
+  $(document).on('click', '.bootstrap-wysihtml5-insert-link-modal #link_pages a', function(e){
     e.preventDefault;
+    modal = $(this).closest(".bootstrap-wysihtml5-insert-link-modal");
+    modal.find("input.bootstrap-wysihtml5-insert-link-url").val($(this).data("url"));
+    modal.find("#insert_link").click();
     return false;
+  });
+
+  $(document).on('change', '.bootstrap-wysihtml5-insert-link-modal .tab-pane input', function(){
+    $(this).closest('.bootstrap-wysihtml5-insert-link-modal').find('.bootstrap-wysihtml5-insert-link-url').val($(this).val());
   });
 })

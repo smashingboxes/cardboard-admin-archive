@@ -7,6 +7,7 @@
 //= require bootstrap-dropdown
 //= require bootstrap-modal
 //= require bootstrap-alert
+//= require bootstrap-tab
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require bootstrap-wysihtml5/core
 //= require bootstrap-datepicker
@@ -29,4 +30,10 @@ $(function(){
     $(this).datepicker({format: 'yyyy-mm-dd'});
   });
 
+
+  $('.nav-tabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+  $('.nav-tabs a:first').tab('show');
 })

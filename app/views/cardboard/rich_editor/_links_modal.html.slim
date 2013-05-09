@@ -5,16 +5,33 @@ li
       h3 Insert link
 
     .modal-body
-    ul
-      = nested_pages do |page, subpages|
+      ul class="nav nav-tabs"
         li
-          = link_to page.title, "#", "data-url" => page.url
-          = content_tag(:ul, subpages) if subpages
+          a href="#link_pages" data-toggle="tab" Pages
+        li
+          a href="#link_url" data-toggle="tab" URL
+        li
+          a href="#link_email" data-toggle="tab" Email
 
-      input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'
+      div class="tab-content"    
+        div class="tab-pane" id="link_pages" 
+          ul
+            = nested_pages do |page, subpages|
+              li
+                = link_to page.title, "#", "data-url" => page.url
+                = content_tag(:ul, subpages) if subpages
+        div class="tab-pane" id="link_url" 
+          input placeholder='http://website.com' class='input-xlarge' value='http://'
+        div class="tab-pane" id="link_email" 
+          input placeholder='mailto:email@example.com' class='input-xlarge'
+
+      input class='bootstrap-wysihtml5-insert-link-url' type="hidden"  
+
     .modal-footer
+      
+      a id='insert_link' href='#' class='btn btn-primary' data-dismiss='modal' Insert Link
       a href='#' class='btn' data-dismiss='modal' Cancel
-      a href='#' class='btn btn-primary' data-dismiss='modal' Insert Link
+      
 
 
   / Editor button
