@@ -6,7 +6,8 @@ module Cardboard
     extend ActiveSupport::Concern
 
     def self.populate_pages(pages)
-      (pages || {}).each do |id, page|
+      pages ||= {}
+      pages.each do |id, page|
 
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.update_attributes!(page.filter(:title, :parent_id), :without_protection => true) 
@@ -23,7 +24,8 @@ module Cardboard
 
 
     def self.populate_parts(page_parts, db_page)
-      (page_parts || {}).each do |id, part|
+      page_parts ||= {}
+      page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
         db_part.update_attributes!(part.filter(:repeatable), :without_protection => true) 
 
@@ -41,7 +43,8 @@ module Cardboard
     end
 
     def self.populate_fields(fields, object)
-      (fields || {}).each do |id, field|
+      fields ||= {}
+      fields.each do |id, field|
         field.reverse_merge!(type: "string")
         db_field = object.fields.where(identifier: id.to_s).first_or_initialize
         db_field.seeding = true
