@@ -8,7 +8,7 @@
 
   - Cardboard::AdminController.descendants.each do |controller|
     - name = controller.controller_name 
-    = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.icon, id: "nav_dashboard_link"
+    = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.icon, class: "nav_resource_link"
 
   
 

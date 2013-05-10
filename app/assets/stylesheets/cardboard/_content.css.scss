@@ -8,6 +8,9 @@
   // padding: 10px 30px;
   // overflow: auto;
   margin-left: $main_sidebar_width;
+  &.toggle{
+    margin-left: $main_sidebar_width + $content_sidebar_width;
+  }
 }
 #content_sidebar{
   display: none;
@@ -17,6 +20,9 @@
 
   #content{
     margin-left: $main_sidebar_width + $content_sidebar_width;
+    &.toggle{
+      margin-left: $main_sidebar_width;
+    }
   }
   #content_sidebar{
     display: block;

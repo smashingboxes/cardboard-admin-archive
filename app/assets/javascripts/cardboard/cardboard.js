@@ -30,6 +30,12 @@ $(function(){
     $(this).datepicker({format: 'yyyy-mm-dd'});
   });
 
+  $("a#nav_dashboard_link").click(function(e){
+    e.preventDefault();
+    $("#content_sidebar").toggle();
+    $('#content').toggleClass('toggle');
+  });
+
 
   $('.nav-tabs a').click(function (e) {
     e.preventDefault();
