@@ -4,7 +4,7 @@ module Cardboard
     validates :value, presence:true, :if => :required_field?
 
     def value=(val)
-      super val.to_f
+      super value == "" ? nil : val #bug in rails? should work with allow_blank
     end
 
     def value

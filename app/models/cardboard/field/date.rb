@@ -1,7 +1,7 @@
 module Cardboard
   class Field::Date < Field
     validates :value, presence:true, :if => :required_field?
-    validate :is_date
+    validate :is_date, :if => :required_field?
 
     def value
       Chronic.parse(super)

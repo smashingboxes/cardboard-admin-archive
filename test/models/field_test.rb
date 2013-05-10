@@ -25,36 +25,50 @@ describe Cardboard::Field do
   it "should accept valid date values" do
     @field = build :date_field
     assert_equal true, @field.save
-    @field.required = true
-    assert_equal false, @field.update_attributes(:value => "")
     assert_equal true, @field.update_attributes(value: "1900-01-01")
     assert_equal Time.new('1900', '01', '01', '12', '00'), @field.value #chronic dates are at noon by default
+  end
+  it "should not accept invalid date values" do
+    @field = build :date_field
+    @field.required = true
+    assert_equal true, @field.save
+    assert_equal false, @field.update_attributes(:value => "")
+    assert_equal false, @field.update_attributes(:value => "something")
   end
 
   it "should accept valid decimal numbers" do
     @field = build :decimal_field
     assert_equal true, @field.save
-    @field.required = true
-    assert_equal false, @field.update_attributes(:value => "")
     assert_equal true, @field.update_attributes(:value => 1.23)
     assert_equal 1.23, @field.value
     assert_equal true, @field.update_attributes(:value => "1.23")
     assert_equal 1.23, @field.value
   end
-
-  it "should accept valid file" do
-    @field = build :file_field
-    assert_equal true, @field.save
+  it "should not accept invalid decimal numbers" do
+    @field = build :decimal_field
     @field.required = true
+    assert_equal true, @field.save
     assert_equal false, @field.update_attributes(:value => "")
+    assert_equal false, @field.update_attributes(:value => "something")
+  end
+
+  it "should not accept invalid files" do
+    @field = build :file_field
+    @field.required = true
+    assert_equal true, @field.save
+    
+    assert_equal false, @field.update_attributes(:value => "")
+    assert_equal nil, @field.value_uid
     #TODO: test file validations
   end
 
-  it "should accept valid image" do
+  it "should not accept invalid images" do
     @field = build :image_field
-    assert_equal true, @field.save
     @field.required = true
+    assert_equal true, @field.save
+    
     assert_equal false, @field.update_attributes(:value => "")
+    assert_equal nil, @field.value_uid
     #TODO: test image validations
   end
 
