@@ -5,7 +5,7 @@ module Cardboard
     # belongs_to :part, class_name: "Cardboard::PagePart", :foreign_key => "page_part_id"
     belongs_to :object_with_field, :polymorphic => true
 
-    attr_accessible :position, :value
+    attr_accessible :position, :value, :value_uid
     alias_attribute :value, :value_uid # workaround for dragonfly (make sure to use super to overwrite value)
 
     #gem
@@ -17,8 +17,6 @@ module Cardboard
     validates :identifier, uniqueness: {:case_sensitive => false, :scope => [:object_with_field_id, :object_with_field_type]}, 
                           :format => { :with => /\A[a-z\_0-9]+\z/,
                           :message => "Only downcase letters, numbers and underscores are allowed" }
-
-
 
     default_scope rank(:position)
 
@@ -37,16 +35,13 @@ module Cardboard
     end
 
     def default=(val)
-      self.value = val if self.value.nil?
+      self.value = val if self.value.nil? && val.present?
     end
 
   private
+    
     def required_field?
       self.required? && !self.new_record? && !self.seeding
-    end
-
-    def required_fields
-      errors.add(:value, "is required") if self.required? && self.value.blank? && !self.new_record?
     end
 
   end

@@ -54,11 +54,18 @@ pages:
             type: decimal
           file:
             type: file
+            required: true
           integer:
             type: integer
           rich_text:
             label: Wysiwygmfk
             type: rich_text
+          image:
+            type: image
+            required: false
+          image2:
+            type: image
+            required: true
 
   cmg_primary:
     title: CMG Primary

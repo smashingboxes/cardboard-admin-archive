@@ -1,10 +1,12 @@
 = f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
 
-  - if f.object.value.present?
-    = image_tag f.object.value.thumb('600x150>').url
-    / br
-    / = f.input :remove_value, inline_label: "Delete file?", label: false, as: :boolean, :wrapper => :default
-  
-  = f.input :value, as: :file, label:false, :wrapper => :default
 
-  / = f.hidden_field :retained_value
+  - if f.object.value_uid.present?
+    = image_tag f.object.value.thumb('600x150>').url
+    br
+    - unless f.object.required
+      = f.input :remove_value, inline_label: "Delete file?", label: false, as: :boolean, :wrapper => :default
+
+  = f.input_field :value, as: :file
+
+  = f.hidden_field :retained_value

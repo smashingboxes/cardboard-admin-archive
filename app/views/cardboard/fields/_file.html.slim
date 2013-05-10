@@ -1,8 +1,12 @@
 = f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
-  = f.input :value, as: :file, label:false, :wrapper => :default
 
   - if f.object.value_uid.present?
-    = f.input :remove_value, as: :boolean, inline_label: "Delete file?", label: false, :wrapper => :default
+    p= link_to "#{f.object.value.name} (#{number_to_human_size f.object.value.size})", f.object.value.url
+    - unless f.object.required
+      = f.input :remove_value, as: :boolean, inline_label: "Delete file?", label: false, :wrapper => :default
+
   = f.hidden_field :retained_value
 
-/ = render "cardboard/fields/base_input", f: f
+  = f.input_field :value, as: :file
+
+

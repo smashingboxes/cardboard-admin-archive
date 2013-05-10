@@ -1,8 +1,5 @@
 module Cardboard
   class PagePart < ActiveRecord::Base
-    # self.table_name = "cardboard_page_parts"
-
-    # has_many :fields, class_name: "Cardboard::Field", :dependent => :destroy, :validate => true, :foreign_key => "page_part_id"
     has_many :fields, :as => :object_with_field, class_name: "Cardboard::Field", :dependent => :destroy, :validate => true
     has_many :subparts, class_name: "Cardboard::PagePart", :dependent => :destroy, :foreign_key => "parent_part_id", :validate => true
 
@@ -11,12 +8,13 @@ module Cardboard
 
     attr_accessible :position, :allow_multiple, :label, :subparts_attributes, :fields_attributes
     accepts_nested_attributes_for :subparts, :allow_destroy => true, :reject_if => :all_blank
-    accepts_nested_attributes_for :fields, :allow_destroy => true
+    accepts_nested_attributes_for :fields #, :allow_destroy => true
 
     validates :identifier, uniqueness: {:case_sensitive => false, :scope => :page_id}, 
                            :format => {:with => /\A[a-z\_0-9]+\z/, :message => "Only downcase letters, numbers and underscores are allowed"}, 
                            :unless => :subpart?
-    # validates_associated :fields
+    validates_associated :fields
+    validates_associated :subparts
     
     # Scopes
     scope :is_subparts, ->{ where("parent_part_id IS NOT NULL")}
