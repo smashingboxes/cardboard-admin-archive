@@ -1,1 +1,1 @@
-= f.input :value, label: f.object.label || f.object.identifier.titleize, as: :date_picker, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required
+= f.input :value, label: f.object.label || f.object.identifier.titleize, as: :date_picker, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required, input_html:{value: f.object.value.to_date}

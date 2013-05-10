@@ -4,8 +4,7 @@ module Cardboard
     validates :value, presence:true, :if => :required_field?
 
     def value=(val)
-      self.value = nil if value == "" #bug in rails?
-      super
+      super val.to_f
     end
 
     def value
