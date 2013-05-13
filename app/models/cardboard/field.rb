@@ -1,12 +1,11 @@
 module Cardboard
   class Field < ActiveRecord::Base
     attr_accessor :seeding, :default
-    # self.table_name = 'cardboard_fields'
-    # belongs_to :part, class_name: "Cardboard::PagePart", :foreign_key => "page_part_id"
-    belongs_to :object_with_field, :polymorphic => true
+    alias_attribute :value, :value_uid
 
-    attr_accessible :position, :value, :value_uid
-    alias_attribute :value, :value_uid # workaround for dragonfly (make sure to use super to overwrite value)
+    belongs_to :object_with_field, :polymorphic => true, :inverse_of => :fields
+
+    attr_accessible :position, :value #, :value_uid
 
     #gem
     include RankedModel
@@ -25,7 +24,6 @@ module Cardboard
       return super if val =~ /^Cardboard::Field::/ || val.nil?
       self[:type] = "Cardboard::Field::#{val.to_s.camelize}"
     end
-
     def type
       @friendly_type ||= self[:type].demodulize.underscore
     end
@@ -33,9 +31,8 @@ module Cardboard
     def default
       #overwritten for each subclass
     end
-
     def default=(val)
-      self.value = val if self.value.nil? && val.present?
+      self.value_uid = val if self.value_uid.nil? && val.present?
     end
 
   private

@@ -24,7 +24,8 @@
   - for part in @page.parts #.rank(:part_position) don't rank, it prevents validations
     = f.simple_fields_for :parts, part do |g|
 
-      = field_set_tag part.identifier.titleize do 
+      = field_set_tag part.identifier.titleize do
+        = g.error :base, class: "alert-error"
 
         - for subpart in part.subparts #.rank(:subpart_position)
           = g.simple_fields_for :subparts, subpart do |y|

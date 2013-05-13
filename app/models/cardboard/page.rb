@@ -1,12 +1,10 @@
 module Cardboard
   class Page < ActiveRecord::Base
-    # self.table_name = "cardboard_pages"
-
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
-    # has_many :fields, :through => :parts, class_name: "Cardboard::Field"
       
     attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
     attr_accessor :parent_url, :is_root
+
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     serialize :meta_seo, Hash
     serialize :slugs_backup, Array
@@ -26,7 +24,8 @@ module Cardboard
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
     :message => "Only downcase letters, numbers and underscores are allowed" }
     #validate all seo keys are valid meta keys + title
-    # validates_associated :parts
+
+    # validates_associated :parts, on: :update #breaks seed, should work
 
     #scopes
     scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")

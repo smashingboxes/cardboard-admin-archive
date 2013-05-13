@@ -1,6 +1,6 @@
 module Cardboard
   class Field::Image < Field
-    attr_accessible :retained_value, :remove_value
+    attr_accessible :remove_value, :retained_value
     image_accessor :value do 
       after_assign  :resize_image 
     end
@@ -8,8 +8,6 @@ module Cardboard
     validates_property :format, :of => :value, :in => [:jpeg, :jpg, :png, :gif]
     validates_property :image?, :of => :value, :as => true
     validates :value, presence:true, :if => :required_field?
-
-    after_validation :remove_uid_on_error
 
     def default
       # http://stackoverflow.com/a/7115069/454375
@@ -25,12 +23,9 @@ module Cardboard
     end
 
   private
-    def remove_uid_on_error
-      self.value_uid = nil unless self.errors.empty?
-    end
 
     def resize_image
-      value.process!(:resize, '1920x1080>') if value_uid.present? #max image size 
+      self.value.process!(:resize, '1920x1080>') if value_uid.present? #max image size 
     end
 
   end

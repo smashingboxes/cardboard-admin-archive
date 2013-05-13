@@ -4,7 +4,11 @@ module Cardboard
     validate :is_date, :if => :required_field?
 
     def value
-      Chronic.parse(super)
+      Chronic.parse(value_uid)
+    end
+
+    def value=(val)
+      self.value_uid = val
     end
 
     def default
@@ -14,7 +18,7 @@ module Cardboard
     private
 
     def is_date
-      errors.add(:value, "not a recognized date format") unless Chronic.parse(value_uid)
+      errors.add(:value, "not a recognized date format") unless value
     end
   end
 end

@@ -5,7 +5,11 @@ module Cardboard
     validate :is_boolean?
 
     def value
-      super.to_s.to_boolean
+      value_uid.to_s.to_boolean
+    end
+
+    def value=(val)
+      self.value_uid = val
     end
 
     def default

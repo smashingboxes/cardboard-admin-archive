@@ -4,13 +4,11 @@ module Cardboard
     file_accessor :value
 
     validates_size_of :value, :maximum => 20.megabytes #20000.kilobytes #TODO: move size to gem settings
-    validates :value, presence:true, :if => :required_field?
-
-    after_validation :remove_uid_on_error
+    validate :file_presence
 
   private
-    def remove_uid_on_error
-      self.value_uid = nil unless self.errors.empty?
+    def file_presence
+      errors.add(:value, "is required") if required_field? && value_uid.blank? #for some reason this needs to be _uid (different from image)
     end
   end
 end
