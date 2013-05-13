@@ -11,8 +11,9 @@ module Cardboard
 
     def default
       # http://stackoverflow.com/a/7115069/454375
-      Dragonfly[:dummy].fetch_file( File.join(Cardboard::Engine.root.join('app', 'assets', 'images', "cardboard", "lorem-ipsum-coffe-mug.jpg")))
-      # Dragonfly[:images].generate(:plasma, 800, 600, :gif) 
+      # Dragonfly[:dummy].fetch_file( File.join(Cardboard::Engine.root.join('app', 'assets', 'images', "cardboard", "lorem-ipsum-coffe-mug.jpg")))
+
+      Dragonfly[:images].generate(:plasma, [400, 800].sample, 600, :gif) 
       # Dragonfly[:images].generate(:plain, 600, 400, '#ccc', :format => :gif)
       # Dragonfly[:images].generate(:text, "#{self.identifier}",
       #   :font_stretch => 'expanded',
