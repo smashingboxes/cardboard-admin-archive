@@ -28,19 +28,19 @@ rake db:seed
 ```ruby
 current_page.get('slideshow')
 ```
-Get returns an active record collection. This means that regular Rails methods such as `where`, `limit`, `first`, `each`, etc can be used on page parts
 
 ### Fetch a repeatable page part
+Repeatable parts returns an active record collection. This means that regular Rails methods such as `where`, `limit`, `first`, `each`, etc can be used on page parts
 ```slim
 - current_page.get('slideshow').each do |slide| 
   p= image_tag slide.attr('image1').thumb('600x300').url, alt: slide.attr('description')
 ```
 ### Fetch a single field
+If this part is **not repeatable** you can use both
 ```ruby
 current_page.get('intro').attr('text1')
 ```
-If this part is **not repeatable** you can use the shorthand notation
-
+Or
 ```ruby
 current_page.get('intro.text1')
 ```
@@ -49,7 +49,7 @@ Images returned by `current_page.get('intro.image1')` are [Dragonfly](http://mar
 
 ```ruby
 image.url                 # => URL of the modified image
-image.thumb('40x30').url  # same as image.process(:thumb, '40x30')
+image.thumb('40x30#').url  # same as image.process(:thumb, '40x30')
 ```
 More options and methods are available at [Dragonfly's Documentation](http://markevans.github.io/dragonfly/file.ImageMagick.html)
 
@@ -58,8 +58,9 @@ More options and methods are available at [Dragonfly's Documentation](http://mar
 Similarly to images, files are also Dragonfly objects. This allows such methods as:
 
 ```ruby
-file.format              # => :doc
-image.image?             # => false
+file.format              # => :pdf
+file.name                # => "some.pdf"
+number_to_human_size(file.size) # => "486 KB"
 ```
 
 ## Customization

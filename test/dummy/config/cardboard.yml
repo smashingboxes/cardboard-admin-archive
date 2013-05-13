@@ -23,6 +23,7 @@ pages:
           image1:
             type: image
             required: true
+            default: app/assets/images/CrashTest.jpg
           description:
             hint: This will be visible on mouse over
             type: string
