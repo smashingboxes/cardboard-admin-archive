@@ -18,7 +18,7 @@ p
 
 - current_page.get("slideshow").each do |slide| 
   p
-    = image_tag slide.attr("image1").thumb("600x300").url
+    = image_tag slide.attr("image1").thumb("600x300").url if slide.attr("image1")
   p
     = slide.attr("description")
 

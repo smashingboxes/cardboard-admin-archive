@@ -23,7 +23,6 @@ pages:
           image1:
             type: image
             required: true
-            default: app/assets/images/CrashTest.jpg
           description:
             hint: This will be visible on mouse over
             type: string
@@ -63,6 +62,7 @@ pages:
             type: rich_text
           image:
             type: image
+            default: app/assets/images/CrashTest.jpg
             required: false
           image2:
             type: image

@@ -57,10 +57,10 @@ module Cardboard
       @attr[field] ||= begin
         f = self.fields.where(identifier: field).first
         return nil unless f
-        if Rails.env.development? && f.value.nil? 
-          out = f.default #be careful for booleans here
+        if Rails.env.development? 
+          out = f.value_uid.nil? ? f.default : f.value #be careful for booleans here
         else
-          out = f.value
+          out = f.value_uid.nil? ? nil : f.value
         end
         f.type == "rich_text" ? out.html_safe : out
       end

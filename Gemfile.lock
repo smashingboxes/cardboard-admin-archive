@@ -99,6 +99,8 @@ GEM
       rack
     erubis (2.7.0)
     eventmachine (1.0.3)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -265,6 +267,9 @@ GEM
     turn (0.9.6)
       ansi
     tzinfo (0.3.37)
+    uglifier (2.0.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -295,3 +300,4 @@ DEPENDENCIES
   sqlite3
   thin
   turn
+  uglifier
