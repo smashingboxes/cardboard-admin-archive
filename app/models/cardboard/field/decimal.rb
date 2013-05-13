@@ -1,8 +1,7 @@
 module Cardboard
   class Field::Decimal < Field
-    # validates :value, :numericality  => { :only_integer => false}, :allow_blank => true
-    # validates :value, presence:true, :if => :required_field?
     validate :is_decimal
+    validate :is_required
 
     def value=(val)
       self.value_uid = val == "" ? nil : val #bug in rails? should work with allow_blank
@@ -19,11 +18,7 @@ module Cardboard
     private
 
     def is_decimal
-      if required_field? && value_uid.blank?
-        errors.add(:value, "is required") 
-      elsif value_uid.to_s =~ /([^\d\.]|\.{2,})/
-        errors.add(:value, "is not a number")
-      end
+      errors.add(:value, "is not a number") if value_uid.present? && value_uid.to_s =~ /([^\d\.]|\.{2,})/
     end
 
   end

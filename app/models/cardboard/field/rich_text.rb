@@ -1,6 +1,6 @@
 module Cardboard
   class Field::RichText < Field
-    validates :value, presence:true, :if => :required_field?
+    validate :is_required
     before_save :sanitize_value
 
 

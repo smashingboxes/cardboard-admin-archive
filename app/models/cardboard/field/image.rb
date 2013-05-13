@@ -11,15 +11,19 @@ module Cardboard
 
     def default
       # http://stackoverflow.com/a/7115069/454375
-      # image = Dragonfly[:images].fetch_file( Cardboard::Engine.root.join('app', 'assets', 'images', "cardboard", "lorem-ipsum-coffe-mug.jpg"))
-      # image = Dragonfly[:images].generate(:plasma, 800, 600, :gif) 
-      # image = Dragonfly[:images].generate(:plain, 600, 400, '#ccc', :format => :gif)
-      image = Dragonfly[:images].generate(:text, "#{self.identifier}",
-        :font_stretch => 'expanded',
-        :font_weight => 'bold',
-        :padding => '30 15',
-        :background_color => '#CCC' # defaults to transparent
-      )
+      Dragonfly[:dummy].fetch_file( File.join(Cardboard::Engine.root.join('app', 'assets', 'images', "cardboard", "lorem-ipsum-coffe-mug.jpg")))
+      # Dragonfly[:images].generate(:plasma, 800, 600, :gif) 
+      # Dragonfly[:images].generate(:plain, 600, 400, '#ccc', :format => :gif)
+      # Dragonfly[:images].generate(:text, "#{self.identifier}",
+      #   :font_stretch => 'expanded',
+      #   :font_weight => 'bold',
+      #   :padding => '30 15',
+      #   :background_color => '#CCC' # defaults to transparent
+      # )
+    end
+
+    def default=(val)
+      # self.value =  Dragonfly[:dummy].fetch_file( File.join(Rails.root.join(val))) if self.value_uid.nil? && val.present?
     end
 
   private

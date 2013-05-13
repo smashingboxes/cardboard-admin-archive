@@ -1,8 +1,8 @@
 module Cardboard
   class Field::Integer < Field
-    # validates :value, :numericality  => { :only_integer => true }, :allow_blank => true
-    # validates :value, presence:true, :if => :required_field?
     validate :is_integer
+    validate :is_required
+
 
     def value=(val)
       self.value_uid = val == "" ? nil : val #bug in rails? should work with allow_blank
@@ -19,11 +19,7 @@ module Cardboard
   private
 
     def is_integer
-      if required_field? && value_uid.blank?
-        errors.add(:value, "is required") 
-      elsif value_uid.to_s =~ /[^\d]/
-        errors.add(:value, "is not a number")
-      end
+      errors.add(:value, "is not a number") if value_uid.present? && value_uid.to_s =~ /[^\d]/
     end
 
   end

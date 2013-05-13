@@ -36,6 +36,10 @@ module Cardboard
     end
 
   private
+
+    def is_required
+      errors.add(:value, "is required") if required_field? && value_uid.blank?
+    end
     
     def required_field?
       self.required? && !self.new_record? && !self.seeding

@@ -1,7 +1,7 @@
 module Cardboard
   class Field::Date < Field
-    validates :value, presence:true, :if => :required_field?
-    validate :is_date, :if => :required_field?
+    validate :is_required
+    validate :is_date
 
     def value
       Chronic.parse(value_uid)
@@ -18,7 +18,7 @@ module Cardboard
     private
 
     def is_date
-      errors.add(:value, "not a recognized date format") unless value
+      errors.add(:value, "not a recognized date format") if value_uid.present? && value.blank?
     end
   end
 end
