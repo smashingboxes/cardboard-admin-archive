@@ -3,6 +3,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cardboard/jquery.livesearch.js
 //= require bootstrap-button
 //= require bootstrap-dropdown
 //= require bootstrap-modal
@@ -42,4 +43,29 @@ $(function(){
     $(this).tab('show');
   });
   $('.nav-tabs a:first').tab('show');
+
+
+  // Filter page sidebar
+  $('#sidebar_page_search').search('.indent', function(on) {
+    on.all(function(results) {
+      var size = results ? results.size() : 0
+    });
+
+    on.reset(function() {
+      $('#sidebar_page_search_none').hide();
+      $('.indent').show();
+    });
+
+    on.empty(function() {
+      $('#sidebar_page_search_none').show();
+      $('.indent').hide();
+    });
+
+    on.results(function(results) {
+      $('#sidebar_page_search_none').hide();
+      $('.indent').hide();
+      results.show();
+    });
+  });
+
 })
