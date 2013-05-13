@@ -22,16 +22,17 @@ module Cardboard
     # overwritten setter
     def type=(val)
       return super if val =~ /^Cardboard::Field::/ || val.nil?
-      self[:type] = "Cardboard::Field::#{val.to_s.camelize}"
+      @_type = val.to_s.downcase
+      self[:type] = "Cardboard::Field::#{@_type.camelize}"
     end
     def type
-      @friendly_type ||= self[:type].demodulize.underscore
+      @_type ||= self[:type].demodulize.underscore
     end
 
     def default
       #overwritten for each subclass
     end
-    def default=(val)
+    def default=(val) 
       self.value_uid = val if self.value_uid.nil? && val.present?
     end
 

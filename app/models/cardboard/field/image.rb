@@ -23,9 +23,8 @@ module Cardboard
     end
 
     def default=(val)
-      # self.value =  Dragonfly[:dummy].fetch_file( File.join(Rails.root.join(val))) if self.value_uid.nil? && val.present?
+      self.value = Rails.root.join(val) if self.value_uid.nil? && val.present?
     end
-
   private
 
     def resize_image

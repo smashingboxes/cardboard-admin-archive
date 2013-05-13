@@ -45,8 +45,9 @@ module Cardboard
     def self.populate_fields(fields, object)
       fields ||= {}
       fields.each do |id, field|
-        field.reverse_merge!(type: "string")
-        db_field = object.fields.where(identifier: id.to_s).first_or_initialize
+        type = "Cardboard::Field::#{(field.delete(:type) || "string").camelize}"
+        db_field = object.fields.where(identifier: id.to_s, type: type).first_or_create!
+        db_field = type.constantize.find(db_field.id) #required for images and files defaults
         db_field.seeding = true
         db_field.update_attributes!(field, :without_protection => true) 
       end
