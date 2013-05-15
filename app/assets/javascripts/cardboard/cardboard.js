@@ -3,7 +3,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require cardboard/jquery.livesearch.js
+//= require cardboard/jquery.livesearch
 //= require bootstrap-button
 //= require bootstrap-dropdown
 //= require bootstrap-modal
@@ -15,15 +15,14 @@
 //= require cocoon
 //= require cardboard/wysihtml5-setup
 
+
 // // require jquery.pjax
 // $(function(){
-
 //   $('.wysihtml5').each(function(i, elem) {
 //     $(elem).wysihtml5();
 //   });
 
 //   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]');
-  
 // })
 $(function(){
 
@@ -35,6 +34,7 @@ $(function(){
     e.preventDefault();
     $("#content_sidebar").toggle();
     $('#content').toggleClass('toggle');
+    $(this).toggleClass('active');
   });
 
 
