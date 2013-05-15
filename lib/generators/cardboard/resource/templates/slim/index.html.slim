@@ -1,26 +1,18 @@
-h1 Listing <%= plural_table_name.titleize %>
+/ = cardboard_filters <%= singular_table_name.classify %>, :main_field
 
-.right
-  = search_form_for @q, url: cardboard_<%= plural_table_name %>_path do |f| 
-    = cardboard_filters @<%= plural_table_name %>.columns.map{|x|[x.name, x.type]}, f
-    = f.submit 
+table class="table table-striped"
+  tr
+    - for field in @<%= plural_table_name %>.columns
+      th= sort_link @q, field.name
+    th
+    th
 
-div style="float:left"
-  table class="table table-striped"
+  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
     tr
-      - for field in @<%= plural_table_name %>.columns
-        th= sort_link @q, field.name
-      th
-      th
+      - for field in <%= singular_table_name %>.attributes.keys
+        td = <%= singular_table_name %>.attributes[field]
 
-    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-      tr
-        - for field in <%= singular_table_name %>.attributes.keys
-          td = <%= singular_table_name %>.attributes[field]
+      td = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
+      td = link_to 'Destroy', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), :confirm => 'Are you sure?', :method => :delete
 
-        td = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
-        td = link_to 'Destroy', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), :confirm => 'Are you sure?', :method => :delete
-
-  br
-
-  = link_to 'New <%= singular_table_name.titleize %>', new_cardboard_<%= singular_table_name %>_path, class: "btn btn-primary"
+= paginate @<%= plural_table_name %>

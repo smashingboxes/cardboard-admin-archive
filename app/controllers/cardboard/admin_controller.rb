@@ -9,7 +9,7 @@ class Cardboard::AdminController <  InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.search(params[:q])
     get_collection_ivar || begin
-      set_collection_ivar(@q.respond_to?(:scoped) ? @q.scoped.result(:distinct => true) : @q.result(:distinct => true))
+      set_collection_ivar((@q.respond_to?(:scoped) ? @q.scoped.result(:distinct => true) : @q.result(:distinct => true)).page(params[:page]))
     end
   end
 

@@ -17,7 +17,7 @@ require 'bootstrap-datepicker-rails'
 require 'slim'
 require 'haml' #remove please! (when all templates are converted)
 require 'ransack'
-
+require 'kaminari'
 
 
 module Cardboard

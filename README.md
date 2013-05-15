@@ -114,6 +114,23 @@ rails g cardboard:resource model_name
 
 Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire
 
+#### Filter helper
+You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
+
+```ruby
+= cardboard_filters User, :name
+```
+
+`fields`: list which field can be filtered. By default all are available.
+`title`: change the page's title
+`new_btn`: edit the new resource button's text
+
+#### Pagination Helper
+We use kaminari, so all you need to do is add
+```ruby
+= paginate @users
+```
+to your index view
 
 ### Settings
 You can create new settings that will be editable from the admin panel. 
