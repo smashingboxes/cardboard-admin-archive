@@ -1,26 +1,18 @@
-h1 Listing Icescreams
+= cardboard_filters Icescream, :flavor, fields: [:flavor, :deliciousness]
 
-.right
-  = search_form_for @q, url: cardboard_icescreams_path do |f| 
-    = cardboard_filters @icescreams.columns.map{|x|[x.name, x.type]}, f
-    = f.submit 
 
-div style="float:left"
-  table class="table table-striped"
+table class="table table-striped"
+  tr
+    - for field in @icescreams.columns
+      th= sort_link @q, field.name
+    th
+    th
+
+  - @icescreams.each do |icescream|
     tr
-      - for field in @icescreams.columns
-        th= sort_link @q, field.name
-      th
-      th
+      - for field in icescream.attributes.keys
+        td = icescream.attributes[field]
 
-    - @icescreams.each do |icescream|
-      tr
-        - for field in icescream.attributes.keys
-          td = icescream.attributes[field]
+      td = link_to 'Edit', edit_cardboard_icescream_path(icescream)
+      td = link_to 'Destroy', cardboard_icescream_path(icescream), :confirm => 'Are you sure?', :method => :delete
 
-        td = link_to 'Edit', edit_cardboard_icescream_path(icescream)
-        td = link_to 'Destroy', cardboard_icescream_path(icescream), :confirm => 'Are you sure?', :method => :delete
-
-  br
-
-  = link_to 'New Icescream', new_cardboard_icescream_path, class: "btn btn-primary"

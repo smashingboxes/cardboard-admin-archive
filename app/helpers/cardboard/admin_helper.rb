@@ -28,27 +28,40 @@ module Cardboard
       out.html_safe
     end
 
-    def cardboard_filters(array, f)
-      html = ""
-      array.each do |c|
-        case c[1].to_sym
-        when :string
-          html += f.label "#{c[0]}_cont"
-          html += f.text_field "#{c[0]}_cont"
-        when :integer
-          html += f.label "#{c[0]}_lt"
-          html += f.text_field "#{c[0]}_lt"
-          html += f.label "#{c[0]}_gteq"
-          html += f.text_field "#{c[0]}_gteq"
-        when :datetime
-          html += f.label "#{c[0]}_lteq"
-          html += f.text_field "#{c[0]}_lt", class: "datepicker" , value: params["q"] ? l(params["q"]["#{c[0]}_lt"]) : nil
-          html += f.label "#{c[0]}_gteq"
-          html += f.date_field "#{c[0]}_gteq", value: params["q"] ? l(params["q"]["#{c[0]}_gteq"]) : nil
-        end
+  #    "q"=>
+  # {"id_lt"=>"1",
+  #  "id_gteq"=>"1",
+  #  "color_cont"=>"1",
+  #  "flavor_cont"=>"",
+  #  "size_lt"=>"",
+  #  "size_gteq"=>"",
+  #  "created_at_lt"=>"",
+  #  "created_at_gteq"=>"",
+  #  "updated_at_lt"=>"",
+  #  "updated_at_gteq"=>""},
+
+    def cardboard_filters(model, main_element, options={})
+      raise "First argument needs to be a class" unless model.is_a? Class
+
+      elements =  model.columns.inject([]) do |a, column|
+        name = column.name.to_sym
+        type = column.type.to_sym
+        a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) && name != main_element.to_sym
+        a
       end
-      html += "<br>"
-      html.html_safe
+
+      render "cardboard/resources/search_helper", model: model.to_s.demodulize.underscore, elements: elements, options: options, main_element: main_element
     end
+
+
+    def ransack_options 
+      { 
+        string: [["Contains","cont"],["Does not contain","not_cont"]], 
+        datetime: [["On","eq"],["Before","lt"],["After","gt"]],
+        integer: [["Equals","eq"],["Less than","lt"],["Greater than","gt"]],
+        boolean: [["is False","blank"],["is True","true"]]
+      }
+    end
+
   end
 end

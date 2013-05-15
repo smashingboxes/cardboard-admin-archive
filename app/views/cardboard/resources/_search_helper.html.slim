@@ -1,0 +1,20 @@
+- models = model.pluralize
+- model_title = model.titleize
+- models_title = model_title.pluralize
+
+= search_form_for @q, url: eval("cardboard_#{models}_path"), class: "header" do |f|
+
+  .row-fluid
+    .span3
+      h3= options[:title] || models_title
+    .span6
+      .row-fluid
+        .input-append.span9
+          = f.text_field "#{main_element}_cont", class:"search span10"
+          = f.submit "Search", class: "btn",style:"width:80px;"
+        .span3
+          = link_to "Filter", "#", class: "btn"
+    .span3
+      = link_to(options[:new_btn] || "New #{model_title}", eval("new_cardboard_#{model}_path"), class: "btn btn-primary pull-right", style:"min-width:90px;") 
+
+  = render "cardboard/resources/filters", f: f, elements: elements
