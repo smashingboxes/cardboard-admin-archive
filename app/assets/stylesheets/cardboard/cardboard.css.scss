@@ -15,8 +15,12 @@
 @import "main_sidebar";
 @import "content";
 @import "content_sidebar";
+@import "resources";
 
 
+.center{
+  text-align: center;
+}
 .indent {
   display: block;
   margin-left: 15px;

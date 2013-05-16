@@ -1,0 +1,19 @@
+#filter_list{
+  text-align: center;
+  .filter{
+    padding: 4px 6px;
+    margin-left: 4px;
+    a, i{color: inherit; text-decoration:none}
+    i{
+      margin-right: 5px;
+    }
+    @extend .label;
+    @extend .label-info;
+  }
+}
+#advanced_search{
+  a#simple_search_link{
+    margin: 0px 20px 10px;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,39 @@
+= search_form_for @q, url: {} do |f|
+  = hidden_field_tag :s, "advanced"
+  - (params[:q] || {}).each do |q,v|
+    = f.hidden_field q,  :value => v
+
+  .row-fluid.center
+    
+    = content_tag(:select, :disabled => elements.size < 2, id: "advanced_field") do
+      - for e in elements
+        option data-type=e[1] value=e[0] selected=(e[0] == main_element)
+          = e[0].to_s.titleize
+
+    = select_tag nil, grouped_options_for_select(ransack_options, "cont"), id: "ransack_options"
+
+    .input-append
+      = f.text_field "#{main_element}_cont", id: "advanced_query"
+      = render "cardboard/resources/search_button", f: f
+
+    = link_to "Simple Search", "#", id: "simple_search_link"
+    /, class: "btn"
+
+  .row-fluid#filter_list
+    b= "Filters: "  unless params[:q].blank?
+    - (params[:q] || {}).each do |q,v|
+      - if v.present?
+        .filter
+
+          = link_to({q: params[:q].except(q), s: "advanced"}) do
+            '
+            i.icon-remove
+            - *a, b = q.split("_")
+            = a.join(" ")
+            '
+            = {cont: "~", not_cont: "!~", gt: ">", lt:"<", eq: "="}[b.to_sym] || b.pluralize + " with"
+            '
+            = v
+
+
+

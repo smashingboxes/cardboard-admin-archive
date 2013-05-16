@@ -7,13 +7,13 @@ module Cardboard
       super(val, options)
     end
 
-    ActionView::Helpers::FormBuilder.class_eval do
-      def date_field(conf,opts = {})
-        options = opts.dup
-        options[:class] = "#{options[:class]} datepicker" 
-        text_field(conf, options)
-      end
-    end
+    # ActionView::Helpers::FormBuilder.class_eval do
+    #   def date_field(conf,opts = {})
+    #     options = opts.dup
+    #     options[:class] = "#{options[:class]} datepicker" 
+    #     text_field(conf, options)
+    #   end
+    # end
 
     # .item
     #     = link_to dashboard_path, id:"nav_dashboard_link" do
@@ -46,7 +46,7 @@ module Cardboard
       elements =  model.columns.inject([]) do |a, column|
         name = column.name.to_sym
         type = column.type.to_sym
-        a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) && name != main_element.to_sym
+        a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) #&& name != main_element.to_sym
         a
       end
 
@@ -56,9 +56,9 @@ module Cardboard
 
     def ransack_options 
       { 
-        string: [["Contains","cont"],["Does not contain","not_cont"]], 
+        string: [["Contains","cont"],["Does not contain","not_cont"], ["Starts with","start"], ["Ends with","end"]], 
         datetime: [["On","eq"],["Before","lt"],["After","gt"]],
-        integer: [["Equals","eq"],["Less than","lt"],["Greater than","gt"]],
+        integer: [["Greater than","gt"],["Equals","eq"],["Less than","lt"]],
         boolean: [["is False","blank"],["is True","true"]]
       }
     end
