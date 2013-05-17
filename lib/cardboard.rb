@@ -22,6 +22,10 @@ module Cardboard
 
     attr_accessor :application
 
+    def resource_controllers
+      @cardboard_resource_controllers ||= Cardboard::AdminController.descendants
+    end
+
     def application
       @application ||= ::Cardboard::Application.new
     end

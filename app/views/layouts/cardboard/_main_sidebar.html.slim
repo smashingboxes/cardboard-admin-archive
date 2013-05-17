@@ -1,14 +1,10 @@
 #menu
-  / = main_sidebar_nav_link "Dashboard", dashboard_path, icon: "icon-dashboard", id: "nav_dashboard_link"
-  = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link"
-  / = main_sidebar_nav_link "Portfolio", "#", icon: "icon-briefcase", id: "nav_dashboard_link"
-  / = main_sidebar_nav_link "News", "#", icon: "icon-file-alt", id: "nav_dashboard_link"
-  / = main_sidebar_nav_link "Business Plans", "#", icon: "icon-envelope", id: "nav_dashboard_link"
-  / = main_sidebar_nav_link "Jobs", "#", icon: "icon-building", id: "nav_dashboard_link"
 
-  - Cardboard::AdminController.descendants.each do |controller|
+  = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link"
+
+  - Cardboard.resource_controllers.each do |controller|
     - name = controller.controller_name 
-    = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.icon, class: "nav_resource_link"
+    = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.to_s.constantize.icon, class: "nav_resource_link"
 
   
 
