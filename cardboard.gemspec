@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'dragonfly'
   s.add_dependency 'chronic'
   s.add_dependency 'ransack'
+  s.add_dependency 'rack-pjax'
 
   s.add_development_dependency 'haml-rails'
   s.add_development_dependency "guard-minitest"

@@ -4,6 +4,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require cardboard/jquery.livesearch
+//= require cardboard/jquery.pjax
 //= require bootstrap-button
 //= require bootstrap-dropdown
 //= require bootstrap-modal
@@ -18,15 +19,8 @@
 //= require cardboard/search_filter
 
 
-// // require jquery.pjax
-// $(function(){
-//   $('.wysihtml5').each(function(i, elem) {
-//     $(elem).wysihtml5();
-//   });
-
-//   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]');
-// })
 $(function(){
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]');
 
   $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){
     $(this).datepicker({format: 'yyyy-mm-dd'});
@@ -40,6 +34,8 @@ $(function(){
   $('.nav-tabs a:first').tab('show');
 
 
-
+//   $('.wysihtml5').each(function(i, elem) {
+//     $(elem).wysihtml5();
+//   });
 
 })

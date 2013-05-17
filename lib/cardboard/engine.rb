@@ -1,3 +1,25 @@
+require 'rubygems'
+require 'simple_form'
+require 'stringex'
+require 'ranked-model'
+require 'devise'
+require 'cocoon'
+require 'inherited_resources'
+require 'gon'
+require 'rack/cache'
+require 'dragonfly'
+require 'chronic'
+require 'font-awesome-sass-rails'
+require 'bootstrap-sass'
+require 'bootstrap-wysihtml5-rails'
+require 'bootstrap-datepicker-rails'
+require 'slim'
+require 'haml' #remove please! (when all templates are converted)
+require 'ransack'
+require 'kaminari'
+require 'rack-pjax'
+
+
 module Cardboard
   class Engine < ::Rails::Engine
     isolate_namespace Cardboard
@@ -23,5 +45,10 @@ module Cardboard
         app.config.assets.precompile += %w(cardboard.js cardboard.css)
       end
     end
+
+    initializer "pjax hook" do |app|
+      app.config.middleware.use Rack::Pjax
+    end
+
   end
 end

@@ -1,24 +1,4 @@
 require "cardboard/engine"
-require 'rubygems'
-require 'simple_form'
-require 'stringex'
-require 'ranked-model'
-require 'devise'
-require 'cocoon'
-require 'inherited_resources'
-require 'gon'
-require 'rack/cache'
-require 'dragonfly'
-require 'chronic'
-require 'font-awesome-sass-rails'
-require 'bootstrap-sass'
-require 'bootstrap-wysihtml5-rails'
-require 'bootstrap-datepicker-rails'
-require 'slim'
-require 'haml' #remove please! (when all templates are converted)
-require 'ransack'
-require 'kaminari'
-
 
 module Cardboard
   autoload :Application,              'cardboard/application'
@@ -48,9 +28,7 @@ module Cardboard
 
     # Gets called within the initializer
     def setup
-
       yield(application)
-
     end
   end
 

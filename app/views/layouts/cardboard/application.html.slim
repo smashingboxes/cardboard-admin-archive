@@ -4,8 +4,9 @@ html
     = render 'layouts/cardboard/head', title: 'Dashboard'
     = include_gon
     link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css"
-    = javascript_include_tag 'cardboard/cardboard'
-  body id="#{params[:controller].parameterize('_')}"
+    
+
+  body(data-no-turbolink id="#{params[:controller].parameterize('_')}")
 
     #main_topbar= render 'layouts/cardboard/main_topbar'
 
@@ -20,6 +21,8 @@ html
         #pages_sidebar= render 'cardboard/pages/sidebar'
 
 
-      #content.container-fluid
+      #content.container-fluid(data-pjax-container)
         = render 'layouts/cardboard/flash_message'
         = yield
+
+    = javascript_include_tag 'cardboard/cardboard'
