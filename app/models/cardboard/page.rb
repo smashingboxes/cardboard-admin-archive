@@ -60,6 +60,7 @@ module Cardboard
       page = self.where(path: path, slug: slug).first
 
       if slug && page.nil?
+        #use arel instead of LIKE/ILIKE
         page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first
         page.using_slug_backup = true if page
       end
