@@ -5,10 +5,14 @@ class PagesController < ApplicationController
     else
       @page = Cardboard::Page.root
     end
-    # call controller hook
-    self.send(@page.identifier) if self.respond_to? @page.identifier
 
-    render_main_app_page @page
+    if @page.using_slug_backup?
+      redirect_to @page.url, status: :moved_permanently
+    else
+      # call controller hook
+      self.send(@page.identifier) if self.respond_to? @page.identifier
+      render_main_app_page @page
+    end
   end
 
 private
