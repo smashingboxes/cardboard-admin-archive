@@ -21,7 +21,7 @@
 #           description:
 #             hint: This will be visible on mouse over
 #             type: string
-#             require: false
+#             required: false
 #             position: 1
 # settings:
 #   more_fun:

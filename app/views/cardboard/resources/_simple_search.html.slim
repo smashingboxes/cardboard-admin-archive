@@ -2,7 +2,7 @@
   = hidden_field_tag :s, "simple"
   .row-fluid
     .input-append.span9
-      = f.text_field "#{main_element}_cont", class:"search span10", placeholder: "Search by #{main_element}"
+      = f.text_field "#{main_element}_cont", class:"search span10", placeholder: "Search by #{main_element.to_s.humanize}"
       = render "cardboard/resources/search_button", f: f
     .span3
       = link_to "Advanced Filter", "#", id: "advanced_search_link"  
