@@ -5,10 +5,16 @@ class PagesController < ApplicationController
     else
       @page = Cardboard::Page.root
     end
-    # call controller hook
-    self.send(@page.identifier) if self.respond_to? @page.identifier
 
-    render_main_app_page @page
+    raise ActionController::RoutingError.new("Page Not Found") if @page.nil?
+
+    if @page.using_slug_backup?
+      redirect_to @page.url, status: :moved_permanently
+    else
+      # call controller hook
+      self.send(@page.identifier) if self.respond_to? @page.identifier
+      render_main_app_page @page
+    end
   end
 
 private
@@ -31,8 +37,5 @@ private
   rescue ActionView::MissingTemplate => e
     @missing_file = e.path
     render "cardboard/pages/error"#, layout: "layouts/application"
-
-  rescue NoMethodError => e
-    raise ActionController::RoutingError.new("Page Not Found")
   end
 end
