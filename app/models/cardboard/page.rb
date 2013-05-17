@@ -46,15 +46,26 @@ module Cardboard
       self.position_position = :first if val
     end
 
+    def using_slug_backup?
+      @using_slug_backup || false
+    end
+
+    def using_slug_backup=(value)
+      @using_slug_backup = value
+    end
+
     #class methods
     def self.find_by_url(full_url)
-      full_url = full_url.sub(/^\//,'').split("/")
-      slug = full_url.pop
-      path = full_url.blank? ? "/" : "/#{full_url.join("/")}/"
+      path, slug = self.path_and_slug(full_url)
       page = self.where(path: path, slug: slug).first
-      #use arel instead of LIKE/ILIKE
-      page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first if page.nil? && slug
-      return page
+
+      if slug && page.nil?
+        #use arel instead of LIKE/ILIKE
+        page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first
+        page.using_slug_backup = true if page
+      end
+
+      page
     end
 
     def self.root
@@ -203,6 +214,10 @@ module Cardboard
   # end  
 
   private
+    def self.path_and_slug(full_url)
+      *path, slug = full_url.sub(/^\//, '').split('/')
+      [path.blank? ? '/' : "/#{path.join('/')}/", slug]
+    end
 
 
     def update_slugs_backup

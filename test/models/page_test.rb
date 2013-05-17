@@ -24,7 +24,9 @@ describe Cardboard::Page do
       old_url = @page.url
       @page.update_attribute :slug, 'test'
       Cardboard::Page.find_by_url(old_url).must_equal @page
+      Cardboard::Page.find_by_url(old_url).using_slug_backup?.must_equal true
       Cardboard::Page.find_by_url(@page.url).must_equal @page
+      Cardboard::Page.find_by_url(@page.url).using_slug_backup?.must_equal false
     end
 
     describe 'Children' do
