@@ -27,6 +27,7 @@ module Cardboard
 
     config.generators do |g|
       g.test_framework :mini_test,  :fixture => false #:spec => true,
+      g.test_framework :mini_test,  :fixture => false, :spec => true
     end
 
     # Force routes to be loaded if we are doing any eager load.
@@ -50,5 +51,8 @@ module Cardboard
       app.config.middleware.use Rack::Pjax
     end
 
+    rake_tasks do
+      Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
+    end
   end
 end

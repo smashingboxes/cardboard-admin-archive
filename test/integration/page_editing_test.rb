@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe "User editing a page" do
+describe "User integration" do
   before do
     @page = build :page
     

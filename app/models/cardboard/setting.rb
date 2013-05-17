@@ -8,7 +8,9 @@ module Cardboard
 
     # thread save caching of the settings
     @lock = ::Mutex.new
-    after_save :clear_cached
+    after_commit do
+      Setting.clear_saved_settings
+    end
 
     class << self
       def add(id, hash_attributes)
@@ -37,12 +39,6 @@ module Cardboard
           end
         end
       end
-    end
-
-  private
-
-    def clear_cached
-      Setting.clear_saved_settings
     end
 
   end

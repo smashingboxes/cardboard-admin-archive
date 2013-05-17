@@ -24,10 +24,12 @@ describe "Seeding" do
               }
             },
             slideshow:{
+              repeatable: true,
               position: 0,
               fields:{
                 image:{
                   type: "image"
+                  default: "app/assets/images/CrashTest.jpg"
                 },
                 desc:{
                   type: "string"

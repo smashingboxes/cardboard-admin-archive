@@ -31,8 +31,8 @@ module Cardboard
     scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
 
     #class variables
-    @lock = Mutex.new
-    after_save do
+    @lock = ::Mutex.new
+    after_commit do
       Page.clear_arranged_pages
     end
 
