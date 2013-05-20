@@ -1,6 +1,6 @@
 #menu
 
-  = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link"
+  = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link", "data-skip-pjax" => true
 
   - Cardboard.resource_controllers.each do |controller|
     - name = controller.controller_name 

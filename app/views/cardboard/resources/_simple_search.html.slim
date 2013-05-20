@@ -1,4 +1,4 @@
-= search_form_for @q, url: {} do |f|
+= search_form_for @q, url: {}, :html =>{"data-pjax"=>true} do |f|
   = hidden_field_tag :s, "simple"
   .row-fluid
     .input-append.span9
