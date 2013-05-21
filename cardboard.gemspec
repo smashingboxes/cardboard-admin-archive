@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 3.2.0"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails"
-  s.add_dependency 'haml'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
   s.add_dependency 'bootstrap-sass', '>= 2.2'
@@ -43,7 +42,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'ransack'
   s.add_dependency 'rack-pjax'
 
-  s.add_development_dependency 'haml-rails'
   s.add_development_dependency "guard-minitest"
   s.add_development_dependency "minitest-rails"
   s.add_development_dependency "minitest-rails-capybara"
