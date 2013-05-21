@@ -16,6 +16,16 @@ Cardboard.setup do |config|
   # to return the currently logged in user.
   config.current_admin_user_method = :current_<%= @underscored_user_name %>
 
+  # == User Authentication
+  #
+  # Cardboard will automatically call an authentication
+  # method in a before filter of all controller actions to
+  # ensure that there is a currently logged in admin user.
+  #
+  # This setting changes the method which Cardboard calls
+  # within the controller.
+  config.authentication_method = :authenticate_<%= @underscored_user_name %>!
+
   # == Logging Out
   #
   # Cardboard displays a logout link on each screen. These

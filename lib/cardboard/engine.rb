@@ -17,23 +17,34 @@ require 'slim'
 require 'ransack'
 require 'kaminari'
 require 'rack-pjax'
+require 'decorators'
 
 
 module Cardboard
   class Engine < ::Rails::Engine
     isolate_namespace Cardboard
-    # engine_name "cardboard"
+
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
+      end
+    end
 
     config.generators do |g|
       g.test_framework :mini_test,  :fixture => false, :spec => true
     end
 
+    ### Moved to decorator
     # Let the main app use the cardboard helpers
-    initializer "public cardboard helpers" do |app|
-      ActiveSupport.on_load(:action_controller) do
-        #helper Cardboard::Engine.helpers
-        helper Cardboard::PublicHelper
-      end
+    # initializer "public cardboard helpers" do |app|
+    #   ActiveSupport.on_load(:action_controller) do
+    #     #helper Cardboard::Engine.helpers
+    #     helper Cardboard::PublicHelper
+    #   end
+    # end
+    config.to_prepare do
+      Decorators.register! Engine.root, Rails.root
     end
 
     if Rails.version > "3.1"
@@ -49,5 +60,18 @@ module Cardboard
     rake_tasks do
       Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
     end
+
+    config.after_initialize do
+      # Add load paths straight to I18n, so engines and application can overwrite it.
+      require 'active_support/i18n'
+      I18n.load_path.unshift *Dir[File.expand_path('../cardboard/locales/*.yml', __FILE__)]
+
+      # Load custom resource controllers in development (already loaded in production)
+      if Rails.env.development?
+        Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
+          require_dependency controller
+        end
+      end
+    end    
   end
 end

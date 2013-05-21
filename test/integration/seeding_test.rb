@@ -28,7 +28,7 @@ describe "Seeding" do
               position: 0,
               fields:{
                 image:{
-                  type: "image"
+                  type: "image",
                   default: "app/assets/images/CrashTest.jpg"
                 },
                 desc:{

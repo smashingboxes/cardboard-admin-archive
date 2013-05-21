@@ -10,7 +10,7 @@ module Cardboard
 
     def update
       @setting = params[:id].present? ? Setting.find(params[:id]) : Setting.first
-      if @setting.update_attributes(params[:setting])
+      if @setting.update_attributes(strong_params[:setting])
         flash[:success] = "Settings updated successfully"
         redirect_to settings_path
       else

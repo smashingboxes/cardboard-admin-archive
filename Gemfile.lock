@@ -7,11 +7,10 @@ PATH
       bootstrap-wysihtml5-rails
       chronic
       cocoon
-      devise
+      decorators (>= 1.0.2)
       dragonfly
       font-awesome-sass-rails (>= 3.0.0.1)
       gon
-      haml
       inherited_resources
       jquery-rails
       kaminari
@@ -64,11 +63,11 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.0.0.5)
+    bootstrap-datepicker-rails (1.0.0.7)
       railties (>= 3.0)
     bootstrap-sass (2.3.1.1)
       sass (~> 3.2)
-    bootstrap-wysihtml5-rails (0.3.1.19)
+    bootstrap-wysihtml5-rails (0.3.1.20)
       railties (>= 3.0)
     builder (3.0.4)
     capybara (2.1.0)
@@ -90,6 +89,8 @@ GEM
       debugger-ruby_core_source (~> 1.2.0)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
+    decorators (1.0.3)
+      railties (>= 3.0.19, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0, != 3.1.9, != 3.1.8, != 3.1.7, != 3.1.6, != 3.1.5, != 3.1.4, != 3.1.3, != 3.1.2, != 3.1.1, != 3.1.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -123,15 +124,7 @@ GEM
       thor (>= 0.14.6)
     guard-minitest (0.5.0)
       guard (>= 0.4)
-    haml (4.0.2)
-      tilt
-    haml-rails (0.4)
-      actionpack (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
-      haml (>= 3.1, < 4.1)
-      railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
-    hashdiff (0.0.6)
     hike (1.2.2)
     i18n (0.6.1)
     inherited_resources (1.4.0)
@@ -197,7 +190,7 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-pjax (0.6.0)
+    rack-pjax (0.7.0)
       nokogiri (~> 1.5)
       rack (~> 1.3)
     rack-ssl (1.3.3)
@@ -220,7 +213,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
-    ranked-model (0.2.0)
+    ranked-model (0.2.1)
       activerecord (>= 3.0.3)
     ransack (0.7.2)
       actionpack (~> 3.0)
@@ -247,9 +240,9 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    slim (1.3.8)
+    slim (1.3.9)
       temple (~> 0.6.3)
-      tilt (~> 1.3.3)
+      tilt (~> 1.3, >= 1.3.3)
     slop (3.4.4)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -258,7 +251,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     stringex (1.5.1)
-    temple (0.6.4)
+    temple (0.6.5)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -290,8 +283,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   guard-minitest
-  haml-rails
-  hashdiff
   jquery-rails
   letter_opener
   minitest-rails

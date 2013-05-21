@@ -25,12 +25,14 @@ gem 'devise'
 
 
 gem "thin"
+# gem 'rack-mini-profiler'
 gem 'letter_opener'
 gem 'quiet_assets'
-gem 'better_errors'
+gem 'better_errors', group: :development
 gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'pry-debugger'
+gem 'uglifier'
 
 group :test do
   gem 'turn'

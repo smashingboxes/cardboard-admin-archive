@@ -6,7 +6,7 @@ module Cardboard
       desc "Installs Cardboard and generates the necessary migrations"
       argument :name, :type => :string, :default => "AdminUser"
 
-      hook_for :users, :default => "devise", :desc => "Admin user generator to run. Skip with --skip-users"
+      # hook_for :users, :default => "devise", :desc => "Admin user generator to run. Skip with --skip-users"
 
       def self.source_root
         @_cardboard_source_root ||= File.expand_path("../templates", __FILE__)

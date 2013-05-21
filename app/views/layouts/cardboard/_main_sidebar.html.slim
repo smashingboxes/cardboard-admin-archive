@@ -1,10 +1,11 @@
 #menu
-
-  = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link", "data-skip-pjax" => true
+  - if cardboard_user.can_manage_cardboard_pages?
+    = main_sidebar_nav_link "Pages", pages_path, icon: "icon-sitemap", id: "nav_dashboard_link", "data-skip-pjax" => true
 
   - Cardboard.resource_controllers.each do |controller|
     - name = controller.controller_name 
-    = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.to_s.constantize.icon, class: "nav_resource_link"
+    - if cardboard_user.can_manage_cardboard_resource?(name)
+      = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), icon: controller.to_s.constantize.icon, class: "nav_resource_link"
 
   
 

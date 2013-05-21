@@ -5,7 +5,7 @@ Cardboard.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the Cardboard pages.
   #
-  config.site_title = "Dummy"
+  config.site_title = "Something Else"
 
   # == Current User
   #
@@ -15,6 +15,7 @@ Cardboard.setup do |config|
   # This setting changes the method which Cardboard calls
   # to return the currently logged in user.
   config.current_admin_user_method = :current_admin_user
+  config.authentication_method = :authenticate_admin_user!
 
   # == Logging Out
   #
