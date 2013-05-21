@@ -8,8 +8,11 @@ Add the gem to the `Gemfile`
 gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard'
 ```
 
-And `bundle install`. Run the generator
+Make sure you have `imagemagick` installed (on mac do `brew install imagemagick`)
 
+And run `bundle install`. 
+
+Run the generator to install cardboard and it's migrations:
 ```sh
 rails g cardboard:install
 rake db:migrate
