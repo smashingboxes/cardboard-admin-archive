@@ -42,11 +42,14 @@ var page_links_template = {
 }
 
 $(function(){
-  $('.wysihtml5').wysihtml5({
-    image: false, 
-    customTemplates:  page_links_template, 
-    parserRules: wysihtml5ParserRules, 
-    useLineBreaks: false
+
+  $(document).on("ready pjax:end", function(e){
+    $('.wysihtml5').wysihtml5({
+      image: false, 
+      customTemplates:  page_links_template, 
+      parserRules: wysihtml5ParserRules, 
+      useLineBreaks: false
+    });
   });
 
   $(document).on('cocoon:after-insert', function(e, insertedItem) {
