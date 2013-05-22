@@ -10,10 +10,11 @@
       = link_to dashboard_path do
         i.icon-dashboard
         ' Dashboard
-    li
-      = link_to settings_path do 
-        i.icon-cogs 
-        | Settings
+    - if cardboard_user_can_manage?(:settings)
+      li
+        = link_to settings_path do 
+          i.icon-cogs 
+          | Settings
 
     li.divider
 

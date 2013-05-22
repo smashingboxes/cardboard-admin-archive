@@ -2,7 +2,7 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class SettingsController < ApplicationController
-    # before_filter :authenticate_admin_user!
+    before_filter :check_ability
 
     def index
       @setting = Setting.first
@@ -16,7 +16,13 @@ module Cardboard
       else
         render :index
       end
+    end
 
+  private
+    def check_ability
+      unless cardboard_user_can_manage?(:settings)
+        render :text => "You are not authorized to edit settings.", :status => :unauthorized 
+      end
     end
   end
 end

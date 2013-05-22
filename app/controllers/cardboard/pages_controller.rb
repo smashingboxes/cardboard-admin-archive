@@ -22,7 +22,7 @@ module Cardboard
 
   private
     def check_ability
-      unless self.send(Cardboard.application.current_admin_user_method).can_manage_cardboard_pages?
+      unless cardboard_user_can_manage?(:pages)
         render :text => "You are not authorized to edit pages.", :status => :unauthorized 
       end
     end

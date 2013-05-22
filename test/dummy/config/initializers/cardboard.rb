@@ -5,7 +5,13 @@ Cardboard.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the Cardboard pages.
   #
-  config.site_title = "Something Else"
+  config.site_title = 'Dummy'
+
+  # == Admin User Class
+  #
+  # Cardboard will associate actions with the current
+  # user performing them.
+  config.user_class = 'AdminUser'
 
   # == Current User
   #
@@ -15,6 +21,15 @@ Cardboard.setup do |config|
   # This setting changes the method which Cardboard calls
   # to return the currently logged in user.
   config.current_admin_user_method = :current_admin_user
+
+  # == User Authentication
+  #
+  # Cardboard will automatically call an authentication
+  # method in a before filter of all controller actions to
+  # ensure that there is a currently logged in admin user.
+  #
+  # This setting changes the method which Cardboard calls
+  # within the controller.
   config.authentication_method = :authenticate_admin_user!
 
   # == Logging Out

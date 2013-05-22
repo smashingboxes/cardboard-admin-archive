@@ -17,7 +17,7 @@ require 'slim'
 require 'ransack'
 require 'kaminari'
 require 'rack-pjax'
-require 'decorators'
+# require 'decorators'
 
 
 module Cardboard
@@ -35,16 +35,26 @@ module Cardboard
       g.test_framework :mini_test,  :fixture => false, :spec => true
     end
 
-    ### Moved to decorator
     # Let the main app use the cardboard helpers
-    # initializer "public cardboard helpers" do |app|
-    #   ActiveSupport.on_load(:action_controller) do
-    #     #helper Cardboard::Engine.helpers
-    #     helper Cardboard::PublicHelper
-    #   end
-    # end
+    initializer "public cardboard helpers" do |app|
+      ActiveSupport.on_load(:action_controller) do
+        #helper Cardboard::Engine.helpers
+        helper Cardboard::PublicHelper
+      end
+    end
+
+    # the to_prepare gets executed even before autoreloads
     config.to_prepare do
-      Decorators.register! Engine.root, Rails.root
+      #Decorators.register! Engine.root, Rails.root
+      #TODO: figure out why the decorator doesn't auto reload
+
+      # Load custom resource controllers in development (already loaded in production)
+      if Rails.env.development?
+        Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
+          require_dependency controller
+        end
+      end
+      Cardboard.resource_controllers = Cardboard::AdminController.descendants
     end
 
     if Rails.version > "3.1"
@@ -65,13 +75,6 @@ module Cardboard
       # Add load paths straight to I18n, so engines and application can overwrite it.
       require 'active_support/i18n'
       I18n.load_path.unshift *Dir[File.expand_path('../cardboard/locales/*.yml', __FILE__)]
-
-      # Load custom resource controllers in development (already loaded in production)
-      if Rails.env.development?
-        Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
-          require_dependency controller
-        end
-      end
     end    
   end
 end

@@ -4,7 +4,7 @@ class CreateCardboardPageParts < ActiveRecord::Migration
       t.string :identifier
       t.integer :position
       t.integer :parent_part_id
-      t.boolean :repeatable, default: false
+      t.boolean :repeatable
       t.string :label
       t.belongs_to :page
 

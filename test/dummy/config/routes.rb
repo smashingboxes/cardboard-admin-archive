@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Cardboard::Engine => "/cardboard"
   resources :beans
 
 
@@ -11,11 +12,5 @@ Rails.application.routes.draw do
   devise_for :admin_users
 
   resources :pianos
-
-
-
-  mount Cardboard::Engine => "/admin"
-
-
 
 end

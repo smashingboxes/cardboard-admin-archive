@@ -9,6 +9,15 @@ module Cardboard
     
   private
 
+    def cardboard_user_can_manage?(resource)
+      if cardboard_user.respond_to?(:can_manage_cardboard?)
+        cardboard_user.can_manage_cardboard?(resource.to_sym)
+      else
+        true
+      end
+    end
+    helper_method :cardboard_user_can_manage?
+
     def cardboard_user
       @cardboard_user ||= self.send(Cardboard.application.current_admin_user_method)
     end

@@ -8,7 +8,23 @@ class AdminUser < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  def can_manage_cardboard_resource?(resource)
-    true
+  def admin?
+    self.id == AdminUser.first.id
+  end
+
+
+  def can_manage_cardboard?(area)
+    case area
+    when :dashboard
+      false
+    when :pages
+      self.admin?
+    when :settings
+      false
+    when :icescream
+      true
+    else
+      false
+    end
   end
 end

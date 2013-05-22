@@ -17,7 +17,7 @@ class Cardboard::AdminController <  Cardboard::ApplicationController
   private
 
   def check_ability
-    unless self.send(Cardboard.application.current_admin_user_method).can_manage_cardboard_resource?(resource_instance_name)
+    unless cardboard_user_can_manage?(resource_instance_name)
       render :text => "You are not authorized to access this resource.", :status => :unauthorized 
     end
   end
