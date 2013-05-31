@@ -1,10 +1,10 @@
 require 'test_helper'
 
-#TODO: get, seo, parent_url_options
+#TODO: get, parent_url_options
 
 describe Cardboard::Page do
   before do
-    @page = build :page
+    @page = build(:page)
   end
 
   it 'Must be valid' do
@@ -29,9 +29,32 @@ describe Cardboard::Page do
       Cardboard::Page.find_by_url(@page.url).using_slug_backup?.must_equal false
     end
 
+    describe 'SEO' do
+      before do
+        @page.update_attribute :position_position, 1
+        @page.update_attribute :meta_seo, {'title' => 'Test Title'}
+        @subpages = create_list :page, 2, path: @page.url
+        @root_sibling = create :page, position_position: 2
+      end
+      
+      it 'inherits SEO information from parent' do
+        @subpages.first.seo['title'].must_equal @page.seo['title']
+      end
+
+      it 'inherits SEO information from root' do
+        @root_sibling.seo['title'].must_equal @page.seo['title']
+      end
+
+      it 'allows to override inherited properties' do
+        @subpages.first.update_attribute :meta_seo, {'title' => 'Non root title'}
+        @subpages.first.seo['title'].wont_equal @page.seo['title']
+        @subpages.first.seo['title'].must_equal 'Non root title'
+      end
+    end
+
     describe 'Children' do
       before do
-        @subpages = create_list :page, 2, path: @page.url
+        @subpages = create_list(:page, 2, path: @page.url)
       end
 
       it 'Must included newly created child' do
@@ -39,21 +62,21 @@ describe Cardboard::Page do
         @page.children.must_include @subpage
       end
 
-      it "Get the parent of a page" do
+      it 'Get the parent of a page' do
        @subpages.first.parent.must_equal @page
       end
 
-      it "Get the children of a page" do
+      it 'Get the children of a page' do
         @page.children.must_include @subpages.first
         @page.children.must_include @subpages.second
       end
 
-      it "Get the siblings of a page" do
+      it 'Get the siblings of a page' do
         @subpages.first.siblings.must_include @subpages.second
         @subpages.second.siblings.must_include @subpages.first
       end
 
-      it "Preorder of results" do
+      it 'Preorder of results' do
         DatabaseCleaner.clean
 
         page1 = create :page, position_position: 1
