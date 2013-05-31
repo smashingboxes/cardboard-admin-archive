@@ -106,11 +106,13 @@ module Cardboard
     # children inherit their parent's SEO settings (these can be overwritten)
     def seo
       @_seo ||= begin
-        seo = parent ? parent.seo.merge(meta_seo) : self.meta_seo
-        seo.merge!(Page.root.seo) unless root?
+        seo = self.meta_seo
+        seo = self.parent.seo.merge(seo) if parent
+        seo = Page.root.seo.merge(seo) unless root?
         seo
       end
     end
+    
     def seo=(hash)
       # to hash is important here for strong parameters
       self.meta_seo = hash.to_hash
