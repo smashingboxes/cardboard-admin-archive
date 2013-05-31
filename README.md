@@ -198,6 +198,23 @@ Use the page identifier defined in the cardboard.yml file (or see yoda)
     "hello #{page.title}"
   end
 ```
+
+## Abilities
+You can (and should) add a `can_manage_cardboard` method to your user model. By default users can manage all areas of the admin panel.
+```ruby
+def can_manage_cardboard?(area)
+  case area
+  when :pages
+    self.admin?
+  when :settings
+    self.admin?
+  when :resource_identifier
+    true
+  else
+    true
+  end
+end
+```
    
 
 ## Troubleshoot
