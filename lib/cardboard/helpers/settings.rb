@@ -49,14 +49,6 @@ module Cardboard
         EOC
       end
 
-      # def deprecated_setting(name, default, message = nil)
-      #   message = message || "The #{name} setting is deprecated and will be removed."
-      #   setting(name, default)
-
-      #   Cardboard::Deprecation.deprecate self, name, message
-      #   Cardboard::Deprecation.deprecate self, :"#{name}=", message
-      # end
-
       def default_settings
         @default_settings ||= {}
       end

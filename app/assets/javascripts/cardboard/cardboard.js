@@ -20,14 +20,18 @@
 
 
 $(function(){
-  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]');
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""])', '[data-pjax-container]');
+
+  $(document).on('submit', 'form[data-pjax]', function(event) {
+    $.pjax.submit(event, '[data-pjax-container]')
+  });
 
   $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){
     $(this).datepicker({format: 'yyyy-mm-dd'});
   });
 
 
-  $('.nav-tabs a').click(function (e) {
+  $(document).on('click', '.nav-tabs a', function(e){
     e.preventDefault();
     $(this).tab('show');
   });

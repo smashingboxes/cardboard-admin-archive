@@ -10,22 +10,22 @@
       = link_to dashboard_path do
         i.icon-dashboard
         ' Dashboard
-    li
-      = link_to settings_path do 
-        i.icon-cogs 
-        | Settings
+    - if cardboard_user_can_manage?(:settings)
+      li
+        = link_to settings_path do 
+          i.icon-cogs 
+          | Settings
 
     li.divider
 
     li.dropdown.third
       a.dropdown-toggle data-toggle="dropdown" href="#"
-        img alt="Avatar" height="23" src="http://www.mixcloud.com/media/images/graphics/33_Profile/default_user_300x300-v4.png?v=107" width="23"
+        img alt="Avatar" height="23" src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(cardboard_user.email.downcase)}" width="23"
         span.user-name.hidden-phone
-          = current_admin_user.email
+          = cardboard_user.email
         b class="caret"
 
         ul.dropdown-menu
           li= link_to "Account", user_path 
-          li= link_to "Logout", main_app.destroy_admin_user_session_path, :method => :delete
-                  
-
+          li= link_to "Logout", main_app.send(Cardboard.application.logout_link_path), :method => :delete
+ 

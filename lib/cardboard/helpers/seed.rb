@@ -62,7 +62,7 @@ module Cardboard
         db_settings = Cardboard::Setting.first_or_create
         self.populate_fields(settings, db_settings)
       end
-      Cardboard::Setting.add("company_name", type: "string", default: Rails.application.class.name.split("::").first.titlecase, position: 0)
+      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title, position: 0)
       Cardboard::Setting.add("google_analytics", type: "string", position: 1)
     end
     

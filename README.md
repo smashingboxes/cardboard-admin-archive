@@ -1,15 +1,22 @@
 # Cardboard
 
-## Installation
+## Dependencies
+Make sure you have a authentication solution installed and working. As an example, here is what you need to do to get `Devise` installed.
 
+https://github.com/plataformatec/devise#getting-started
+
+Also make sure you have `imagemagick` installed (on mac do `brew install imagemagick`)
+
+## Installation
 Add the gem to the `Gemfile`
 
 ```ruby
 gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard'
 ```
 
-And `bundle install`. Run the generator
+And run `bundle install`. 
 
+Run the generator to install cardboard and it's migrations:
 ```sh
 rails g cardboard:install
 rake db:migrate

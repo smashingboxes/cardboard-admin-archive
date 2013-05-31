@@ -18,8 +18,8 @@ Cardboard::Engine.routes.draw do
   
   scope as: 'cardboard' do
     #generate routes for custom cardboard resources controllers
-    Cardboard::AdminController.descendants.map{|x|x.controller_name.to_sym}.each do |controller|
-      resources controller
+    Cardboard.resource_controllers.map{|x|x.controller_name.to_sym}.each do |controller|
+      resources controller 
     end
   end
 

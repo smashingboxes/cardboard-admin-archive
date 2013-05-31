@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Cardboard::Engine => "/cardboard"
   resources :beans
 
 
@@ -8,14 +9,8 @@ Rails.application.routes.draw do
 
   get "news", to: "cardboard/news_posts#index"
 
-  devise_for :admin_users, Cardboard::Devise.config
+  devise_for :admin_users
 
   resources :pianos
-
-
-
-  mount Cardboard::Engine => "/admin"
-
-
 
 end

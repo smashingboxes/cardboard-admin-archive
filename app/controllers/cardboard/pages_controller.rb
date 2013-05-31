@@ -2,6 +2,7 @@ require_dependency "cardboard/application_controller"
 
 module Cardboard
   class PagesController < ApplicationController
+    before_filter :check_ability
 
     def edit
       @page = Cardboard::Page.find(params[:id])
@@ -11,7 +12,7 @@ module Cardboard
       @page = Cardboard::Page.find(params[:id])
       fix_new_subparts
 
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(strong_params[:page])
         flash[:success] = "Your page was updated successfully"
         redirect_to edit_page_path(@page)
       else
@@ -20,6 +21,11 @@ module Cardboard
     end
 
   private
+    def check_ability
+      unless cardboard_user_can_manage?(:pages)
+        render :text => "You are not authorized to edit pages.", :status => :unauthorized 
+      end
+    end
 
     def fix_new_subparts
       #subparts need to be build based on the parent part to have the correct fields

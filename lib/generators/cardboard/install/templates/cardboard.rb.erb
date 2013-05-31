@@ -5,7 +5,13 @@ Cardboard.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the Cardboard pages.
   #
-  config.site_title = "<%= Rails.application.class.name.split("::").first.titlecase %>"
+  config.site_title = '<%= @site_title %>'
+
+  # == Admin User Class
+  #
+  # Cardboard will associate actions with the current
+  # user performing them.
+  config.user_class = '<%= @user_class %>'
 
   # == Current User
   #
@@ -14,7 +20,17 @@ Cardboard.setup do |config|
   #
   # This setting changes the method which Cardboard calls
   # to return the currently logged in user.
-  config.current_admin_user_method = :current_<%= @underscored_user_name %>
+  config.current_admin_user_method = :<%=  @current_user_helper %>
+
+  # == User Authentication
+  #
+  # Cardboard will automatically call an authentication
+  # method in a before filter of all controller actions to
+  # ensure that there is a currently logged in admin user.
+  #
+  # This setting changes the method which Cardboard calls
+  # within the controller.
+  config.authentication_method = :<%= @authentication_method %>
 
   # == Logging Out
   #
@@ -26,7 +42,7 @@ Cardboard.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_<%= @underscored_user_name %>_session_path
+  config.logout_link_path = :<%= @logout_link_path %>
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
@@ -34,10 +50,4 @@ Cardboard.setup do |config|
   # Default:
   # config.logout_link_method = :get
 
-  # == Pagination
-  #
-  # Pagination is enabled by default for all resources.
-  # You can control the default per page count for all resources here.
-  #
-  # config.default_per_page = 30
 end

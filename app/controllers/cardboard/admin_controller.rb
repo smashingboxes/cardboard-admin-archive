@@ -1,10 +1,11 @@
-class Cardboard::AdminController <  InheritedResources::Base
+require_dependency "cardboard/application_controller"
+
+class Cardboard::AdminController <  Cardboard::ApplicationController
+  inherit_resources
+
   defaults :route_prefix => 'cardboard'
 
-  before_filter :authenticate_admin_user!
-  before_filter :for_gon
-  
-  layout "layouts/cardboard/application"
+  before_filter :check_ability
 
   def collection
     @q ||= end_of_association_chain.search(params[:q])
@@ -15,8 +16,10 @@ class Cardboard::AdminController <  InheritedResources::Base
 
   private
 
-  def for_gon
-    gon.rich_text_links_modal = render_to_string(:partial => "cardboard/rich_editor/links_modal", :layout => false)
+  def check_ability
+    unless cardboard_user_can_manage?(resource_instance_name)
+      render :text => "You are not authorized to access this resource.", :status => :unauthorized 
+    end
   end
 
   def permitted_strong_parameters
