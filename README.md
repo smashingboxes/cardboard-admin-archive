@@ -158,11 +158,25 @@ Then you can use this setting in your views or controllers like so:
 Cardboard::Setting.my_custom_setting
 ```
 
-## View Helpers
+## View
 ### Page
 ```ruby
 current_page
 ```
+
+you can put your controller instance variables at the top of your view or in a decorator
+```
+app
+|- decorators
+  |- controllers
+    |- pages_decorator
+```
+```ruby
+def page_identifier
+  @example = "cool"
+end
+``` 
+
 ### Meta tags
 ```slim
 = meta_and_title(current_page)

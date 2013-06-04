@@ -24,12 +24,12 @@ module Cardboard
   class Engine < ::Rails::Engine
     isolate_namespace Cardboard
 
-    class << self
-      attr_accessor :root
-      def root
-        @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
-      end
-    end
+    # class << self
+    #   attr_accessor :root
+    #   def root
+    #     @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
+    #   end
+    # end
 
     config.generators do |g|
       g.test_framework :mini_test,  :fixture => false, :spec => true
