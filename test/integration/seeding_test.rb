@@ -57,6 +57,7 @@ describe "Seeding" do
       Cardboard::Seed.populate_pages(@file_hash[:pages])
       @page = Cardboard::Page.root
       @part = @page.parts.first
+      @last_part = @page.parts.last
     end
     it 'Should add pages' do
       assert_equal "home", @page.identifier
@@ -64,6 +65,7 @@ describe "Seeding" do
     end
     it 'Should add parts' do
       assert_equal "intro", @part.identifier
+      assert_equal "slideshow", @last_part.identifier
     end
     it 'Should add fields' do
       refute_nil @page.get("intro").fields.where(identifier: "text")

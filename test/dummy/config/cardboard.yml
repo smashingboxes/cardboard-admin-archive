@@ -10,13 +10,13 @@ pages:
             type: string
           text2:
             type: string
+            default: some default text
             required: true
           show_slideshow:
             type: boolean
-            required: true
           file1:
             type: file
-            required: true
+            required: false
       slideshow:
         repeatable: true
         fields:

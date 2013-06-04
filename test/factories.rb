@@ -1,6 +1,11 @@
 require 'factory_girl'
 
 FactoryGirl.define do
+  factory :admin_user do
+    email Faker::Internet.email
+    password Faker::Lorem.characters(10)
+  end
+
   factory :page, class: Cardboard::Page do 
     sequence(:identifier) { |n| "page#{n}" }
   end

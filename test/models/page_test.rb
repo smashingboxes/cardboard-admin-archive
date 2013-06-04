@@ -42,7 +42,7 @@ describe Cardboard::Page do
       end
 
       it 'inherits SEO information from root' do
-        @root_sibling.seo['title'].must_equal @page.seo['title']
+        @root_sibling.seo['title'].must_equal Cardboard::Page.root.seo['title']
       end
 
       it 'allows to override inherited properties' do
