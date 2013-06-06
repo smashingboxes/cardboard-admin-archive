@@ -1,5 +1,4 @@
 require "test_helper"
-require Cardboard::Engine.root.join('lib/cardboard/helpers/seed.rb')
 
 describe "Seeding" do
   before do

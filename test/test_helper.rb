@@ -12,6 +12,7 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 require 'minitest/unit'
 require 'minitest/mock'
+require Cardboard::Engine.root.join('lib/cardboard/helpers/seed.rb')
 
 require File.expand_path('../factories.rb', __FILE__)
 
