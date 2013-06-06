@@ -1,7 +1,7 @@
 
 
 #content {
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   //background: use $content_background instead
   height: 100%;
   display: block;

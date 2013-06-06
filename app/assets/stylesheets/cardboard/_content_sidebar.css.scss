@@ -2,7 +2,7 @@
   z-index: 1;
   position: relative;
 
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   // padding-top: $main_topbar_height;
   // margin-top: -$main_topbar_height;
   // float: left;

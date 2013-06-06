@@ -11,7 +11,7 @@ html, body{
   // padding-top: $main_topbar_height;
   position:relative;
   background: $content_background;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   // background: url(image) rgba(1,2,3,0.5);
 
 }

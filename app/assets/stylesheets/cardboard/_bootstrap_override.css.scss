@@ -6,7 +6,7 @@ legend + .control-group {
 
 .simple_form{
   input, textarea{
-    box-sizing: border-box;
+     @include box-sizing(border-box);
   }
   input.string, textarea, .uneditable-input{
     width: 100%;

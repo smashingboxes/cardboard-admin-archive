@@ -8,7 +8,7 @@ $main_topbar_color: $white;
   position: relative;
 
   .navbar-inner{
-    box-sizing: border-box;
+    @include box-sizing(border-box);
     // background: lighten($black, 15%);
     background: $brand_color;
     // box-shadow: none;
