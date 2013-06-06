@@ -43,18 +43,23 @@ module Cardboard
       end
     end
 
+    initializer "set resource controller for generator" do |app|
+      Cardboard.set_resource_controllers
+    end
+
     # the to_prepare gets executed even before autoreloads
     config.to_prepare do
       #Decorators.register! Engine.root, Rails.root
       #TODO: figure out why the decorator doesn't auto reload
 
       # Load custom resource controllers in development (already loaded in production)
-      if Rails.env.development?
-        Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
-          require_dependency controller
-        end
-      end
-      Cardboard.resource_controllers = Cardboard::AdminController.descendants
+      Cardboard.set_resource_controllers
+      # if Rails.env.development?
+      #   Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
+      #     require_dependency controller
+      #   end
+      # end
+      # Cardboard.resource_controllers = Cardboard::AdminController.descendants
     end
 
     if Rails.version > "3.1"
