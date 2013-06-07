@@ -85,19 +85,23 @@ pages:
           image1:
             type: image
             required: true
+            default: app/assets/images/CrashTest.jpg
             position: 0
 ```
 
 pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
 
-#### pages_identifiers
-`title`, `parts`, `position`(lowest position is the root page)
-####parts_identifiers
-`fields`, `position`
-####fields_identifiers
-`label`, `type`, `required`(default == true), `position`, `default`(except files and images), `hint`, `placeholder`, `value` (will overwrite user input, use `default` instead)
+#### pages
+key: page identifier
+value: `title`, `parts`, `position`(lowest position is the root page)
+####parts
+key: part identifier
+value: `fields`, `position`
+####fields
+key: field identifiers
+value: `label`, `type`, `required`(default == true), `position`, `default`, `hint`, `placeholder`, `value` (will overwrite user input, use `default` instead)
 
-Allowed field types are:
+Allowed field Types are:
 
 ```
 boolean
@@ -138,6 +142,12 @@ We use kaminari, so all you need to do is add
 = paginate @users
 ```
 to your index view
+
+#### Column sorting helper
+Cardboard's controller inherit from a `@q` variable which gives access to the ransack gem. 
+```
+= sort_link @q, :name, "Product Name" 
+```
 
 ### Settings
 You can create new settings that will be editable from the admin panel. 
