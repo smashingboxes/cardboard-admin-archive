@@ -32,7 +32,7 @@ private
 
   def render_main_app_page(page)
     #TODO: Make the layout name variable
-    render "pages/#{page.identifier}"#, layout: "layouts/application"
+    render "pages/#{page.identifier}", layout: @layout || "layouts/application"
 
   rescue ActionView::MissingTemplate => e
     @missing_file = e.path
