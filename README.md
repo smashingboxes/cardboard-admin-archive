@@ -135,6 +135,7 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 `fields`: list which field can be filtered. By default all are available.
 `title`: change the page's title
 `new_btn`: edit the new resource button's text
+`associated_fields`: link to associated models (ex: if person belongs to a division, you could pass [[:division_name, :string],[:division_size, :integer]])
 
 #### Pagination Helper
 We use kaminari, so all you need to do is add

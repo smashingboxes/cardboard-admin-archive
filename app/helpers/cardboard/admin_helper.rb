@@ -50,6 +50,8 @@ module Cardboard
         a
       end
 
+      elements |= options[:associated_fields] if options[:associated_fields].present?
+
       render "cardboard/resources/search_helper", model: model.to_s.demodulize.underscore, elements: elements, options: options, main_element: main_element
     end
 
