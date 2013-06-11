@@ -37,5 +37,13 @@ class Cardboard::AdminController <  Cardboard::ApplicationController
     end
   end
 
+  private
+
+  def self.inherited(base)
+    # https://github.com/josevalim/inherited_resources/issues/256
+    base.resource_class = nil
+    super(base)
+  end
+
 end
 
