@@ -15,13 +15,11 @@ class AdminUser < ActiveRecord::Base
 
   def can_manage_cardboard?(area)
     case area
-    when :dashboard
-      false
     when :pages
       self.admin?
     when :settings
-      false
-    when :icescream
+      self.admin?
+    when :piano
       true
     else
       false

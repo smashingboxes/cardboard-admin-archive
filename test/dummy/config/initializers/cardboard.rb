@@ -50,10 +50,4 @@ Cardboard.setup do |config|
   # Default:
   # config.logout_link_method = :get
 
-  # == Pagination
-  #
-  # Pagination is enabled by default for all resources.
-  # You can control the default per page count for all resources here.
-  #
-  # config.default_per_page = 30
 end

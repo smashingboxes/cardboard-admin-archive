@@ -12,7 +12,7 @@
 //= require bootstrap-tab
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require bootstrap-wysihtml5/core
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require cocoon
 //= require cardboard/wysihtml5-setup
 //= require cardboard/main_sidebar

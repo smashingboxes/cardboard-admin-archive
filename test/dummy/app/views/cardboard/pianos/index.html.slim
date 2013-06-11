@@ -1,25 +1,18 @@
-h1 Listing Pianos
-.right
-  = search_form_for @q, url: cardboard_pianos_path do |f| 
-    = cardboard_filters @pianos.columns.map{|x|[x.name, x.type]}, f
-    = f.submit 
+= cardboard_filters Piano, :name
 
-div style="float:left"
-  table class="table table-striped"
+table class="table table-striped"
+  tr
+    - for field in @pianos.columns
+      th= sort_link @q, field.name
+    th
+    th
+
+  - @pianos.each do |piano|
     tr
-      - for field in @pianos.columns
-        th= sort_link @q, field.name
-      th
-      th
+      - for field in piano.attributes.keys
+        td = piano.attributes[field]
 
-    - @pianos.each do |piano|
-      tr
-        - for field in piano.attributes.keys
-          td = piano.attributes[field]
+      td = link_to 'Edit', edit_cardboard_piano_path(piano)
+      td = link_to 'Destroy', cardboard_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
 
-        td = link_to 'Edit', edit_cardboard_piano_path(piano)
-        td = link_to 'Destroy', cardboard_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
-
-  / br
-
-  = link_to 'New Piano', new_cardboard_piano_path, class: "btn btn-primary"
+= paginate @pianos
