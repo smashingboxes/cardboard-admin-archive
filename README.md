@@ -123,7 +123,17 @@ To add an admin area for a model simply type (make sure the model exists first)
 rails g cardboard:resource model_name
 ```
 
-Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire
+Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire.
+
+#### Quickstart
+The default cardboard resource scaffold help you quickly get started by making the most of the following gems. 
+
+Gem | Description 
+--- | --- 
+[InheritedResources](https://github.com/josevalim/inherited_resources) | Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
+[Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
+[Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
+[Ransack](https://github.com/ernie/ransack) | Object-based searching and filtering
 
 #### Filter helper
 You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
@@ -254,15 +264,7 @@ end
 There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:
 https://github.com/dejan/rails_panel/issues/51
 
-## Special Thanks
-Cardboard is build on the shoulders of giants
 
-Gem | Description 
---- | --- 
-[InheritedResources](https://github.com/josevalim/inherited_resources) | Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
-[Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
-[Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
-[Ransack](https://github.com/ernie/ransack) | Object-based searching and filtering
 
 ## License
 This project rocks and uses MIT-LICENSE.
