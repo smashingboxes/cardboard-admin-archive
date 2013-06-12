@@ -254,8 +254,11 @@ end
 There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:
 https://github.com/dejan/rails_panel/issues/51
 
-## Gems used
+## Special Thanks
 Cardboard is build on the shoulders of giants
+
+Gem | Description 
+--- | --- 
 [InheritedResources](https://github.com/josevalim/inherited_resources) | Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
 [Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
 [Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
