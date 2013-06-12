@@ -133,9 +133,16 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 ```
 
 `fields`: list which field can be filtered. By default all are available.
+
 `title`: change the page's title
+
 `new_btn`: edit the new resource button's text
-`associated_fields`: link to associated models (ex: if person belongs to a division, you could pass [[:division_name, :string],[:division_size, :integer]])
+
+`associated_fields`: link to associated models 
+Example:
+```ruby
+= cardboard_filters User, :name, [[:post_name, :string],[:post_size, :integer]]
+```
 
 #### Pagination Helper
 We use kaminari, so all you need to do is add
@@ -246,6 +253,13 @@ end
 ### IO Error
 There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:
 https://github.com/dejan/rails_panel/issues/51
+
+## Gems used
+Cardboard is build on the shoulders of giants
+[InheritedResources](https://github.com/josevalim/inherited_resources) | Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
+[Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
+[Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
+[Ransack](https://github.com/ernie/ransack) | Object-based searching and filtering
 
 ## License
 This project rocks and uses MIT-LICENSE.
