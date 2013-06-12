@@ -125,7 +125,7 @@ rails g cardboard:resource model_name
 
 Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire.
 
-#### Quickstart
+
 The default cardboard resource scaffold help you quickly get started by making the most of the following gems. 
 
 Gem | Description 
@@ -151,18 +151,18 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 `associated_fields`: link to associated models 
 Example:
 ```ruby
-= cardboard_filters User, :name, [[:post_name, :string],[:post_size, :integer]]
+= cardboard_filters User, :name, associated_fields: [[:post_name, :string],[:post_size, :integer]]
 ```
 
 #### Pagination Helper
-We use kaminari, so all you need to do is add
+We use kaminari, so all you need to do is add to your index view:
 ```ruby
 = paginate @users
 ```
-to your index view
+
 
 #### Column sorting helper
-Cardboard's controller inherit from a `@q` variable which gives access to the ransack gem. 
+Cardboard's controllers inherit from a `@q` variable which gives access to the ransack gem. 
 ```
 = sort_link @q, :name, "Product Name" 
 ```
