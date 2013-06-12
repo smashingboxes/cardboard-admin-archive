@@ -64,7 +64,7 @@ module Cardboard
 
     if Rails.version > "3.1"
       initializer "precompile hook", :group => :all do |app|
-        app.config.assets.precompile += %w(cardboard.js cardboard.css)
+        app.config.assets.precompile += ["cardboard/cardboard.js", "cardboard/cardboard.css"]
       end
     end
 
