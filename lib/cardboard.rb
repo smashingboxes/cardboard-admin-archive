@@ -18,10 +18,8 @@ module Cardboard
     end
 
     def set_resource_controllers
-      if Rails.env.development?
-        Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
-          require_dependency controller
-        end
+      Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
+        require_dependency controller
       end
       Cardboard.resource_controllers = Cardboard::AdminController.descendants
     end
