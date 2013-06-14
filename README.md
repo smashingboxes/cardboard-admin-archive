@@ -40,7 +40,7 @@ current_page.get('slideshow')
 Repeatable parts returns an active record collection. This means that regular Rails methods such as `where`, `limit`, `first`, `each`, etc can be used on page parts
 ```slim
 - current_page.get('slideshow').each do |slide| 
-  p= image_tag slide.attr('image1').thumb('600x300').url, alt: slide.attr('description')
+  p= image_tag slide.attr('image1').thumb('600x300').url, alt: slide.attr('description') if slide.attr('image1')
 ```
 ### Fetch a single field
 If this part is **not repeatable** you can use both
@@ -57,9 +57,9 @@ Images returned by `current_page.get('intro.image1')` are [Dragonfly](http://mar
 ```ruby
 image.url                 # => URL of the modified image
 image.thumb('40x30#').url  # same as image.process(:thumb, '40x30')
+# Hint: remember to check if the image is not nil
 ```
 More options and methods are available at [Dragonfly's Documentation](http://markevans.github.io/dragonfly/file.ImageMagick.html)
-
 
 ### File field methods
 Similarly to images, files are also Dragonfly objects. This allows such methods as:
