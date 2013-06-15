@@ -1,7 +1,7 @@
 = f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
 
   - if f.object.value_uid.present?
-    p= link_to "#{f.object.value.name} (#{number_to_human_size f.object.value.size})", f.object.value.url
+    p= link_to "#{f.object.value.name} (#{number_to_human_size f.object.value.size})", f.object.value.url, "data-skip-pjax" => true
     - unless f.object.required
       = f.input :remove_value, as: :boolean, inline_label: "Delete file?", label: false, :wrapper => :default
 
