@@ -7,6 +7,46 @@ a {
   }
 }
 
+label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 0px 1px #fff;
+}
+
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 0px;
+}
+
+.add-on {
+  font-weight: medium;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  font-size: 13px;
+  color: #666666;
+  font-family: $font;
+  font-weight: 300;
+}
+
 legend + .control-group {
   margin-top: 0px;
 }

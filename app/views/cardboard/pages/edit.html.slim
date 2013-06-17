@@ -1,6 +1,6 @@
-h2
-  Editing 
-  = link_to @page.url, @page.url
+h1
+  = @page.title
+  .right= link_to "Live preview", @page.url, class:"btn"
 
 = simple_form_for @page, html: {:multipart => true} do |f|
   = f.error_notification

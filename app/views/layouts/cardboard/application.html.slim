@@ -16,7 +16,7 @@ html
       /   #content_sidebar
       /     = yield(:sidebar)
 
-      #content_sidebar
+      #content_sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
         #pages_sidebar= render 'cardboard/pages/sidebar'
 
 

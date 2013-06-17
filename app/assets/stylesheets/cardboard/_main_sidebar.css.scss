@@ -1,13 +1,9 @@
 #main_sidebar{
   height: 100%;
-  // float: left;
   position: absolute;
   left: 0px;
   background: lighten($black, 10%);
-  // padding-top: $main_topbar_height;
-  // margin-top: -$main_topbar_height;
   width: $main_sidebar_width;
-//  box-shadow: $main_sidebar_shadow;
   box-sizing: border-box;
   z-index: 100;
 

@@ -1,19 +1,25 @@
-#content_sidebar{
+#content_sidebar{  
   z-index: 1;
-  position: relative;
-//  box-shadow: $main_content_sidebar_shadow;
   @include box-sizing(border-box);
-  // padding-top: $main_topbar_height;
-  // margin-top: -$main_topbar_height;
-  // float: left;
   position: absolute;
-  left: $main_sidebar_width;
   width: $content_sidebar_width;
+  left: - $main_sidebar_width - 90px;
+  overflow: hidden;
   // overflow: auto;
   height: 100%;
   background: #fff;
+  -webkit-transition: left $page_nav_slide_speed ease;
+  -moz-transition: left $page_nav_slide_speed ease;
   padding: 18px 25px 10px 25px;
-  .indent{
+  box-shadow: $main_content_sidebar_shadow;
+
+  &.toggle {
+    left: $main_sidebar_width;
+    -webkit-transition: left $page_nav_slide_speed ease;
+    -moz-transition: left $page_nav_slide_speed ease;
+  }
+  
+  .page{
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid lighten($black, 90%);
@@ -22,9 +28,6 @@
       border-bottom: 5px solid lighten($black, 90%);
     }
   }
-
-//  .indent > .indent{
-//    margin-left: 10px;}
     
   #sidebar_page_search{
     width: 90%;

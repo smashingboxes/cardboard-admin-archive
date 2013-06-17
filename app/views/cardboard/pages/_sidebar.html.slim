@@ -3,10 +3,8 @@
   button type="submit" class="btn"
     i.icon-search
 
-
-
 = nested_pages do |page, subpages|
-  .indent
+  .page
     = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
   = subpages
 
