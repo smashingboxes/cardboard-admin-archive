@@ -1,6 +1,10 @@
 a {
-  color: #f9334a;
+  color: $brand_color;
   font-weight: bold;
+  
+  &:hover {
+    color: darken($brand_color, 30%);
+  }
 }
 
 legend + .control-group {

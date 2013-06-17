@@ -7,7 +7,7 @@
   // padding-top: $main_topbar_height;
   // margin-top: -$main_topbar_height;
   width: $main_sidebar_width;
-  box-shadow: $main_sidebar_shadow;
+//  box-shadow: $main_sidebar_shadow;
   box-sizing: border-box;
   z-index: 100;
 
@@ -32,10 +32,6 @@
           cursor: pointer;
           cursor: hand;
       }
-        i{
-          @include inline-block;
-          font-size: 28px;
-        }
         span{
           display: block;
           margin-top: 5px;
