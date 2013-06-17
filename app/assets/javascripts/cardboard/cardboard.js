@@ -20,7 +20,7 @@
 
 
 $(function(){
-  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""])', '[data-pjax-container]');
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""]):not([data-method])', '[data-pjax-container]');
 
   $(document).on('submit', 'form[data-pjax]', function(event) {
     $.pjax.submit(event, '[data-pjax-container]')
