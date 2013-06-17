@@ -1,16 +1,16 @@
 a {
-  color: $brand_color;
-  font-weight: bold;
+  color: $linkColor;
+  font-weight: 400;
   
   &:hover {
-    color: darken($brand_color, 30%);
+    color: darken($linkColor, 30%);
   }
 }
 
 label {
   margin-top: 20px;
   margin-bottom: 10px;
-  font-weight: bold;
+  // font-weight: bold;
   text-shadow: 0px 1px #fff;
 }
 

@@ -5,7 +5,7 @@ $main_sidebar_width: 95px;
 $main_content_sidebar_shadow: inset 0px 0px 20px #707070;
 $content_sidebar_width: 280px;
 $content_background: #f4f7f9;
-$brand_color: #f9334a;
+$brand_color: #f9334a !default;
 
 // Overwrite as needed
 // //
@@ -53,7 +53,7 @@ $purple:  #7a43b6;
 
 // // Links
 // // -------------------------
-// $linkColor:             #08c !default;
+$linkColor:             #08c !default;
 // $linkColorHover:        darken($linkColor, 15%) !default;
 
 
@@ -103,8 +103,10 @@ $purple:  #7a43b6;
 // $btnBackgroundHighlight:            darken($white, 10%) !default;
 // $btnBorder:                         #ccc !default;
 
- $btnPrimaryBackground:              darken($brand_color, 10%) !default;
- $btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 20%) !default;
+// $btnPrimaryBackground:              $linkColor !default;
+// $btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 20%) !default;
+$btnPrimaryBackground:              $brand_color !default;
+$btnPrimaryBackgroundHighlight:     $btnPrimaryBackground !default;
 
 // $btnInfoBackground:                 #5bc0de !default;
 // $btnInfoBackgroundHighlight:        #2f96b4 !default;

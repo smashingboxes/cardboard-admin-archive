@@ -3,6 +3,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.sortable
 //= require cardboard/jquery.livesearch
 //= require cardboard/jquery.pjax
 //= require bootstrap-button
@@ -16,6 +17,7 @@
 //= require cocoon
 //= require cardboard/wysihtml5-setup
 //= require cardboard/main_sidebar
+//= require cardboard/content_sidebar
 //= require cardboard/search_filter
 
 

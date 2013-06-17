@@ -19,13 +19,23 @@
     -moz-transition: left $page_nav_slide_speed ease;
   }
   
-  .page{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid lighten($black, 90%);
-    
-    &:last-child {
-      border-bottom: 5px solid lighten($black, 90%);
+  .page_link{
+    position: relative;
+
+    a{
+      color: $brand_color;
+      border-bottom: 1px solid lighten($black, 90%);
+      display: block;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .sort_handle {
+      position: absolute;
+      right: 0px;
+      top: 10px;
+      color: #ccc;
+      display: none;
     }
   }
     
@@ -36,11 +46,7 @@
   $indent-width: 15px;
   @for $i from 0 through 10 {
     .offset-#{$i} {
-      @if $i == 0 {
-        margin-left: $indent-width;
-      } @else {
-        margin-left: ($i + 1) * $indent-width;
-      }
+      padding-left: $i * $indent-width;
     }
   }
   

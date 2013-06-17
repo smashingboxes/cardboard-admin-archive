@@ -3,10 +3,14 @@
   button type="submit" class="btn"
     i.icon-search
 
-= nested_pages do |page, subpages|
-  .page
-    = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
-  = subpages
+#content_pages
+  = nested_pages do |page, subpages|
+    .page_link
+      = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}", "data-id" => page.id
+      .sort_handle
+        i.icon-reorder
+    - if subpages
+      .page_group= subpages
 
 #sidebar_page_search_none style="display:none"
   | No pages match your search

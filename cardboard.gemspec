@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ransack'
   s.add_dependency 'rack-pjax'
   s.add_dependency 'rails_engine_decorators'
+  s.add_dependency 'jquery-ui-rails'
 
   s.add_development_dependency 'jquery-rails'
   s.add_development_dependency "guard-minitest"

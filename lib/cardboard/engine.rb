@@ -17,6 +17,7 @@ require 'slim'
 require 'ransack'
 require 'kaminari'
 require 'rack-pjax'
+require 'jquery-ui-rails'
 # require 'decorators'
 
 
