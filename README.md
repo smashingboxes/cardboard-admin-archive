@@ -55,9 +55,10 @@ current_page.get('intro.text1')
 Images returned by `current_page.get('intro.image1')` are [Dragonfly](http://markevans.github.io/dragonfly/) objects. As such, it's possible to edit them directly from the view.
 
 ```ruby
-image.url                 # => URL of the modified image
-image.thumb('40x30#').url  # same as image.process(:thumb, '40x30')
-# Hint: remember to check if the image is not nil
+image.url                 # URL of the modified image
+image.thumb('40x30#').url  # resize, crop if necessary to maintain aspect ratio (centre gravity)
+image.process(:greyscale).thumb('40x30#').url
+# Hint: remember to check if image is not nil
 ```
 More options and methods are available at [Dragonfly's Documentation](http://markevans.github.io/dragonfly/file.ImageMagick.html)
 
@@ -134,6 +135,7 @@ Gem | Description
 [Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
 [Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
 [Ransack](https://github.com/ernie/ransack) | Object-based searching and filtering
+[Dragonfly](https://github.com/markevans/dragonfly) | On-the-fly image processing and file uploading
 
 #### Filter helper
 You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
