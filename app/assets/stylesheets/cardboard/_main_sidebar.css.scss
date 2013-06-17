@@ -3,18 +3,19 @@
   // float: left;
   position: absolute;
   left: 0px;
-  background: image-url("cardboard/bg.png") lighten($black, 20%);
+  background: lighten($black, 10%);
   // padding-top: $main_topbar_height;
   // margin-top: -$main_topbar_height;
   width: $main_sidebar_width;
-  // box-sizing: border-box;
-  // z-index: 1;
+  box-shadow: $main_sidebar_shadow;
+  box-sizing: border-box;
+  z-index: 100;
 
 
   #menu{
     .item{
       a{
-        padding: 8px 2px;
+        padding: 25px 2px;
         display: block;
         border-bottom: 1px solid lighten($black, 25%);
         border-top: 1px solid lighten($black, 15%);
@@ -24,8 +25,7 @@
         color: $white;
       
         &:hover, &.active{
-          background: lighten($black, 10%);
-          border-top: 1px solid  lighten($black, 10%);
+          background: lighten($black, 20%);
           border-bottom: 1px solid  lighten($black, 10%);
           text-decoration: none;
           // color: saturate($brand_color, 80%);

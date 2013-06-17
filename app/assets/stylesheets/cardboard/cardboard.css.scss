@@ -21,15 +21,6 @@
 .center{
   text-align: center;
 }
-.indent {
-  display: block;
-  margin-left: 15px;
-
-  & > .indent {
-    margin-left: 30px;
-
-  }
-}
 
 .nested-fields{
   margin-bottom: 20px;

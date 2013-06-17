@@ -20,10 +20,9 @@ module Cardboard
     #       i.icon-dashboard
     #       span Dashboard
     def main_sidebar_nav_link(text, link, options={})
-      icon = options.delete(:icon)
       options[:class] = "#{options[:class]} active" if request.path["#{link}/"] || request.path == link
       out = content_tag(:div, class:"item") do
-        link_to("<i class='#{icon}'></i><span>#{text}</span>".html_safe, link, options)
+        link_to("<span>#{text}</span>".html_safe, link, options)
       end
       out.html_safe
     end

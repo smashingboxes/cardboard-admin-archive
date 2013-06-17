@@ -1,15 +1,14 @@
-form class="form-search"
-  .input-append
-    input id="sidebar_page_search" type="text" class="span2 search-query"
-    button type="submit" class="btn"
-      i.icon-search
+.input-append
+  input id="sidebar_page_search" type="text" placeholder="Search by Title"
+  button type="submit" class="btn"
+    i.icon-search
 
 
 
 = nested_pages do |page, subpages|
   .indent
-    = link_to page.title, edit_page_path(page)
-    = content_tag(:div, subpages, class:"indent") if subpages
+    = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
+  = subpages
 
 #sidebar_page_search_none style="display:none"
   | No pages match your search

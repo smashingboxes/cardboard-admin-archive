@@ -1,7 +1,8 @@
-
 .navbar-inner
-
-  = link_to dashboard_path, class: "brand" do
+  
+  #cardboard_logo CB
+  
+  = link_to dashboard_path, id: "brand" do
     = Cardboard::Setting.company_name
 
   ul.nav.pull-right

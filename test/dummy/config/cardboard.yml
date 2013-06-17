@@ -62,7 +62,6 @@ pages:
             type: rich_text
           image:
             type: image
-            default: app/assets/images/CrashTest.jpg
             required: false
           image2:
             type: image

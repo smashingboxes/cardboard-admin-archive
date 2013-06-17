@@ -1,7 +1,7 @@
 #content_sidebar{
   z-index: 1;
   position: relative;
-
+  box-shadow: $main_content_sidebar_shadow;
   @include box-sizing(border-box);
   // padding-top: $main_topbar_height;
   // margin-top: -$main_topbar_height;
@@ -11,11 +11,29 @@
   width: $content_sidebar_width;
   // overflow: auto;
   height: 100%;
-  background: lighten($black, 95%);
-  padding: 18px 15px 10px 15px;
+  background: #fff;
+  padding: 18px 25px 10px 25px;
   .indent{
-    margin-top: 10px;}
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lighten($black, 90%);
+    
+    &:last-child {
+      border-bottom: 5px solid lighten($black, 90%);
+    }
+  }
 
-  .indent > .indent{
-    margin-left: 10px;}
+//  .indent > .indent{
+//    margin-left: 10px;}
+    
+  #sidebar_page_search{
+    width: 90%;
+  }
+  
+  @for $i from 0 through 10 {
+    .offset-#{$i} {
+      margin-left: $i*25px;
+    }
+  }
+  
 }
