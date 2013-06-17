@@ -66,6 +66,8 @@ pages:
           image2:
             type: image
             required: true
+            default: app/assets/images/CrashTest.jpg
+
 
   cmg_primary:
     title: CMG Primary
