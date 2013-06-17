@@ -1,6 +1,6 @@
 h1
   = @page.title
-  .right= link_to "Live preview", @page.url, class:"btn"
+  .right= link_to "Live preview", @page.url, class:"btn", target: '_blank', 'data-skip-pjax' => true
 
 = simple_form_for @page, html: {:multipart => true} do |f|
   = f.error_notification

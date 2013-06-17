@@ -51,6 +51,15 @@ legend + .control-group {
   margin-top: 0px;
 }
 
+.form-actions {
+  background: #c6c6c6;
+  border-top: 0px;
+  
+  .btn {
+    margin-right: 15px;
+  }
+}
+
 .simple_form{
   input, textarea{
      @include box-sizing(border-box);
