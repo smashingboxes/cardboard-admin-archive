@@ -1,0 +1,45 @@
+//Only for Cardboard Admin Area
+// @import "variables";
+
+@import "bootstrap";
+@import "bootstrap-wysihtml5";
+@import "bootstrap-datepicker";
+
+@import "bootstrap_override";
+@import "burbon_mixins";
+@import "font-awesome";
+
+@import "devise";
+@import "main";
+@import "main_topbar";
+@import "main_sidebar";
+@import "content";
+@import "content_sidebar";
+@import "resources";
+
+
+.center{
+  text-align: center;
+}
+
+.nested-fields{
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #EFEFEF;
+}
+
+.header{
+  margin-top: 20px;
+  margin-bottom: 60px;
+
+  h1,h2,h3,h4{
+    float: left;
+    margin-top: 5px;
+    margin: 0;
+    line-height: inherit;
+  }
+  // input{
+  //   margin: 0px;
+  // }
+}
+

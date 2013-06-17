@@ -1,7 +1,7 @@
 #content_sidebar{
   z-index: 1;
   position: relative;
-  box-shadow: $main_content_sidebar_shadow;
+//  box-shadow: $main_content_sidebar_shadow;
   @include box-sizing(border-box);
   // padding-top: $main_topbar_height;
   // margin-top: -$main_topbar_height;
@@ -30,9 +30,14 @@
     width: 90%;
   }
   
+  $indent-width: 15px;
   @for $i from 0 through 10 {
     .offset-#{$i} {
-      margin-left: $i*25px;
+      @if $i == 0 {
+        margin-left: $indent-width;
+      } @else {
+        margin-left: ($i + 1) * $indent-width;
+      }
     }
   }
   
