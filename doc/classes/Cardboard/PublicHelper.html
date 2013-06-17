@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cardboard::PublicHelper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Cardboard::PublicHelper 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/helpers/cardboard/public_helper_rb.html">app/helpers/cardboard/public_helper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-link_to_page">link_to_page</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-meta_and_title">meta_and_title</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-nested_pages">nested_pages</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-link_to_page">
+            
+              <b>link_to_page</b>(page, html_options={}, &amp;block)
+            
+            <a href="../../classes/Cardboard/PublicHelper.html#method-i-link_to_page" name="method-i-link_to_page" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">link_to_page</span> <span class="ruby-value">123</span>, <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;btn&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+  <span class="ruby-node">&quot;hello #{page.title}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-link_to_page_source')" id="l_method-i-link_to_page_source">show</a>
+                
+              </p>
+              <div id="method-i-link_to_page_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/public_helper.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">link_to_page</span>(<span class="ruby-identifier">page</span>, <span class="ruby-identifier">html_options</span>={}, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Missing block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">page</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">identifier</span><span class="ruby-operator">:</span> <span class="ruby-identifier">page</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">capture</span>(<span class="ruby-identifier">page</span>, &amp;<span class="ruby-identifier">block</span>), <span class="ruby-identifier">page</span>.<span class="ruby-identifier">url</span>, <span class="ruby-identifier">html_options</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-meta_and_title">
+            
+              <b>meta_and_title</b>(page)
+            
+            <a href="../../classes/Cardboard/PublicHelper.html#method-i-meta_and_title" name="method-i-meta_and_title" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Example: head</p>
+
+<pre>= meta_and_title(current_page)</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-meta_and_title_source')" id="l_method-i-meta_and_title_source">show</a>
+                
+              </p>
+              <div id="method-i-meta_and_title_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/public_helper.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">meta_and_title</span>(<span class="ruby-identifier">page</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page</span>
+  <span class="ruby-identifier">seo</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">meta_seo</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;title&gt;#{seo.delete(:title)}&lt;/title&gt;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">seo</span>[<span class="ruby-value">:title</span>]
+  <span class="ruby-identifier">seo</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;meta name='#{key}' content='#{value}' /&gt;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">html</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-nested_pages">
+            
+              <b>nested_pages</b>(page = nil, &amp;block)
+            
+            <a href="../../classes/Cardboard/PublicHelper.html#method-i-nested_pages" name="method-i-nested_pages" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Example 1:</p>
+
+<h1 id="method-i-nested_pages-label-nested_pages+Cardboard%3A%3APage.arrange+do+%7Cpage%2C+subpages%7C"><a href="PublicHelper.html#method-i-nested_pages">#nested_pages</a> <a href="Page.html#method-c-arrange">Cardboard::Page.arrange</a> do |page, subpages|</h1>
+
+<pre>.indent
+  = link_to(page.title, page.url) if page.in_menu?
+  = subpages</pre>
+
+<p>end Example 2: %ul</p>
+
+<pre class="ruby">= <span class="ruby-identifier">nested_pages</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span>, <span class="ruby-identifier">subpages</span><span class="ruby-operator">|</span>
+  <span class="ruby-operator">%</span><span class="ruby-identifier">i</span>
+    = <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">title</span>, <span class="ruby-identifier">edit_page_path</span>(<span class="ruby-identifier">page</span>)
+    = <span class="ruby-identifier">content_tag</span>(:<span class="ruby-identifier">ul</span>, <span class="ruby-identifier">subpages</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">subpages</span>.<span class="ruby-identifier">present?</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-nested_pages_source')" id="l_method-i-nested_pages_source">show</a>
+                
+              </p>
+              <div id="method-i-nested_pages_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/public_helper.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">nested_pages</span>(<span class="ruby-identifier">page</span> = <span class="ruby-keyword">nil</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Missing block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">inner_nested_pages</span>(<span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">arrange</span>(<span class="ruby-identifier">page</span>), &amp;<span class="ruby-identifier">block</span>).<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

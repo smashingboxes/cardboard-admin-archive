@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cardboard::Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Cardboard::Page 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/models/cardboard/page_rb.html">app/models/cardboard/page.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-arrange">arrange</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-children">children</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-clear_arranged_pages">clear_arranged_pages</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-depth">depth</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-find_by_url">find_by_url</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-get">get</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-homepage">homepage</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-is_root-3D">is_root=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parent">parent</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parent-3D">parent=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parent_id-3D">parent_id=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parent_url-3D">parent_url=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parent_url_options">parent_url_options</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-root">root</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-root-3F">root?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-seo">seo</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-seo-3D">seo=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-siblings">siblings</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-slug-3D">slug=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-split_path">split_path</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-url">url</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-using_slug_backup-3D">using_slug_backup=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-using_slug_backup-3F">using_slug_backup?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            RankedModel
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>is_root</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>parent_url</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-arrange">
+            
+              <b>arrange</b>(root_page = nil)
+            
+            <a href="../../classes/Cardboard/Page.html#method-c-arrange" name="method-c-arrange" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Arrange array of nodes into a nested hash of the form  {node =&gt;
+children}, where children = {} if the node has no children</p>
+
+<p>Example: {#&lt;<a href="Page.html">Cardboard::Page</a> =&gt; {</p>
+
+<pre class="ruby"><span class="ruby-comment">#&lt;Cardboard::Page =&gt; {}</span>
+<span class="ruby-comment">#&lt;Cardboard::Page =&gt; {}</span>
+<span class="ruby-comment">#&lt;Cardboard::Page =&gt; {#&lt;Cardboard::Page =&gt; {}}</span>
+</pre>
+
+<p>}}</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-arrange_source')" id="l_method-c-arrange_source">show</a>
+                
+              </p>
+              <div id="method-c-arrange_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">arrange</span>(<span class="ruby-identifier">root_page</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">root_page</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">root_page</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@_arranged_pages</span> <span class="ruby-operator">||=</span> {}
+    <span class="ruby-ivar">@_arranged_pages</span>[<span class="ruby-identifier">root_page</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">pages</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">preordered</span>.<span class="ruby-identifier">all</span>
+
+      <span class="ruby-identifier">pages</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ordered_hash</span>, <span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+        ([<span class="ruby-string">&quot;/&quot;</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">split_path</span>).<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">ordered_hash</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">insertion_hash</span>, <span class="ruby-identifier">subpath</span><span class="ruby-operator">|</span>
+          
+          <span class="ruby-identifier">insertion_hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">parent</span>, <span class="ruby-identifier">children</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">insertion_hash</span> = <span class="ruby-identifier">children</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">subpath</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">slug</span>
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">insertion_hash</span>
+        <span class="ruby-keyword">end</span>[<span class="ruby-identifier">page</span>] = <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">ordered_hash</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-clear_arranged_pages">
+            
+              <b>clear_arranged_pages</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-c-clear_arranged_pages" name="method-c-clear_arranged_pages" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-clear_arranged_pages_source')" id="l_method-c-clear_arranged_pages_source">show</a>
+                
+              </p>
+              <div id="method-c-clear_arranged_pages_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 207</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">clear_arranged_pages</span>
+  <span class="ruby-comment"># clear cache when a page change</span>
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@_arranged_pages</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-find_by_url">
+            
+              <b>find_by_url</b>(full_url)
+            
+            <a href="../../classes/Cardboard/Page.html#method-c-find_by_url" name="method-c-find_by_url" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>class methods</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-find_by_url_source')" id="l_method-c-find_by_url_source">show</a>
+                
+              </p>
+              <div id="method-c-find_by_url_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">find_by_url</span>(<span class="ruby-identifier">full_url</span>)
+  <span class="ruby-identifier">path</span>, <span class="ruby-identifier">slug</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">path_and_slug</span>(<span class="ruby-identifier">full_url</span>)
+  <span class="ruby-identifier">page</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">slug</span><span class="ruby-operator">:</span> <span class="ruby-identifier">slug</span>).<span class="ruby-identifier">first</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">slug</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-comment">#use arel instead of LIKE/ILIKE</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>).<span class="ruby-identifier">where</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">arel_table</span>[<span class="ruby-value">:slugs_backup</span>].<span class="ruby-identifier">matches</span>(<span class="ruby-node">&quot;% #{slug}\n%&quot;</span>)).<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">using_slug_backup</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">page</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-homepage">
+            
+              <b>homepage</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-c-homepage" name="method-c-homepage" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-homepage_source')" id="l_method-c-homepage_source">show</a>
+                
+              </p>
+              <div id="method-c-homepage_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">homepage</span>; <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span>; <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-root">
+            
+              <b>root</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-c-root" name="method-c-root" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-root_source')" id="l_method-c-root_source">show</a>
+                
+              </p>
+              <div id="method-c-root_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">root</span>
+  <span class="ruby-comment"># Homepage is the highest position in the root path</span>
+  <span class="ruby-identifier">where</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">rank</span>(<span class="ruby-value">:position</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-children">
+            
+              <b>children</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-children" name="method-i-children" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-children_source')" id="l_method-i-children_source">show</a>
+                
+              </p>
+              <div id="method-i-children_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">children</span>
+  <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-identifier">url</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-depth">
+            
+              <b>depth</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-depth" name="method-i-depth" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-depth_source')" id="l_method-i-depth_source">show</a>
+                
+              </p>
+              <div id="method-i-depth_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">depth</span>
+  <span class="ruby-comment"># root is depth 0</span>
+  <span class="ruby-identifier">split_path</span>.<span class="ruby-identifier">size</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get">
+            
+              <b>get</b>(field)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-get" name="method-i-get" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>slideshow = @page.get(“slideshow”) slideshow.field(“image1”)
+slideshow.each{|p| p.field(“image”)} slideshow.get(“slide1”)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_source')" id="l_method-i-get_source">show</a>
+                
+              </p>
+              <div id="method-i-get_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get</span>(<span class="ruby-identifier">field</span>)
+  <span class="ruby-identifier">f</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;.&quot;</span>)
+  <span class="ruby-identifier">parent_part</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parts</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">identifier</span><span class="ruby-operator">:</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">first</span>
+  <span class="ruby-identifier">part</span> = <span class="ruby-identifier">parent_part</span>.<span class="ruby-identifier">try</span>(<span class="ruby-value">:subparts</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">part</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent_part</span>.<span class="ruby-identifier">repeatable?</span> 
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Part is repeatable, expected each loop&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-number">1</span> 
+    <span class="ruby-identifier">part</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-number">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">f</span>.<span class="ruby-identifier">last</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-is_root-3D">
+            
+              <b>is_root=</b>(val)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-is_root-3D" name="method-i-is_root-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-is_root-3D_source')" id="l_method-i-is_root-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-is_root-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">is_root=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">position_position</span> = <span class="ruby-value">:first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent">
+            
+              <b>parent</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-parent" name="method-i-parent" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_source')" id="l_method-i-parent_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent</span>
+  <span class="ruby-ivar">@parent</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_url</span>(<span class="ruby-identifier">path</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent-3D">
+            
+              <b>parent=</b>(new_parent)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-parent-3D" name="method-i-parent-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent-3D_source')" id="l_method-i-parent-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-parent-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent=</span>(<span class="ruby-identifier">new_parent</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_parent</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">new_parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>) 
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">path</span> = <span class="ruby-identifier">new_parent</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">new_parent</span>.<span class="ruby-identifier">url</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;/&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent_id-3D">
+            
+              <b>parent_id=</b>(new_parent_id)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-parent_id-3D" name="method-i-parent_id-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_id-3D_source')" id="l_method-i-parent_id-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_id-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent_id=</span>(<span class="ruby-identifier">new_parent_id</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">identifier</span><span class="ruby-operator">:</span> <span class="ruby-identifier">new_parent_id</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent_url-3D">
+            
+              <b>parent_url=</b>(new_parent_url)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-parent_url-3D" name="method-i-parent_url-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_url-3D_source')" id="l_method-i-parent_url-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_url-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent_url=</span>(<span class="ruby-identifier">new_parent_url</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_url</span>(<span class="ruby-identifier">new_parent_url</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent_url_options">
+            
+              <b>parent_url_options</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-parent_url_options" name="method-i-parent_url_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get all other pages</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_url_options_source')" id="l_method-i-parent_url_options_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_url_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent_url_options</span>
+  <span class="ruby-comment"># @parent_url_options ||= begin</span>
+    <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">inject</span>([<span class="ruby-string">&quot;/&quot;</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">result</span>, <span class="ruby-identifier">elm</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">elm</span>.<span class="ruby-identifier">url</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">elm</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword">end</span>.<span class="ruby-identifier">sort</span>
+  <span class="ruby-comment"># end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-root-3F">
+            
+              <b>root?</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-root-3F" name="method-i-root-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-root-3F_source')" id="l_method-i-root-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-root-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">root?</span>
+  <span class="ruby-ivar">@root_id</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Page</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-ivar">@root_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-seo">
+            
+              <b>seo</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-seo" name="method-i-seo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>SEO children inherit their parent’s SEO settings (these can be overwritten)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-seo_source')" id="l_method-i-seo_source">show</a>
+                
+              </p>
+              <div id="method-i-seo_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">seo</span>
+  <span class="ruby-ivar">@_seo</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">seo</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">meta_seo</span>
+    <span class="ruby-identifier">seo</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">seo</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">seo</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>
+    <span class="ruby-identifier">seo</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">seo</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">seo</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">root?</span>
+    <span class="ruby-identifier">seo</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-seo-3D">
+            
+              <b>seo=</b>(hash)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-seo-3D" name="method-i-seo-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-seo-3D_source')" id="l_method-i-seo-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-seo-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">seo=</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-comment"># to hash is important here for strong parameters</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">meta_seo</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">to_hash</span>
+  <span class="ruby-ivar">@_seo</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-siblings">
+            
+              <b>siblings</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-siblings" name="method-i-siblings" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-siblings_source')" id="l_method-i-siblings_source">show</a>
+                
+              </p>
+              <div id="method-i-siblings_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">siblings</span>
+  <span class="ruby-constant">Cardboard</span><span class="ruby-operator">::</span><span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;path = ? AND id != ?&quot;</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-slug-3D">
+            
+              <b>slug=</b>(value)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-slug-3D" name="method-i-slug-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>overwritten setters/getters</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-slug-3D_source')" id="l_method-i-slug-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-slug-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">slug=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># the user can overwrite the auto generated slug</span>
+  <span class="ruby-keyword">self</span>[<span class="ruby-value">:slug</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_url</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-split_path">
+            
+              <b>split_path</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-split_path" name="method-i-split_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-split_path_source')" id="l_method-i-split_path_source">show</a>
+                
+              </p>
+              <div id="method-i-split_path_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">split_path</span>
+  <span class="ruby-comment"># path.sub(/^\//,'').split(&quot;/&quot;) # &quot;/path/&quot; =&gt; [&quot;path&quot;]</span>
+  <span class="ruby-identifier">path</span>[<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-url">
+            
+              <b>url</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-url" name="method-i-url" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-url_source')" id="l_method-i-url_source">show</a>
+                
+              </p>
+              <div id="method-i-url_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">url</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">slug</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-comment">#|| self.root?</span>
+  <span class="ruby-node">&quot;#{path}#{slug}/&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-using_slug_backup-3D">
+            
+              <b>using_slug_backup=</b>(value)
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-using_slug_backup-3D" name="method-i-using_slug_backup-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-using_slug_backup-3D_source')" id="l_method-i-using_slug_backup-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-using_slug_backup-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">using_slug_backup=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@using_slug_backup</span> = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-using_slug_backup-3F">
+            
+              <b>using_slug_backup?</b>()
+            
+            <a href="../../classes/Cardboard/Page.html#method-i-using_slug_backup-3F" name="method-i-using_slug_backup-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-using_slug_backup-3F_source')" id="l_method-i-using_slug_backup-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-using_slug_backup-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">using_slug_backup?</span>
+  <span class="ruby-ivar">@using_slug_backup</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

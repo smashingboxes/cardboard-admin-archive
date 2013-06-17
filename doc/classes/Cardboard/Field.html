@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cardboard::Field</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Cardboard::Field 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/models/cardboard/field_rb.html">app/models/cardboard/field.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/Date.html">Cardboard::Field::Date</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/Decimal.html">Cardboard::Field::Decimal</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/ExternalLink.html">Cardboard::Field::ExternalLink</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/File.html">Cardboard::Field::File</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/Image.html">Cardboard::Field::Image</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/Integer.html">Cardboard::Field::Integer</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/ResourceLink.html">Cardboard::Field::ResourceLink</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/RichText.html">Cardboard::Field::RichText</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Field/String.html">Cardboard::Field::String</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-default-3D">default=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-type">type</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-type-3D">type=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            RankedModel
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-default-3D">
+            
+              <b>default=</b>(val)
+            
+            <a href="../../classes/Cardboard/Field.html#method-i-default-3D" name="method-i-default-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-default-3D_source')" id="l_method-i-default-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-default-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/field.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">default=</span>(<span class="ruby-identifier">val</span>) 
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">value_uid</span> = <span class="ruby-identifier">val</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">value_uid</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">present?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type">
+            
+              <b>type</b>()
+            
+            <a href="../../classes/Cardboard/Field.html#method-i-type" name="method-i-type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type_source')" id="l_method-i-type_source">show</a>
+                
+              </p>
+              <div id="method-i-type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/field.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type</span>
+  <span class="ruby-ivar">@_type</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">:type</span>].<span class="ruby-identifier">demodulize</span>.<span class="ruby-identifier">underscore</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type-3D">
+            
+              <b>type=</b>(val)
+            
+            <a href="../../classes/Cardboard/Field.html#method-i-type-3D" name="method-i-type-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>overwritten setter</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type-3D_source')" id="l_method-i-type-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-type-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/field.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">super</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^Cardboard::Field::/</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@_type</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-keyword">self</span>[<span class="ruby-value">:type</span>] = <span class="ruby-node">&quot;Cardboard::Field::#{@_type.camelize}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cardboard::PagePart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Cardboard::PagePart 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/models/cardboard/page_part_rb.html">app/models/cardboard/page_part.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-attr">attr</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-new_subpart">new_subpart</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-repeatable-3F">repeatable?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-subpart-3F">subpart?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            RankedModel
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-attr">
+            
+              <b>attr</b>(field)
+            
+            <a href="../../classes/Cardboard/PagePart.html#method-i-attr" name="method-i-attr" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-attr_source')" id="l_method-i-attr_source">show</a>
+                
+              </p>
+              <div id="method-i-attr_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page_part.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">attr</span>(<span class="ruby-identifier">field</span>)
+  <span class="ruby-identifier">field</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@attr</span> <span class="ruby-operator">||=</span> {}
+  <span class="ruby-ivar">@attr</span>[<span class="ruby-identifier">field</span>] <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">f</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fields</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">identifier</span><span class="ruby-operator">:</span> <span class="ruby-identifier">field</span>).<span class="ruby-identifier">first</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">f</span>
+    <span class="ruby-identifier">out</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">value_uid</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-identifier">out</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">default</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">required?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">out</span>.<span class="ruby-identifier">nil?</span>
+
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;rich_text&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">out</span>.<span class="ruby-identifier">try</span>(<span class="ruby-value">:html_safe</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">out</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-new_subpart">
+            
+              <b>new_subpart</b>()
+            
+            <a href="../../classes/Cardboard/PagePart.html#method-i-new_subpart" name="method-i-new_subpart" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-new_subpart_source')" id="l_method-i-new_subpart_source">show</a>
+                
+              </p>
+              <div id="method-i-new_subpart_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page_part.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new_subpart</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">repeatable?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">subpart?</span>
+  <span class="ruby-identifier">master</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">subparts</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-identifier">subpart</span> = <span class="ruby-identifier">master</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">field</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">master</span>.<span class="ruby-identifier">fields</span>
+    <span class="ruby-identifier">new_field</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">new_field</span>.<span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">new_field</span>.<span class="ruby-identifier">object_with_field_id</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">new_field</span>.<span class="ruby-identifier">object_with_field_type</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">new_field</span>.<span class="ruby-identifier">page_part_id</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">subpart</span>.<span class="ruby-identifier">fields</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_field</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">subpart</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-repeatable-3F">
+            
+              <b>repeatable?</b>()
+            
+            <a href="../../classes/Cardboard/PagePart.html#method-i-repeatable-3F" name="method-i-repeatable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-repeatable-3F_source')" id="l_method-i-repeatable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-repeatable-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page_part.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">repeatable?</span>
+   <span class="ruby-ivar">@parent_repeatable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent</span>[<span class="ruby-value">:repeatable</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-subpart-3F">
+            
+              <b>subpart?</b>()
+            
+            <a href="../../classes/Cardboard/PagePart.html#method-i-subpart-3F" name="method-i-subpart-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-subpart-3F_source')" id="l_method-i-subpart-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-subpart-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cardboard/page_part.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">subpart?</span>
+  <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">parent_part_id</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

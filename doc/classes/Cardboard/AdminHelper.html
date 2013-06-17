@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cardboard::AdminHelper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Cardboard::AdminHelper 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/helpers/cardboard/admin_helper_rb.html">app/helpers/cardboard/admin_helper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cardboard_filters">cardboard_filters</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-l">l</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-main_sidebar_nav_link">main_sidebar_nav_link</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ransack_options">ransack_options</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-cardboard_filters">
+            
+              <b>cardboard_filters</b>(model, main_element, options={})
+            
+            <a href="../../classes/Cardboard/AdminHelper.html#method-i-cardboard_filters" name="method-i-cardboard_filters" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre class="ruby"><span class="ruby-string">&quot;q&quot;</span>=<span class="ruby-operator">&gt;</span>
+</pre>
+
+<p>{“id_lt”=&gt;“1”,</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;id_gteq&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;1&quot;</span>,
+<span class="ruby-string">&quot;color_cont&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;1&quot;</span>,
+<span class="ruby-string">&quot;flavor_cont&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;size_lt&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;size_gteq&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;created_at_lt&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;created_at_gteq&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;updated_at_lt&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>,
+<span class="ruby-string">&quot;updated_at_gteq&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>},
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cardboard_filters_source')" id="l_method-i-cardboard_filters_source">show</a>
+                
+              </p>
+              <div id="method-i-cardboard_filters_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/admin_helper.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cardboard_filters</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">main_element</span>, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;First argument needs to be a class&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Class</span>
+
+  <span class="ruby-identifier">elements</span> =  <span class="ruby-identifier">model</span>.<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">column</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">column</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-identifier">type</span> = <span class="ruby-identifier">column</span>.<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">name</span>, <span class="ruby-identifier">type</span>] <span class="ruby-keyword">if</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:fields</span>].<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:fields</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)) <span class="ruby-comment">#&amp;&amp; name != main_element.to_sym</span>
+    <span class="ruby-identifier">a</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">elements</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:associated_fields</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:associated_fields</span>].<span class="ruby-identifier">present?</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&quot;cardboard/resources/search_helper&quot;</span>, <span class="ruby-identifier">model</span><span class="ruby-operator">:</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">demodulize</span>.<span class="ruby-identifier">underscore</span>, <span class="ruby-identifier">elements</span><span class="ruby-operator">:</span> <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">options</span><span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>, <span class="ruby-identifier">main_element</span><span class="ruby-operator">:</span> <span class="ruby-identifier">main_element</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-l">
+            
+              <b>l</b>(val, options = {})
+            
+            <a href="../../classes/Cardboard/AdminHelper.html#method-i-l" name="method-i-l" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-l_source')" id="l_method-i-l_source">show</a>
+                
+              </p>
+              <div id="method-i-l_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/admin_helper.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">l</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_date</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">options</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-main_sidebar_nav_link">
+            
+              <b>main_sidebar_nav_link</b>(text, link, options={})
+            
+            <a href="../../classes/Cardboard/AdminHelper.html#method-i-main_sidebar_nav_link" name="method-i-main_sidebar_nav_link" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>.item</p>
+
+<pre>= link_to dashboard_path, id:&quot;nav_dashboard_link&quot; do
+  i.icon-dashboard
+  span Dashboard</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-main_sidebar_nav_link_source')" id="l_method-i-main_sidebar_nav_link_source">show</a>
+                
+              </p>
+              <div id="method-i-main_sidebar_nav_link_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/admin_helper.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">main_sidebar_nav_link</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">link</span>, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">icon</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:icon</span>)
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] = <span class="ruby-node">&quot;#{options[:class]} active&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">path</span>[<span class="ruby-node">&quot;#{link}/&quot;</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">link</span>
+  <span class="ruby-identifier">out</span> = <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-identifier">class</span><span class="ruby-value">:&quot;item&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span>(<span class="ruby-node">&quot;&lt;i class='#{icon}'&gt;&lt;/i&gt;&lt;span&gt;#{text}&lt;/span&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>, <span class="ruby-identifier">link</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">out</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ransack_options">
+            
+              <b>ransack_options</b>()
+            
+            <a href="../../classes/Cardboard/AdminHelper.html#method-i-ransack_options" name="method-i-ransack_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ransack_options_source')" id="l_method-i-ransack_options_source">show</a>
+                
+              </p>
+              <div id="method-i-ransack_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/cardboard/admin_helper.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ransack_options</span> 
+  { 
+    <span class="ruby-identifier">string</span><span class="ruby-operator">:</span> [[<span class="ruby-string">&quot;Contains&quot;</span>,<span class="ruby-string">&quot;cont&quot;</span>],[<span class="ruby-string">&quot;Does not contain&quot;</span>,<span class="ruby-string">&quot;not_cont&quot;</span>], [<span class="ruby-string">&quot;Starts with&quot;</span>,<span class="ruby-string">&quot;start&quot;</span>], [<span class="ruby-string">&quot;Ends with&quot;</span>,<span class="ruby-string">&quot;end&quot;</span>]], 
+    <span class="ruby-identifier">datetime</span><span class="ruby-operator">:</span> [[<span class="ruby-string">&quot;On&quot;</span>,<span class="ruby-string">&quot;eq&quot;</span>],[<span class="ruby-string">&quot;Before&quot;</span>,<span class="ruby-string">&quot;lt&quot;</span>],[<span class="ruby-string">&quot;After&quot;</span>,<span class="ruby-string">&quot;gt&quot;</span>]],
+    <span class="ruby-identifier">integer</span><span class="ruby-operator">:</span> [[<span class="ruby-string">&quot;Greater than&quot;</span>,<span class="ruby-string">&quot;gt&quot;</span>],[<span class="ruby-string">&quot;Equals&quot;</span>,<span class="ruby-string">&quot;eq&quot;</span>],[<span class="ruby-string">&quot;Less than&quot;</span>,<span class="ruby-string">&quot;lt&quot;</span>]],
+    <span class="ruby-identifier">boolean</span><span class="ruby-operator">:</span> [[<span class="ruby-string">&quot;is False&quot;</span>,<span class="ruby-string">&quot;blank&quot;</span>],[<span class="ruby-string">&quot;is True&quot;</span>,<span class="ruby-string">&quot;true&quot;</span>]]
+  }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    
