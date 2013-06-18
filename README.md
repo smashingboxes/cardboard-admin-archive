@@ -101,7 +101,7 @@ pages, parts and fields take identifiers (home_page, slideshow and image1) used 
 Each page section starts with the name of it's unique identifier. This name is used to reference the page in the code an thus should not change throughout the life of the project.
 
 Key | Type | Default | Definition
--|-
+---|---
 [parts](#parts) | hash | nil |a list of page parts
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment |position of the page on the nav bar (the lowest position is the home page!)
@@ -111,7 +111,7 @@ position | integer | auto-increment |position of the page on the nav bar (the lo
 Each part sub-section starts with the name of it's unique identifier. This name is used to reference the part in the code an thus should not change throughout the life of the project.
 
 Key | Type | Default | Definition
--|-
+---|---
 [fields](#fields) | hash | nil | list of fields that make this part's form
 position | integer | auto-increment | position of the part on the admin page
 repeatable | boolean | false | can the client add multiple of these parts (example a slide in a slideshow) 
@@ -121,7 +121,7 @@ repeatable | boolean | false | can the client add multiple of these parts (examp
 Each field sub-section starts with the name of it's unique identifier. This name is used to reference the field in the code an thus should not change throughout the life of the project.
 
 Key | Type | Default | Definition
--|-
+---|---
 label | string | identifier | form field label
 hint | string | nil | form field hint
 placeholder | string | nil | form field placeholder
