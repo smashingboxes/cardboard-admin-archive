@@ -8,8 +8,6 @@ module Cardboard
       argument :name, :type => :string, :default => Rails.application.class.name.split("::").first.titlecase      
       class_option "user-class", :type => :string
       class_option "no-migrate", :type => :boolean
-      # hook_for :users, :default => "devise", :desc => "Admin user generator to run. Skip with --skip-users"
-
 
       def self.source_root
         @_cardboard_source_root ||= File.expand_path("../templates", __FILE__)
@@ -79,9 +77,6 @@ module Cardboard
       #   end
       # end
 
-      # def setup_helpers
-      #   inject_into_file "app/controllers/application_controller.rb", "\n  helper Cardboard::ApplicationHelper", :after => /ApplicationController.*/
-      # end
     protected
 
       def p(msg)

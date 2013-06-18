@@ -1,6 +1,8 @@
 # Cardboard
 
-## Dependencies
+![alt text](https://github.com/smashingboxes/cardboard/wiki/images/2a.jpg "screenshot1")
+
+## Pre-Installation
 Make sure you have a authentication solution installed and working. As an example, here is what you need to do to get `Devise` installed.
 
 https://github.com/plataformatec/devise#getting-started
@@ -30,7 +32,11 @@ rake db:seed
 
 
 ## Usage
-
+### Get a page
+Add a file in your `app/views/pages` with filename matching the identifier of the page. Inside this file you can access the page with:
+```ruby
+current_page
+```
 ### Fetch a page part
 ```ruby
 current_page.get('slideshow')
@@ -46,9 +52,7 @@ Repeatable parts returns an active record collection. This means that regular Ra
 If this part is **not repeatable** you can use both
 ```ruby
 current_page.get('intro').attr('text1')
-```
-Or
-```ruby
+# Or
 current_page.get('intro.text1')
 ```
 ### Image Fields methods
@@ -71,8 +75,8 @@ file.name                # => "some.pdf"
 number_to_human_size(file.size) # => "486 KB"
 ```
 
-## Customization
-### Pages
+
+## Create Pages
 To add pages to cardboard edit `config/cardboard.yml`. See an sample `cardboard.yml` in [https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml](https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml)
 
 ```yml
@@ -92,32 +96,43 @@ pages:
 
 pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
 
-#### pages
-key: page identifier
-value: `title`, `parts`, `position`(lowest position is the root page)
-####parts
-key: part identifier
-value: `fields`, `position`
+#### Pages
+Each page section starts with the name of it's unique identifier. This name is used to reference the page in the code an thus should not change throughout the life of the project.
+
+Key | Type | Default | Definition
+---|--- | ---|---
+[parts](#parts) | hash | nil |a list of page parts
+title | string | identifier | name of the page as shown in the nav bar
+position | integer | auto-increment |position of the page on the nav bar (the lowest position is the home page!)
+parent_id | string | nil | identifier of the parent page (used for nested pages)
+
+
+#### Parts
+Each part sub-section starts with the name of it's unique identifier. This name is used to reference the part in the code an thus should not change throughout the life of the project.
+
+Key | Type | Default | Definition
+---|--- | ---|---
+[fields](#fields) | hash | nil | list of fields that make this part's form
+position | integer | auto-increment | position of the part on the admin page
+repeatable | boolean | false | can the client add multiple of these parts (example a slide in a slideshow) 
+
+
 ####fields
-key: field identifiers
-value: `label`, `type`, `required`(default == true), `position`, `default`, `hint`, `placeholder`, `value` (will overwrite user input, use `default` instead)
+Each field sub-section starts with the name of it's unique identifier. This name is used to reference the field in the code an thus should not change throughout the life of the project.
 
-Allowed field Types are:
+Key | Type | Default | Definition
+---|--- | ---|---
+label | string | identifier | form field label
+hint | string | nil | form field hint
+placeholder | string | nil | form field placeholder
+position | integer | auto-increment | position of the field within the part (only for the admin area)
+required | boolean | true | must this field have a value for the form to save
+type | string | `string` | choose between: `boolean`, `date`, `decimal`, `file`, `image`, `integer`, `rich_text`, `string`, `resource_link` (needs value: resource_linked), `external_link` (needs value: http://site.com)
+default | string | nil | set the value but don't overwrite (only set if nil)
+value | string | nil | USE ONLY FOR types `resource_link` and `external_link` (this will overwrite user input, in most cases use the `default` key instead)
 
-```
-boolean
-date
-decimal
-external_link (needs value: http://site.com)
-file
-image
-integer
-resource_link (needs value: resource_linked)
-rich_text
-string
-```
 
-### Resources
+## Create Resources
 To add an admin area for a model simply type (make sure the model exists first)
 
 ```sh
@@ -180,7 +195,10 @@ end
 ```
 Make sure this file is located under `app/helpers/cardboard`
 
-### Settings
+#### Custom CSS/JS
+The css/js for the resources is the same as the cardboard admin interface. If you'd like to extend or overwrite some of these, simply edit the `cardboard.css.scss` or `cardboard.js` files located in your assets folder. These files were generated during the cardboard installation.
+
+## Create Settings
 You can create new settings that will be editable from the admin panel. 
 
 In your `config/cardboard.yml`
@@ -199,8 +217,8 @@ Then you can use this setting in your views or controllers like so:
 Cardboard::Setting.my_custom_setting
 ```
 
-## View
-### Page
+## View Helpers
+### Access Pages
 ```ruby
 current_page
 ```
@@ -229,7 +247,7 @@ Feel free to make it fit as you want in your site design
   div style="float:right"
     = link_to "Edit this page", cardboard.edit_page_path(current_page)
 ```
-### Page nav
+### Page navigation
 ```slim
 = nested_pages do |page, subpages|
   .indent
@@ -243,7 +261,8 @@ ul
   = nested_pages do |page, subpages|
     li
       = link_to(page.title, page.url) if page.in_menu?
-      ul= subpages
+      - if subpages
+        ul= subpages
 ```
 
 ### Link to a page
