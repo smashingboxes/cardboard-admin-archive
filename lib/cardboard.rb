@@ -21,7 +21,7 @@ module Cardboard
       Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
         require_dependency controller
       end
-      Cardboard.resource_controllers = Cardboard::AdminController.descendants
+      Cardboard.resource_controllers = Cardboard::ResourceController.descendants
     end
 
     # Gets called within the initializer
