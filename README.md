@@ -1,6 +1,6 @@
 # Cardboard
 
-![alt text](https://raw.github.com/wiki/smashingboxes/cardboard/images/2a.jpg "screenshot1")
+![alt text](https://github.com/smashingboxes/cardboard/wiki/images/2a.jpg "screenshot1")
 
 ## Pre-Installation
 Make sure you have a authentication solution installed and working. As an example, here is what you need to do to get `Devise` installed.
