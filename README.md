@@ -51,9 +51,7 @@ Repeatable parts returns an active record collection. This means that regular Ra
 If this part is **not repeatable** you can use both
 ```ruby
 current_page.get('intro').attr('text1')
-```
-Or
-```ruby
+# Or
 current_page.get('intro.text1')
 ```
 ### Image Fields methods
@@ -105,7 +103,7 @@ Key | Type | Default | Definition
 [parts](#parts) | hash | nil |a list of page parts
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment |position of the page on the nav bar (the lowest position is the home page!)
-parent_id | string | none(required) | identifier of the parent page (used for nested pages)
+parent_id | string | nil | identifier of the parent page (used for nested pages)
 
 
 #### Parts
