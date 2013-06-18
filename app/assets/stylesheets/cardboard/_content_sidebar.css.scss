@@ -19,8 +19,14 @@
     -moz-transition: left $page_nav_slide_speed ease;
   }
   
-  .page_link{
+  .link_wrap{
     position: relative;
+
+    &:hover {
+      > .sort_handle {
+        display: block;
+      }
+    }
 
     a{
       color: $brand_color;
@@ -36,6 +42,11 @@
       top: 10px;
       color: #ccc;
       display: none;
+      
+      .icon-reorder {
+        cursor: pointer;
+        cursor: hand;
+      }
     }
   }
     

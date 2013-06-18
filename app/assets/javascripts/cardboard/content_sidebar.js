@@ -1,14 +1,12 @@
 $(document).ready(function(){
   
+  var updateURL = $('#content_pages').attr('data-update-url');
+  
   $('#content_pages, .page_group').sortable({
     axis: "y",
-    handle: ".sort_handle"
+    handle: ".sort_handle",
+    update: function () {
+      $.post(updateURL, $(this).sortable('serialize', {key: "pages[]"}));
+    }
   });
-
-  $('.page_link').hover(function(){
-    $(this).find('.sort_handle').show();
-  }, function(){
-    $(this).find('.sort_handle').hide();
-  });
-
 });

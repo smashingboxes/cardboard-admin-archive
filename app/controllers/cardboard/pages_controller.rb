@@ -20,6 +20,13 @@ module Cardboard
       end
     end
 
+    def sort
+      params[:pages].each_with_index do |id, index|
+        Page.find(id).update_attribute(:position_position, index + 1)
+      end
+      render nothing: true
+    end
+
   private
     def check_ability
       unless cardboard_user_can_manage?(:pages)

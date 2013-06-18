@@ -28,7 +28,7 @@ $main_topbar_color_text_shadow: 0px -1px #5d5d5d;
       height: $main_topbar_height;
       background: rgba(0, 0, 0, 0.2);
       margin-left: -10px;
-      box-sizing: border-box;
+      @include box-sizing(border-box);
       padding: 10px 36px;
     }
     

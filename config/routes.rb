@@ -4,6 +4,7 @@ Cardboard::Engine.routes.draw do
   get "account", to: "users#edit", as: "user"
   put "account", to: "users#update", as: "user"
 
+  post "pages/sort", to: "pages#sort"
   get "pages/:id", to: "pages#edit"
   resources :pages
 
