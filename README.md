@@ -105,6 +105,7 @@ Key | Type | Default | Definition
 [parts](#parts) | hash | nil |a list of page parts
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment |position of the page on the nav bar (the lowest position is the home page!)
+parent_id | string | none(required) | identifier of the parent page (used for nested pages)
 
 
 #### Parts
