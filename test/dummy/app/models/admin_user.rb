@@ -22,7 +22,7 @@ class AdminUser < ActiveRecord::Base
     when :piano
       true
     else
-      false
+      true
     end
   end
 end

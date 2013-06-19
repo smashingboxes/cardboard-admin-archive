@@ -1,5 +1,5 @@
 module Cardboard
-  module AdminHelper
+  module ResourceHelper
 
     def l(val, options = {})
       return nil if val.blank?

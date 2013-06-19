@@ -1,6 +1,6 @@
 require_dependency "cardboard/application_controller"
 
-class Cardboard::AdminController <  Cardboard::ApplicationController
+class Cardboard::ResourceController <  Cardboard::ApplicationController
   inherit_resources
 
   defaults :route_prefix => 'cardboard'
