@@ -25,20 +25,29 @@ $(function(){
   $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""]):not([data-method])', '[data-pjax-container]');
 
   $(document).on('submit', 'form[data-pjax]', function(event) {
-    $.pjax.submit(event, '[data-pjax-container]')
+    $.pjax.submit(event, '[data-pjax-container]');
+  });
+
+  $('.page_link .link_wrap a').click(function(){
+    $('.nav_resource_link.active').removeClass('active');
+    $('#nav_dashboard_link').addClass('active');
+  });
+
+  $('.nav_resource_link').click(function(){
+    $('.nav_resource_link.active, #nav_dashboard_link').removeClass('active');
+    $(this).addClass('active');
   });
 
   $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){
     $(this).datepicker({format: 'yyyy-mm-dd'});
   });
 
-
   $(document).on('click', '.nav-tabs a', function(e){
     e.preventDefault();
     $(this).tab('show');
   });
+  
   $('.nav-tabs a:first').tab('show');
-
 
 //   $('.wysihtml5').each(function(i, elem) {
 //     $(elem).wysihtml5();
