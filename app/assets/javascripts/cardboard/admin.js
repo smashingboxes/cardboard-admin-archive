@@ -34,7 +34,7 @@ $(function(){
   });
 
   $('.nav_resource_link').click(function(){
-    $('.nav_resource_link.active, #nav_dashboard_link').removeClass('active');
+    $('.nav_resource_link.active, .nav_dashboard_link').removeClass('active');
     $(this).addClass('active');
   });
 
