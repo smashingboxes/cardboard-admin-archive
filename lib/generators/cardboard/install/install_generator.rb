@@ -54,7 +54,7 @@ module Cardboard
 
       def setup_routes
         p "Mounting Cardboard::Engine at \"/cardboard\" in config/routes.rb..."
-        inject_into_file "config/routes.rb", "\n  mount Cardboard::Engine => \"/cardboard\"", :after => /routes.draw.do\n/
+        inject_into_file "config/routes.rb", "  mount Cardboard::Engine => \"/cardboard\"\n", :after => /routes.draw.do\n/
       end
 
       def create_assets
