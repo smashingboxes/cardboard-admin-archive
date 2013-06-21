@@ -1,4 +1,5 @@
 source "http://rubygems.org"
+ruby '2.0.0'
 
 # Declare your gem's dependencies in cardboard.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -13,14 +14,18 @@ gemspec
 
 
 # Gems used by the dummy application
-gem "jquery-rails"
 gem "sqlite3"
-
+gem "jquery-rails"
 
 
 # should be dependencies
 
-gem 'devise'
+gem 'devise', '>= 3.0.0.rc'
+
+
+gem 'inherited_resources', git: "git@github.com:josevalim/inherited_resources.git"
+gem "ransack", git: "git://github.com/ernie/ransack.git", branch: "rails-4"
+gem "cocoon", git: "git@github.com:nathanvda/cocoon.git"
 
 
 

@@ -2,7 +2,7 @@ module Cardboard
   class Page < ActiveRecord::Base
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
       
-    attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
+    # attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
     attr_accessor :parent_url, :is_root
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank

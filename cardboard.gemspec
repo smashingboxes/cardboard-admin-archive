@@ -20,16 +20,16 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   #don't forget to require them in lib/cardboard/engine.rb
-  s.add_dependency "rails", ">= 3.2.0"
+  s.add_dependency "rails", "~> 4.0.0.rc2"
   s.add_dependency "stringex"
-  s.add_dependency "sass-rails"
+  s.add_dependency "sass-rails", '>= 4.0.0.rc2'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
   s.add_dependency 'bootstrap-sass', '>= 2.2'
   s.add_dependency 'bootstrap-wysihtml5-rails'
   s.add_dependency 'bootstrap-datepicker-rails'
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
-  s.add_dependency 'simple_form'
+  s.add_dependency 'simple_form', '>= 3.0.0.rc'
   s.add_dependency 'kaminari'
   s.add_dependency 'inherited_resources'
   s.add_dependency 'ranked-model'
@@ -40,10 +40,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'chronic'
   s.add_dependency 'ransack'
   s.add_dependency 'rack-pjax'
-  s.add_dependency 'rails_engine_decorators'
+  s.add_dependency 'decorators'
   s.add_dependency 'jquery-ui-rails'
 
-  s.add_development_dependency 'jquery-rails'
   s.add_development_dependency "guard-minitest"
   s.add_development_dependency "minitest-rails"
   s.add_development_dependency "minitest-rails-capybara"

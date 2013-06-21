@@ -5,7 +5,7 @@ module Cardboard
 
     belongs_to :object_with_field, :polymorphic => true, :inverse_of => :fields
 
-    attr_accessible :position, :value #, :value_uid
+    # attr_accessible :position, :value #, :value_uid
 
     #gem
     include RankedModel

@@ -1,10 +1,10 @@
 //Only for Cardboard Admin Area
-// @import "variables";
+//= require bootstrap-wysihtml5
+// @import "bootstrap-wysihtml5"; //https://github.com/Nerian/bootstrap-wysihtml5-rails/issues/62 
 
+@import "variables";
 @import "bootstrap";
-@import "bootstrap-wysihtml5";
 @import "bootstrap-datepicker";
-
 @import "bootstrap_override";
 @import "burbon_mixins";
 @import "font-awesome";

@@ -6,7 +6,7 @@ module Cardboard
     belongs_to :parent, class_name: "Cardboard::PagePart",  :foreign_key => "parent_part_id", :inverse_of => :subparts
     belongs_to :page
 
-    attr_accessible :position, :allow_multiple, :label, :subparts_attributes, :fields_attributes
+    # attr_accessible :position, :allow_multiple, :label, :subparts_attributes, :fields_attributes
     accepts_nested_attributes_for :subparts, :allow_destroy => true #, :reject_if => :all_blank
     accepts_nested_attributes_for :fields #, :allow_destroy => true (maybe for super admin?)
 

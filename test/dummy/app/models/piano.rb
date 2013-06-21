@@ -1,3 +1,3 @@
 class Piano < ActiveRecord::Base
-  attr_accessible :image, :name
+  # attr_accessible :image, :name
 end
