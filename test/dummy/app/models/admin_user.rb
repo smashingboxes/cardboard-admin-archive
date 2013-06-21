@@ -19,7 +19,7 @@ class AdminUser < ActiveRecord::Base
       self.admin?
     when :settings
       self.admin?
-    when :piano
+    when :pianos
       true
     else
       true
