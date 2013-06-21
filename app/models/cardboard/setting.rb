@@ -15,7 +15,7 @@ module Cardboard
     class << self
       def add(id, hash_attributes)
         field = self.first.fields.where(identifier: id).first_or_initialize
-        field.update_attributes!(hash_attributes, :without_protection => true)
+        field.update_attributes!(hash_attributes)
       end
 
       def clear_saved_settings
