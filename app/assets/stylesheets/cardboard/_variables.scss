@@ -1,10 +1,10 @@
-$font: Roboto, sans-serif;
-$page_nav_slide_speed: 0.3s;
-$main_topbar_height: 40px;
-$main_sidebar_width: 95px;
-$main_content_sidebar_shadow: inset 0px 0px 20px #707070;
-$content_sidebar_width: 280px;
-$content_background: #f4f7f9;
+$font: Roboto, sans-serif !default;
+$page_nav_slide_speed: 0.3s !default;
+$main_topbar_height: 40px !default;
+$main_sidebar_width: 95px !default;
+$main_content_sidebar_shadow: inset 0px 0px 20px #707070 !default;
+$content_sidebar_width: 280px !default;
+$content_background: #f4f7f9 !default;
 $brand_color: #f9334a !default;
 
 // Overwrite as needed
