@@ -26,6 +26,7 @@ gem 'devise', '>= 3.0.0.rc'
 gem 'inherited_resources', git: "git@github.com:josevalim/inherited_resources.git"
 gem "ransack", git: "git://github.com/ernie/ransack.git", branch: "rails-4"
 gem "cocoon", git: "git@github.com:nathanvda/cocoon.git"
+gem "ranked-model", git: "git@github.com:mixonic/ranked-model.git"
 
 
 
