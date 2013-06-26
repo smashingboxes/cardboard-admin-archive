@@ -12,10 +12,10 @@
 //= require bootstrap-alert
 //= require bootstrap-tab
 //= require cardboard/wysihtml5-0.4.0pre 
-//= require bootstrap-wysihtml5/core
+//= require cardboard/jquery.wysihtml5imgresizer
+//= require cardboard/wysihtml5_custom
 //= require bootstrap-datepicker/core
 //= require cocoon
-//= require cardboard/wysihtml5-setup
 //= require cardboard/main_sidebar
 //= require cardboard/content_sidebar
 //= require cardboard/search_filter

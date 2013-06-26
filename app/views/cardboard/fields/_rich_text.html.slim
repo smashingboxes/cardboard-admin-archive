@@ -1,0 +1,37 @@
+
+.wysihtml5_wrapper
+  .toolbar style="display: none;"
+    a class="btn" data-wysihtml5-command="bold" title="CTRL+B" bold
+    a class="btn" data-wysihtml5-command="italic" title="CTRL+I" italic  
+    a class="btn" data-wysihtml5-command="createLink" insert link 
+    a class="btn insert_image" insert image
+    a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" h1
+    a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" h2
+    a class="btn" data-wysihtml5-command="insertUnorderedList">insertUnorderedList
+    a class="btn" data-wysihtml5-command="insertOrderedList">insertOrderedList
+    a class="btn" data-wysihtml5-command="undo">undo
+    a class="btn" data-wysihtml5-command="redo">redo 
+    / a class="btn" data-wysihtml5-action="change_view" HTML
+    
+    div data-wysihtml5-dialog="createLink" style="display: none;"
+      label
+        | Link:
+        input data-wysihtml5-dialog-field="href" value="http://"
+
+      a data-wysihtml5-dialog-action="save" OK
+      a data-wysihtml5-dialog-action="cancel" Cancel
+
+    
+    div class="image_modal modal hide fade" tabindex="-1" role="dialog" aria-hidden="true"
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-hidden="true" ×
+        h3 Insert Image
+
+      .modal-body
+        input class="image_url" type="text"
+
+      .modal-footer
+        button class="btn" data-dismiss="modal" aria-hidden="true" Close
+        a class="save_image btn btn-primary" Save changes
+
+  = f.input :value, label: f.object.label || f.object.identifier.titleize, as: f.object.type, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required

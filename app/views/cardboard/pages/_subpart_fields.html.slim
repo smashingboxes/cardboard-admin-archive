@@ -1,12 +1,11 @@
 
-.nested-fields
-  - if subpart.repeatable?
-    .right= link_to_remove_association "x", f, class: "btn btn-danger"
 
-  - for field in subpart.fields
+- if subpart.repeatable?
+  .right= link_to_remove_association "x", f, class: "btn btn-danger"
 
-    = f.simple_fields_for :fields, field do |w|
+- for field in subpart.fields
 
+  = f.simple_fields_for :fields, field do |w|
 
-      = render "cardboard/fields/#{field.type}", f: w rescue render "cardboard/fields/base_input", f: w
+    = render "cardboard/fields/#{field.type}", f: w 
 
