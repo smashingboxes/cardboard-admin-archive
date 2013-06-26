@@ -4,8 +4,8 @@
 
 = f.input :url, required: true, wrapper_html:{class: f.object.errors.messages[:slug] ? "error" : nil}, hint: f.object.root? ? "This page is your home page" : nil do
   - if f.object.root?
-    .btn(disabled)= "/" 
-    | or
+    .btn(disabled)=> "/" 
+    ' or
   .input-prepend style="display:inline"
     .add-on
       - if @page.new_record?
