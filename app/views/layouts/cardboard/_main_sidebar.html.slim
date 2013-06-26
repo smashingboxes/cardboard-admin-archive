@@ -4,7 +4,7 @@
 
   - Cardboard.resource_controllers.each do |controller|
     - name = controller.controller_name 
-    - if cardboard_user_can_manage?(name.singularize)
+    - if cardboard_user_can_manage?(name.to_sym)
       = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), class: "nav_resource_link"
 
   
