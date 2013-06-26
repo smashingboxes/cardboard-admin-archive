@@ -14,7 +14,8 @@ module Cardboard
 
     class << self
       def add(id, hash_attributes)
-        field = self.first.fields.where(identifier: id).first_or_initialize
+        myself = self.first_or_create
+        field = myself.fields.where(identifier: id).first_or_initialize
         field.update_attributes!(hash_attributes)
       end
 

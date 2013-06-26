@@ -184,7 +184,8 @@ module Cardboard
     #    #<Cardboard::Page => {#<Cardboard::Page => {}}
     # }}
     def self.arrange(root_page = nil)
-      root_page = self.root if root_page.nil?
+      root_page ||= self.root
+      return unless root_page
 
       @lock.synchronize do
         @_arranged_pages ||= {}
