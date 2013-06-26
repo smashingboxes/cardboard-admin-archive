@@ -5,8 +5,8 @@ module Cardboard
   module Seed
     extend ActiveSupport::Concern
 
-    def self.populate_pages(pages)
-      pages ||= {}
+    def self.populate_pages(filehash = nil)
+      pages = filehash ? filehash[:pages] : {}
       pages.each do |id, page|
 
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
@@ -19,7 +19,7 @@ module Cardboard
         Cardboard::Page.where(identifier: remove_page).first.destroy
       end
 
-      Cardboard::Page.create(title: "index", path: "/") if Cardboard::Page.root.nil?
+      Cardboard::Page.create(identifier: "index", path: "/") if Cardboard::Page.root.nil?
     end
 
 
@@ -57,13 +57,14 @@ module Cardboard
       end
     end
 
-    def self.populate_settings(settings)
+    def self.populate_settings(filehash = nil)
+      settings = filehash ? filehash[:settings] : nil
       if settings
         db_settings = Cardboard::Setting.first_or_create
         self.populate_fields(settings, db_settings)
       end
       Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title, position: 0)
-      Cardboard::Setting.add("google_analytics", type: "string", position: 1)
+      # Cardboard::Setting.add("google_analytics", type: "string", position: 1)
     end
     
   end

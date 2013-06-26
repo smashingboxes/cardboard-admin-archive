@@ -1,7 +1,8 @@
 h1 Settings
 
-= simple_form_for @setting do |s|
-  - for field in @setting.fields
-    = s.fields_for :fields, field do |f|
-      = render "cardboard/fields/#{field.type}", f: f rescue render "cardboard/fields/base_input", f: f
-  = s.button :submit
+- if @setting
+  = simple_form_for @setting do |s|
+    - for field in @setting.fields
+      = s.fields_for :fields, field do |f|
+        = render "cardboard/fields/#{field.type}", f: f rescue render "cardboard/fields/base_input", f: f
+    = s.button :submit

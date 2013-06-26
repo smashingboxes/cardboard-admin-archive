@@ -48,6 +48,7 @@ module Cardboard
     private
 
     def inner_nested_pages(pages, &block)
+      return unless pages
       pages.map do |page, sub_pages|
         capture(page, sub_pages.present? ? inner_nested_pages(sub_pages, &block) : nil, &block)
       end.join.html_safe
