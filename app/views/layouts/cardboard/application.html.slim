@@ -10,8 +10,8 @@ html
     #main_topbar= render 'layouts/cardboard/main_topbar'
 
     #main_content
-      - if Cardboard.resource_controllers
-        #main_sidebar= render 'layouts/cardboard/main_sidebar'
+      / - if active_resource_controller?
+      #main_sidebar= render 'layouts/cardboard/main_sidebar'
 
       #content_sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
         #pages_sidebar= render 'cardboard/pages/sidebar'
