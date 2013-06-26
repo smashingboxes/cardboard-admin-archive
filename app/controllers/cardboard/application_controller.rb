@@ -18,6 +18,14 @@ module Cardboard
     end
     helper_method :cardboard_user_can_manage?
 
+    # def active_resource_controller?
+    #   for c in Cardboard.resource_controllers
+    #     return true if current_admin_user.can_manage_cardboard?(c.controller_name.to_sym)
+    #   end
+    #   false
+    # end
+    # helper_method :active_resource_controller?
+
     def cardboard_user
       @cardboard_user ||= self.send(Cardboard.application.current_admin_user_method)
     end

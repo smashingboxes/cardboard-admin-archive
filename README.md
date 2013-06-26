@@ -184,7 +184,7 @@ Cardboard's controllers inherit from a `@q` variable which gives access to the r
 = sort_link @q, :name, "Product Name" 
 ```
 
-#### Custom helpers
+#### Custom resource helpers
 To add custom helpers for your resource simply create a helper with the same name. 
 Example:
 ```ruby
