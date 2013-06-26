@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form', '>= 3.0.0.rc'
   s.add_dependency 'kaminari'
   s.add_dependency 'inherited_resources'
-  s.add_dependency 'ranked-model'
+  s.add_dependency 'ranked-model', '>= 0.2.1'
   s.add_dependency 'cocoon'
   s.add_dependency 'gon'
   s.add_dependency 'rack-cache'
