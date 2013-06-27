@@ -130,7 +130,7 @@ hint | string | nil | form field hint
 placeholder | string | nil | form field placeholder
 position | integer | auto-increment | position of the field within the part (only for the admin area)
 required | boolean | true | must this field have a value for the form to save
-type | string | `string` | choose between: `boolean`, `date`, `decimal`, `file`, `image`, `integer`, `rich_text`, `string`, `resource_link` (needs value: resource_linked), `external_link` (needs value: http://site.com)
+type | string | `string` | choose between: `boolean`, `date`, `decimal`, `file`, `image`, `integer`, `rich_text`, `text`, `string`, `resource_link` (needs value: resource_linked), `external_link` (needs value: http://site.com)
 default | string | nil | set the value but don't overwrite (only set if nil)
 value | string | nil | USE ONLY FOR types `resource_link` and `external_link` (this will overwrite user input, in most cases use the `default` key instead)
 
