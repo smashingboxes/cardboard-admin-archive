@@ -231,8 +231,10 @@ app
     |- pages_decorator
 ```
 ```ruby
-def page_identifier
-  @example = "cool"
+PagesController.class_eval do
+  def page_identifier
+    @example = "cool"
+  end
 end
 ``` 
 
