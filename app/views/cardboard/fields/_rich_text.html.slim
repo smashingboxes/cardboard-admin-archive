@@ -1,19 +1,56 @@
-
-.wysihtml5_wrapper
+= f.input :value, label: (f.object.label || f.object.identifier.titleize), hint: f.object.hint, required: f.object.required, wrapper_html: {class: "wysihtml5_wrapper"} do
+  
   .toolbar style="display: none;"
-    a class="btn" data-wysihtml5-command="bold" title="CTRL+B" bold
-    a class="btn" data-wysihtml5-command="italic" title="CTRL+I" italic  
-    a class="btn" data-wysihtml5-command="createLink" insert link 
-    a class="btn insert_image" insert image
-    a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" h1
-    a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" h2
-    a class="btn" data-wysihtml5-command="insertUnorderedList">insertUnorderedList
-    a class="btn" data-wysihtml5-command="insertOrderedList">insertOrderedList
-    a class="btn" data-wysihtml5-command="undo">undo
-    a class="btn" data-wysihtml5-command="redo">redo 
-    / a class="btn" data-wysihtml5-action="change_view" HTML
+
+    .btn-group
+      a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:;" unselectable="on"
+        i class="icon-font icon-margin"
+        span class="current-font" Normal text
+      ul.dropdown-menu
+        li
+          a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" href="javascript:;" unselectable="on"
+            | Normal Text
+        li
+          a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" href="javascript:;" unselectable="on"
+            | Heading 1
+        li
+          a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" href="javascript:;" unselectable="on"
+            | Heading 2
+
+    .btn-group
+      a class="btn" data-wysihtml5-command="bold" title="CTRL+B" href="javascript:;" unselectable="on"
+        i.icon-bold
+      a class="btn" data-wysihtml5-command="italic" title="CTRL+I" href="javascript:;" unselectable="on"
+        i.icon-italic 
+      a class="btn" data-wysihtml5-command="underline" title="CTRL+U" href="javascript:;" unselectable="on"
+        i.icon-underline
+      a class="btn" data-wysihtml5-command="strikeThrough" title="CTRL+S" href="javascript:;" unselectable="on"
+        i.icon-strikethrough
+
+
+    .btn-group  
+      a class="btn" data-wysihtml5-command="insertUnorderedList" title="Unordered List" href="javascript:;" unselectable="on"
+        i.icon-list-ul
+      a class="btn" data-wysihtml5-command="insertOrderedList" title="Ordered List" href="javascript:;" unselectable="on"
+        i.icon-list-ol
+      a class="btn" data-wysihtml5-command="Outdent" title="Outdent" href="javascript:;" unselectable="on"
+        i.icon-indent-left
+      a class="btn" data-wysihtml5-command="Indent"  title="Indent" href="javascript:;" unselectable="on"
+        i.icon-indent-right
+
+
+    .btn-group        
+      a class="btn" data-wysihtml5-command="createLink" href="javascript:;" unselectable="on"
+        i.icon-link
+      a class="btn insert_image" href="javascript:;" unselectable="on"
+        i.icon-picture
+
+    .btn-group
+      a class="btn" data-wysihtml5-action="change_view" title="Show Source Code" href="javascript:;" unselectable="on" HTML
+      / a class="btn" data-wysihtml5-command="undo" undo
+      / a class="btn" data-wysihtml5-command="redo" redo 
     
-    div data-wysihtml5-dialog="createLink" style="display: none;"
+    div data-wysihtml5-modal="createLink" style="display: none;"
       label
         | Link:
         input data-wysihtml5-dialog-field="href" value="http://"
@@ -34,4 +71,5 @@
         button class="btn" data-dismiss="modal" aria-hidden="true" Close
         a class="save_image btn btn-primary" Save changes
 
-  = f.input :value, label: f.object.label || f.object.identifier.titleize, as: f.object.type, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required
+  = f.text_area :value,  placeholder: f.object.placeholder, class: "wysihtml5"
+  

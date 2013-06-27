@@ -13,8 +13,10 @@
 @import "content";
 @import "content_sidebar";
 @import "resources";
+@import "wysihtml5_custom";
 
 
+// Global Styles
 .center{
   text-align: center;
 }
@@ -35,8 +37,9 @@
     margin: 0;
     line-height: inherit;
   }
-  // input{
-  //   margin: 0px;
-  // }
+}
+
+.icon-margin{
+  margin-right: 4px;
 }
 

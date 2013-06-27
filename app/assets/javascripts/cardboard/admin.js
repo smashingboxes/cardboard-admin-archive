@@ -11,10 +11,11 @@
 //= require bootstrap-modal
 //= require bootstrap-alert
 //= require bootstrap-tab
+//= require bootstrap-datepicker/core
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require cardboard/jquery.wysihtml5imgresizer
+//= require cardboard/jquery.wysihtml5_size_matters
 //= require cardboard/wysihtml5_custom
-//= require bootstrap-datepicker/core
 //= require cocoon
 //= require cardboard/main_sidebar
 //= require cardboard/content_sidebar
@@ -48,6 +49,10 @@ $(function(){
   });
   
   $('.nav-tabs a:first').tab('show');
+
+  $(document).on('cocoon:before-insert', function(e,insertedItem) {
+    insertedItem.fadeIn('slow');
+  });
 
 //   $('.wysihtml5').each(function(i, elem) {
 //     $(elem).wysihtml5();

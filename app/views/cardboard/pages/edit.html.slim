@@ -29,7 +29,7 @@ h1
         - for subpart in part.subparts #.rank(:subpart_position)
           = g.simple_fields_for :subparts, subpart do |y|
 
-            .nested-fields= render "subpart_fields", f: y, subpart: subpart
+            = render "subpart_fields", f: y, subpart: subpart
         
         - if part.repeatable?
           .links

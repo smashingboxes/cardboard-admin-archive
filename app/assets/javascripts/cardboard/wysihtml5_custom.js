@@ -1,4 +1,3 @@
-
 var wysihtml5ParserRules = {
   /**
    * CSS Class white-list
@@ -52,93 +51,92 @@ var wysihtml5ParserRules = {
   }
 };
 
-$(document).ready(function () {
-
-  var TOOLBAR_CLASS = 'toolbar',
-      TEXTAREA_CLASS = 'wysihtml5';
-
-  $('.wysihtml5_wrapper').each(function (index) {
-
-    var textarea_id = TEXTAREA_CLASS + '_' + index,
-        toolbar_id = TOOLBAR_CLASS + '_' + index;
-    
-    var $wysihtml5 = $(this),
-        $toolbar = $wysihtml5.find('.' + TOOLBAR_CLASS),
-        $textarea = $wysihtml5.find('.' + TEXTAREA_CLASS),
-        $insertBtn = $wysihtml5.find('.insert_image'),
-        $modal = $wysihtml5.find('.image_modal'),
-        $imageUrl = $wysihtml5.find('.image_url'),
-        $saveBtn = $wysihtml5.find('.save_image');
- 
-    var caretPosition,
-        editor;
-    
-    $textarea.attr('id', textarea_id);
-    $toolbar.attr('id', toolbar_id);
+var wysihtml5_initializer = function(element){
+  var caretPosition, editor;
   
-    editor = new wysihtml5.Editor(textarea_id, {
-      toolbar:        toolbar_id,
-      // stylesheets:    "/assets/application.css",
-      parserRules:    wysihtml5ParserRules
+  var $wysihtml5 = $(element),
+      $toolbar = $wysihtml5.find('.toolbar'),
+      $textarea = $wysihtml5.find('.wysihtml5'),
+      $insertBtn = $wysihtml5.find('.insert_image'),
+      $modal = $wysihtml5.find('.image_modal'),
+      $imageUrl = $wysihtml5.find('.image_url'),
+      $saveBtn = $wysihtml5.find('.save_image');
+
+  editor = new wysihtml5.Editor($textarea.get()[0], {
+    toolbar:        $toolbar.get()[0],
+    // stylesheets:    "/assets/application.css",
+    parserRules:    wysihtml5ParserRules
+  });
+
+  editor.on('load', function () {
+    
+    $(editor.composer.iframe).wysihtml5_size_matters();
+
+    initRichImages();
+    
+    $insertBtn.click(function () {
+      caretPosition = editor.composer.selection.getBookmark();
+      $imageUrl.val(null);
+      $modal.modal('show');
     });
 
-    editor.on('load', function () {
-      var editor = this;
-      var caretPosition;
-      
-      initRichImages();
-      
-      $insertBtn.click(function () {
-        caretPosition = editor.composer.selection.getBookmark();
-        $imageUrl.val(null);
-        $modal.modal('show');
+    $toolbar.find("a[data-wysihtml5-command='formatBlock']").click(function(e) {
+      var target = e.target || e.srcElement;
+      var el = $(target);
+      $toolbar.find('.current-font').text(el.html());
+    });
+    
+    $modal.on('shown', function () {
+      $imageUrl.focus();
+    })
+    
+    $saveBtn.click((function(editor) {
+      return function (e) {
+        
+        if (caretPosition) {
+          editor.composer.selection.setBookmark(caretPosition);
+          editor.currentView.element.focus();
+          editor.composer.commands.exec('insertImage', {src: $imageUrl.val()});
+          initRichImages();
+        }
+
+        $modal.modal('hide');
+        
+      };
+    })(editor));
+  });
+  
+  editor.on('change_view', function () {
+    initRichImages();
+  });
+  editor.on('paste:composer', function () {
+    initRichImages();
+  });
+  editor.on('undo:composer', function () {
+    initRichImages();
+  });
+  editor.on('redo:composer', function () {
+    initRichImages();
+  });
+  
+  function initRichImages() {
+    setTimeout(function () {
+      $(editor.composer.iframe.contentWindow.document).find("img").wysihtml5ImgResizer({
+        document: editor.composer.iframe.contentWindow.document
       });
-      
-      $modal.on('shown', function () {
-        $imageUrl.focus();
-      })
-      
-      $saveBtn.click((function(editor) {
-        return function (e) {
-          
-          if (caretPosition) {
-            editor.composer.selection.setBookmark(caretPosition);
-            editor.currentView.element.focus();
-            editor.composer.commands.exec('insertImage', {src: $imageUrl.val()});
-            initRichImages();
-          }
+    }, 0)
+  }
+};
 
-          $modal.modal('hide');
-          
-        };
-      })(editor));
-    });
-    
-    editor.on('change_view', function () {
-      initRichImages();
-    });
-    
-    editor.on('paste:composer', function () {
-      initRichImages();
-    });
-    
-    editor.on('undo:composer', function () {
-      initRichImages();
-    });
-    
-    editor.on('redo:composer', function () {
-      initRichImages();
-    });
-    
-    
-    function initRichImages() {
-      setTimeout(function () {
-        $(editor.composer.iframe.contentWindow.document).find("img").wysihtml5ImgResizer({
-          document: editor.composer.iframe.contentWindow.document
-        });
-      }, 0)
-    }
-  
+$(document).on("ready pjax:end", function () {
+
+  $(document).on('cocoon:after-insert', function(e, insertedItem) {
+    wysihtml5_initializer(insertedItem);
+    // $(insertedItem).find("textarea").wysihtml5({"image": false, "customTemplates":  page_links_template});
+  });
+
+  $('.wysihtml5_wrapper').each(function() {
+    wysihtml5_initializer(this);
   });
   
 });
