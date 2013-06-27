@@ -53,7 +53,7 @@ describe "Seeding" do
   end
   describe 'Pages' do
     before do
-      Cardboard::Seed.populate_pages(@file_hash[:pages])
+      Cardboard::Seed.populate_pages(@file_hash)
       @page = Cardboard::Page.root
       @part = @page.parts.first
       @last_part = @page.parts.last
@@ -74,7 +74,7 @@ describe "Seeding" do
         @file_hash[:pages].delete(:about_us)
         @file_hash[:pages][:home][:parts].delete(:slideshow)
         @file_hash[:pages][:home][:parts][:intro][:fields].delete(:text)
-        Cardboard::Seed.populate_pages(@file_hash[:pages])
+        Cardboard::Seed.populate_pages(@file_hash)
         @page = Cardboard::Page.root
         @part = @page.parts.first
       end

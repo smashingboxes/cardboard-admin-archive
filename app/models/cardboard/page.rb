@@ -28,7 +28,7 @@ module Cardboard
     # validates_associated :parts, on: :update #breaks seed, should work
 
     #scopes
-    scope :preordered, order("path ASC, position ASC, slug ASC") #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
+    scope :preordered, -> {order("path ASC, position ASC, slug ASC")} #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
 
     #class variables
     @lock = ::Mutex.new
@@ -56,6 +56,7 @@ module Cardboard
 
     #class methods
     def self.find_by_url(full_url)
+      return nil unless full_url
       path, slug = self.path_and_slug(full_url)
       page = self.where(path: path, slug: slug).first
 

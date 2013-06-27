@@ -17,7 +17,7 @@ module Cardboard
                           :format => { :with => /\A[a-z\_0-9]+\z/,
                           :message => "Only downcase letters, numbers and underscores are allowed" }
 
-    default_scope rank(:position)
+    default_scope {rank(:position)}
 
     # overwritten setter
     def type=(val)

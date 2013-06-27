@@ -37,7 +37,7 @@ describe "Page editing integration" do
         }
       }
     }.with_indifferent_access
-    Cardboard::Seed.populate_pages(@file_hash[:pages])
+    Cardboard::Seed.populate_pages(@file_hash)
     user = FactoryGirl.create(:admin_user)
     login_as(user, :scope => :admin_user)
     visit cardboard.edit_page_path(Cardboard::Page.root)

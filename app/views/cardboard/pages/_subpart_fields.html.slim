@@ -6,6 +6,8 @@
   - for field in subpart.fields
 
     = f.simple_fields_for :fields, field do |w|
-
-      = render "cardboard/fields/#{field.type}", f: w 
+      - begin
+        = render "cardboard/fields/#{field.type}", f: w 
+      - rescue ActionView::MissingTemplate => e
+        = render "cardboard/fields/base_input", f: w
 

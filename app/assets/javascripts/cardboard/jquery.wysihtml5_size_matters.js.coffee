@@ -22,7 +22,6 @@
       @$body.on 'keyup keydown paste change focus', => @adjustHeight()
 
     adjustHeight: ->
-      console.log(@$iframe.css('min-height'), @$body.height(), @extraBottomSpacing(), @$body.height() + @extraBottomSpacing())
       @$iframe.css('min-height', @$body.height() + @extraBottomSpacing())
 
     # This is required to keep the text editor from having a "bouncing" effect.
