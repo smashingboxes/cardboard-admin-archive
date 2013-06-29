@@ -10,6 +10,14 @@ module Cardboard
         @_cardboard_source_root ||= File.expand_path("../templates", __FILE__)
       end
 
+      def validate_model_exists
+        begin
+          fields
+        rescue Exception => e
+          raise "Model #{singular_table_name.classify} does not exist. Try running `rails g model #{singular_table_name.classify}`"
+        end
+      end
+
       def generate_controller_file
         empty_directory "app/controllers/cardboard"
         template "admin_controller.rb", "app/controllers/#{controller_name}.rb"
@@ -21,11 +29,13 @@ module Cardboard
         template "#{options.markup}/_fields.html.slim", "app/views/cardboard/#{plural_table_name}/_fields.html.#{options.markup}"
         template "#{options.markup}/edit.html.slim", "app/views/cardboard/#{plural_table_name}/edit.html.#{options.markup}"
         template "#{options.markup}/new.html.slim", "app/views/cardboard/#{plural_table_name}/new.html.#{options.markup}"
-        template "#{options.markup}/show.html.slim", "app/views/cardboard/#{plural_table_name}/show.html.#{options.markup}"
       end
 
       private
 
+      def fields
+        @_fields ||= singular_table_name.classify.constantize.new.attributes.keys.reject{|k| %w[id created_at updated_at].include?(k) || k.empty?}
+      end
       def plural_table_name
         @_plural_table_name ||= singular_table_name.pluralize
       end
