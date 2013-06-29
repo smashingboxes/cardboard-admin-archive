@@ -2,16 +2,15 @@
 
 table class="table table-striped"
   tr
-    - for field in @<%= plural_table_name %>.columns
-      th= sort_link @q, field.name
+    <% for field in fields %>th= sort_link @q, :<%= field %>
+    <% end %>
     th
     th
 
   - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
     tr
-      - for field in <%= singular_table_name %>.attributes.keys
-        td = <%= singular_table_name %>.attributes[field]
-
+      <% for field in fields %>td = <%= singular_table_name %>.<%= field %>
+      <% end %>
       td = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
       td = link_to 'Destroy', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), :confirm => 'Are you sure?', :method => :delete
 
