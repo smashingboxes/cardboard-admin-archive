@@ -18,7 +18,7 @@ require 'ransack'
 require 'kaminari'
 require 'rack-pjax'
 require 'jquery-ui-rails'
-# require 'decorators'
+require 'decorators'
 
 
 module Cardboard
@@ -46,6 +46,10 @@ module Cardboard
 
     initializer "set resource controller for generator" do |app|
       Cardboard.set_resource_controllers
+    end
+
+    initializer "load decorators" do |app|
+      Decorators.register! Rails.root
     end
 
     # the to_prepare gets executed even before autoreloads

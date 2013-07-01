@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'chronic'
   s.add_dependency 'ransack'
   s.add_dependency 'rack-pjax'
-  s.add_dependency 'rails_engine_decorators'
+  s.add_dependency 'decorators'
   s.add_dependency 'jquery-ui-rails'
 
   s.add_development_dependency 'jquery-rails'
