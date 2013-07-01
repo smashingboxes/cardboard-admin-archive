@@ -49,6 +49,7 @@ module Cardboard
       end
 
       def setup_directory
+        empty_directory "app/controllers/cardboard"
         empty_directory "app/views/pages"
       end
 
