@@ -11,6 +11,7 @@
 //= require bootstrap-modal
 //= require bootstrap-alert
 //= require bootstrap-tab
+//= require cardboard/bootstrap-select
 //= require bootstrap-datepicker/core
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require cardboard/jquery.wysihtml5imgresizer
@@ -47,8 +48,6 @@ $(function(){
     e.preventDefault();
     $(this).tab('show');
   });
-  
-  $('.nav-tabs a:first').tab('show');
 
   $(document).on('cocoon:before-insert', function(e,insertedItem) {
     insertedItem.fadeIn('slow');
@@ -57,5 +56,11 @@ $(function(){
 //   $('.wysihtml5').each(function(i, elem) {
 //     $(elem).wysihtml5();
 //   });
+
+  $(document).on("pjax:end ready", function(e){
+    $('select').selectpicker();
+
+    $('.nav-tabs a:first').tab('show');
+  });
 
 })

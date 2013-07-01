@@ -46,6 +46,9 @@ input[type="color"],
   font-family: $font;
   font-weight: 300;
 }
+select.datetime{
+  width: auto;
+}
 
 legend + .control-group {
   margin-top: 0px;
