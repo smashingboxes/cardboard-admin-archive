@@ -14,20 +14,6 @@ module Cardboard
       link_to(capture(page, &block), page.url, html_options)
     end
 
-    # Example:
-    # head
-    #  = meta_and_title(current_page)
-    def meta_and_title(page)
-      return nil unless page
-      seo = page.meta_seo.dup
-      html = ""
-      html += "<title>#{seo.delete(:title)}</title>" if seo[:title]
-      seo.each do |key, value|
-        html += "<meta name='#{key}' content='#{value}' />\n"
-      end
-      html.html_safe
-    end
-
     # Example 1:
     # = nested_pages Cardboard::Page.arrange do |page, subpages|
     #   .indent

@@ -1,0 +1,7 @@
+- content_for :seo do
+  = render "cardboard/pages/seo"
+
+- begin
+  = render template: "pages/#{current_page.identifier}"
+- rescue ActionView::MissingTemplate => e
+  = render "cardboard/pages/error", missing_file: current_page.identifier
