@@ -10,6 +10,7 @@ $(function(){
     var type = $(this).find(":selected").data("type");
     var options = $(ransack_options).filter("optgroup[label='" + type + "']").html()
     $("select#ransack_options").html(options).trigger("change");
+    $("select#ransack_options").selectpicker('refresh');
   });
   
   $(document).on('change',"select#ransack_options", function(){

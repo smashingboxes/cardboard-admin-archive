@@ -4,17 +4,18 @@
     = f.hidden_field q,  :value => v
 
   .row-fluid.center
-    
-    = content_tag(:select, :disabled => elements.size < 2, id: "advanced_field") do
-      - for e in elements
-        option data-type=e[1] value=e[0] selected=(e[0] == main_element)
-          = e[0].to_s.titleize
+    .input-append.input-prepend
+      .btn-group
+        = content_tag(:select, :disabled => elements.size < 2, id: "advanced_field") do
+          - for e in elements
+            option data-type=e[1] value=e[0] selected=(e[0] == main_element)
+              = e[0].to_s.titleize
 
-    = select_tag nil, grouped_options_for_select(ransack_options, "cont"), id: "ransack_options"
-
-    .input-append
+        = select_tag nil, grouped_options_for_select(ransack_options, "cont"), id: "ransack_options"
       = f.text_field "#{main_element}_cont", id: "advanced_query"
-      = render "cardboard/resources/search_button", f: f
+      .btn-group
+        
+        = render "cardboard/resources/search_button", f: f
 
     = link_to "Simple Search", "#", id: "simple_search_link"
     /, class: "btn"
@@ -25,7 +26,7 @@
       - if v.present?
         .filter
 
-          = link_to({q: params[:q].except(q), s: "advanced"}) do
+          = link_to url_for({q: params[:q].except(q), s: "advanced"}) do
             '
             i.icon-remove
             - *a, b = q.split("_")

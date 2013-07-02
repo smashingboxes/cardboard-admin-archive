@@ -92,3 +92,7 @@ textarea {
 .alert{
   @include border-top-radius(0px);
 }
+
+.input-append.input-prepend .btn-group{
+  vertical-align: top;
+}
