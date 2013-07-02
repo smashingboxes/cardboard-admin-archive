@@ -11,9 +11,10 @@
 //= require bootstrap-modal
 //= require bootstrap-alert
 //= require bootstrap-tab
+//= require bootstrap-datepicker/core
+//= require cardboard/datepicker
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require bootstrap-wysihtml5/core
-//= require bootstrap-datepicker/core
 //= require cocoon
 //= require cardboard/wysihtml5-setup
 //= require cardboard/main_sidebar
@@ -36,10 +37,6 @@ $(function(){
   $('.nav_resource_link').click(function(){
     $('.nav_resource_link.active, .nav_dashboard_link').removeClass('active');
     $(this).addClass('active');
-  });
-
-  $(document).on('focus', '.datepicker:not(.hasDatepicker)', function(){
-    $(this).datepicker({format: 'yyyy-mm-dd'});
   });
 
   $(document).on('click', '.nav-tabs a', function(e){
