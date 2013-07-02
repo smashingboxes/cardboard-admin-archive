@@ -12,8 +12,9 @@ class PagesController < ApplicationController
       redirect_to @page.url, status: :moved_permanently
     else
       # call controller hook
-      self.send(@page.identifier) if self.respond_to? @page.identifier
-      render_main_app_page @page
+      self.send(current_page.identifier) if self.respond_to? current_page.identifier
+
+      render "cardboard/pages/show", layout: @layout || "layouts/application"
     end
   end
 
@@ -26,16 +27,5 @@ private
 
   def current_page
     @page
-  end
-  helper_method :current_page
-
-
-  def render_main_app_page(page)
-    #TODO: Make the layout name variable
-    render "pages/#{page.identifier}", layout: @layout || "layouts/application"
-
-  rescue ActionView::MissingTemplate => e
-    @missing_file = e.path
-    render "cardboard/pages/error"#, layout: "layouts/application"
   end
 end

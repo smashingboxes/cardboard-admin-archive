@@ -238,9 +238,11 @@ PagesController.class_eval do
 end
 ``` 
 
-### Meta tags
+### Meta tags (SEO)
+To add SEO meta tags simply add a yield as follows to your layout file:
 ```slim
-= meta_and_title(current_page)
+head
+ = yield(:seo)
 ```
 ### Show edit link
 Feel free to make it fit as you want in your site design
