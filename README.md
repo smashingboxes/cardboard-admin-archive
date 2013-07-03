@@ -13,7 +13,7 @@ Also make sure you have `imagemagick` installed (on mac do `brew install imagema
 Add the gem to the `Gemfile`
 
 ```ruby
-gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard'
+gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard', branch: 'rails3.2'
 ```
 
 And run `bundle install`. 
