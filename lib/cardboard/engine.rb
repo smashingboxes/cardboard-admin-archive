@@ -47,7 +47,7 @@ module Cardboard
     end
 
     initializer "load decorators" do |app|
-      Decorators.register! Rails.root
+      Decorators.register! Rails.root, Engine.root
     end
 
     # the to_prepare gets executed even before autoreloads
