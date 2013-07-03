@@ -33,7 +33,7 @@ module Cardboard
             @_settings ||= {}
             @_settings[sym.to_sym] ||= begin
               return nil unless self.first
-              s = self.first.fields.where(identifier: sym).first
+              s = self.first.fields.where(identifier: sym.to_s).first
               raise ::ActiveRecord::NoMethodError if s.nil?
               s.value
             end
