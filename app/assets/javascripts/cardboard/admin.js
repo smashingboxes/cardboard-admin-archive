@@ -37,8 +37,10 @@ $(function(){
   });
 
   $('.nav_resource_link').click(function(){
-    $('.nav_resource_link.active, .nav_dashboard_link').removeClass('active');
+    $('.nav_resource_link.active, #nav_dashboard_link').removeClass('active');
     $(this).addClass('active');
+    $("#content_sidebar").removeClass('toggle');
+    $('#content').removeClass('toggle');
   });
 
   $(document).on('click', '.nav-tabs a', function(e){
