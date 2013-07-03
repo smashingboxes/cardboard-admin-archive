@@ -1,13 +1,23 @@
 # Cardboard
+Cardboard is a simple CMS Engine for your Rails 4 applications.
+
+## Features
+
+* Build for Rails 4
+* Make your site and your admin area the standard rails way (no complex engines)
+* Create pages and site settings in seconds
+* Repeatable page parts
+* Write your views in haml/slim/erb...! (no restrictive DSL or templating language)
+* Your customers will love the UI/UX
+* Super easy to extend and customize
+* It's like your favorite admin interface gem just had a baby with a CMS
 
 ![alt text](https://github.com/smashingboxes/cardboard/wiki/images/2a.jpg "screenshot1")
 
-## Pre-Installation
-Make sure you have a authentication solution installed and working. As an example, here is what you need to do to get `Devise` installed.
-
-https://github.com/plataformatec/devise#getting-started
-
-Also make sure you have `imagemagick` installed (on mac do `brew install imagemagick`)
+## Requirements
+* An authentication solution. For example, [here is what you need to do](https://github.com/plataformatec/devise#getting-started) to get `Devise` installed.
+* `imagemagick` (on mac do `brew install imagemagick`)
+* `Rails 4` and `Ruby 2.0`
 
 ## Installation
 Add the gem to the `Gemfile`
@@ -59,13 +69,14 @@ current_page.get('intro').attr('text1')
 current_page.get('intro.text1')
 ```
 ### Image Fields methods
-Images returned by `current_page.get('intro.image1')` are [Dragonfly](http://markevans.github.io/dragonfly/) objects. As such, it's possible to edit them directly from the view.
+Images returned by `image` type fields are [Dragonfly](http://markevans.github.io/dragonfly/) objects. As such, it's possible to edit them directly from the view.
 
 ```ruby
-image.url                 # URL of the modified image
-image.thumb('40x30#').url  # resize, crop if necessary to maintain aspect ratio (centre gravity)
-image.process(:greyscale).thumb('40x30#').url
-# Hint: remember to check if image is not nil
+if image = current_page.get('intro.image1')
+  image.url                 # URL of the modified image
+  image.thumb('40x30#').url  # resize, crop if necessary to maintain aspect ratio (centre gravity)
+  image.process(:greyscale).thumb('40x30#').url
+end # Hint: remember to check if image is not nil before calling methods on it
 ```
 More options and methods are available at [Dragonfly's Documentation](http://markevans.github.io/dragonfly/file.ImageMagick.html)
 
