@@ -2,8 +2,6 @@ require "cardboard/engine"
 
 module Cardboard
   autoload :Application,              'cardboard/application'
-  # autoload :Devise,                   'cardboard/devise'
-
 
   class << self
 

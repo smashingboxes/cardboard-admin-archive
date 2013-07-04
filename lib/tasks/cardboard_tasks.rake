@@ -1,11 +1,13 @@
 require Cardboard::Engine.root.join('lib/cardboard/helpers/seed.rb')
 
-Rake::Task['db:seed'].enhance [:cardboard_seed]
+# Rake::Task['db:seed'].enhance do
+#   Rake::Task['cardboard:seed'].invoke
+# end
 
 
 # Seed!
-task :cardboard_seed => :environment do
-  puts "Seeding Cardboard"
+task 'cardboard:seed' => :environment do
+  puts "Seeding Cardboard ..."
   begin
     file_hash = YAML.load(ERB.new(File.read(Rails.root.join('config', 'cardboard.yml'))).result).try(:with_indifferent_access)
   rescue Errno::ENOENT => e
