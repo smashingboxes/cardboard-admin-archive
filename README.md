@@ -40,7 +40,7 @@ rake db:migrate
 Edit your `config/cardboard.yml` file then run
 
 ```sh
-rake db:seed
+rake cardboard:seed
 ```
 
 
