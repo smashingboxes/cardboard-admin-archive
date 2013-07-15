@@ -12,6 +12,7 @@ module Cardboard
     end
 
     def user_class
+      return false unless application.user_class
       @user_class ||= application.user_class.to_s.camelize.constantize
     end
 
