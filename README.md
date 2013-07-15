@@ -147,7 +147,7 @@ value | string | nil | USE ONLY FOR types `resource_link` and `external_link` (t
 
 
 ## Create Resources
-To add an admin area for a model simply type (make sure the model exists first)
+To add an admin area for a model simply type (make sure the model exists first and migrations have been run)
 
 ```sh
 rails g cardboard:resource model_name
