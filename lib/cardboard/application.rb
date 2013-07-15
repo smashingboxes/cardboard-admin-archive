@@ -14,7 +14,7 @@ module Cardboard
     setting :site_title, "Cardboard"
 
     # The user class that will be using cardboard
-    setting :user_class, "AdminUser"
+    setting :user_class, false
 
     # The default number of resources to display on index pages
     setting :default_per_page, 30
