@@ -56,7 +56,7 @@ $(function(){
 //     $(elem).wysihtml5();
 //   });
 
-  $(document).on("pjax:end ready", function(e){
+  $(document).on("pjax:end ready cocoon:after-insert", function(e){
     $('select').selectpicker();
 
     $('.nav-tabs a:first').tab('show');

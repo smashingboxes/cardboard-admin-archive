@@ -131,12 +131,16 @@ var wysihtml5_initializer = function(element){
 $(document).on("ready pjax:end", function () {
 
   $(document).on('cocoon:after-insert', function(e, insertedItem) {
-    wysihtml5_initializer(insertedItem);
+    if($(insertedItem).find(".wysihtml5_wrapper").length){
+      wysihtml5_initializer(insertedItem);
+    }
     // $(insertedItem).find("textarea").wysihtml5({"image": false, "customTemplates":  page_links_template});
   });
 
   $('.wysihtml5_wrapper').each(function() {
-    wysihtml5_initializer(this);
+    if($(".wysihtml5_wrapper").length){
+      wysihtml5_initializer(this);
+    }
   });
   
 });
