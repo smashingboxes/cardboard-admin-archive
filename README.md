@@ -317,13 +317,15 @@ def can_manage_cardboard?(area)
   end
 end
 ```
-   
 
-## Troubleshoot
-### IO Error
-There is a known conflict with gem `meta_request`. Please remove this gem until this issue has been resolved:
-https://github.com/dejan/rails_panel/issues/51
-
+## Dashboard
+You can add whatever you want on the dashboard by simply adding
+```
+views
+|- cardboard
+   |- dashboard
+       |- index.html.slim
+```
 
 
 ## License
