@@ -2,10 +2,10 @@
   - if cardboard_user_can_manage?(:pages)
     = main_sidebar_nav_link "Pages", pages_path, id: "nav_dashboard_link", "data-skip-pjax" => true
 
-  - Cardboard.resource_controllers.each do |controller|
-    - name = controller.controller_name 
-    - if cardboard_user_can_manage?(name.to_sym)
-      = main_sidebar_nav_link name.titleize, eval("cardboard_#{name}_path"), class: "nav_resource_link"
+
+  - Cardboard.resource_controllers.reject{|x|x.menu == false}.sort! { |a,b| a.menu[:priority] <=> b.menu[:priority] }.each do |controller|
+    - if cardboard_user_can_manage?(controller.controller_name.to_sym)
+      = main_sidebar_nav_link controller.menu[:label], eval("cardboard_#{controller.controller_name}_path"), class: "nav_resource_link"
 
   
 

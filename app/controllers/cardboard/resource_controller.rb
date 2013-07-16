@@ -16,6 +16,13 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
 
   private
 
+  def self.menu(hash = nil)
+    @menu = {priority: 999, label: self.controller_name.to_s.titleize} if @menu.nil?
+    return @menu if hash.nil?
+
+    @menu = hash.is_a?(Hash) ? @menu.merge(hash) : hash
+  end
+
   def check_ability
     unless cardboard_user_can_manage?(resource_instance_name)
       render :text => "You are not authorized to access this resource.", :status => :unauthorized 
@@ -36,8 +43,6 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
       [ params.require(resource_instance_name.to_sym).permit(*permitted_strong_parameters)]
     end
   end
-
-  private
 
   def self.inherited(base)
     # https://github.com/josevalim/inherited_resources/issues/256
