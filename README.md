@@ -166,6 +166,16 @@ Gem | Description
 [Ransack](https://github.com/ernie/ransack) | Object-based searching and filtering
 [Dragonfly](https://github.com/markevans/dragonfly) | On-the-fly image processing and file uploading
 
+
+### Menu options
+```ruby
+  menu  label: "Test", priority: 1
+```
+You can also choose to remove a resource from the menu
+```ruby
+  menu  false
+```
+
 #### Filter helper
 You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
 
