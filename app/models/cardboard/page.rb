@@ -191,7 +191,7 @@ module Cardboard
       @lock.synchronize do
         @_arranged_pages ||= {}
         @_arranged_pages[root_page.id.to_s] ||= begin
-          pages = self.preordered.all
+          pages = self.preordered
 
           pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
             (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
