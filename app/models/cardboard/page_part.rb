@@ -43,6 +43,7 @@ module Cardboard
       for field in master.fields
         new_field = field.dup
         new_field.value = nil
+        new_field.value_uid = nil
         new_field.object_with_field_id = nil
         new_field.object_with_field_type = nil
         new_field.page_part_id = nil
