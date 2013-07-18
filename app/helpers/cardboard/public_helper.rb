@@ -5,13 +5,22 @@ module Cardboard
     #  link_to_page 123, class: "btn" do |page|
     #    "hello #{page.title}"
     #  end
+    #
+    # link_to_page "home"
     #   
-    def link_to_page(page, html_options={}, &block)
-      raise ArgumentError, "Missing block" unless block_given?
-      page = Cardboard::Page.where(id: page).first if page.is_a? Integer
-      page = Cardboard::Page.where(identifier: page).first if page.is_a? String
-      return nil if page.blank?
-      link_to(capture(page, &block), page.url, html_options)
+    def link_to_page(page_id, html_options={}, &block)
+      
+      page = Cardboard::Page.where(id: page_id).first if page_id.is_a? Integer
+      page = Cardboard::Page.where(identifier: page_id).first if page_id.is_a? String
+      
+      if block_given?
+        return nil if page.blank?
+        title = capture(page, &block)
+      else
+        return link_to(page_id, page_path(id: page_id), html_options)
+        title = page.title
+      end
+      link_to(title, page.url, html_options)
     end
 
     # Example 1:
