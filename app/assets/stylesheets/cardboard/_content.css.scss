@@ -22,15 +22,15 @@
   }
 }
 
-#cardboard_pages{ //add all controllers that have a sidebar here
+// #cardboard_pages{ //add all controllers that have a sidebar here
 
-  #content{
-    margin-left: $main_sidebar_width + $content_sidebar_width;
-    &.toggle{
-      margin-left: $main_sidebar_width;
-    }
-  }
-  #content_sidebar{
-    display: block;
-  }
-}
+//   #content{
+//     margin-left: $main_sidebar_width + $content_sidebar_width;
+//     &.toggle{
+//       margin-left: $main_sidebar_width;
+//     }
+//   }
+//   #content_sidebar{
+//     display: block;
+//   }
+// }
