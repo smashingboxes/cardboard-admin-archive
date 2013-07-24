@@ -2,8 +2,7 @@
   = hidden_field_tag :s, "simple"
 
   .input-append
-    = f.text_field "#{main_element}_cont", class:"search", placeholder: "Search by #{main_element.to_s.humanize}"
+    = f.text_field "#{main_element}_cont", class:"search span5", placeholder: "Search by #{main_element.to_s.titlecase}"
     = render "cardboard/resources/search_button", f: f
 
-  = link_to "Advanced Filter", "#", id: "advanced_search_link"  
-  /,class: "btn"
+  / = link_to "Advanced Filter", "#", id: "advanced_search_link", class: "btn"
