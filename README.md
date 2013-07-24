@@ -117,7 +117,7 @@ Key | Type | Default | Definition
 ---|--- | ---|---
 [parts](#parts) | hash | nil |a list of page parts
 title | string | identifier | name of the page as shown in the nav bar
-position | integer | auto-increment |position of the page on the nav bar (the lowest position is the home page!)
+position | integer | auto-increment | position of the page on the nav bar (the lowest position is the home page!)
 parent_id | string | nil | identifier of the parent page (used for nested pages)
 
 
@@ -310,7 +310,7 @@ def can_manage_cardboard?(area)
     self.admin?
   when :settings
     self.admin?
-  when :resource_identifier
+  when :resource_identifier #should be plural
     true
   else
     true
