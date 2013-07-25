@@ -5,7 +5,7 @@ html
     = include_gon
     = yield :head
 
-  body(data-no-turbolink id="#{params[:controller].parameterize('_')}")
+  body(id="#{params[:controller].parameterize('_')}")
 
     #main_topbar= render 'layouts/cardboard/main_topbar'
 
