@@ -5,6 +5,7 @@
   background: lighten($black, 10%);
   width: $main_sidebar_width;
   box-sizing: border-box;
+  overflow-y: scroll;
   z-index: 100;
 
 
