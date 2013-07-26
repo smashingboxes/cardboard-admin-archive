@@ -14,7 +14,7 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
     end
   end
 
-  private
+private
 
   def self.menu(hash = nil)
     @menu = {priority: 999, label: self.controller_name.to_s.titleize} if @menu.nil?
@@ -30,13 +30,13 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
   end
 
   def permitted_strong_parameters
-    :all
+    :all   # bypass strong_parameters (unless overwritten in controller)
   end
 
-  # bypass strong_parameters (unless overwritten in controller)
   def resource_params
-    return [] if request.get?
+    return [] if request.get? || permitted_strong_parameters.nil?
     return super if params && params.class.to_s != "ActionController::Parameters"
+
     if permitted_strong_parameters == :all
       [ params.require(resource_instance_name.to_sym).permit! ]
     else
