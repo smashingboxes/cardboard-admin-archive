@@ -21,6 +21,9 @@ private
   # helper_method :edit_link
 
   def current_page
-    @page ||= Cardboard::Page.find_by_url(params[:id]) || Cardboard::Page.root
+    @page ||= Cardboard::Page.find_by_url(params[:id]) || 
+              Cardboard::Page.root || 
+              raise(ActionController::RoutingError.new("No root page, make sure to run `rake cardboard:seed`"))
   end
+
 end

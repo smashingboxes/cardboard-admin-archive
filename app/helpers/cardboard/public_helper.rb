@@ -37,7 +37,7 @@ module Cardboard
     #       = content_tag(:ul, subpages) if subpages.present?
     def nested_pages(page = nil, &block)
       raise ArgumentError, "Missing block" unless block_given?
-      inner_nested_pages(Cardboard::Page.arrange(page), &block).html_safe
+      inner_nested_pages(Cardboard::Page.arrange(page), &block).try(:html_safe)
     end
 
     private
