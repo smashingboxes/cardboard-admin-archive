@@ -17,7 +17,7 @@ html
         #pages_sidebar= render 'cardboard/pages/sidebar'
 
 
-      #content.container-fluid(data-pjax-container)
+      #content.container-fluid(data-pjax-container  class="#{'toggle' if params[:controller] =~ /pages/}")
         = render 'layouts/cardboard/flash_message'
         = yield
 
