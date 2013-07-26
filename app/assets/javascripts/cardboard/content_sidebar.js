@@ -11,10 +11,10 @@ $(document).ready(function(){
   $('#content_pages, .page_group').sortable(sortableSettings);
   
   function postRefresh(event, ui) {
-    var content = $(ui.item).html();
+    var content = ui.item.html();
     
     // post results to server and save effect
-    $.post(updateURL, $(this).sortable('serialize', {key: "pages[]"}))
+    $.post(updateURL, {id: ui.item.attr('id').replace('pages_', ''), index: ui.item.index()})
       .done(function() {
         $(ui.item).html('<div class="link_wrap"><a href="#" class="offset-0 saving">Saved!</a></div>');
         setTimeout(function(){

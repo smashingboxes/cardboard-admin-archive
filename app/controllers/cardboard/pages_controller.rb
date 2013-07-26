@@ -21,9 +21,7 @@ module Cardboard
     end
 
     def sort
-      params[:pages].each_with_index do |id, index|
-        Page.find(id).update_attribute(:position_position, index + 1)
-      end
+      Page.find(params[:id]).update_attribute(:position_position, params[:index])
       render nothing: true
     end
 
