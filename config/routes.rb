@@ -19,8 +19,12 @@ Cardboard::Engine.routes.draw do
   
   scope as: 'cardboard' do
     #generate routes for custom cardboard resources controllers
-    Cardboard.resource_controllers.map{|x|x.controller_name.to_sym}.each do |controller|
-      resources controller 
+    Cardboard.resource_controllers.map{|x|x.controller_name}.each do |controller|
+      if controller.singularize == controller
+        resource controller
+      else
+        resources controller
+      end
     end
   end
 
