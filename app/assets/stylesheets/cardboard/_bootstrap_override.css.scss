@@ -66,8 +66,9 @@ legend + .control-group {
   input, textarea{
      @include box-sizing(border-box);
   }
-  input.string, textarea, .uneditable-input{
+  input.string, input.password, textarea, .uneditable-input{
     width: 100%;
+    max-width: 600px;
   }
   input:not(.btn):not(.boolean){
     height: 30px;
@@ -96,3 +97,5 @@ textarea {
 .input-append.input-prepend .btn-group{
   vertical-align: top;
 }
+
+.table td, .table th{vertical-align:middle}
