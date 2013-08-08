@@ -37,6 +37,6 @@ Rails.application.routes.draw do
     get "*id", to: "pages#show", as: :page
   end
 
-  root :to => "pages#show"
+  root :to => "pages#show" unless @set.named_routes.routes[:root] #has_named_route?
 end
 
