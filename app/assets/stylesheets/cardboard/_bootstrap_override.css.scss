@@ -68,6 +68,8 @@ legend + .control-group {
   }
   input.string, input.password, textarea, .uneditable-input{
     width: 100%;
+  }
+  input.string, input.password, .uneditable-input{
     max-width: 600px;
   }
   input:not(.btn):not(.boolean){
