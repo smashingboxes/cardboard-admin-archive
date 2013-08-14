@@ -26,7 +26,6 @@ Add the gem to the `Gemfile`
 gem "cardboard-cms", github: "smashingboxes/cardboard", require: "cardboard"
 gem "inherited_resources", github: "josevalim/inherited_resources"
 gem "ransack", github: "ernie/ransack", branch: "rails-4"
-gem "cocoon", github: "nathanvda/cocoon"
 ```
 
 And run `bundle install`. 
