@@ -12,6 +12,6 @@ table class="table table-striped"
       <% for field in fields %>td = <%= singular_table_name %>.<%= field %>
       <% end %>
       td = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
-      td = link_to 'Destroy', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Delete', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { confirm: 'Are you sure?'}, :method => :delete
 
 = paginate @<%= plural_table_name %>
