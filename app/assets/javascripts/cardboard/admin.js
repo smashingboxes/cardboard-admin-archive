@@ -14,23 +14,33 @@
 //= require cardboard/bootstrap-select
 //= require bootstrap-datepicker/core
 //= require cardboard/datepicker
-//= require cardboard/wysihtml5-0.4.0pre 
-//= require cardboard/jquery.wysihtml5imgresizer
+//= require cardboard/rich_text
 //= require cardboard/jquery.wysihtml5_size_matters
-//= require cardboard/wysihtml5_custom
 //= require cocoon
 //= require cardboard/main_sidebar
 //= require cardboard/content_sidebar
 //= require cardboard/search_filter
 
+// require cardboard/jquery.wysihtml5imgresizer
+
+
+$(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""]):not([data-method])', '[data-pjax-container]');
+
+$(document).on('submit', 'form[data-pjax]', function(event) {
+  $.pjax.submit(event, '[data-pjax-container]');
+});
+
+$(document).on('click', '.nav-tabs a', function(e){
+  e.preventDefault();
+  $(this).tab('show');
+});
+
+$(document).on("pjax:end ready cocoon:after-insert", function(e){
+  $('select').selectpicker();
+  $('.nav-tabs a:first').tab('show');
+});
 
 $(function(){
-  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax]):not([href="#"]):not([href=""]):not([data-method])', '[data-pjax-container]');
-
-  $(document).on('submit', 'form[data-pjax]', function(event) {
-    $.pjax.submit(event, '[data-pjax-container]');
-  });
-
   $('.page_link .link_wrap a').click(function(){
     $('.nav_resource_link.active').removeClass('active');
     $('#nav_dashboard_link').addClass('active');
@@ -42,24 +52,5 @@ $(function(){
     $("#content_sidebar").removeClass('toggle');
     $('#content').removeClass('toggle');
   });
-
-  $(document).on('click', '.nav-tabs a', function(e){
-    e.preventDefault();
-    $(this).tab('show');
-  });
-
-  $(document).on('cocoon:before-insert', function(e,insertedItem) {
-    insertedItem.fadeIn('slow');
-  });
-
-//   $('.wysihtml5').each(function(i, elem) {
-//     $(elem).wysihtml5();
-//   });
-
-  $(document).on("pjax:end ready cocoon:after-insert", function(e){
-    $('select').selectpicker();
-
-    $('.nav-tabs a:first').tab('show');
-  });
-
 })
+

@@ -1,12 +1,11 @@
 //Only for Cardboard Admin Area
 
 @import "variables";
-@import "bootstrap";
-@import "bootstrap-datepicker";
-@import "bootstrap_override";
-@import "burbon_mixins";
+
+@import "cardboard/framework";
+@import "cardboard/rich_text";
 @import "font-awesome";
-@import "cardboard/bootstrap-select";
+// @import "burbon_mixins";
 
 @import "main";
 @import "main_topbar";
@@ -14,10 +13,8 @@
 @import "content";
 @import "content_sidebar";
 @import "resources";
-@import "wysihtml5_custom";
 
 
-// Global Styles
 .center{
   text-align: center;
 }

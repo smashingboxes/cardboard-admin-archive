@@ -17,6 +17,7 @@ require 'kaminari'
 require 'rack-pjax'
 require 'jquery-ui-rails'
 require 'decorators'
+require 'bootstrap-wysihtml5-rails'
 
 
 module Cardboard
