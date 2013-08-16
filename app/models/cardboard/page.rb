@@ -31,7 +31,6 @@ module Cardboard
     scope :preordered, -> {order("path ASC, position ASC, slug ASC")} #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
 
     #class variables
-    @lock = ::Mutex.new
     after_commit do
       Page.clear_arranged_pages
     end
@@ -187,30 +186,26 @@ module Cardboard
     def self.arrange(root_page = nil)
       root_page ||= self.root
       return unless root_page
+      # TODO: use root_page...
 
-      @lock.synchronize do
-        @_arranged_pages ||= {}
-        @_arranged_pages[root_page.id.to_s] ||= begin
-          pages = self.preordered
+      Rails.cache.fetch("arranged_pages") do
+        pages = self.preordered
 
-          pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
-            (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
-              
-              insertion_hash.each do |parent, children|
-                insertion_hash = children if subpath == parent.slug
-              end
-              insertion_hash
-            end[page] = ActiveSupport::OrderedHash.new
-            ordered_hash
-          end
+        pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
+          (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
+            
+            insertion_hash.each do |parent, children|
+              insertion_hash = children if subpath == parent.slug
+            end
+            insertion_hash
+          end[page] = ActiveSupport::OrderedHash.new
+          ordered_hash
         end
       end
     end 
     def self.clear_arranged_pages
-      # clear cache when a page change
-      @lock.synchronize do
-        @_arranged_pages = nil
-      end
+      # clear cache when a page changes
+      Rails.cache.delete("arranged_pages")
     end
 
   # def to_param
