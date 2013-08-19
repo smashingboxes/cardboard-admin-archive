@@ -4,7 +4,7 @@ require "cardboard/version"
 
 Gem::Specification.new do |s|
   s.name        = "cardboard_cms"
-  s.license     = "MIT"
+  s.license     = "GPLv3"
   s.version     = Cardboard::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Michael Elfassy", "Smashing Boxes"]
@@ -33,14 +33,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
   s.add_dependency 'simple_form', '>= 3.0.0.rc'
   s.add_dependency 'kaminari'
-  s.add_dependency 'inherited_resources'
+  s.add_dependency 'inherited_resources', '>= 1.4.1'
   s.add_dependency 'ranked-model', '>= 0.2.1'
   s.add_dependency 'cocoon', '>= 1.2.0'
   s.add_dependency 'gon'
   s.add_dependency 'rack-cache'
   s.add_dependency 'dragonfly'
   s.add_dependency 'chronic'
-  s.add_dependency 'ransack'
+  s.add_dependency 'ransack', '>= 1.0.0'
   s.add_dependency 'rack-pjax'
   s.add_dependency 'decorators'
   s.add_dependency 'jquery-ui-rails'

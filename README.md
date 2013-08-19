@@ -24,8 +24,6 @@ Add the gem to the `Gemfile`
 
 ```ruby
 gem "cardboard_cms", github: "smashingboxes/cardboard"
-gem "inherited_resources", github: "josevalim/inherited_resources"
-gem "ransack", github: "ernie/ransack", branch: "rails-4"
 ```
 
 And run `bundle install`. 
