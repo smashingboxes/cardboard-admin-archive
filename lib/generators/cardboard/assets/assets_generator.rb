@@ -1,5 +1,5 @@
 require 'rails'
-require 'cardboard'
+require 'cardboard_cms'
 
 module Cardboard
   module Generators

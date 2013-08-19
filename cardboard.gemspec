@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "cardboard/version"
 
 Gem::Specification.new do |s|
-  s.name        = "cardboard-cms"
+  s.name        = "cardboard_cms"
   s.license     = "MIT"
   s.version     = Cardboard::VERSION
   s.platform    = Gem::Platform::RUBY

@@ -23,7 +23,7 @@ Cardboard is a simple CMS Engine for your Rails 4 applications.
 Add the gem to the `Gemfile`
 
 ```ruby
-gem "cardboard-cms", github: "smashingboxes/cardboard", require: "cardboard"
+gem "cardboard_cms", github: "smashingboxes/cardboard"
 gem "inherited_resources", github: "josevalim/inherited_resources"
 gem "ransack", github: "ernie/ransack", branch: "rails-4"
 ```

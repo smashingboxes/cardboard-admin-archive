@@ -23,6 +23,7 @@ require 'bootstrap-wysihtml5-rails'
 module Cardboard
   class Engine < ::Rails::Engine
     isolate_namespace Cardboard
+    railtie_name "cardboard"
 
     # class << self
     #   attr_accessor :root
