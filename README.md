@@ -180,16 +180,13 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 = cardboard_filters User, :name
 ```
 
-`fields`: list which field can be filtered. By default all are available.
+`title`: change the page's title (optional)
 
-`title`: change the page's title
+`new_btn`: edit the new resource button's text (optional)
 
-`new_btn`: edit the new resource button's text
-
-`associated_fields`: link to associated models 
 Example:
 ```ruby
-= cardboard_filters User, :name, associated_fields: [[:post_name, :string],[:post_size, :integer]]
+= cardboard_filters User, :name, title: "Employees", new_btn: "Add an employee"
 ```
 
 #### Pagination Helper
@@ -293,9 +290,13 @@ ul
 ### Link to a page
 Use the page identifier defined in the cardboard.yml file (or see yoda)
 ```ruby
-  link_to_page "page_identifier", class: "btn" do |page|
+  = link_to_page "page_identifier", class: "btn" do |page|
     "hello #{page.title}"
   end
+  
+  # or, to simply use the page title
+
+  = link_to_page "page_identifier", class: "btn"
 ```
 
 ## Abilities
