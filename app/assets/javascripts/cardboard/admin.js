@@ -20,6 +20,7 @@
 //= require cardboard/main_sidebar
 //= require cardboard/content_sidebar
 //= require cardboard/search_filter
+//= require select2
 
 // require cardboard/jquery.wysihtml5imgresizer
 
@@ -36,7 +37,10 @@ $(document).on('click', '.nav-tabs a', function(e){
 });
 
 $(document).on("pjax:end ready cocoon:after-insert", function(e){
-  $('select').selectpicker();
+  $('select:not([data-search-select])').selectpicker();
+  $('select[data-search-select]').select2({allowClear: true, width: "resolve"});
+
+
   $('.nav-tabs a:first').tab('show');
 });
 

@@ -56,7 +56,7 @@ var rich_text_editor_defaults = {
 }
 
 $(document).on("ready pjax:end", function(e){
-  console.log($(".wysihtml5").length);
+  // console.log($(".wysihtml5").length);
   if($(".wysihtml5").length) {
     $('.wysihtml5').wysihtml5(rich_text_editor_defaults);
   }

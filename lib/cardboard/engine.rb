@@ -18,6 +18,7 @@ require 'rack-pjax'
 require 'jquery-ui-rails'
 require 'decorators'
 require 'bootstrap-wysihtml5-rails'
+require 'select2-rails'
 
 
 module Cardboard
