@@ -1,38 +1,7 @@
-GIT
-  remote: git://github.com/ernie/ransack.git
-  revision: 8db7a3c1f4242305488a541267dd87c5397f5707
-  branch: rails-4
-  specs:
-    ransack (0.7.3)
-      actionpack (~> 4.0.0)
-      activerecord (~> 4.0.0)
-      polyamorous (~> 0.6.0)
-
-GIT
-  remote: git@github.com:josevalim/inherited_resources.git
-  revision: ae1516a3f1a01f98beac3334f76831a1c793c521
-  specs:
-    inherited_resources (1.4.1)
-      has_scope (~> 0.6.0.rc)
-      responders (~> 1.0.0.rc)
-
-GIT
-  remote: git@github.com:mixonic/ranked-model.git
-  revision: 43885cb10ef69d94bed96a06d17de26536b236cf
-  specs:
-    ranked-model (0.3)
-      activerecord (>= 3.1.12)
-
-GIT
-  remote: git@github.com:nathanvda/cocoon.git
-  revision: 0b23d44102d107261a5b0f86836546b313037ed0
-  specs:
-    cocoon (1.2.0)
-
 PATH
   remote: .
   specs:
-    cardboard-cms (0.0.1)
+    cardboard_cms (0.0.1)
       bootstrap-datepicker-rails
       bootstrap-sass (>= 2.2)
       bootstrap-wysihtml5-rails
@@ -43,7 +12,7 @@ PATH
       dragonfly
       font-awesome-sass-rails (>= 3.0.0.1)
       gon
-      inherited_resources
+      inherited_resources (>= 1.4.1)
       jquery-rails
       jquery-ui-rails
       kaminari
@@ -52,8 +21,9 @@ PATH
       rack-pjax
       rails (~> 4.0.0)
       ranked-model (>= 0.2.1)
-      ransack
+      ransack (>= 1.0.0)
       sass-rails (>= 4.0.0)
+      select2-rails
       simple_form (>= 3.0.0.rc)
       slim (>= 1.3.8)
       stringex
@@ -109,6 +79,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chronic (0.9.1)
+    cocoon (1.2.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -170,6 +141,9 @@ GEM
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
     i18n (0.6.4)
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -253,6 +227,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
+    ranked-model (0.3)
+      activerecord (>= 3.1.12)
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
@@ -270,6 +250,9 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    select2-rails (3.4.8)
+      sass-rails
+      thor (~> 0.14)
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
@@ -321,14 +304,12 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  cardboard-cms!
-  cocoon!
+  cardboard_cms!
   database_cleaner
-  devise (>= 3.0.0.rc)
+  devise (>= 3.0.0)
   factory_girl_rails
   faker
   guard-minitest
-  inherited_resources!
   jquery-rails
   letter_opener
   minitest-rails
@@ -336,8 +317,6 @@ DEPENDENCIES
   pry-debugger
   pry-rails
   quiet_assets
-  ranked-model!
-  ransack!
   rb-fsevent
   sdoc
   simplecov
