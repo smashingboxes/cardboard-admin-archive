@@ -56,5 +56,7 @@ $(function(){
     $("#content_sidebar").removeClass('toggle');
     $('#content').removeClass('toggle');
   });
+
+  window.setTimeout(function() { $(".alert").alert('close'); }, 2000);
 })
 
