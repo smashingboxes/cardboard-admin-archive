@@ -57,6 +57,13 @@ select.datetime{
 legend + .control-group {
   margin-top: 0px;
 }
+.control-group {
+  margin-bottom: 26px;
+}
+
+.help-block, .help-inline {
+  color: #898989;
+}
 
 .form-actions {
   background: #fff;
