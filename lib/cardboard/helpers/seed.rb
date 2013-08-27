@@ -34,9 +34,6 @@ module Cardboard
         db_part.subparts.each do |db_part|
           self.populate_fields(part[:fields], db_part)
         end
-        # for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
-        #   db_part.fields.where(identifier: remove_field).first.destroy
-        # end
       end
       for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}
         db_page.parts.where(identifier: remove_part).first.destroy
