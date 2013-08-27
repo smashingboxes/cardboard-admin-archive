@@ -27,7 +27,8 @@ module Cardboard
       page_parts ||= {}
       page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
-        db_part.update_attributes!(part.filter(:repeatable)) 
+        db_part.update_attributes!(part.filter(:repeatable))
+        db_part.update_attribute :part_position_position, part[:position] || :last
 
         db_part.subparts.first_or_create! 
         db_part.subparts.each do |db_part|
@@ -49,6 +50,7 @@ module Cardboard
         db_field = object.fields.where(identifier: id.to_s, type: type).first_or_create!
         db_field = type.constantize.find(db_field.id) #required for images and files defaults
         db_field.seeding = true
+        db_field.position_position = field[:position] || :last
         db_field.update_attributes!(field) 
       end
       #remove fields no longer in the seed file
