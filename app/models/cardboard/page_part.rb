@@ -25,7 +25,7 @@ module Cardboard
     include RankedModel
     ranks :subpart_position, :with_same => :parent_part_id, :column => :position, :scope => :is_subparts
     ranks :part_position, :with_same => :page_id, :column => :position, :scope => :is_parent
-    default_scope {order("position DESC")}
+    default_scope {order("position ASC")}
 
 
     def subpart?
