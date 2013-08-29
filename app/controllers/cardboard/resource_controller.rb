@@ -9,6 +9,7 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
 
   def collection
     @q ||= end_of_association_chain.search(params[:q])
+    @q.sorts = 'updated_at desc' if @q.sorts.empty?
     get_collection_ivar || begin
       set_collection_ivar((@q.respond_to?(:scoped) ? @q.scoped.result(:distinct => true) : @q.result(:distinct => true)).page(params[:page]))
     end
