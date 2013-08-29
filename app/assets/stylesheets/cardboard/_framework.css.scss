@@ -83,7 +83,7 @@ legend + .control-group {
   input.string, input.password, .uneditable-input{
     max-width: 600px;
   }
-  input:not(.btn):not(.boolean){
+  input:not(.btn):not(.boolean):not(.check_boxes){
     height: 30px;
   }
 }
@@ -111,4 +111,8 @@ textarea {
   vertical-align: top;
 }
 
-.table td, .table th{vertical-align:middle}
+.table {
+  td, th{vertical-align:middle}
+  th a{color: #333;}
+  td{}
+}
