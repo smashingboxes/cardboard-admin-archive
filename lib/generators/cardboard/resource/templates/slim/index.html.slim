@@ -4,14 +4,15 @@ table class="table table-striped"
   tr
     <% for field in fields %>th= sort_link @q, :<%= field %>
     <% end %>
-    th
-    th
+    th Actions
 
   - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
     tr
       <% for field in fields %>td = <%= singular_table_name %>.<%= field %>
       <% end %>
-      td = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
-      td = link_to 'Delete', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { confirm: 'Are you sure?'}, :method => :delete
+      td
+        = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
+        = " | "
+        = link_to 'Delete', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { confirm: 'Are you sure?'}, :method => :delete
 
 = paginate @<%= plural_table_name %>
