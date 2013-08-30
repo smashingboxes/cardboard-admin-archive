@@ -1,5 +1,4 @@
 html, body{
-  // font-family: 'Ubuntu';
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   font-weight: 300;
@@ -14,5 +13,4 @@ html, body{
   position:relative;
   background: $content_background;
   @include box-sizing(border-box);
-  // background: url(image) rgba(1,2,3,0.5);
 }

@@ -112,7 +112,12 @@ textarea {
 }
 
 .table {
+  th{
+    background: $table_head !important;
+    border-bottom: 2px solid darken($table_head, 10%);
+    a{color: #333;font-weight:500}
+  }
   td, th{vertical-align:middle}
-  th a{color: #333;}
-  td{}
+
+  td{padding-top: 14px; padding-bottom: 14px;}
 }
