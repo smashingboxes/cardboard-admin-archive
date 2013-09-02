@@ -23,6 +23,8 @@ h1 Admin User settings
   p
     b last sign in ip:
     =< @user.last_sign_in_ip
-  p
-    b failed login attempts:
-    =< @user.failed_attempts
+
+  - if @user.respond_to?(:failed_attempts)
+    p
+      b failed login attempts:
+      =< @user.failed_attempts
