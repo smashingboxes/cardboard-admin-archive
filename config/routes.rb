@@ -1,8 +1,8 @@
 # Routes for admin interface
 Cardboard::Engine.routes.draw do
 
-  get "account", to: "users#edit", as: "user"
-  patch "account", to: "users#update", as: "update_user"
+  get "my_account", to: "my_account#edit"
+  patch "my_account", to: "my_account#update"
 
   post "pages/sort", to: "pages#sort"
   get "pages/:id", to: "pages#edit"

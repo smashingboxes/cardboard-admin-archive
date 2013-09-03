@@ -325,6 +325,10 @@ views
        |- index.html.slim
 ```
 
+## Customizing Cardboard
+
+### Overwrite views
+You can easily change the default behavior of the app by overwriting the views. For example say you'd like to change the my account page. Simply add a `views/cardboard/my_account/edit.html.slim` and edit it at will.
 
 ## License
 Copyright (c) 2013 by SmashingBoxes
