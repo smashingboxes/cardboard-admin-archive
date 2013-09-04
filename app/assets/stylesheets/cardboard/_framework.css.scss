@@ -114,8 +114,14 @@ textarea {
 .table {
   th{
     background: $table_head !important;
-    border-bottom: 2px solid darken($table_head, 10%);
-    a{color: #333;font-weight:500}
+    border-left: 1px solid darken($table_head, 5%);
+    border-bottom: 1px solid darken($table_head, 20%);
+    // text-align: center;
+    a{
+      color: #333;
+      font-weight:500;
+
+    }
   }
   td, th{vertical-align:middle}
 
