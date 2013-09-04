@@ -114,7 +114,7 @@ textarea {
 .table {
   th{
     background: $table_head !important;
-    border-left: 1px solid darken($table_head, 5%);
+    // border-left: 1px solid darken($table_head, 5%);
     border-bottom: 1px solid darken($table_head, 20%);
     // text-align: center;
     a{
