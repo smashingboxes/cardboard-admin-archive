@@ -1,15 +1,6 @@
-html, body{
-  font-family: $font;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 300;
-  height: 100%;
-}
-
-
 #main_content{
-  min-height: 100%;
-  // margin-top: -$main_topbar_height;
-  // padding-top: $main_topbar_height;
+  height:100%;
+  min-height:100%;
   position:relative;
   background: $content_background;
   @include box-sizing(border-box);

@@ -216,6 +216,8 @@ Make sure this file is located under `app/helpers/cardboard`
 #### Custom CSS/JS
 The css/js for the resources is the same as the cardboard admin interface. If you'd like to extend or overwrite some of these, simply edit the `cardboard.css.scss` or `cardboard.js` files located in your assets folder. These files were generated during the cardboard installation.
 
+Note: Make sure to remove `*= require_tree .` from your application.css, you don't want your cardboard css and js to leak into your main app!
+
 ## Create Settings
 You can create new settings that will be editable from the admin panel. 
 

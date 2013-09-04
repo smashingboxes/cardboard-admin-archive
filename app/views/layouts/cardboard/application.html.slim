@@ -1,9 +1,15 @@
 doctype html
-html
+/[if IE 8]
+  html class="lt-ie9" lang=I18n.locale
+/! [if gt IE 8]><!
+html lang=I18n.locale
+  /! <![endif]
+
   head
     = render 'layouts/cardboard/head', title: 'Dashboard'
     = include_gon
     = yield :head
+    = javascript_include_tag 'cardboard'
 
   body(id="#{params[:controller].parameterize('_')}")
 
@@ -21,5 +27,5 @@ html
         = render 'layouts/cardboard/flash_message'
         = yield
 
-    = javascript_include_tag 'cardboard'
+    
     = yield :javascript
