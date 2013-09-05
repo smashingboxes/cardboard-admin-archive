@@ -1,12 +1,12 @@
 #content_sidebar{  
-  z-index: 1;
+  z-index: $main_sidebar_background_zindex - 1;
   @include box-sizing(border-box);
   position: absolute;
-  width: $content_sidebar_width;
+  top: $main_topbar_height;// top: 0px;
   left: - $main_sidebar_width - 90px;
+  width: $content_sidebar_width;
+  
   overflow: hidden;
-  // overflow: auto;
-  height: 100%;
   background: #fff;
   -webkit-transition: left $page_nav_slide_speed ease;
   -moz-transition: left $page_nav_slide_speed ease;
@@ -18,7 +18,8 @@
     -webkit-transition: left $page_nav_slide_speed ease;
     -moz-transition: left $page_nav_slide_speed ease;
   }
-  
+
+
     
   #sidebar_page_search{
     width: 90%;

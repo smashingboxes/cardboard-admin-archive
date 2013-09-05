@@ -2,11 +2,9 @@
   
   @include box-sizing(border-box);
   //background: use $content_background instead
-  height: 100%;
   display: block;
-  padding-top: 15px;
-  padding-left: 50px;
-  // overflow: auto;
+  padding: 20px 40px;
+
   margin-left: $main_sidebar_width;
   -webkit-transition:all $page_nav_slide_speed ease;
   -moz-transition:all $page_nav_slide_speed ease;
@@ -18,19 +16,15 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    margin: 20px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
   }
+
+  fieldset{
+    margin-top: 20px;
+  }
+
+  position: relative;
+  background: $content_background;
+  @include box-sizing(border-box);
 }
 
-// #cardboard_pages{ //add all controllers that have a sidebar here
-
-//   #content{
-//     margin-left: $main_sidebar_width + $content_sidebar_width;
-//     &.toggle{
-//       margin-left: $main_sidebar_width;
-//     }
-//   }
-//   #content_sidebar{
-//     display: block;
-//   }
-// }

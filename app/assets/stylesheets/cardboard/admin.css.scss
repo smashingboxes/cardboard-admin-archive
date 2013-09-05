@@ -1,15 +1,12 @@
 //Only for Cardboard Admin Area
 
-
 @import "variables";
 
 @import "cardboard/framework";
 @import "cardboard/rich_text";
 @import "font-awesome";
 @import "select2";
-// @import "burbon_mixins";
 
-@import "main";
 @import "main_topbar";
 @import "main_sidebar";
 @import "content";
@@ -17,12 +14,20 @@
 @import "resources";
 
 
-html, body{
+html{
+  min-height:100%;
+  height:auto !important;
+  height:100%;
+}
+body{
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   font-weight: 300;
-  min-height: 100%;
-  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+#main_content, #main_sidebar, #content_sidebar{
+  min-height:100%;
 }
 
 .center{
