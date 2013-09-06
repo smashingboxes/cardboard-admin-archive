@@ -36,12 +36,3 @@ $main_sidebar_background_zindex: $main_topbar_zindex - 1;
   }
 }
 
-#main_sidebar_background{
-  position: fixed;
-  z-index: $main_sidebar_background_zindex;
-  width: $main_sidebar_width;
-  background: $main_sidebar_background;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-}

@@ -7,7 +7,7 @@ $main_content_sidebar_shadow: inset 0px 0px 20px #707070 !default;
 $content_sidebar_width: 280px !default;
 $content_background: #f4f7f9 !default;
 $brand_color: #f9334a !default;
-$table_head: #E1E1E1;
+$table_head: #E1E1E1 !default;
 
 // Overwrite as needed
 // //
@@ -19,20 +19,20 @@ $table_head: #E1E1E1;
 
 // // Grays
 // // -------------------------
-// $black:                 #000 !default;
+$black:                 #000 !default;
 // $grayDarker:            #222 !default;
 // $grayDark:              #333 !default;
 // $gray:                  #555 !default;
 // $grayLight:             #999 !default;
 // $grayLighter:           #eee !default;
 // $white:                 #fff !default;
-$blue:    #049cdb;
-$green:   #46a546;
-$red:     #9d261d;
-$yellow:  #ffc40d;
-$orange:  #f89406;
-$pink:    #fd0752;
-$purple:  #7a43b6;
+$blue:    #049cdb  !default;
+$green:   #46a546  !default;
+$red:     #9d261d  !default;
+$yellow:  #ffc40d  !default;
+$orange:  #f89406  !default;
+$pink:    #fd0752  !default;
+$purple:  #7a43b6  !default;
 
 
 // // Accent colors
@@ -150,7 +150,7 @@ $btnPrimaryBackgroundHighlight:     $btnPrimaryBackground !default;
 // $dropdownLinkBackgroundActive:  $linkColor !default;
 // $dropdownLinkBackgroundHover:   $dropdownLinkBackgroundActive !default;
 
-$dropdownLinkBackgroundHover: $brand_color;
+$dropdownLinkBackgroundHover: $brand_color  !default;
 
 
 // // COMPONENT VARIABLES
@@ -201,7 +201,7 @@ $dropdownLinkBackgroundHover: $brand_color;
 // $navbarCollapseDesktopWidth:      $navbarCollapseWidth + 1;
 
 // $navbarHeight:                    40px !default;
-$navbarHeight:                    $main_topbar_height;
+$navbarHeight:                    $main_topbar_height  !default;
 // $navbarBackgroundHighlight:       #ffffff !default;
 // $navbarBackground:                darken($navbarBackgroundHighlight, 5%) !default;
 // $navbarBorder:                    darken($navbarBackground, 12%) !default;

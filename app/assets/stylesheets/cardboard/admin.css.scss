@@ -16,7 +16,6 @@
 
 html{
   min-height:100%;
-  height:auto !important;
   height:100%;
 }
 body{
@@ -26,7 +25,7 @@ body{
   overflow-x: hidden;
   position: relative;
 }
-#main_content, #main_sidebar, #content_sidebar{
+body, #main_content, #main_sidebar, #content_sidebar{
   min-height:100%;
 }
 
