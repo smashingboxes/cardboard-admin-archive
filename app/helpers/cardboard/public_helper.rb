@@ -15,12 +15,9 @@ module Cardboard
       
       if block_given?
         return nil if page.blank?
-        title = capture(page, &block)
-      else
-        return link_to(page_id, page_path(id: page_id), html_options)
-        title = page.title
+        title = capture(page, &block) 
       end
-      link_to(title, page.url, html_options)
+      link_to(page.title, page.url, html_options)
     end
 
     # Example 1:
