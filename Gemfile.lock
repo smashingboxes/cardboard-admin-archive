@@ -90,7 +90,7 @@ GEM
     coffee-script-source (1.6.3)
     columnize (0.3.6)
     daemons (1.1.9)
-    database_cleaner (1.1.1)
+    database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -305,7 +305,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   cardboard_cms!
-  database_cleaner
+  database_cleaner (= 1.0.1)
   devise (>= 3.0.0)
   factory_girl_rails
   faker

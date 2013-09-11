@@ -36,7 +36,6 @@ gem 'uglifier'
 
 group :test do
   gem 'turn'
-  gem 'database_cleaner'
   gem 'simplecov'
 end
 
