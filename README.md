@@ -173,6 +173,15 @@ You can also choose to remove a resource from the menu
   menu  false
 ```
 
+### Config options
+```ruby
+  config sort_order: "name DESC" # default: 'updated_at desc'
+```
+You can pass any ransack sort order, which includes associations. Example: 
+```ruby
+  config sort_order: "user_name" # belongs to a user
+```
+
 #### Filter helper
 You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
 
