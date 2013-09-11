@@ -2,9 +2,9 @@ $main_sidebar_background: lighten($black, 10%);
 $main_sidebar_background_zindex: $main_topbar_zindex - 1;
 
 #main_sidebar{
-  position: absolute;
-  top: $main_topbar_height;
-  left: 0px;
+  // position: absolute;
+  // top: $main_topbar_height;
+  // left: 0px;
   background: $main_sidebar_background;
   width: $main_sidebar_width;
   box-sizing: border-box;

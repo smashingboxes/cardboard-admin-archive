@@ -83,7 +83,7 @@ legend + .control-group {
   input.string, input.password, .uneditable-input{
     max-width: 600px;
   }
-  input:not(.btn):not(.boolean):not(.check_boxes){
+  input:not(.btn):not(.boolean):not(.check_boxes):not(.radio_buttons){
     height: 30px;
   }
 }

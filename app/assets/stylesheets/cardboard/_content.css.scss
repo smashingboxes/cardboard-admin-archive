@@ -1,18 +1,20 @@
 #content {
   
   @include box-sizing(border-box);
-  //background: use $content_background instead
+
   display: block;
   padding: 20px 40px;
 
+  height: 100%;
+
   margin-left: $main_sidebar_width;
-  -webkit-transition:all $page_nav_slide_speed ease;
-  -moz-transition:all $page_nav_slide_speed ease;
+  // -webkit-transition:all $page_nav_slide_speed ease;
+  // -moz-transition:all $page_nav_slide_speed ease;
   
   &.toggle{
     margin-left: $main_sidebar_width + $content_sidebar_width;
-    -webkit-transition:all $page_nav_slide_speed ease;
-    -moz-transition:all $page_nav_slide_speed ease;
+    // -webkit-transition:all $page_nav_slide_speed ease;
+    // -moz-transition:all $page_nav_slide_speed ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -23,8 +25,11 @@
     margin-top: 20px;
   }
 
-  position: relative;
-  background: $content_background;
+
   @include box-sizing(border-box);
+}
+
+#main_content{
+  background: $content_background;
 }
 
