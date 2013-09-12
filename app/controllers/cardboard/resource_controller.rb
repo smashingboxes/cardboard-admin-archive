@@ -10,7 +10,7 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
   def collection
     @q ||= end_of_association_chain.search(params[:q])
 
-    @q.sorts = self.class.options[:sort_order].to_s if @q.sorts.empty?
+    @q.sorts = self.class.default_order if @q.sorts.empty?
     get_collection_ivar || begin
       set_collection_ivar((@q.respond_to?(:scoped) ? @q.scoped.result : @q.result).page(params[:page]))
     end
@@ -18,10 +18,10 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
 
 private
 
-  def self.options(hash=nil)
-    @options ||= {sort_order: 'updated_at desc'}
-    return @options if hash.nil?
-    @options = hash.is_a?(Hash) ? @options.merge(hash) : hash
+  def self.default_order(val = nil)
+    @default_order ||= 'updated_at desc'
+    return @default_order if val.nil?
+    @default_order = val.to_s
   end
 
   def self.menu(hash = nil)

@@ -173,13 +173,13 @@ You can also choose to remove a resource from the menu
   menu  false
 ```
 
-### Config options
+### Sorting
 ```ruby
-  config sort_order: "name DESC" # default: 'updated_at desc'
+  default_order "name DESC" # default: 'updated_at desc'
 ```
-You can pass any ransack sort order, which includes associations. Example: 
+You can pass any `ransack` sort order, which includes associations. Example: 
 ```ruby
-  config sort_order: "user_name" # belongs to a user
+  default_order "user_name" # belongs to a user
 ```
 
 #### Filter helper
