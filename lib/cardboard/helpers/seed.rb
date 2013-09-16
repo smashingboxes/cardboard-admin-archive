@@ -53,8 +53,8 @@ module Cardboard
         begin
           db_field.update_attributes!(field.reject{|k,v|k == "type"}) 
         rescue Dragonfly::DataStorage::DataNotFound => e
-          db_field.update_attributes!(value_uid: nil, seeding: true) 
-          puts "WARNING: #{e}"
+          puts "ERROR: #{e}"
+          puts db_field.attributes.to_s
         end
       end
 
