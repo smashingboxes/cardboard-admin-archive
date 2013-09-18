@@ -40,3 +40,10 @@ Rails.application.routes.draw do
   root :to => "pages#show" unless @set.named_routes.routes[:root] #has_named_route?
 end
 
+
+Rails.application.routes.named_routes.module.module_eval do
+  def page_path(identifier, options = {})
+    url = Cardboard::Page.where(identifier: identifier.to_s).first.try(:url)
+    options.present? && url ? "#{url}?#{options.to_query}" : url
+  end
+end
