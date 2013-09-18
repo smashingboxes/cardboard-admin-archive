@@ -2,6 +2,13 @@ module Cardboard
   module PublicHelper
 
     # Example: 
+    #  page_path("home")
+    #   
+    def page_path(identifier)
+      Cardboard::Page.where(identifier: identifier).first.try(:url)
+    end
+
+    # Example: 
     #  link_to_page 123, class: "btn" do |page|
     #    "hello #{page.title}"
     #  end

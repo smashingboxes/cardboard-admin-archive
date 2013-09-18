@@ -34,7 +34,7 @@ end
 # Routes for public pages
 Rails.application.routes.draw do
   scope  :constraints => { :format => 'html' } do #:format => true,
-    get "*id", to: "pages#show", as: :page
+    get "*id", to: "pages#show"
   end
 
   root :to => "pages#show" unless @set.named_routes.routes[:root] #has_named_route?
