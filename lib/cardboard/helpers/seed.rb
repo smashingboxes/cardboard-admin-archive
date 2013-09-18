@@ -45,9 +45,8 @@ module Cardboard
       fields ||= {}
       fields.each do |id, field|
 
-        type = "Cardboard::Field::#{(field[:type] || "string").camelize}".constantize
-        db_field = type.where(identifier: id.to_s, object_with_field: object).first_or_create!
-
+        db_field = Field.where(identifier: id.to_s, object_with_field: object).first_or_initialize
+        db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         db_field.position_position = field[:position] || :last
         begin
