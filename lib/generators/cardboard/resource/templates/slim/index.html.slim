@@ -1,4 +1,4 @@
-= cardboard_filters <%= singular_table_name.classify %>, :<%= fields.first %>
+= cardboard_filters <%= singular_table_name.classify %>, :<%= fields.reject{|k| k[/(_at|^id)$/]}.first %>
 
 table class="table table-striped"
   tr
@@ -8,7 +8,7 @@ table class="table table-striped"
 
   - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
     tr
-      <% for field in fields %>td = <%= singular_table_name %>.<%= field %>
+      <% for field in fields %>td = <% if field[/_at$/] %>l <% end %><%= singular_table_name %>.<%= field %>
       <% end %>
       td
         = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
