@@ -191,6 +191,7 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 
 `title`: change the page's title (optional)
 
+`new_button:` Options for the new button which is enabled by default.  Allowed keys are `enabled` (true or false) and `label` (string).
 `new_btn`: edit the new resource button's text (optional)
 
 Example:
