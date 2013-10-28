@@ -1,5 +1,6 @@
 $main_topbar_color: $white;
 $main_topbar_color_text_shadow: 0px -1px #5d5d5d;
+$main_topbar_zindex: 100;
 
 #main_topbar{
   @extend .navbar;

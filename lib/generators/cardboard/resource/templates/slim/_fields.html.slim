@@ -1,4 +1,4 @@
-<% for field in fields %>= f.input :<%= field %>
+<% for field in fields.reject{|k| %w[id updated_at created_at].include?(k)} %>= <% if field[/_id$/] %>f.association :<%= field[0..-4] %><% else %>f.input :<%= field %><% end %> 
 <% end %>
 .form-actions
   = f.button :submit, class:"btn-primary"

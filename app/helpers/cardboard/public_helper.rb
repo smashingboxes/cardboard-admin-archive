@@ -8,17 +8,18 @@ module Cardboard
     #
     # link_to_page "home"
     #   
-    def link_to_page(page_id, html_options={}, &block)
-      
-      page = Cardboard::Page.where(id: page_id).first if page_id.is_a? Integer
-      page = Cardboard::Page.where(identifier: page_id).first if page_id.is_a? String
-      
-      if block_given?
-        return nil if page.blank?
-        title = capture(page, &block)
+    def link_to_page(page_id, html_options={}, &block)  
+      page = if page_id.is_a?(Integer)
+        Cardboard::Page.where(id: page_id).first 
+      else #if page_id.is_a? String
+        Cardboard::Page.where(identifier: page_id).first 
+      end
+      return nil if page.blank?
+
+      title = if block_given?
+        capture(page, &block)
       else
-        return link_to(page_id, page_path(id: page_id), html_options)
-        title = page.title
+        page.title
       end
       link_to(title, page.url, html_options)
     end

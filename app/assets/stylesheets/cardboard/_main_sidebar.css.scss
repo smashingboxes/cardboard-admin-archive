@@ -1,41 +1,38 @@
+$main_sidebar_background: lighten($black, 10%);
+$main_sidebar_background_zindex: $main_topbar_zindex - 1;
+
 #main_sidebar{
-  height: 100%;
-  position: absolute;
-  left: 0px;
-  background: lighten($black, 10%);
+  // position: absolute;
+  // top: $main_topbar_height;
+  // left: 0px;
+  background: $main_sidebar_background;
   width: $main_sidebar_width;
   box-sizing: border-box;
-  overflow-y: scroll;
-  z-index: 100;
-
+  z-index: $main_sidebar_background_zindex + 1;
 
   #menu{
     .item{
       a{
-        padding: 25px 2px;
+        padding: 22px 5px;
         display: block;
-        border-bottom: 1px solid lighten($black, 25%);
-        border-top: 1px solid lighten($black, 15%);
+        border-bottom: 1px solid darken($main_sidebar_background, 9%);
+        border-top: 1px solid lighten($main_sidebar_background, 9%);
         text-align: center;
         word-wrap:break-word;
-
         color: $white;
-      
+
         &:hover, &.active{
-          background: lighten($black, 20%);
-          border-bottom: 1px solid  lighten($black, 10%);
+          background: lighten($main_sidebar_background, 4%);
+          //background: $brand_color;
           text-decoration: none;
-          // color: saturate($brand_color, 80%);
-          cursor: pointer;
-          cursor: hand;
       }
         span{
           display: block;
-          margin-top: 5px;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 13px;
         }
       }   
     }
   }
 }
+

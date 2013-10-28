@@ -33,7 +33,7 @@ module Cardboard
       private
 
       def fields
-        @_fields ||= singular_table_name.classify.constantize.column_names.reject{|k| %w[id created_at updated_at].include?(k) || k.empty?}
+        @_fields ||= singular_table_name.classify.constantize.column_names.reject{|k| %w[created_at].include?(k) || k.empty?}
       end
       def plural_table_name
         @_plural_table_name ||= singular_table_name.pluralize

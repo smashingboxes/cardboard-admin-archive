@@ -9,17 +9,24 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
 
   def collection
     @q ||= end_of_association_chain.search(params[:q])
+
+    @q.sorts = self.class.default_order if @q.sorts.empty?
     get_collection_ivar || begin
-      set_collection_ivar((@q.respond_to?(:scoped) ? @q.scoped.result(:distinct => true) : @q.result(:distinct => true)).page(params[:page]))
+      set_collection_ivar((@q.respond_to?(:scoped) ? @q.scoped.result : @q.result).page(params[:page]))
     end
   end
 
 private
 
-  def self.menu(hash = nil)
-    @menu = {priority: 999, label: self.controller_name.to_s.titleize} if @menu.nil?
-    return @menu if hash.nil?
+  def self.default_order(val = nil)
+    @default_order ||= 'updated_at desc'
+    return @default_order if val.nil?
+    @default_order = val.to_s
+  end
 
+  def self.menu(hash = nil)
+    @menu = {priority: 999, label: self.controller_name.to_s.titleize} if @menu.nil? #menu might be false, so no ||=
+    return @menu if hash.nil?
     @menu = hash.is_a?(Hash) ? @menu.merge(hash) : hash
   end
 

@@ -173,6 +173,15 @@ You can also choose to remove a resource from the menu
   menu  false
 ```
 
+### Sorting
+```ruby
+  default_order "name DESC" # default: 'updated_at desc'
+```
+You can pass any `ransack` sort order, which includes associations. Example: 
+```ruby
+  default_order "user_name" # belongs to a user
+```
+
 #### Filter helper
 You can show filters on your resource index page simply by adding `cardboard_filters`, with the model class, the main field to search (has to be a text or string field), and options.
 
@@ -182,6 +191,7 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 
 `title`: change the page's title (optional)
 
+`new_button:` Options for the new button which is enabled by default.  Allowed keys are `enabled` (true or false) and `label` (string).
 `new_btn`: edit the new resource button's text (optional)
 
 Example:
@@ -215,6 +225,8 @@ Make sure this file is located under `app/helpers/cardboard`
 
 #### Custom CSS/JS
 The css/js for the resources is the same as the cardboard admin interface. If you'd like to extend or overwrite some of these, simply edit the `cardboard.css.scss` or `cardboard.js` files located in your assets folder. These files were generated during the cardboard installation.
+
+Note: Make sure to remove `*= require_tree .` from your application.css, you don't want your cardboard css and js to leak into your main app!
 
 ## Create Settings
 You can create new settings that will be editable from the admin panel. 
@@ -325,6 +337,10 @@ views
        |- index.html.slim
 ```
 
+## Customizing Cardboard
+
+### Overwrite views
+You can easily change the default behavior of the app by overwriting the views. For example say you'd like to change the my account page. Simply add a `views/cardboard/my_account/edit.html.slim` and edit it at will.
 
 ## License
 Copyright (c) 2013 by SmashingBoxes

@@ -1,7 +1,7 @@
 require_dependency "cardboard/application_controller"
 
 module Cardboard
-  class UsersController < ApplicationController
+  class MyAccountController < ApplicationController
 
     def edit
       @user =  cardboard_user
@@ -18,7 +18,7 @@ module Cardboard
       if @user.update_attributes(strong_params[admin_user_method])
         request.env['warden'].session_serializer.store(@user, admin_user_method)
         flash[:success] = "User information updated successfully"
-        redirect_to user_path
+        redirect_to my_account_path
       else
         render :edit
       end

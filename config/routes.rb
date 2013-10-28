@@ -1,8 +1,8 @@
 # Routes for admin interface
 Cardboard::Engine.routes.draw do
 
-  get "account", to: "users#edit", as: "user"
-  patch "account", to: "users#update", as: "update_user"
+  get "my_account", to: "my_account#edit"
+  patch "my_account", to: "my_account#update"
 
   post "pages/sort", to: "pages#sort"
   get "pages/:id", to: "pages#edit"
@@ -34,9 +34,16 @@ end
 # Routes for public pages
 Rails.application.routes.draw do
   scope  :constraints => { :format => 'html' } do #:format => true,
-    get "*id", to: "pages#show", as: :page
+    get "*id", to: "pages#show"
   end
 
   root :to => "pages#show" unless @set.named_routes.routes[:root] #has_named_route?
 end
 
+
+Rails.application.routes.named_routes.module.module_eval do
+  def page_path(identifier, options = {})
+    url = Cardboard::Page.where(identifier: identifier.to_s).first.try(:url)
+    options.present? && url ? "#{url}?#{options.to_query}" : url
+  end
+end

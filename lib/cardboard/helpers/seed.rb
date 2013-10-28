@@ -31,12 +31,10 @@ module Cardboard
         db_part.update_attribute :part_position_position, part[:position] || :last
 
         db_part.subparts.first_or_create! 
+
         db_part.subparts.each do |db_part|
           self.populate_fields(part[:fields], db_part)
         end
-        # for remove_field in db_part.fields.map(&:identifier) - part[:fields].map{|k,v|k.to_s}  
-        #   db_part.fields.where(identifier: remove_field).first.destroy
-        # end
       end
       for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}
         db_page.parts.where(identifier: remove_part).first.destroy
@@ -46,13 +44,19 @@ module Cardboard
     def self.populate_fields(fields, object)
       fields ||= {}
       fields.each do |id, field|
-        type = "Cardboard::Field::#{(field.delete(:type) || "string").camelize}"
-        db_field = object.fields.where(identifier: id.to_s, type: type).first_or_create!
-        db_field = type.constantize.find(db_field.id) #required for images and files defaults
+
+        db_field = Field.where(identifier: id.to_s, object_with_field: object).first_or_initialize
+        db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         db_field.position_position = field[:position] || :last
-        db_field.update_attributes!(field) 
+        begin
+          db_field.update_attributes!(field.reject{|k,v|k == "type"}) 
+        rescue Dragonfly::DataStorage::DataNotFound => e
+          puts "ERROR: #{e}"
+          puts db_field.attributes.to_s
+        end
       end
+
       #remove fields no longer in the seed file
       for remove_field in object.fields.map(&:identifier) - fields.map{|k,v|k.to_s}
         object.fields.where(identifier: remove_field).first.destroy

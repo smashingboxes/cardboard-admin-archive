@@ -63,8 +63,8 @@ describe "Seeding" do
       assert_equal 2, Cardboard::Page.count
     end
     it 'Should add parts' do
-      assert_equal "intro", @part.identifier
-      assert_equal "slideshow", @last_part.identifier
+      assert_equal "slideshow", @part.identifier
+      assert_equal "intro", @last_part.identifier
     end
     it 'Should add fields' do
       refute_nil @page.get("intro").fields.where(identifier: "text")

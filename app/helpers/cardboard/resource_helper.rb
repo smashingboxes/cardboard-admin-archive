@@ -41,6 +41,7 @@ module Cardboard
 
     def cardboard_filters(model, main_element, options={})
       raise "First argument needs to be a class" unless model.is_a? Class
+      options[:new_button] ||= Hash.new
 
       elements =  model.columns.inject([]) do |a, column|
         name = column.name.to_sym
@@ -48,6 +49,7 @@ module Cardboard
         a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) #&& name != main_element.to_sym
         a
       end
+
 
       elements |= options[:associated_fields] if options[:associated_fields].present?
 
