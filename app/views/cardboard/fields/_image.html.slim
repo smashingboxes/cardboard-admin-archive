@@ -1,4 +1,4 @@
-= f.input :value, label: f.object.identifier, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
+= f.input :value, label: f.object.label || f.object.identifier.titleize, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
 
   - if f.object.value_uid.present?
     = image_tag f.object.value.thumb('600x150>').url
