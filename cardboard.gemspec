@@ -22,16 +22,16 @@ Gem::Specification.new do |s|
   #don't forget to require them in lib/cardboard/engine.rb
   s.add_dependency "rails", "~> 4.0.0"
   s.add_dependency "stringex"
-  s.add_dependency "sass-rails", '>= 4.0.0'
+  s.add_dependency "sass-rails", '~> 4.0'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
-  s.add_dependency 'bootstrap-sass', '>= 2.2'
+  s.add_dependency 'bootstrap-sass', '~> 2.2'
   s.add_dependency 'bootstrap-datepicker-rails'
   s.add_dependency 'bootstrap-wysihtml5-rails'
   s.add_dependency 'kaminari-bootstrap'
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
-  s.add_dependency 'simple_form', '>= 3.0.0.rc'
+  s.add_dependency 'simple_form', '>= 3.0.0'
   s.add_dependency 'kaminari'
   s.add_dependency 'inherited_resources', '>= 1.4.1'
   s.add_dependency 'ranked-model', '>= 0.2.1'
