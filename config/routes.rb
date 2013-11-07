@@ -30,7 +30,6 @@ Cardboard::Engine.routes.draw do
 
 end
 
-
 # Routes for public pages
 Rails.application.routes.draw do
   scope  :constraints => { :format => 'html' } do #:format => true,
@@ -45,5 +44,10 @@ Rails.application.routes.named_routes.module.module_eval do
   def page_path(identifier, options = {})
     url = Cardboard::Page.where(identifier: identifier.to_s).first.try(:url)
     options.present? && url ? "#{url}?#{options.to_query}" : url
+  end
+
+  def page_url(identifier, options = {})
+    return nil unless url = page_path(identifier, options)
+    root_url + url[1..-1]
   end
 end

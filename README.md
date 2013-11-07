@@ -267,6 +267,13 @@ PagesController.class_eval do
   end
 end
 ``` 
+### Page Path
+In your controllers you may want to redirect to a specific page. You can do so with the following:
+```ruby
+page_path("identifier_for_this_page")
+page_url("identifier_for_this_page")
+```
+
 
 ### Meta tags (SEO)
 To add SEO meta tags simply add a yield as follows to your layout file:
