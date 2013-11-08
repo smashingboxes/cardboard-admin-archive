@@ -1,20 +1,17 @@
-- models = model.pluralize
-- model_title = model.titleize
-- models_title = model_title.pluralize
-- show_adv_search = params[:s] == "advanced" 
+- models = klass.pluralize
+- model_title = klass.titleize
 
 table#filter_search_header
   tr 
     td style="text-align:left"
-      h3= options[:title] || models_title
+      h3= options[:title] || model_title.pluralize
+
     - if main_element.present?
       td style="text-align:center"
-        #simple_search style="#{"display: none" if show_adv_search}"
-          = render "cardboard/resources/simple_search", main_element: main_element
-        / #advanced_search style="#{"display: none" unless show_adv_search}"
-        /   = render "cardboard/resources/advanced_search", elements: elements, main_element: main_element
-    - if options[:new_button][:enabled]
+        #simple_search= render "cardboard/resources/simple_search", main_element: main_element
+
+    - if options[:new_button]
       td style="text-align:right"
-        = link_to(options[:new_button][:label] || "New #{model_title}", {controller: "cardboard/#{models}", action: :new}, class: "btn pull-right", style:"min-width:90px;") 
+        = link_to(options[:new_button][:label] || "New #{model_title}", options[:new_button][:url] || {controller: "cardboard/#{models}", action: :new}, class: "btn pull-right", style:"min-width:90px;") 
 
   

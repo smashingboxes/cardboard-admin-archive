@@ -39,21 +39,21 @@ module Cardboard
   #  "updated_at_lt"=>"",
   #  "updated_at_gteq"=>""},
 
-    def cardboard_filters(model, main_element, options={})
-      raise "First argument needs to be a class" unless model.is_a? Class
-      options[:new_button] ||= Hash.new
+    def cardboard_filters(klass, main_element, options={})
+      raise "First argument needs to be a class" unless klass.is_a? Class
 
-      elements =  model.columns.inject([]) do |a, column|
-        name = column.name.to_sym
-        type = column.type.to_sym
-        a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) #&& name != main_element.to_sym
-        a
-      end
+      options[:new_button] = Hash.new if options[:new_button].nil? #careful for false
 
+      # Fields for advanced search
+      # elements =  klass.columns.inject([]) do |a, column|
+      #   name = column.name.to_sym
+      #   type = column.type.to_sym
+      #   a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) #&& name != main_element.to_sym
+      #   a
+      # end
+      # elements |= options[:associated_fields] if options[:associated_fields].present?
 
-      elements |= options[:associated_fields] if options[:associated_fields].present?
-
-      render "cardboard/resources/search_helper", model: model.to_s.demodulize.underscore, elements: elements, options: options, main_element: main_element
+      render "cardboard/resources/search_helper", klass: klass.to_s.demodulize.underscore, options: options, main_element: main_element #,elements: elements
     end
 
 

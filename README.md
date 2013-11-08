@@ -191,12 +191,11 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 
 `title`: change the page's title (optional)
 
-`new_button:` Options for the new button which is enabled by default.  Allowed keys are `enabled` (true or false) and `label` (string).
-`new_btn`: edit the new resource button's text (optional)
+`new_button:` Options for the button used to create a new resource element. Can be `false` to remove it, or `label` and `url` can be modified (optional).
 
 Example:
 ```ruby
-= cardboard_filters User, :name, title: "Employees", new_btn: "Add an employee"
+= cardboard_filters User, :name, title: "Employees", new_button: {label: "Add an employee"}
 ```
 
 #### Pagination Helper
