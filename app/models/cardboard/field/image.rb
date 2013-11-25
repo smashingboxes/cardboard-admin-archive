@@ -1,7 +1,7 @@
 module Cardboard
   class Field::Image < Field
-    # attr_accessible :remove_value, :retained_value
-    image_accessor :value do 
+
+    dragonfly_accessor :value do 
       after_assign  :resize_image 
     end
 

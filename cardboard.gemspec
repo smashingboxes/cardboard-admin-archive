@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cocoon', '>= 1.2.0'
   s.add_dependency 'gon'
   s.add_dependency 'rack-cache'
-  s.add_dependency 'dragonfly'
+  s.add_dependency 'dragonfly', '~> 1.0'
   s.add_dependency 'chronic'
   s.add_dependency 'ransack', '>= 1.0.0'
   s.add_dependency 'rack-pjax'
