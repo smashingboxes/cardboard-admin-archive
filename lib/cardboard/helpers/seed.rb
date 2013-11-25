@@ -44,14 +44,21 @@ module Cardboard
     def self.populate_fields(fields, object)
       fields ||= {}
       fields.each do |id, field|
-
         db_field = Field.where(identifier: id.to_s, object_with_field: object).first_or_initialize
         db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         db_field.position_position = field[:position] || :last
+        
+        if db_field.type == "Cardboard::Field::Image" && field[:value]
+          db_field.value_uid = Dragonfly.app.store(field[:value]) 
+        else
+          db_field.value = field[:value]
+        end
+
         begin
-          db_field.update_attributes!(field.reject{|k,v|k == "type"}) 
-        rescue Dragonfly::DataStorage::DataNotFound => e
+          db_field.update_attributes!(field.reject{|k,v| ["type", "value", "position"].include?(k)}) 
+        rescue Exception => e
+          # Output validation errors
           puts "ERROR: #{e}"
           puts db_field.attributes.to_s
         end

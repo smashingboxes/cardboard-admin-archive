@@ -1,12 +1,13 @@
 module Cardboard
   class Field::Image < Field
+    extend Dragonfly::Model::Validations
 
     dragonfly_accessor :value do 
       after_assign  :resize_image 
     end
 
-    validates_property :format, :of => :value, :in => [:jpeg, :jpg, :png, :gif]
-    validates_property :image?, :of => :value, :as => true
+    validates_property :format, :of => :value, :in => [:jpeg, :jpg, :png, :gif], if: :value_uid?
+    validates_property :image?, :of => :value, :as => true, if: :value_uid?
     validates :value, presence:true, :if => :required_field?
 
     def default

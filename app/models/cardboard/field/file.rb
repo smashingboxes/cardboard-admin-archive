@@ -1,5 +1,6 @@
 module Cardboard
   class Field::File < Field
+    extend Dragonfly::Model::Validations
     
     dragonfly_accessor :value
 
