@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cardboard_cms (0.0.1)
+    cardboard_cms (0.1.2)
       bootstrap-datepicker-rails
       bootstrap-sass (~> 2.2)
       bootstrap-wysihtml5-rails
@@ -272,7 +272,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.7)
-    stringex (2.1.1)
+    stringex (2.1.2)
     temple (0.6.7)
     thin (1.5.1)
       daemons (>= 1.0.9)

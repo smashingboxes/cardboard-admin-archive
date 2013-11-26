@@ -1,7 +1,6 @@
 module Cardboard
   class Field::File < Field
-    extend Dragonfly::Model::Validations
-    
+
     dragonfly_accessor :value
 
     validates_size_of :value, :maximum => 20.megabytes #20000.kilobytes #TODO: move size to gem settings

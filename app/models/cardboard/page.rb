@@ -2,7 +2,6 @@ module Cardboard
   class Page < ActiveRecord::Base
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
       
-    # attr_accessible :position, :title, :path, :slug, :parent, :parent_url, :parent_id, :parts_attributes, :meta_seo, :in_menu
     attr_accessor :parent_url, :is_root
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
@@ -103,6 +102,26 @@ module Cardboard
         f.size == 1 ? part.first : part.first.attr(f.last)
       end
     end
+
+    # def page_hash
+    #   return {} if self.parts.blank?
+    #   self.parts.rank(:part_position).inject(ActiveSupport::OrderedHash.new) do |part_hash, part| 
+    #     part_hash[part.identifier] = if part.repeatable?
+    #       part.subparts.rank(:subpart_position).inject([]) do |sub_array, subpart|
+    #         sub_array << subpart.fields.rank(:position).inject(ActiveSupport::OrderedHash.new) do |fields_hash, field|
+    #           fields_hash[field.identifier] = subpart.attr(field.identifier)
+    #           fields_hash
+    #         end
+    #       end
+    #     else
+    #       get(part.identifier).fields.rank(:position).inject(ActiveSupport::OrderedHash.new) do |fields_hash, field|
+    #         fields_hash[field.identifier] = part.attr(field.identifier)
+    #         fields_hash
+    #       end
+    #     end
+    #     part_hash
+    #   end
+    # end
 
     # SEO
     # children inherit their parent's SEO settings (these can be overwritten)

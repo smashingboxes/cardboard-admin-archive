@@ -40,7 +40,7 @@ class PianosController < ApplicationController
   # POST /pianos
   # POST /pianos.json
   def create
-    @piano = Piano.new(params[:piano])
+    @piano = Piano.new(params.require(:piano).permit!)
 
     respond_to do |format|
       if @piano.save
@@ -59,7 +59,7 @@ class PianosController < ApplicationController
     @piano = Piano.find(params[:id])
 
     respond_to do |format|
-      if @piano.update_attributes(params[:piano])
+      if @piano.update_attributes(params.require(:piano).permit!)
         format.html { redirect_to @piano, notice: 'Piano was successfully updated.' }
         format.json { head :no_content }
       else
