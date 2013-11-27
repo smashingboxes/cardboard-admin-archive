@@ -10,7 +10,7 @@ module Cardboard
       pages.each do |id, page|
 
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
-        db_page.update_attributes!(page.filter(:title, :parent_id)) 
+        db_page.update_attributes!(filter_hash(page, :title, :parent_id)) 
 
         self.populate_parts(page[:parts], db_page)
       end
@@ -27,7 +27,7 @@ module Cardboard
       page_parts ||= {}
       page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
-        db_part.update_attributes!(part.filter(:repeatable))
+        db_part.update_attributes!(filter_hash(part, :repeatable))
         db_part.update_attribute :part_position_position, part[:position] || :last
 
         db_part.subparts.first_or_create! 
@@ -80,5 +80,11 @@ module Cardboard
       # Cardboard::Setting.add("google_analytics", type: "string", position: 1)
     end
     
+    private
+
+    def self.filter_hash(hash, *args)
+      return nil if args.empty?
+      hash.select {|key| args.include?(key.to_s) || args.include?(key.to_sym)}
+    end
   end
 end

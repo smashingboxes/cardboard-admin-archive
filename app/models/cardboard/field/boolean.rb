@@ -2,12 +2,8 @@ module Cardboard
   class Field::Boolean < Field
     validate :is_boolean?
 
-    def value
-      value_uid.to_s.to_boolean
-    end
-
     def value=(val)
-      self.value_uid = val
+      self.value_uid = to_boolean(val)
     end
 
     def default
@@ -21,7 +17,15 @@ module Cardboard
     end
 
     def is_boolean?
-      self.value rescue errors.add(:value, "is not a valid boolean")
+      errors.add(:value, "is not a valid boolean") if self.value_uid.nil?
+    end
+
+    private
+
+    def to_boolean(val)
+      return true if val == true || !!(val =~ /(true|t|yes|y|1)$/i)
+      return false if val == false || val.blank? || !!(val =~ /(false|f|no|n|0)$/i)
+      return nil
     end
   end
 end
