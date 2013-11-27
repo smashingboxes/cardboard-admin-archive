@@ -48,19 +48,15 @@ module Cardboard
         db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         db_field.position_position = field[:position] || :last
-        
-        if db_field.type == "Cardboard::Field::Image" && field[:value]
-          db_field.value_uid = Dragonfly.app.store(field[:value]) 
-        else
-          db_field.value = field[:value]
-        end
-
+ 
         begin
-          db_field.update_attributes!(field.reject{|k,v| ["type", "value", "position"].include?(k)}) 
+          db_field.update_attributes!(field.reject{|k,v| ["type", "position"].include?(k)}) 
         rescue Exception => e
           # Output validation errors
-          puts "ERROR: #{e}"
-          puts db_field.attributes.to_s
+          puts "-- ERROR --"
+          puts e
+          puts "#{db_field.identifier}: #{db_field.value_uid || field[:value] || field[:default] || "nil"}"
+          puts "-----------"
         end
       end
 

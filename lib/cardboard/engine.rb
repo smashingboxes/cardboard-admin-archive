@@ -27,13 +27,6 @@ module Cardboard
     isolate_namespace Cardboard
     railtie_name "cardboard"
 
-    # class << self
-    #   attr_accessor :root
-    #   def root
-    #     @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
-    #   end
-    # end
-
     config.generators do |g|
       g.test_framework :mini_test,  :fixture => false, :spec => true
     end
@@ -69,10 +62,13 @@ module Cardboard
       # Cardboard.resource_controllers = Cardboard::AdminController.descendants
     end
 
-    if Rails.version > "3.1"
-      initializer "precompile hook", :group => :all do |app|
-        app.config.assets.precompile += ["cardboard.js", "cardboard.css"]
-      end
+    initializer "precompile hook", :group => :all do |app|
+      app.config.assets.precompile += ["cardboard.js", "cardboard.css"]
+    end
+
+    initializer "dragonfly whitelist" do |app|
+      Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/images/)
+      Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/files/)
     end
 
     initializer "pjax hook" do |app|
@@ -82,11 +78,6 @@ module Cardboard
     rake_tasks do
       Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
     end
-
-    config.after_initialize do
-      # Add load paths straight to I18n, so engines and application can overwrite it.
-      require 'active_support/i18n'
-      I18n.load_path.unshift *Dir[File.expand_path('../cardboard/locales/*.yml', __FILE__)]
-    end    
+  
   end
 end

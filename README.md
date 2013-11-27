@@ -101,7 +101,7 @@ pages:
           image1:
             type: image
             required: true
-            default: app/assets/images/CrashTest.jpg
+            default: CrashTest.jpg
             position: 0
 ```
 
@@ -138,8 +138,8 @@ hint | string | nil | form field hint
 placeholder | string | nil | form field placeholder
 position | integer | auto-increment | position of the field within the part (only for the admin area)
 required | boolean | true | must this field have a value for the form to save
-type | string | `string` | choose between: `boolean`, `date`, `decimal`, `file`, `image`, `integer`, `rich_text`, `text`, `string`, `resource_link` (needs value: resource_linked), `external_link` (needs value: http://site.com)
-default | string | nil | set the value but don't overwrite (only set if nil)
+type | string | `string` | choose between: `boolean`, `date`, `decimal`, `file`, `image`, `integer`, `rich_text`, `text`, `string`, `resource_link` (needs value: resource_linked (same as the controller name ex: pianos)), `external_link` (needs value: http://site.com)
+default | string | nil | set the value but don't overwrite (only set if nil). Put default images in /assets/images/defaults and default files in /assets/files/defaults
 value | string | nil | USE ONLY FOR types `resource_link` and `external_link` (this will overwrite user input, in most cases use the `default` key instead)
 
 

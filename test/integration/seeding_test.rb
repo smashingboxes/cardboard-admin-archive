@@ -11,7 +11,7 @@ describe "Seeding" do
           parts:{
             intro:{
               position: 1,
-              fields:{
+              fields:{ 
                 text:{
                   type: "string",
                   default: "default text",
@@ -28,7 +28,7 @@ describe "Seeding" do
               fields:{
                 image:{
                   type: "image",
-                  default: "app/assets/images/CrashTest.jpg"
+                  default: "CrashTest.jpg"
                 },
                 desc:{
                   type: "string"

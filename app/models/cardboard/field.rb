@@ -33,7 +33,14 @@ module Cardboard
       #overwritten for each subclass
     end
     def default=(val) 
-      self.value_uid = val if self.value_uid.nil? && val.present?
+      return unless self.value_uid.nil? && val.present?
+      if type == "image" || type == "file"
+        path = "app/assets/#{type.pluralize}/defaults/#{val}"
+        raise "File not found #{path}. Make sure to add your #{type} before seeding." unless ::File.exist?(Rails.root.join(path))
+        self.value_uid = path
+      else
+        self.value_uid = val 
+      end
     end
 
   private
