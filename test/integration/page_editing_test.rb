@@ -48,7 +48,6 @@ describe "Page editing integration" do
   end
 
   it 'should see an error if a required field is submitted empty' do
-    binding.pry
     fill_in "page_title", with: ""
     find_button('Save').click   
     assert page.has_css?(".page_title.error")   

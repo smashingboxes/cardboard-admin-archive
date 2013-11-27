@@ -1,4 +1,6 @@
 # Cardboard
+[![Code Climate](https://codeclimate.com/github/smashingboxes/cardboard.png)](https://codeclimate.com/github/smashingboxes/cardboard)
+
 Cardboard is a simple CMS Engine for your Rails 4 applications.
 
 ## Features
