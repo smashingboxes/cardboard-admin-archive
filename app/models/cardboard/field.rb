@@ -19,6 +19,19 @@ module Cardboard
 
     default_scope {rank(:position)}
 
+
+    class << self
+      # Allow "type" to be passed in nested forms
+      def new_with_cast(*attributes, &block)
+        if (h = attributes.first).is_a?(Hash) && !h.nil? && (type = h[:type] || h['type']) && type.present? && (klass = type.constantize) != self
+          raise "Type is invalid, it should inherit from Field"  unless klass <= self
+          return klass.new(*attributes, &block)
+        end
+        new_without_cast(*attributes, &block)
+      end
+      alias_method_chain :new, :cast
+    end
+
     # overwritten setter
     def type=(val)
       return super if val =~ /^Cardboard::Field::/ || val.nil?
