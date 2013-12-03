@@ -1,9 +1,9 @@
-- if Rails.env.development? && lookup_context.exists?(current_page.identifier, 'pages', false) 
+- if lookup_context.exists?(current_page.identifier, 'pages', false) 
 
   - content_for :seo do
     = render "cardboard/pages/seo"
 
   = render template: "pages/#{current_page.identifier}"
   
-- else
+- elsif Rails.env.development? 
   = render "cardboard/pages/error", missing_file: current_page.identifier
