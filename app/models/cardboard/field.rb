@@ -5,11 +5,9 @@ module Cardboard
 
     belongs_to :object_with_field, :polymorphic => true, :inverse_of => :fields
 
-    # attr_accessible :position, :value #, :value_uid
-
     #gem
     include RankedModel
-    ranks :position, :with_same => :object_with_field_id
+    ranks :position, :with_same => [:object_with_field_id, :object_with_field_type], :class_name => 'Cardboard::Field'
 
     #validations
     validates :identifier, :type, presence:true
@@ -18,7 +16,6 @@ module Cardboard
                           :message => "Only downcase letters, numbers and underscores are allowed" }
 
     default_scope {rank(:position)}
-
 
     class << self
       # Allow "type" to be passed in nested forms

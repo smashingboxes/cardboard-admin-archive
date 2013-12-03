@@ -10,6 +10,7 @@ module Cardboard
       pages.each do |id, page|
 
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
+        db_page.position_position = page[:position] || :last
         db_page.update_attributes!(filter_hash(page, :title, :parent_id)) 
 
         self.populate_parts(page[:parts], db_page)
@@ -27,9 +28,9 @@ module Cardboard
       page_parts ||= {}
       page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
+        db_part.part_position_position = part[:position] || :last
         db_part.update_attributes!(filter_hash(part, :repeatable))
-        db_part.update_attribute :part_position_position, part[:position] || :last
-
+        
         db_part.subparts.first_or_create! 
 
         db_part.subparts.each do |db_part|
@@ -48,7 +49,6 @@ module Cardboard
         db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         db_field.position_position = field[:position] || :last
- 
         begin
           db_field.update_attributes!(field.reject{|k,v| ["type", "position"].include?(k)}) 
         rescue Exception => e
