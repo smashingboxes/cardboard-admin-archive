@@ -23,8 +23,8 @@ module Cardboard
     class << self
       # Allow "type" to be passed in nested forms
       def new_with_cast(*attributes, &block)
-        if (h = attributes.first).is_a?(Hash) && !h.nil? && (type = h[:type] || h['type']) && type.present? && (klass = type.constantize) != self
-          raise "Type is invalid, it should inherit from Field"  unless klass <= self
+        if (h = attributes.first).is_a?(Hash) && !h.nil? && (type = h.delete(:type) || h.delete('type')) && type.present? && (klass = type.constantize) != self
+          raise "Field type #{type} does not inherit from Cardboard::Field"  unless klass <= self
           return klass.new(*attributes, &block)
         end
         new_without_cast(*attributes, &block)
@@ -63,7 +63,7 @@ module Cardboard
     end
     
     def required_field?
-      self.required? && !self.new_record? && !self.seeding
+      self.required? && !self.seeding
     end
 
   end

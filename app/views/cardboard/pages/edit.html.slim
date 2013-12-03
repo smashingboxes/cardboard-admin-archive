@@ -20,20 +20,21 @@ h1
 
 
   
-  - for part in @page.parts #.rank(:part_position) don't rank, it prevents validations
+  - for part in @page.parts.sort_by(&:position) 
     = f.simple_fields_for :parts, part do |g|
 
       = field_set_tag part.identifier.titleize do
         = g.error :base, class: "alert-error"
 
-        - for subpart in part.subparts #.rank(:subpart_position)
+        / sort puts nil at the end, in the case of new parts
+        - for subpart in part.subparts.sort{|a,b| a.position && b.position ? a.position <=> b.position : a.position ? -1 : 1 }
           = g.simple_fields_for :subparts, subpart do |y|
 
             = render "subpart_fields", f: y, subpart: subpart
         
         - if part.repeatable?
           .links
-            -# the "links" class is important for the cocoon gem
+            / the "links" class is important for the cocoon gem
             = link_to_add_association "Add another #{part.identifier.singularize.titleize}", g, :subparts, :render_options => {:locals => {:subpart => part.new_subpart }}, class: "btn btn-block"
 
   .form-actions

@@ -38,15 +38,15 @@ module Cardboard
     def new_subpart
       return nil if !repeatable? || subpart?
       master = self.subparts.first
-      subpart = master.dup
+      master_hash = master.attributes.select do |key, value|
+        ["parent_part_id"].include? key
+      end
+      subpart = Cardboard::PagePart.new(master_hash)
       for field in master.fields
-        new_field = field.dup
-        new_field.value = nil
-        new_field.value_uid = nil
-        new_field.object_with_field_id = nil
-        new_field.object_with_field_type = nil
-        new_field.page_part_id = nil
-        subpart.fields << new_field
+        field_hash = field.attributes.select do |key, value|
+          ["identifier", "label", "type", "required", "hint", "placeholder"].include? key
+        end 
+        subpart.fields << Cardboard::Field.new(field_hash)
       end
       return subpart
     end
