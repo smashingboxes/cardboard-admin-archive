@@ -59,8 +59,7 @@ module Cardboard
         return nil unless f
         out = f.value_uid.nil? ? nil : f.value
         out = f.default if f.required? && out.nil?
-
-        f.type == "rich_text" ? out.try(:html_safe) : out
+        out
       end
     end
 
