@@ -193,7 +193,9 @@ You can show filters on your resource index page simply by adding `cardboard_fil
 
 `title`: change the page's title (optional)
 
-`new_button:` Options for the button used to create a new resource element. Can be `false` to remove it, or `label` and `url` can be modified (optional).
+`new_button`: Options for the button used to create a new resource element. Can be `false` to remove it, or `label` and `url` can be modified (optional).
+
+`predicate`: defaults to `cont` (contains). Note: On non text fields, this field is required
 
 Example:
 ```ruby

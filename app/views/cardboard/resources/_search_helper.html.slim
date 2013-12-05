@@ -8,7 +8,7 @@ table#filter_search_header
 
     - if main_element.present?
       td style="text-align:center"
-        #simple_search= render "cardboard/resources/simple_search", main_element: main_element
+        #simple_search= render "cardboard/resources/simple_search", main_element: main_element, predicate: options[:predicate] || "cont"
 
     - if options[:new_button]
       td style="text-align:right"
