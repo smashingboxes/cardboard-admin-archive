@@ -352,6 +352,18 @@ views
 ### Overwrite views
 You can easily change the default behavior of the app by overwriting the views. For example say you'd like to change the my account page. Simply add a `views/cardboard/my_account/edit.html.slim` and edit it at will.
 
+## Deploy with capistrano
+
+```ruby
+namespace :cardboard do
+  desc "seed the database"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake cardboard:seed RAILS_ENV=#{rails_env}"
+  end
+end
+after "deploy", "cardboard:seed"
+```
+
 ## License
 Copyright (c) 2013 by SmashingBoxes
 
