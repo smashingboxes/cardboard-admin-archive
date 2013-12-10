@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-sass', '~> 2.2'
   s.add_dependency 'bootstrap-datepicker-rails'
   s.add_dependency 'bootstrap-wysihtml5-rails'
-  s.add_dependency 'kaminari-bootstrap'
+  s.add_dependency 'kaminari-bootstrap', '~> 0.1.3'
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
   s.add_dependency 'simple_form', '>= 3.0.0'
   s.add_dependency 'kaminari'
