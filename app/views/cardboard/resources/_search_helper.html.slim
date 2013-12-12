@@ -6,9 +6,9 @@ table#filter_search_header
     td style="text-align:left"
       h3= options[:title] || model_title.pluralize
 
-    - if main_element.present?
+    - if main_element
       td style="text-align:center"
-        #simple_search= render "cardboard/resources/simple_search", main_element: main_element, predicate: options[:predicate] || "cont"
+        #simple_search= render "cardboard/resources/simple_search", main_element: main_element
 
     - if options[:new_button]
       td style="text-align:right"

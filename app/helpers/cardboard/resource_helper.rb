@@ -44,15 +44,25 @@ module Cardboard
 
       options[:new_button] = Hash.new if options[:new_button].nil? #careful for false
 
-      # Fields for advanced search
-      # elements =  klass.columns.inject([]) do |a, column|
-      #   name = column.name.to_sym
-      #   type = column.type.to_sym
-      #   a << [name, type] if (options[:fields].blank? || options[:fields].include?(name)) #&& name != main_element.to_sym
-      #   a
-      # end
-      # elements |= options[:associated_fields] if options[:associated_fields].present?
+      if main_element
+        # valid main elements:
+        # false (don't show the search form)
+        # :column_name
+        # "column_name_cont"
+        main_element = main_element.to_s
 
+        case type = klass.columns_hash[main_element].try(:type)
+        when :string, :text
+          main_element = "#{main_element}_cont"
+        when :integer, :decimal, :float
+          main_element = "#{main_element}_eq"
+        when :date, :datetime, :timestamp, :time, :binary, :boolean, :references
+          raise "Main search element cannot be of type #{type}. Use a custom ransack form."
+        else
+          main_element = "#{main_element}_cont" unless %w[cont eq lt gt gteq lteq matches in cont_any start end].include?(main_element.split("_").last)
+        end
+      end
+      
       render "cardboard/resources/search_helper", klass: klass.to_s.demodulize.underscore, options: options, main_element: main_element #,elements: elements
     end
 
