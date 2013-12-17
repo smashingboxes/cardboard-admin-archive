@@ -5,24 +5,26 @@ li
       h3 Insert link
 
     .modal-body
-      ul class="nav nav-tabs"
+      ul class="nav nav-pills"
         li
-          a href="#link_pages" data-toggle="tab" Pages
+          a href="#link_pane_1" data-toggle="pill" Pages
         li
-          a href="#link_url" data-toggle="tab" URL
+          a href="#link_pane_2" data-toggle="pill" URL
         li
-          a href="#link_email" data-toggle="tab" Email
+          a href="#link_pane_3" data-toggle="pill" Email
 
       div class="tab-content"    
-        div class="tab-pane" id="link_pages" 
+        div.tab-pane class="link_pages" id="link_pane_1" 
           ul
             = nested_pages do |page, subpages|
               li
                 = link_to page.title, "#", "data-url" => page.url
                 = content_tag(:ul, subpages) if subpages
-        div class="tab-pane" id="link_url" 
+
+        div.tab-pane id="link_pane_2" 
           input placeholder='http://website.com' class='input-xlarge' value='http://'
-        div class="tab-pane" id="link_email" 
+        
+        div.tab-pane id="link_pane_3" 
           input placeholder='mailto:email@example.com' class='input-xlarge'
 
       input class='bootstrap-wysihtml5-insert-link-url' type="hidden"  
