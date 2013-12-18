@@ -58,17 +58,18 @@ var rich_text_editor_defaults = {
 $(document).on("ready pjax:end", function(e){
   if($(".wysihtml5").length) {
     $('.wysihtml5').wysihtml5(rich_text_editor_defaults);
-  }
+    $('iframe.wysihtml5-sandbox').wysihtml5_size_matters();
 
-  // TODO: find a better way to handle multiple RTE on a single page
-  $(".bootstrap-wysihtml5-insert-link-modal .tab-content div").each(function (index) {
-    $(this).attr("id", $(this).attr("id") + index.toString());            
-  });
-  $(".bootstrap-wysihtml5-insert-link-modal .nav li a").each(function (index) {
-    $(this).attr("href", $(this).attr("href") + index.toString());
-    if(index % 3 == 0) $(this).tab('show');
-  });
-  // END TODO
+    // TODO: find a better way to handle multiple RTE on a single page
+    $(".bootstrap-wysihtml5-insert-link-modal .tab-content div").each(function (index) {
+      $(this).attr("id", $(this).attr("id") + index.toString());            
+    });
+    $(".bootstrap-wysihtml5-insert-link-modal .nav li a").each(function (index) {
+      $(this).attr("href", $(this).attr("href") + index.toString());
+      if(index % 3 == 0) $(this).tab('show');
+    });
+    // END TODO
+  }
 });
 
 $(document).on('cocoon:after-insert', function(e, insertedItem) {
