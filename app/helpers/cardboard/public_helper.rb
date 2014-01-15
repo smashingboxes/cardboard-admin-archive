@@ -1,6 +1,23 @@
 module Cardboard
   module PublicHelper
 
+    def dragonfly_image_tag(image, options = {})
+      return nil unless image
+      size = options.delete(:size) || '125x125'
+      image_tag image.thumb(size).url, options
+    end
+
+    def link_to_file(text, file, options = {})
+      return link_to(text, nil, options) unless file && file.url
+
+      html = ""
+      if [:doc, :docx, :xls, :xlsx, :pdf, :zip, :txt].include?(file.format)
+        html += image_tag("cardboard/icons/#{file.format}.png")
+      end
+      html += link_to(text, file.url, options)
+      html.html_safe
+    end
+
     # Example: 
     #  link_to_page 123, class: "btn" do |page|
     #    "hello #{page.title}"
@@ -41,7 +58,7 @@ module Cardboard
       inner_nested_pages(Cardboard::Page.arrange(page), &block).try(:html_safe)
     end
 
-    private
+  private
 
     def inner_nested_pages(pages, &block)
       return unless pages
