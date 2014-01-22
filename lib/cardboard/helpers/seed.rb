@@ -29,7 +29,7 @@ module Cardboard
       page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_initialize
         db_part.part_position_position = part[:position] || :last
-        db_part.update_attributes!(part.slice(:repeatable))
+        db_part.update_attributes!(:repeatable => part[:repeatable])
         
         db_part.subparts.first_or_create! 
 
