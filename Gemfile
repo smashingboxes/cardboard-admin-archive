@@ -16,13 +16,7 @@ gemspec
 # Gems used by the dummy application
 gem "sqlite3"
 gem "jquery-rails"
-
-
-# should be dependencies
-
 gem 'devise', '>= 3.0.0'
-
-
 
 gem "thin"
 # gem 'rack-mini-profiler'

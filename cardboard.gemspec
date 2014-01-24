@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.license     = "GPLv3"
   s.version     = Cardboard::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Michael Elfassy", "Smashing Boxes"]
+  s.authors     = ["Michael Elfassy", "SmashingBoxes"]
   s.email       = ["michael@smashingboxes.com"]
   s.homepage    = "http://smashingboxes.com"
   s.summary     = "Rails CMS made simple"
