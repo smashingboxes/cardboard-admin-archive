@@ -1,5 +1,5 @@
 #menu
-  - if cardboard_user_can_manage?(:pages)
+  - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
     = main_sidebar_nav_link "Pages", pages_path, id: "nav_dashboard_link", "data-skip-pjax" => true
 
 
