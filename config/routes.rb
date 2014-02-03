@@ -4,8 +4,10 @@ Cardboard::Engine.routes.draw do
   get "my_account", to: "my_account#edit"
   patch "my_account", to: "my_account#update"
 
+  get "pages/new", to: "pages#new"
   post "pages/sort", to: "pages#sort"
   get "pages/:id", to: "pages#edit"
+  
   resources :pages
 
   get "/yoda", to: "super_user#index"

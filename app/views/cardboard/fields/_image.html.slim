@@ -1,9 +1,9 @@
-= f.input :value, label: f.object.label || f.object.identifier.titleize, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required do
+= f.input :value, label: field[:label] || identifier.titleize, hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != "false" do
 
   - if f.object.value_uid.present?
     = image_tag f.object.value.thumb('600x150>').url
     br
-    - unless f.object.required
+    - unless field[:required]
       = f.input :remove_value, inline_label: "Delete file?", label: false, as: :boolean, :wrapper => :default
 
   = f.input_field :value, as: :file

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130607132558) do
+ActiveRecord::Schema.define(version: 20130607132559) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20130607132558) do
     t.string   "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "template_id"
   end
 
   add_index "cardboard_pages", ["identifier"], name: "index_cardboard_pages_on_identifier", unique: true
@@ -104,6 +105,14 @@ ActiveRecord::Schema.define(version: 20130607132558) do
   end
 
   add_index "cardboard_settings", ["name"], name: "index_cardboard_settings_on_name"
+
+  create_table "cardboard_templates", force: true do |t|
+    t.string   "name"
+    t.text     "fields"
+    t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "icescreams", force: true do |t|
     t.string   "flavor"

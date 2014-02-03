@@ -1,3 +1,3 @@
 
 
-= f.input :value, label: f.object.label || f.object.identifier.titleize, as: f.object.type, hint: f.object.hint, placeholder: f.object.placeholder, required: f.object.required
+= f.input :value, label: field[:label] || identifier.titleize, as: field[:type], hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != "false"

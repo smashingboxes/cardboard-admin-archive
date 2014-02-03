@@ -9,6 +9,7 @@ class CreateCardboardPages < ActiveRecord::Migration
       t.text :meta_seo
       t.boolean :in_menu, default: true
       t.string :identifier, unique: true
+      t.belongs_to :template_id
 
       t.timestamps
     end

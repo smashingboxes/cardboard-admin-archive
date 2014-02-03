@@ -1,11 +1,24 @@
 require_dependency "cardboard/application_controller"
+require_dependency Cardboard::Engine.root.join('lib/cardboard/helpers/seed.rb').to_s
 
 module Cardboard
   class PagesController < ApplicationController
     before_filter :check_ability
 
+    def new
+      @page = Cardboard::Page.new
+    end
+
     def edit
       @page = Cardboard::Page.find(params[:id])
+    end
+
+    def create
+      @page = Cardboard::Page.new(params.require(:page).permit(:title, :identifier, :template_id))
+      @page.identifier = @page.title.to_url.underscore if @page.identifier.blank?
+      @page.save
+      Cardboard::Seed.populate_page(@page, @page.template.fields)
+      redirect_to edit_page_path(@page)
     end
 
     def update

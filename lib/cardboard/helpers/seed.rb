@@ -5,15 +5,31 @@ module Cardboard
   module Seed
     extend ActiveSupport::Concern
 
+    def self.populate_templates(filehash = nil)
+      templates = filehash ? filehash[:templates] : {}
+      templates.each do |id, template|
+        db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
+        
+        db_template.update_attributes!(name: template[:title] || template[:name], fields: template[:parts]) 
+      end
+
+      for remove_template in Cardboard::Template.all.map(&:identifier) - templates.map{|k,v|k.to_s}
+        Cardboard::Template.where(identifier: remove_template).first.destroy
+      end
+    end
+
+    def self.populate_page(db_page, page)
+      db_page.position_position = page[:position] || :last
+      db_page.update_attributes!(page.slice(:title, :parent_id)) 
+
+      self.populate_parts(page[:parts], db_page)
+    end
+
     def self.populate_pages(filehash = nil)
       pages = filehash ? filehash[:pages] : {}
       pages.each do |id, page|
-
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
-        db_page.position_position = page[:position] || :last
-        db_page.update_attributes!(page.slice(:title, :parent_id)) 
-
-        self.populate_parts(page[:parts], db_page)
+        self.populate_page(db_page, page)
       end
 
       for remove_page in Cardboard::Page.all.map(&:identifier) - pages.map{|k,v|k.to_s}
