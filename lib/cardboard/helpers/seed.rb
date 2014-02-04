@@ -26,17 +26,9 @@ module Cardboard
     end
 
     def self.populate_pages(filehash = nil)
-      pages = filehash ? filehash[:pages] : {}
-      pages.each do |id, page|
-        db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
-        self.populate_page(db_page, page)
-      end
-
-      for remove_page in Cardboard::Page.all.map(&:identifier) - pages.map{|k,v|k.to_s}
-        Cardboard::Page.where(identifier: remove_page).first.destroy
-      end
-
-      Cardboard::Page.create(identifier: "index", path: "/") if Cardboard::Page.root.nil?
+      templates = {}
+      templates[:templates] = filehash[:pages]
+      populate_templates(templates)
     end
 
 
@@ -64,9 +56,8 @@ module Cardboard
         db_field = Field.where(identifier: id.to_s, object_with_field: object).first_or_initialize
         db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
-        db_field.position_position = field[:position] || :last
         begin
-          db_field.update_attributes!(field.reject{|k,v| ["type", "position"].include?(k)}) 
+          db_field.update_attributes!(field.select{|k,v| ["default", "value"].include?(k)}) 
         rescue Exception => e
           # Output validation errors
           puts "-- ERROR --"
@@ -86,10 +77,10 @@ module Cardboard
       settings = filehash ? filehash[:settings] : nil
       if settings
         db_settings = Cardboard::Setting.first_or_create
+        db_settings.update_attributes!(template: settings)
         self.populate_fields(settings, db_settings)
       end
-      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title, position: 0)
-      # Cardboard::Setting.add("google_analytics", type: "string", position: 1)
+      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title)
     end
     
   end

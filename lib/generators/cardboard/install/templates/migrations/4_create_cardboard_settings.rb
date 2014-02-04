@@ -4,9 +4,7 @@ class CreateCardboardSettings < ActiveRecord::Migration
       t.string :name
       t.text :value
       t.text :default_value
-      t.text :description
-      t.string :hint
-      t.string :format, default: "string"
+      t.text :template
 
     end
     add_index :cardboard_settings, :name

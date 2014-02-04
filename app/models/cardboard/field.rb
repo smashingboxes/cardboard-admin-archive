@@ -6,16 +6,13 @@ module Cardboard
     belongs_to :object_with_field, :polymorphic => true, :inverse_of => :fields
 
     #gem
-    include RankedModel
-    ranks :position, :with_same => [:object_with_field_id, :object_with_field_type], :class_name => 'Cardboard::Field'
 
     #validations
-    validates :identifier, :type, presence:true
+    validates :identifier, :type, :object_with_field, presence:true
     validates :identifier, uniqueness: {:case_sensitive => false, :scope => [:object_with_field_id, :object_with_field_type]}, 
                           :format => { :with => /\A[a-z\_0-9]+\z/,
                           :message => "Only lowercase letters, numbers and underscores are allowed" }
 
-    default_scope {rank(:position)}
 
     class << self
       # Allow "type" to be passed in nested forms
@@ -62,6 +59,12 @@ module Cardboard
       end
     end
 
+    def required?
+      required = self.object_with_field.template[self.identifier.to_sym][:required]
+      required = true if required.nil?
+      required
+    end
+
   private
 
     def is_required
@@ -69,10 +72,7 @@ module Cardboard
     end
     
     def required_field?
-      required = self.object_with_field.template[self.identifier][:required]
-      required = true if required.nil?
- 
-      required && !self.seeding
+      required? && !self.seeding
     end
 
   end

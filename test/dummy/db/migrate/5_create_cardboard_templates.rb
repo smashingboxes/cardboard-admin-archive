@@ -7,6 +7,5 @@ class CreateCardboardTemplates < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :cardboard_pages, :template_id, :integer
   end
 end

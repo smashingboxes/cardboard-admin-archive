@@ -18,11 +18,15 @@ module Cardboard
 
 
     def repeatable?
-       @repeatable ||= self.page.template.fields[self.identifier][:repeatable]
+      template_hash[:repeatable]
+    end
+
+    def template_hash
+      @template ||= self.page.template.fields[self.identifier.to_sym]
     end
 
     def template
-      @template ||= self.page.template_hash[self.identifier][:fields]
+      template_hash[:fields]
     end
 
     def attr(field)

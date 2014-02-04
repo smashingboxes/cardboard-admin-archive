@@ -2,7 +2,11 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] = "test"
-require File.expand_path('../dummy/config/environment', __FILE__)
+require File.expand_path('../dummy/config/environment', __FILE__ )
+
+Dir[Cardboard::Engine.root.join("app", "models","cardboard", "field", "*.rb").to_s].each {|file| require file }
+
+
 require "rails/test_help"
 
 require 'faker'
