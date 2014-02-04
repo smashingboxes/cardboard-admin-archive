@@ -1,4 +1,4 @@
-= f.input :value, label: field[:label] || identifier.titleize, hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != "false" do
+= f.input :value, label: field[:label] || identifier.titleize, hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != false do
 
   - if f.object.value_uid
     p= link_to "#{f.object.value.name} (#{number_to_human_size f.object.value.size})", f.object.value.url, "data-skip-pjax" => true
