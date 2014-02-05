@@ -30,7 +30,7 @@ body{
 }
 
 #main_sidebar, #content_sidebar{
-  top: 0;
+  top: 10px; //leave enough room for the navbar
   left: 0;
   bottom: 0;
   position: absolute;
