@@ -33,7 +33,7 @@ body{
 #main_sidebar, #content_sidebar{
   top: 0;
   left: 0;
-  bottom: 0;
+  min-height: 100%;
   position: absolute;
 }
 

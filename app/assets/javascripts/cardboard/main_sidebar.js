@@ -2,7 +2,12 @@ $(function(){
   $("a#nav_dashboard_link").click(function(e){
     e.preventDefault();
     $("#content_sidebar").toggleClass('toggle');
-    $("#content_main").css("height", $("#content_sidebar").height());
+
+    // Expand #main_content down to fit the exposed sidebar
+    $("#main_content").css('height',
+      $('#content_sidebar').height() + $('#main_topbar').height()
+    );
+
     $('#content').toggleClass('toggle');
     // $(this).toggleClass('active');
   });
