@@ -2,6 +2,7 @@ $(function(){
   $("a#nav_dashboard_link").click(function(e){
     e.preventDefault();
     $("#content_sidebar").toggleClass('toggle');
+    $("#content_main").css("height", $("#content_sidebar").height());
     $('#content').toggleClass('toggle');
     // $(this).toggleClass('active');
   });

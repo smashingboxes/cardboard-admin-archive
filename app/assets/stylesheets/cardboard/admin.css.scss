@@ -27,10 +27,11 @@ body{
 #main_content {
   width: 100%;
   position: relative;
+  min-height: 100%;
 }
 
 #main_sidebar, #content_sidebar{
-  top: 10px; //leave enough room for the navbar
+  top: 0;
   left: 0;
   bottom: 0;
   position: absolute;

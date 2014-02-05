@@ -15,7 +15,9 @@
   display: none;
 
   &.toggle {
-    display: block;
+    position: absolute;
+    left: $main_sidebar_width;
+    display: inline;
     // left: $main_sidebar_width;
     // -webkit-transition: left $page_nav_slide_speed ease;
     // -moz-transition: left $page_nav_slide_speed ease;
