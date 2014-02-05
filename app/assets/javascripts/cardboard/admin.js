@@ -36,10 +36,10 @@ $(document).on('click', '.nav-tabs a', function(e){
   $(this).tab('show');
 });
 
-$(document).on("pjax:end ready cocoon:after-insert", function(e){
+$(document).on("pjax:success ready cocoon:after-insert", function(e){
+
   $('select:not([data-search-select])').selectpicker();
   $('select[data-search-select]').select2({allowClear: true, width: "resolve"});
-
 
   $('.nav-tabs a:first').tab('show');
 });
