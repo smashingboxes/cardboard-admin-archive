@@ -14,11 +14,16 @@ module Cardboard
     end
 
     def create
-      @page = Cardboard::Page.new(params.require(:page).permit(:title, :identifier, :template_id))
+      @page = Cardboard::Page.new(params.require(:page).permit(:title, :template_id))
       @page.identifier = @page.title.to_url.underscore if @page.identifier.blank?
-      @page.save
-      Cardboard::Seed.populate_page(@page, @page.template.fields)
-      redirect_to edit_page_path(@page)
+      if @page.save
+        Cardboard::Seed.populate_parts(@page.template.fields, @page)
+        @page.reload
+        redirect_to edit_page_path(@page)
+      else
+        @page.errors.add(:title, "is reserved or is already used") if @page.errors[:identifier]
+        render :new
+      end
     end
 
     def update
@@ -33,8 +38,14 @@ module Cardboard
     end
 
     def sort
-      Page.find(params[:id]).update_attribute(:position_position, params[:index])
+      Cardboard::Page.find(params[:id]).update_attribute(:position_position, params[:index])
       render nothing: true
+    end
+
+    def destroy
+      @page = Cardboard::Page.find(params[:id])
+      @page.destroy
+      redirect_to pages_path
     end
 
   private

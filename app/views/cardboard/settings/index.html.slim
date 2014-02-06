@@ -5,8 +5,8 @@ h1 Settings
     - @setting.template.each do |field_identifier, field|
 
       - fields = @setting.fields.find{|ob|  ob.identifier ==  field_identifier}
-      - if fields.nil?
-        - fields = @setting.fields.build(type: "Cardboard::Field::#{field[:type].camelize}", identifier: field_identifier, default: field[:default] ) 
+      / - if fields.nil?
+      /   - fields = @setting.fields.build(type: "Cardboard::Field::#{field[:type].camelize}", identifier: field_identifier, default: field[:default] ) 
 
       = s.fields_for :fields, fields do |f|
         - begin

@@ -6,9 +6,7 @@
 
   - part_hash[:fields].each do |field_identifier, field|
        
-    - fields = part.fields.select{|ob|  ob.identifier ==  field_identifier}
-    - if fields.blank?
-      - fields = part.fields.build(type: "Cardboard::Field::#{field[:type].camelize}", identifier: field_identifier, default: field[:default] ) 
+    - fields = part.fields.find{|ob|  ob.identifier ==  field_identifier}
 
     = f.simple_fields_for :fields,  fields do |w|
       = w.hidden_field :type, :value => "Cardboard::Field::#{field[:type].camelize}"
