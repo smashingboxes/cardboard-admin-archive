@@ -4,6 +4,7 @@ class CreateCardboardTemplates < ActiveRecord::Migration
       t.string :name
       t.text :fields
       t.string :identifier
+      t.string :thumbnail
 
       t.timestamps
     end
