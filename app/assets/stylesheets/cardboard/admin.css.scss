@@ -24,15 +24,17 @@ body{
   overflow-x: hidden;
 }
 
-#main_content{
-  min-height:100%;
-  overflow: hidden;
+#main_content {
   width: 100%;
+  position: relative;
+  min-height: 100%;
 }
+
 #main_sidebar, #content_sidebar{
-  margin-bottom: -9999px; 
-  padding-bottom: 9999px;
-  float:left;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  position: absolute;
 }
 
 .center{
