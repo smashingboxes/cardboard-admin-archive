@@ -19,6 +19,7 @@ module Cardboard
     end
 
     def self.populate_pages(filehash = nil)
+      # for legacy support
       # create the template
       templates = {}
       templates[:templates] = filehash[:pages]
@@ -41,7 +42,7 @@ module Cardboard
     end
 
     def self.populate_parts(page_parts, db_page)
-      # called from the page controller
+      # also called from the page controller
       page_parts ||= {}
       page_parts.each do |id, part|
         db_part = db_page.parts.where(identifier: id.to_s).first_or_create!

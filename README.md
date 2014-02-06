@@ -1,18 +1,18 @@
 # Cardboard
 [![Code Climate](https://codeclimate.com/github/smashingboxes/cardboard.png)](https://codeclimate.com/github/smashingboxes/cardboard)
 
-Cardboard is a simple CMS Engine for your Rails 4 applications.
+Cardboard is a simple CMS + Admin panel for your Rails 4 applications.
 
 ## Features
 
 * Build for Rails 4
 * Make your site and your admin area the standard rails way (no complex engines)
-* Create pages and site settings in seconds
-* Repeatable page parts
+* Create page templates and site settings in seconds
+* Repeatable page parts (for things like slideshows)
 * Write your views in haml/slim/erb...! (no restrictive DSL or templating language)
 * Your customers will love the UI/UX
 * Super easy to extend and customize
-* It's like your favorite admin interface gem just had a baby with a CMS
+* Create unlimited pages based on defined templates
 
 ![alt text](https://github.com/smashingboxes/cardboard/wiki/images/2a.jpg "screenshot1")
 
@@ -89,13 +89,12 @@ number_to_human_size(file.size) # => "486 KB"
 ```
 
 
-## Create Pages
-To add pages to cardboard edit `config/cardboard.yml`. See an sample `cardboard.yml` in [https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml](https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml)
+## Create Templates (and pages)
+To add templates to cardboard edit `config/cardboard.yml`. See an sample `cardboard.yml` in [https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml](https://github.com/smashingboxes/cardboard/blob/master/test/dummy/config/cardboard.yml)
 
 ```yml
-pages:
+templates:
   home_page:
-    title: Default page title
     parts:
       slideshow:
         repeatable: true
@@ -107,9 +106,17 @@ pages:
             position: 0
 ```
 
-pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
+templates, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!
 
-#### Pages
+#### Templates
+Each template section starts with the name of it's unique identifier. This name is used to reference the template
+Key | Type | Default | Definition
+---|--- | ---|---
+[parts](#parts) | hash | nil |a list of page parts
+title | string | identifier | name of the template shown to the user
+thumbnail | string | nil | image that represents the template
+
+#### Pages (deprecated)
 Each page section starts with the name of it's unique identifier. This name is used to reference the page in the code an thus should not change throughout the life of the project.
 
 Key | Type | Default | Definition
@@ -167,6 +174,8 @@ Gem | Description
 
 
 ### Menu options
+In your resource controller add the following line to change the way the resource is displayed in cardboard.
+
 ```ruby
   menu  label: "Test", priority: 1
 ```
@@ -176,6 +185,8 @@ You can also choose to remove a resource from the menu
 ```
 
 ### Sorting
+In your resource controller add the following line to change the default sort order.
+
 ```ruby
   default_order "name DESC" # default: 'updated_at desc'
 ```
