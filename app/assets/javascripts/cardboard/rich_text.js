@@ -55,7 +55,7 @@ var rich_text_editor_defaults = {
   useLineBreaks: false
 }
 
-$(document).on("ready pjax:end", function(e){
+$(document).on("ready pjax:success", function(e){
   if($(".wysihtml5").length) {
     $('.wysihtml5').wysihtml5(rich_text_editor_defaults);
     $('iframe.wysihtml5-sandbox').wysihtml5_size_matters();
