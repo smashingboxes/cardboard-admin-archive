@@ -15,7 +15,8 @@ task 'cardboard:seed' => :environment do
   end
 
 
-  Cardboard::Seed.populate_pages(file_hash)
+  # Cardboard::Seed.populate_pages(file_hash)
+  Cardboard::Seed.populate_templates(file_hash)
   Cardboard::Seed.populate_settings(file_hash) 
 
 end

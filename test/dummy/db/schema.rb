@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130607132558) do
+ActiveRecord::Schema.define(version: 20130417134832) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,31 +29,10 @@ ActiveRecord::Schema.define(version: 20130607132558) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "admins", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "beans", force: true do |t|
-    t.string   "color"
-    t.string   "flavor"
-    t.boolean  "from_mexico"
-    t.integer  "size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "cardboard_fields", force: true do |t|
     t.string   "identifier"
-    t.string   "label"
     t.string   "type"
-    t.boolean  "required",               default: true
-    t.integer  "page_part_id"
-    t.integer  "position"
     t.text     "value_uid"
-    t.string   "hint"
-    t.string   "placeholder"
     t.integer  "object_with_field_id"
     t.string   "object_with_field_type"
     t.datetime "created_at"
@@ -66,9 +45,6 @@ ActiveRecord::Schema.define(version: 20130607132558) do
   create_table "cardboard_page_parts", force: true do |t|
     t.string   "identifier"
     t.integer  "position"
-    t.integer  "parent_part_id"
-    t.boolean  "repeatable"
-    t.string   "label"
     t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,7 +52,6 @@ ActiveRecord::Schema.define(version: 20130607132558) do
 
   add_index "cardboard_page_parts", ["identifier"], name: "index_cardboard_page_parts_on_identifier"
   add_index "cardboard_page_parts", ["page_id"], name: "index_cardboard_page_parts_on_page_id"
-  add_index "cardboard_page_parts", ["parent_part_id"], name: "index_cardboard_page_parts_on_parent_part_id"
 
   create_table "cardboard_pages", force: true do |t|
     t.string   "title"
@@ -87,6 +62,7 @@ ActiveRecord::Schema.define(version: 20130607132558) do
     t.text     "meta_seo"
     t.boolean  "in_menu",      default: true
     t.string   "identifier"
+    t.integer  "template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,23 +74,15 @@ ActiveRecord::Schema.define(version: 20130607132558) do
     t.string "name"
     t.text   "value"
     t.text   "default_value"
-    t.text   "description"
-    t.string "hint"
-    t.string "format",        default: "string"
+    t.text   "template"
   end
 
   add_index "cardboard_settings", ["name"], name: "index_cardboard_settings_on_name"
 
-  create_table "icescreams", force: true do |t|
-    t.string   "flavor"
-    t.integer  "deliciousness"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "news_posts", force: true do |t|
-    t.string   "title"
-    t.string   "link"
+  create_table "cardboard_templates", force: true do |t|
+    t.string   "name"
+    t.text     "fields"
+    t.string   "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

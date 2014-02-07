@@ -78,7 +78,7 @@ describe Cardboard::Page do
 
       it 'Preorder of results' do
         DatabaseCleaner.clean
-
+        Cardboard::Page.clear_arranged_pages
         page1 = create :page, position_position: 1
         page2 = create :page, position_position: 2
         subpage1 = create :page, parent: page1, position_position: 1

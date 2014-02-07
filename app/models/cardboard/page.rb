@@ -1,10 +1,15 @@
 module Cardboard
   class Page < ActiveRecord::Base
+
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
+
+    belongs_to :template, class_name: "Cardboard::Template"
       
     attr_accessor :parent_url, :is_root
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
+    # TODO: allow destroy and allow all blank only if repeatable
+
     serialize :meta_seo, Hash
     serialize :slugs_backup, Array
 
@@ -18,16 +23,16 @@ module Cardboard
     ranks :position, :with_same => :path
 
     #validations
-    validates :title, :path, presence:true
+    validates_associated :parts
+    validates :title, :path, :template, presence:true
     validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
-    :message => "Only downcase letters, numbers and underscores are allowed" }
+                           :message => "Only downcase letters, numbers and underscores are allowed" }, presence: true
     #validate all seo keys are valid meta keys + title
 
-    # validates_associated :parts, on: :update #breaks seed, should work
-
     #scopes
-    scope :preordered, -> {order("path ASC, position ASC, slug ASC")} #order("CASE slug WHEN '/' THEN 'slug, position' ELSE 'path, position, slug' END")
+    scope :preordered, -> {order("path ASC, position ASC, slug ASC")} 
+
 
     #class variables
     after_commit do
@@ -80,6 +85,10 @@ module Cardboard
 
     #instance methods
 
+    def template_hash
+      @template_hash ||= self.template.fields
+    end
+
     # @page.get("slideshow.image1")
     # @page.get("slideshow").first.image1
     # @page.get("slideshow").each...
@@ -90,38 +99,18 @@ module Cardboard
     # slideshow.get("slide1")
     def get(field)
       f = field.split(".")
-      parent_part = self.parts.where(identifier: f.first).first
-      return nil unless parent_part
+      parts = self.parts.where(identifier: f.first)
 
-      part = parent_part.try(:subparts)
-      if parent_part.repeatable? 
+      if template_hash[f.first.to_sym][:repeatable]
         raise "Part is repeatable, expected each loop" unless f.size == 1 
-        part || []
+        parts
       else
+        part = parts.first
         return nil unless part
-        f.size == 1 ? part.first : part.first.attr(f.last)
+        f.size == 1 ? part : part.attr(f.last)
       end
     end
 
-    # def page_hash
-    #   return {} if self.parts.blank?
-    #   self.parts.rank(:part_position).inject(ActiveSupport::OrderedHash.new) do |part_hash, part| 
-    #     part_hash[part.identifier] = if part.repeatable?
-    #       part.subparts.rank(:subpart_position).inject([]) do |sub_array, subpart|
-    #         sub_array << subpart.fields.rank(:position).inject(ActiveSupport::OrderedHash.new) do |fields_hash, field|
-    #           fields_hash[field.identifier] = subpart.attr(field.identifier)
-    #           fields_hash
-    #         end
-    #       end
-    #     else
-    #       get(part.identifier).fields.rank(:position).inject(ActiveSupport::OrderedHash.new) do |fields_hash, field|
-    #         fields_hash[field.identifier] = part.attr(field.identifier)
-    #         fields_hash
-    #       end
-    #     end
-    #     part_hash
-    #   end
-    # end
 
     # SEO
     # children inherit their parent's SEO settings (these can be overwritten)

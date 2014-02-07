@@ -17,7 +17,7 @@ module Cardboard
     end
 
     def used_as_cms?
-      @used_as_cms = Cardboard::Page.count > 0 if @used_as_cms.nil? #handle false
+      @used_as_cms = Cardboard::Template.count > 0 if @used_as_cms.nil? #handle false
       @used_as_cms
     end
 

@@ -4,7 +4,7 @@ describe "Seeding" do
   before do
     DatabaseCleaner.clean
     @file_hash = {
-      pages: {
+      templates: {
         home:{
           title: "Welcome",
           position: 0,
@@ -53,41 +53,26 @@ describe "Seeding" do
   end
   describe 'Pages' do
     before do
-      Cardboard::Seed.populate_pages(@file_hash)
-      @page = Cardboard::Page.root
-      @part = @page.parts.first
-      @last_part = @page.parts.last
+      Cardboard::Seed.populate_templates(@file_hash)
+      @template = Cardboard::Template.first
+      @page = @template.pages.build
     end
-    it 'Should add pages' do
-      assert_equal "home", @page.identifier
-      assert_equal 2, Cardboard::Page.count
+
+    it "Should have a template" do
+      assert_equal @file_hash[:templates][:home][:parts], Cardboard::Template.find_by(:identifier => "home").fields
+      assert_equal @file_hash[:templates][:home][:title], Cardboard::Template.find_by(:identifier => "home").name
     end
-    it 'Should add parts' do
-      assert_equal "slideshow", @part.identifier
-      assert_equal "intro", @last_part.identifier
-    end
-    it 'Should add fields' do
-      refute_nil @page.get("intro").fields.where(identifier: "text")
-    end
+
     describe 'Modified yml file' do
       before do
-        @file_hash[:pages].delete(:about_us)
-        @file_hash[:pages][:home][:parts].delete(:slideshow)
-        @file_hash[:pages][:home][:parts][:intro][:fields].delete(:text)
-        Cardboard::Seed.populate_pages(@file_hash)
-        @page = Cardboard::Page.root
-        @part = @page.parts.first
+        @file_hash[:templates].delete(:about_us)
+        @file_hash[:templates][:home][:parts].delete(:slideshow)
+        @file_hash[:templates][:home][:parts][:intro][:fields].delete(:text)
+        Cardboard::Seed.populate_templates(@file_hash)
       end
-      it 'Should remove old pages' do
-        assert_nil Cardboard::Page.where(:identifier => "about_us").first
-        assert_equal 1, Cardboard::Page.count
-      end
-      it 'Should remove old parts' do
-        assert_nil @page.get("slideshow")
-        refute_nil @page.get("intro")
-      end
-      it 'Should remove old fields' do
-        assert_nil @page.get("intro").attr("text")
+      it 'Should remove old templates' do
+        assert_nil Cardboard::Template.where(:identifier => "about_us").first
+        assert_equal 1, Cardboard::Template.count
       end
     end
   end

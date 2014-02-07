@@ -1,7 +1,11 @@
-.input-append
-  input id="sidebar_page_search" type="text" placeholder="Search by Title"
-  button type="submit" class="btn"
-    i.icon-search
+form class="form-inline"
+  = link_to pages_new_path, class:"btn btn-primary" do
+    i.icon-plus
+
+  .input-append style="width: 160px"
+    input id="sidebar_page_search" type="text" placeholder="Search Pages"
+    button type="submit" class="btn"
+      i.icon-search
 
 #content_pages data-update-url="#{pages_sort_path}"
   = nested_pages do |page, subpages|

@@ -6,27 +6,33 @@ module Cardboard
     belongs_to :object_with_field, :polymorphic => true, :inverse_of => :fields
 
     #gem
-    include RankedModel
-    ranks :position, :with_same => [:object_with_field_id, :object_with_field_type], :class_name => 'Cardboard::Field'
 
     #validations
-    validates :identifier, :type, presence:true
+    validates :identifier, :type, :object_with_field, presence:true
     validates :identifier, uniqueness: {:case_sensitive => false, :scope => [:object_with_field_id, :object_with_field_type]}, 
                           :format => { :with => /\A[a-z\_0-9]+\z/,
-                          :message => "Only downcase letters, numbers and underscores are allowed" }
+                          :message => "Only lowercase letters, numbers and underscores are allowed" }
 
-    default_scope {rank(:position)}
 
     class << self
       # Allow "type" to be passed in nested forms
-      def new_with_cast(*attributes, &block)
+      def new_with_castnew(*attributes, &block)
         if (h = attributes.first).is_a?(Hash) && !h.nil? && (type = h.delete(:type) || h.delete('type')) && type.present? && (klass = type.constantize) != self
           raise "Field type #{type} does not inherit from Cardboard::Field"  unless klass <= self
           return klass.new(*attributes, &block)
         end
-        new_without_cast(*attributes, &block)
+        new_without_castnew(*attributes, &block)
       end
-      alias_method_chain :new, :cast
+      alias_method_chain :new, :castnew
+
+      # def build_with_castbuild(*attributes, &block)
+      #   if (h = attributes.first).is_a?(Hash) && !h.nil? && (type = h.delete(:type) || h.delete('type')) && type.present? && (klass = type.constantize) != self
+      #     raise "Field type #{type} does not inherit from Cardboard::Field"  unless klass <= self
+      #     return klass.build(*attributes, &block)
+      #   end
+      #   new_without_castbuild(*attributes, &block)
+      # end
+      # alias_method_chain :build, :castbuild
     end
 
     # overwritten setter
@@ -53,6 +59,12 @@ module Cardboard
       end
     end
 
+    def required?
+      required = self.object_with_field.template[self.identifier.to_sym][:required]
+      required = true if required.nil?
+      required
+    end
+
   private
 
     def is_required
@@ -60,7 +72,7 @@ module Cardboard
     end
     
     def required_field?
-      self.required? && !self.seeding
+      required? && !self.seeding
     end
 
   end

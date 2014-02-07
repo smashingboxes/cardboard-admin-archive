@@ -6,6 +6,9 @@ module Cardboard
     has_many :fields, :as => :object_with_field
     accepts_nested_attributes_for :fields, :allow_destroy => true
 
+    serialize :template, Hash
+
+
     # thread save caching of the settings
     @lock = ::Mutex.new
     after_commit do
