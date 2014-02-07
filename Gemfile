@@ -27,6 +27,7 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'pry-debugger'
 gem 'uglifier'
+gem 'sdoc'
 
 group :test do
   gem 'turn'

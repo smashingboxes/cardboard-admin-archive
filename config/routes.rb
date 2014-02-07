@@ -9,7 +9,8 @@ Cardboard::Engine.routes.draw do
   get "pages/:id", to: "pages#edit"
   
   resources :pages
-
+  resources :templates
+  
   get "/yoda", to: "super_user#index"
 
   get "/settings", to: "settings#index"

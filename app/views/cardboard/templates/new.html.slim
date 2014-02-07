@@ -1,0 +1,28 @@
+h1 New template
+
+= simple_form_for @template, html:{id:"template"} do |f|
+  = f.input :name
+
+  h2 Parts
+  .parts style="border:1px #CCC solid; padding: 5px;"
+    = f.simple_fields_for :parts, OpenStruct.new(@template.fields) do |g|
+
+      = g.input :identifer
+
+      = field_set_tag "Fields" do
+        = g.simple_fields_for :fields do |h|
+          = h.input :type, as: :select, collection: %w[string text rich_text image file boolean date resource_link external_link]
+   
+          = h.input :identifier
+
+          = h.input :label
+
+          = h.input :hint
+
+          = h.input :placeholder
+
+          = h.input :default
+
+          = h.input :required, as: :boolean
+
+  = f.button :submit

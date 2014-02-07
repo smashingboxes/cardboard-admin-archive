@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.0.0"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails", '~> 4.0'
-  s.add_dependency 'coffee-rails'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
   s.add_dependency 'bootstrap-sass', '~> 2.2'
@@ -53,5 +52,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rb-fsevent"
   s.add_development_dependency 'database_cleaner', '1.0.1'
   s.add_development_dependency 'faker'
-  s.add_development_dependency 'sdoc'
 end

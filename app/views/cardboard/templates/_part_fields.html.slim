@@ -1,0 +1,7 @@
+= f.label :identifier
+= f.text_field :identifer
+
+= f.simple_fields_for :fields do |h|
+  = render "field_fields", f: h
+.links
+  = link_to 'add a field', ""
