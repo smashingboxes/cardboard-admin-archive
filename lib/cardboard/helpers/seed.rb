@@ -6,7 +6,7 @@ module Cardboard
     extend ActiveSupport::Concern
 
     def self.populate_templates(filehash = nil)
-      templates = filehash ? filehash[:templates] : {}
+      templates = filehash && filehash[:templates] ? filehash[:templates] : {}
       templates.each do |id, template|
         db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
         
@@ -25,7 +25,7 @@ module Cardboard
       populate_templates(templates)
 
       # add the page
-      pages = filehash ? filehash[:pages] : {}
+      pages = filehash && filehash[:pages] ? filehash[:pages] : {}
       pages.each do |id, page|
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.position_position = page[:position] || :last
