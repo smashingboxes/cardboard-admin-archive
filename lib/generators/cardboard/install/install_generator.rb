@@ -50,7 +50,7 @@ module Cardboard
 
       def setup_directory
         empty_directory "app/controllers/cardboard"
-        empty_directory "app/views/pages"
+        empty_directory "app/views/templates"
       end
 
       def setup_routes
