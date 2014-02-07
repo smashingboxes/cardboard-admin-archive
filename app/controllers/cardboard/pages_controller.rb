@@ -21,7 +21,7 @@ module Cardboard
         @page.reload
         redirect_to edit_page_path(@page)
       else
-        @page.errors.add(:title, "is reserved or is already used") if @page.errors[:identifier]
+        @page.errors.add(:title, "is reserved or is already used") if @page.errors[:identifier].present?
         render :new
       end
     end
