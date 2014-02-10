@@ -28,7 +28,7 @@ Add the gem to the `Gemfile`
 gem "cardboard_cms", github: "smashingboxes/cardboard"
 ```
 
-And run `bundle install`. 
+And run `bundle install`.
 
 Run the generator to install cardboard and it's migrations:
 ```sh
@@ -45,7 +45,7 @@ rake cardboard:seed
 
 ## Usage
 ### Get a page
-Add a file in your `app/views/pages` with filename matching the identifier of the page. Inside this file you can access the page with:
+Add a file in your `app/views/templates` with filename matching the identifier of the page. Inside this file you can access the page with:
 ```ruby
 current_page
 ```
@@ -57,7 +57,7 @@ current_page.get('slideshow')
 ### Fetch a repeatable page part
 Repeatable parts returns an active record collection. This means that regular Rails methods such as `where`, `limit`, `first`, `each`, etc can be used on page parts
 ```slim
-- current_page.get('slideshow').each do |slide| 
+- current_page.get('slideshow').each do |slide|
   p= image_tag slide.attr('image1').thumb('600x300').url, alt: slide.attr('description') if slide.attr('image1')
 ```
 ### Fetch a single field
@@ -127,7 +127,7 @@ Key | Type | Default | Definition
 ---|--- | ---|---
 [fields](#fields) | hash | nil | list of fields that make this part's form
 position | integer | auto-increment | position of the part on the admin page
-repeatable | boolean | false | can the client add multiple of these parts (example a slide in a slideshow) 
+repeatable | boolean | false | can the client add multiple of these parts (example a slide in a slideshow)
 
 
 ####fields
@@ -155,10 +155,10 @@ rails g cardboard:resource model_name
 Then customize the `controllers/cardboard/model_name_controller.rb` and associated views to your heart's desire.
 
 
-The default cardboard resource scaffold help you quickly get started by making the most of the following gems. 
+The default cardboard resource scaffold help you quickly get started by making the most of the following gems.
 
-Gem | Description 
---- | --- 
+Gem | Description
+--- | ---
 [InheritedResources](https://github.com/josevalim/inherited_resources) | Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
 [Simple Form](https://github.com/plataformatec/simple_form) | Forms made easy! It's tied to a simple DSL, with no opinion on markup.
 [Kaminari](https://github.com/amatsuda/kaminari) | A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
@@ -179,7 +179,7 @@ You can also choose to remove a resource from the menu
 ```ruby
   default_order "name DESC" # default: 'updated_at desc'
 ```
-You can pass any `ransack` sort order, which includes associations. Example: 
+You can pass any `ransack` sort order, which includes associations. Example:
 ```ruby
   default_order "user_name" # belongs to a user
 ```
@@ -210,13 +210,13 @@ We use kaminari, so all you need to do is add to your index view:
 
 
 #### Column sorting helper
-Cardboard's controllers inherit from a `@q` variable which gives access to the ransack gem. 
+Cardboard's controllers inherit from a `@q` variable which gives access to the ransack gem.
 ```
-= sort_link @q, :name, "Product Name" 
+= sort_link @q, :name, "Product Name"
 ```
 
 #### Custom resource helpers
-To add custom helpers for your resource simply create a helper with the same name. 
+To add custom helpers for your resource simply create a helper with the same name.
 Example:
 ```ruby
 module Cardboard
@@ -232,7 +232,7 @@ The css/js for the resources is the same as the cardboard admin interface. If yo
 Note: Make sure to remove `*= require_tree .` from your application.css, you don't want your cardboard css and js to leak into your main app!
 
 ## Create Settings
-You can create new settings that will be editable from the admin panel. 
+You can create new settings that will be editable from the admin panel.
 
 In your `config/cardboard.yml`
 
@@ -269,7 +269,7 @@ PagesController.class_eval do
     @example = "cool"
   end
 end
-``` 
+```
 ### Page Path
 In your controllers you may want to redirect to a specific page. You can do so with the following:
 ```ruby
@@ -315,7 +315,7 @@ Use the page identifier defined in the cardboard.yml file (or see yoda)
   = link_to_page "page_identifier", class: "btn" do |page|
     "hello #{page.title}"
   end
-  
+
   # or, to simply use the page title
 
   = link_to_page "page_identifier", class: "btn"
