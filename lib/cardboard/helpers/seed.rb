@@ -13,9 +13,9 @@ module Cardboard
         db_template.update_attributes!(name: template[:title] || template[:name], fields: template[:parts]) 
       end
 
-      for remove_template in Cardboard::Template.all.map(&:identifier) - templates.map{|k,v|k.to_s}
-        Cardboard::Template.where(identifier: remove_template).first.destroy
-      end
+      # for remove_template in Cardboard::Template.all.map(&:identifier) - templates.map{|k,v|k.to_s}
+      #   Cardboard::Template.where(identifier: remove_template).first.destroy
+      # end
     end
 
     def self.populate_pages(pages)
