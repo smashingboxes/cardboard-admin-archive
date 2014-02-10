@@ -4,7 +4,7 @@
   - for part in page.parts
     .indent
       h3= part.identifier
-      - for field in part.subparts.first.fields
+      - for field in part.fields
         .indent= field.identifier
 
   = content_tag(:div, subpages, class: "indent") if subpages.present?

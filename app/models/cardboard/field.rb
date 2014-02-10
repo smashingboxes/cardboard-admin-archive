@@ -72,7 +72,7 @@ module Cardboard
     end
     
     def required_field?
-      required? && !self.seeding
+      !self.seeding && required? 
     end
 
   end

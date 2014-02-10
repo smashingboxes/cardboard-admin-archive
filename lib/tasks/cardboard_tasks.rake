@@ -14,10 +14,11 @@ task 'cardboard:seed' => :environment do
     puts "Error: You must first create a cardboard.yml file in your application config folder"
   end
 
-
-  # Cardboard::Seed.populate_pages(file_hash)
-  Cardboard::Seed.populate_templates(file_hash)
-  Cardboard::Seed.populate_settings(file_hash) 
+  if file_hash
+    Cardboard::Seed.populate_pages(file_hash[:pages]) 
+    Cardboard::Seed.populate_templates(file_hash[:templates]) 
+    Cardboard::Seed.populate_settings(file_hash[:settings]) 
+  end
 
 end
 

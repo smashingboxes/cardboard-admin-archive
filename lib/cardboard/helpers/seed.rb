@@ -5,8 +5,8 @@ module Cardboard
   module Seed
     extend ActiveSupport::Concern
 
-    def self.populate_templates(filehash = nil)
-      templates = filehash && filehash[:templates] ? filehash[:templates] : {}
+    def self.populate_templates(templates)
+      templates ||= {}
       templates.each do |id, template|
         db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
         
@@ -18,14 +18,13 @@ module Cardboard
       end
     end
 
-    def self.populate_pages(filehash = nil)
+    def self.populate_pages(pages)
+      pages ||= {}
+
       # create the template
-      templates = {}
-      templates[:templates] = filehash[:pages]
-      populate_templates(templates)
+      populate_templates(pages)
 
       # add the page
-      pages = filehash && filehash[:pages] ? filehash[:pages] : {}
       pages.each do |id, page|
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.position_position = page[:position] || :last
@@ -75,14 +74,13 @@ module Cardboard
       # end
     end
 
-    def self.populate_settings(filehash = nil)
-      settings = filehash ? filehash[:settings] : nil
+    def self.populate_settings(settings)
       if settings
         db_settings = Cardboard::Setting.first_or_create
         db_settings.update_attributes!(template: settings)
         self.populate_fields(settings, db_settings)
       end
-      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title)
+      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title, seeding: true)
     end
     
   end
