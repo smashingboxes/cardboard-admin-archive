@@ -17,7 +17,7 @@ $main_topbar_zindex: 100;
     @include border-radius(0px);
     border: none;
     padding: 0px 10px;
-    height: $main_topbar_height;
+    min-width: 760px;
     a{color: $main_topbar_color;}
     text-shadow: $main_topbar_color_text_shadow;
     
