@@ -63,19 +63,12 @@ module Cardboard
         generate "cardboard:assets"
       end
 
-      def create_migrations
-        p "Copying over migrations..."
-        Dir["#{self.class.source_root}/migrations/*.rb"].sort.each do |filepath|
-          name = File.basename(filepath)
-          migration_template "migrations/#{name}", "db/migrate/#{name.gsub(/^\d+_/,'')}"
+      def install_migrations
+        puts "Copying over migrations..."
+        Dir.chdir(Rails.root) do
+          `rake cardboard:install:migrations`
         end
       end
-      # def install_migrations
-      #   puts "Copying over migrations..."
-      #   Dir.chdir(Rails.root) do
-      #     `rake cardboard:install:migrations`
-      #   end
-      # end
 
     protected
 
