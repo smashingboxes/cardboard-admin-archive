@@ -1,4 +1,4 @@
-= search_form_for @q, url: {}, :html =>{"data-pjax"=>true} do |f|
+= search_form_for @q, url: {} do |f|
   = hidden_field_tag :s, "advanced"
   - (params[:q] || {}).each do |q,v|
     = f.hidden_field q,  :value => v

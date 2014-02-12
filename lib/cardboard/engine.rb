@@ -15,7 +15,7 @@ require 'slim'
 require 'ransack'
 require 'kaminari'
 require 'kaminari-bootstrap'
-require 'rack-pjax'
+require 'turbolinks'
 require 'jquery-ui-rails'
 require 'decorators'
 require 'bootstrap-wysihtml5-rails'
@@ -55,12 +55,6 @@ module Cardboard
 
       # Load custom resource controllers in development (already loaded in production)
       Cardboard.set_resource_controllers
-      # if Rails.env.development?
-      #   Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
-      #     require_dependency controller
-      #   end
-      # end
-      # Cardboard.resource_controllers = Cardboard::AdminController.descendants
     end
 
     initializer "precompile hook", :group => :all do |app|
@@ -70,10 +64,6 @@ module Cardboard
     initializer "dragonfly whitelist" do |app|
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/images/)
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/files/)
-    end
-
-    initializer "pjax hook" do |app|
-      app.config.middleware.use Rack::Pjax
     end
 
     rake_tasks do

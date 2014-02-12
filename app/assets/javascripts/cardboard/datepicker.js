@@ -10,10 +10,6 @@ var create_datepickers = function(){
 }
 
 
-$(document).on("ready pjax:success", function () {
+$(document).on("ready page:load cocoon:after-insert", function () {
   create_datepickers();
-
-  $(document).on('cocoon:after-insert', function(e, insertedItem) {
-    create_datepickers();
-  });
 });

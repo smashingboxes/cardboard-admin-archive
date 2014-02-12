@@ -1,7 +1,7 @@
 $(function(){
    var ransack_options;
   
-  $(document).on("pjax:success ready", function(e){
+  $(document).on("page:load ready", function(e){
     ransack_options = $("select#ransack_options").html();
     $("select#advanced_field").trigger("change");
   })

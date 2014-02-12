@@ -4,7 +4,7 @@ h1
     =<> link_to page_path(@page), method: :delete, data: { confirm: 'You are about to delete this page. Are you sure?' }, class: "red" do
       i.icon-trash
   .right
-    = link_to "View Page", @page.url, class:"btn-large btn", target: '_blank', 'data-skip-pjax' => true
+    = link_to "View Page", @page.url, class:"btn-large btn", target: '_blank'
 
 = simple_form_for @page, html: {:multipart => true} do |f|
   = f.error_notification
