@@ -9,13 +9,9 @@ module Cardboard
       templates ||= {}
       templates.each do |id, template|
         db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
-        
         db_template.update_attributes!(name: template[:title] || template[:name], fields: template[:parts]) 
-      end
 
-      # for remove_template in Cardboard::Template.all.map(&:identifier) - templates.map{|k,v|k.to_s}
-      #   Cardboard::Template.where(identifier: remove_template).first.destroy
-      # end
+      end
     end
 
     def self.populate_pages(pages)
@@ -26,6 +22,7 @@ module Cardboard
 
       # add the page
       pages.each do |id, page|
+        
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.position_position = page[:position] || :last
         db_page.template = Cardboard::Template.find_by(identifier: id.to_s)
@@ -33,17 +30,15 @@ module Cardboard
 
         self.populate_parts(page[:parts], db_page)
       end
-
-      for remove_page in Cardboard::Page.all.map(&:identifier) - pages.map{|k,v|k.to_s}
-        Cardboard::Page.where(identifier: remove_page).first.destroy
-      end
     end
 
     def self.populate_parts(page_parts, db_page)
       # called from the page controller
       page_parts ||= {}
       page_parts.each do |id, part|
-        db_part = db_page.parts.where(identifier: id.to_s).first_or_create!
+
+        db_part = db_page.parts.where(identifier: id.to_s).first_or_create
+
         self.populate_fields(part[:fields], db_part)
       end
       # for remove_part in db_page.parts.map(&:identifier) - page_parts.map{|k,v|k.to_s}

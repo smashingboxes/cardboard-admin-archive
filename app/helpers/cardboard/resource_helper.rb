@@ -63,7 +63,7 @@ module Cardboard
         end
       end
       
-      render "cardboard/resources/search_helper", klass: klass.to_s.demodulize.underscore, options: options, main_element: main_element #,elements: elements
+      render "cardboard/resources/search_helper", klass: klass.to_s, options: options, main_element: main_element #,elements: elements
     end
 
 

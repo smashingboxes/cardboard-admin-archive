@@ -7,6 +7,10 @@ module Cardboard
 
     attr_accessor :application, :resource_controllers
 
+    def resource_controllers
+      @resource_controllers ||= Cardboard::ResourceController.descendants
+    end
+
     def application
       @application ||= ::Cardboard::Application.new
     end
@@ -22,10 +26,10 @@ module Cardboard
     end
 
     def set_resource_controllers
+      # might not be needed in production
       Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
         require_dependency controller
       end
-      Cardboard.resource_controllers = Cardboard::ResourceController.descendants
     end
 
     # Gets called within the initializer

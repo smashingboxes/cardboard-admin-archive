@@ -23,7 +23,7 @@ module Cardboard
     ranks :position, :with_same => :path
 
     #validations
-    validates_associated :parts
+    # validates_associated :parts
     validates :title, :path, :template, presence:true
     validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,

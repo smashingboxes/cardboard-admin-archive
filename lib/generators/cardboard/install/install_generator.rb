@@ -68,7 +68,6 @@ module Cardboard
         Dir["#{self.class.source_root}/migrations/*.rb"].sort.each do |filepath|
           name = File.basename(filepath)
           migration_template "migrations/#{name}", "db/migrate/#{name.gsub(/^\d+_/,'')}"
-          sleep 1
         end
       end
       # def install_migrations

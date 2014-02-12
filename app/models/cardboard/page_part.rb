@@ -8,7 +8,7 @@ module Cardboard
 
     validates :identifier, :format => {:with => /\A[a-z\_0-9]+\z/, :message => "Only downcase letters, numbers and underscores are allowed"} # uniqueness: {:case_sensitive => false, :scope => :page_id}, 
     validates :page, :identifier, presence: true                  
-    validates_associated :fields
+    # validates_associated :fields
 
 
     #gem
