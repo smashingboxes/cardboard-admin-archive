@@ -56,7 +56,7 @@ class CreateCardboard < ActiveRecord::Migration
       t.string :name
       t.text :fields
       t.string :identifier
-
+      t.boolean :is_page
       t.timestamps
     end
   end

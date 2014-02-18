@@ -3,5 +3,5 @@ h1 Create a new page
 = simple_form_for @page do |f|
   / = f.input :identifier, hint: "Pick a name for this page so it can be accessed from the code"
   = f.input :title
-  = f.association :template
+  = f.input :template_id, as: :select, collection: Cardboard::Template.where(is_page: false), :include_blank => false
   = f.submit "Create", class: "btn"

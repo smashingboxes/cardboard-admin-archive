@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cardboard_cms (0.1.8)
+    cardboard_cms (0.2.0)
       bootstrap-datepicker-rails
       bootstrap-sass (~> 2.2)
       bootstrap-wysihtml5-rails

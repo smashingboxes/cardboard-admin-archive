@@ -1,8 +1,9 @@
 h1
   = @page.title
-  small
-    =<> link_to page_path(@page), method: :delete, data: { confirm: 'You are about to delete this page. Are you sure?' }, class: "red" do
-      i.icon-trash
+  - unless @page.template.is_page?
+    small
+      =<> link_to page_path(@page), method: :delete, data: { confirm: 'You are about to delete this page. Are you sure?' }, class: "red" do
+        i.icon-trash
   .right
     = link_to "View Page", @page.url, class:"btn-large btn", target: '_blank'
 
@@ -12,8 +13,9 @@ h1
 
   = render "url_field", f: f
 
-  label Template
-  = @page.template.name
+  - unless @page.template.is_page?
+    label Template
+    = @page.template.name
 
   = f.input :in_menu, label: false, inline_label: "Display in main menu?"
 

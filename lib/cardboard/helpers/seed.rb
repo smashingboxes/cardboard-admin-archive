@@ -9,23 +9,22 @@ module Cardboard
       templates ||= {}
       templates.each do |id, template|
         db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
-        db_template.update_attributes!(name: template[:title] || template[:name], fields: template[:parts]) 
-
+        db_template.update_attributes!(name: template[:title] || template[:name] || id.to_s, fields: template[:parts], is_page: false) 
       end
     end
 
     def self.populate_pages(pages)
       pages ||= {}
 
-      # create the template
-      populate_templates(pages)
-
       # add the page
       pages.each do |id, page|
-        
+        # create the template
+        db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
+        db_template.update_attributes!(name: page[:title] || page[:name] || id.to_s, fields: page[:parts], is_page: true) 
+      
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.position_position = page[:position] || :last
-        db_page.template = Cardboard::Template.find_by(identifier: id.to_s)
+        db_page.template = db_template
         db_page.update_attributes!(page.slice(:title, :parent_id)) 
 
         self.populate_parts(page[:parts], db_page)
