@@ -7,11 +7,12 @@
   - part_hash[:fields].each do |field_identifier, field|
        
     - fields = part.fields.find{|ob|  ob.identifier ==  field_identifier}
-
+    - fields = part.fields.build(type: "Cardboard::Field::#{field[:type].camelize}", identifier: field_identifier, default: field[:default] ) if fields.blank?
+   
     = f.simple_fields_for :fields,  fields do |w|
-      = w.hidden_field :type, :value => "Cardboard::Field::#{field[:type].camelize}"
-      = w.hidden_field :identifier, :value => field_identifier
-     
+      = w.hidden_field :type
+      = w.hidden_field :identifier
+
       - begin
         = render "cardboard/fields/#{field[:type]}", f: w, field: field, identifier: field_identifier
       - rescue ActionView::MissingTemplate => e
