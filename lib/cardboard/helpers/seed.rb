@@ -74,7 +74,6 @@ module Cardboard
         db_settings.update_attributes!(template: settings)
         self.populate_fields(settings, db_settings)
       end
-      Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title, seeding: true)
     end
     
   end

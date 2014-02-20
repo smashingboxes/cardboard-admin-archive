@@ -1,5 +1,5 @@
-# # Page and Settings admin forms
-# # Example
+# # Pages, Templates and Settings
+
 # pages:
 #   home:
 #     title: Welcome
@@ -13,16 +13,23 @@
 #           show_slideshow:
 #             type: boolean
 #       slideshow:
-#         repeatable: true
+#         repeatable: Slide
 #         fields:
-#           image1:
+#           image:
 #             type: image
-#             position: 0
 #           description:
 #             hint: This will be visible on mouse over
 #             type: string
 #             required: false
-#             position: 1
+# templates:
+#   two_column:
+#     parts:
+#       main:
+#         fields:
+#           body:
+#             type: rich_text
+#           sidebar:
+#             type: rich_text
 # settings:
 #   more_fun:
 #     type: boolean

@@ -25,7 +25,7 @@ Cardboard is a simple CMS Engine for your Rails 4 applications.
 Add the gem to the `Gemfile`
 
 ```ruby
-gem "cardboard_cms", github: "smashingboxes/cardboard"
+gem "cardboard_cms"
 ```
 
 And run `bundle install`.
@@ -104,7 +104,13 @@ pages:
             type: image
             required: true
             default: CrashTest.jpg
-            position: 0
+pages:
+  two_column:
+    parts:
+      main:
+        fields:
+          body:
+            type: rich_text
 ```
 
 pages, parts and fields take identifiers (home_page, slideshow and image1) used to reference the data form the views. Choose these names carefully!

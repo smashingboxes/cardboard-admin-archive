@@ -13,6 +13,7 @@ module Cardboard
     @lock = ::Mutex.new
     after_commit do
       Setting.clear_saved_settings
+      Rails.cache.write("Cardboard::Setting", true)
     end
 
     class << self

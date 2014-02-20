@@ -3,7 +3,7 @@
   #cardboard_logo CB
   
   = link_to main_app.root_path, id: "brand" do
-    = Cardboard::Setting.company_name
+    = Cardboard::Setting.company_name || Cardboard.application.site_title
 
   ul.nav.pull-right
 
@@ -11,7 +11,7 @@
       = link_to dashboard_path do
         i.icon-dashboard
         ' Dashboard
-    - if cardboard_user_can_manage?(:settings)
+    - if cardboard_user_can_manage?(:settings) && Rails.cache.read("Cardboard::Setting")
       li
         = link_to settings_path do 
           i.icon-cogs 
