@@ -23,8 +23,13 @@ private
   # helper_method :edit_link
 
   def current_page
-    @page ||= Cardboard::Page.find_by_url(params[:id]) || Cardboard::Page.root 
-    # || raise(ActionController::RoutingError.new("No root page, make sure to run `rake cardboard:seed`"))
+    return @page unless @page.nil?
+    @page = if params[:id].nil?
+      Cardboard::Page.root
+    else
+      Cardboard::Page.find_by_url(params[:id])
+    end
+    @page || raise(ActionController::RoutingError.new("Page not found"))
   end
 
 end
