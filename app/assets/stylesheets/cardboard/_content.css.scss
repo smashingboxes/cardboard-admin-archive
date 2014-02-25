@@ -30,6 +30,7 @@
 }
 
 #main_content{
+  min-width: $site_min_width;
   background: $content_background;
 }
 
