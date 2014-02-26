@@ -49,10 +49,11 @@ var page_links_template = {
 }
 
 var rich_text_editor_defaults = {
-  image: false, 
-  customTemplates:  page_links_template, 
-  parserRules: wysihtml5ParserRules, 
-  useLineBreaks: false
+  "image": false, 
+  "customTemplates":  page_links_template, 
+  "parserRules": wysihtml5ParserRules, 
+  "useLineBreaks": false,
+  "font-styles": false
 }
 
 $(document).on("ready page:load", function(e){
