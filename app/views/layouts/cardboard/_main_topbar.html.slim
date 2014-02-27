@@ -11,11 +11,12 @@
       = link_to dashboard_path do
         i.icon-dashboard
         ' Dashboard
-    - if cardboard_user_can_manage?(:settings) && Rails.cache.read("Cardboard::Setting")
+    - if cardboard_user_can_manage?(:settings) && Cardboard.used_with_settings?
       li
         = link_to settings_path do 
           i.icon-cogs 
           | Settings
+    
 
     li.divider
 

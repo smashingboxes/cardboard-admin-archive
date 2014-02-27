@@ -25,6 +25,16 @@ module Cardboard
       @used_as_cms
     end
 
+    def used_with_templates?
+      @used_with_templates = Cardboard::Template.where("is_page = ? OR is_page IS NULL", false).count > 0 if @used_with_templates.nil? #handle false
+      @used_with_templates
+    end
+
+    def used_with_settings?
+      @used_with_settings = Cardboard::Setting.count > 0 if @used_with_settings.nil? #handle false
+      @used_with_settings
+    end
+
     def set_resource_controllers
       # might not be needed in production
       Dir[Rails.root.join('app/controllers/cardboard/*_controller.rb')].map.each do |controller|
