@@ -17,5 +17,9 @@ module Cardboard
       return nil unless value_changed?
       self.value = ActionController::Base.helpers.sanitize(self.value, :tags => %w(strong b i u em br p div span ul ol li a pre code blockquote h1 h2 h3), :attributes => %w(class style href src width height alt))
     end
+
+    def is_required
+      errors.add(:value, "is required") if required_field? && ActionController::Base.helpers.strip_tags(value_uid).blank?
+    end
   end
 end
