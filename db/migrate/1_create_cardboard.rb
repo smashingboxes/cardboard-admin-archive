@@ -27,9 +27,6 @@ class CreateCardboard < ActiveRecord::Migration
     #Pages
     create_table :cardboard_pages do |t|
       t.string :title
-      t.string :path
-      t.string :slug
-      t.text :slugs_backup
       t.integer :position
       t.text :meta_seo
       t.boolean :in_menu, default: true
@@ -38,7 +35,6 @@ class CreateCardboard < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :cardboard_pages, [:path, :slug], :unique => true
     add_index :cardboard_pages, :identifier, :unique => true
 
     #Settings
@@ -59,5 +55,18 @@ class CreateCardboard < ActiveRecord::Migration
       t.boolean :is_page
       t.timestamps
     end
+    add_index :cardboard_templates, :identifier, :unique => true
+
+    create_table :cardboard_urls do |t|
+      t.string :slug, index: true
+      t.string :path, index: true
+      t.text :slugs_backup
+      t.string :title
+      t.text :description
+      t.references :urlable,  polymorphic: true
+
+      t.timestamps
+    end
+    add_index :cardboard_urls, [:path, :slug], :unique => true
   end
 end

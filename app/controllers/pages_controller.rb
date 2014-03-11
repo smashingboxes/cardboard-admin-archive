@@ -24,12 +24,11 @@ private
 
   def current_page
     return @page unless @page.nil?
-    @page = if params[:id].nil?
+    @page = if params[:id].blank?
       Cardboard::Page.root
     else
-      Cardboard::Page.find_by_url(params[:id])
+      Cardboard::Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new("Page not found"))
     end
-    @page || raise(ActionController::RoutingError.new("Page not found"))
   end
 
 end
