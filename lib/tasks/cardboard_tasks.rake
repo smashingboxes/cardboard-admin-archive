@@ -18,6 +18,7 @@ task 'cardboard:seed' => :environment do
     Cardboard::Seed.populate_pages(file_hash[:pages]) 
     Cardboard::Seed.populate_templates(file_hash[:templates]) 
     Cardboard::Seed.populate_settings(file_hash[:settings]) 
+    Cardboard::Setting.add("company_name", type: "string", default:  Cardboard.application.site_title)
   end
 
 end

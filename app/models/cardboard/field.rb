@@ -60,7 +60,8 @@ module Cardboard
     end
 
     def required?
-      required = self.object_with_field.template[self.identifier.to_sym][:required]
+      return false if (field_name = self.identifier.to_sym) == :company_name
+      required = self.object_with_field.template[field_name][:required]
       required = true if required.nil?
       required
     end

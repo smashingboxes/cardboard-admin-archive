@@ -1,7 +1,5 @@
 module Cardboard
   class Setting < ActiveRecord::Base
-    # self.table_name = "cardboard_settings"
-    # attr_accessible :name, :fields_attributes
 
     has_many :fields, :as => :object_with_field
     accepts_nested_attributes_for :fields, :allow_destroy => true
