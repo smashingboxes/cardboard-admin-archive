@@ -1,13 +1,20 @@
 module Cardboard
   class Page < ActiveRecord::Base
-    has_one :url, class_name: "Cardboard::Url", :as => :urlable, :validate => true, :autosave => true
+    has_one :url_object, class_name: "Cardboard::Url", :as => :urlable, :autosave => true
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
 
     belongs_to :template, class_name: "Cardboard::Template"
       
     attr_accessor :parent_url, :is_root
 
-    accepts_nested_attributes_for :url
+
+    def url_object_with_auto_build
+      build_url_object unless url_object_without_auto_build
+      url_object_without_auto_build #to continue the association chain
+    end
+    alias_method_chain :url_object, :auto_build
+
+    accepts_nested_attributes_for :url_object
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     # TODO: allow destroy and allow all blank only if repeatable
 
@@ -15,7 +22,7 @@ module Cardboard
     before_validation :default_values
 
     include RankedModel
-    ranks :position, :with_same => :path
+    ranks :position
 
     #validations
     # validates_associated :parts
@@ -24,10 +31,12 @@ module Cardboard
                            :message => "Only downcase letters, numbers and underscores are allowed" }, presence: true
 
     #scopes
-    scope :preordered, -> {order("path ASC, position ASC, slug ASC")} 
+    scope :preordered, -> {joins(:url_object).order("cardboard_urls.path ASC, position ASC, cardboard_urls.slug ASC")} 
+    scope :with_path,  -> (p) {joins(:url_object).where("cardboard_urls.path = ?",p) }
+
 
     #delegates
-    delegate :slug, :path, :slug=, :path=, :children, :siblings, to: :url, allow_nil: true
+    delegate :slug, :path, :slug=, :path=, :using_slug_backup?, to: :url_object, allow_nil: true
 
     #class variables
     after_commit do
@@ -41,15 +50,30 @@ module Cardboard
     end
 
 
+    def meta_seo=(hash)
+      self.url_object.title = hash[:title]
+      self.url_object.description = hash[:description]
+    end
+    def meta_seo
+      {
+        title: url_object.title,
+        description: url_object.description
+      }
+    end
+
+    def url
+      url_object.to_s
+    end
+
 
     #class methods
     def self.find_by_url(full_url)
-      self.url.urlable_for(full_url)
+      Cardboard::Url.urlable_for(full_url, type: self.name)
     end
 
     def self.root
       #TODO: check that join work correctly
-      joins(:url).where("url.path = '/'").rank(:position).first
+      with_path('/').rank(:position).first
     end
     def self.homepage; self.root; end
 
@@ -60,11 +84,6 @@ module Cardboard
 
     #instance methods
 
-    def url_with_auto_build
-      build_profile unless url_without_auto_build
-      url_without_auto_build #to continue the association chain
-    end
-    alias_method_chain :url, :auto_build
 
     def template_hash
       @template_hash ||= self.template.fields
@@ -108,13 +127,7 @@ module Cardboard
       # to hash is important here for strong parameters
       self.meta_seo = hash.to_hash
       @_seo = nil
-    def meta_seo
-      {
-        title: url.title,
-        description: url.description
-      }
     end
-    
 
     def split_path
       path[1..-1].split("/")
@@ -141,7 +154,7 @@ module Cardboard
 
     def parent=(new_parent)
       return nil if new_parent && !new_parent.is_a?(Cardboard::Page) 
-      self.url.path = new_parent ? new_parent.url.to_s : "/"
+      self.path = new_parent ? new_parent.url : "/"
     end
 
     def parent_id=(new_parent_id)
@@ -153,11 +166,11 @@ module Cardboard
     end
 
     def children
-      Cardboard::Page.where(path: url)
+      Cardboard::Page.with_path(url)
     end
 
     def siblings
-      Cardboard::Page.where("path = ? AND id != ?", path, id)
+      Cardboard::Page.with_path(path).when("id != ?", id)
     end
 
     def depth
@@ -199,15 +212,12 @@ module Cardboard
       Rails.cache.delete("arranged_pages")
     end
 
-
   private
 
-
-
     def default_values
-      self.title ||= self.identifier.parameterize("_")
-      self.url.path ||=  "/", 
-      self.url.slug ||= self.title.try(:to_url)
+      self.title ||= self.identifier.try(:parameterize, "_")
+      self.path ||=  "/"
+      self.slug ||= self.title.try(:to_url)
     end
   end
 end

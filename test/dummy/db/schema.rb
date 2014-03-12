@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310155707) do
+ActiveRecord::Schema.define(version: 20140312180204) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140310155707) do
 
   create_table "cardboard_pages", force: true do |t|
     t.string   "title"
+    t.integer  "position"
     t.text     "meta_seo"
     t.boolean  "in_menu",     default: true
     t.string   "identifier"
@@ -91,7 +92,6 @@ ActiveRecord::Schema.define(version: 20140310155707) do
     t.text     "slugs_backup"
     t.string   "title"
     t.text     "description"
-    t.integer  "sort_order"
     t.integer  "urlable_id"
     t.string   "urlable_type"
     t.datetime "created_at"

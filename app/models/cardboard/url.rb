@@ -10,23 +10,15 @@ module Cardboard
     validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
 
 
-
-    def self.root
-      # Homepage is the highest position in the root path
-      where(path: "/").rank(:position).first
-    end
-    def root?
-      Url.root.id == self.id 
-    end
-
-    def self.urlable_for(full_url)
+    def self.urlable_for(full_url, options = {})
+      #TODO: refactor
       return nil unless full_url
       path, slug = self.path_and_slug(full_url)
-      page = self.where(path: path, slug: slug).first
+      page = self.where(path: path, slug: slug, urlable_type: options[:type]).first
 
       if slug && page.nil?
         #use arel instead of LIKE/ILIKE
-        page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first
+        page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).where(urlable_type: options[:type]).first
         page.using_slug_backup = true if page
       end
 
