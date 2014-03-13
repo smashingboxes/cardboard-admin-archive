@@ -1,7 +1,7 @@
 module Cardboard
   module Generators
     class ResourceGenerator < Rails::Generators::Base
-      desc "Installs Cardboard in a rails 3 application"
+      desc "Scaffold a Cardboard resource"
       argument :resource_name, :type => :string
       #TODO: option for haml
       class_option  :markup, :type => :string, :default => "slim"
@@ -14,7 +14,7 @@ module Cardboard
         begin
           fields
         rescue Exception => e
-          raise "Model #{singular_table_name.classify} does not exist. Try running `rails g model #{singular_table_name.classify}`"
+          raise "Model #{singular_table_name.classify} does not exist, or there's no database. Try running `rails g model #{singular_table_name.classify}`"
         end
       end
 
