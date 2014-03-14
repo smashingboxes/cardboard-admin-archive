@@ -170,7 +170,7 @@ module Cardboard
     end
 
     def siblings
-      Cardboard::Page.with_path(path).when("id != ?", id)
+      Cardboard::Page.with_path(path).where("cardboard_pages.id != ?", id)
     end
 
     def depth
