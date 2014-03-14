@@ -7,6 +7,15 @@ module Cardboard
       super(val, options)
     end
 
+    def dragonfly_image_tag(image, options = {})
+      return nil unless image
+      size = options.delete(:size) || '125x125#'
+      # height = size.split("x").last
+      # content_tag :div, style: (height.blank? ? nil : "height: #{height.sub(/[\!\#\>\<]/, '')}px; display: inline-block;") do
+        image_tag image.thumb(size).url, options
+      # end
+    end
+
     # ActionView::Helpers::FormBuilder.class_eval do
     #   def date_field(conf,opts = {})
     #     options = opts.dup
