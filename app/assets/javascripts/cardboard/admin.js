@@ -31,8 +31,12 @@ $(document).on('click', '.nav-tabs a', function(e){
 
 $(document).on("page:load ready cocoon:after-insert", function(e){
 
+  $('select[data-search-select]').each(function() {
+    var options = $(this).data("select2-options")
+    $(this).select2($.extend({allowClear: true, width: "resolve"}, options));
+  });
   $('select:not([data-search-select])').selectpicker();
-  $('select[data-search-select]').select2({allowClear: true, width: "resolve"});
+  
 
   $('.nav-tabs a:first').tab('show');
 
