@@ -6,20 +6,22 @@ li
 
     .modal-body
       ul class="nav nav-pills"
-        li
-          a href="#link_pane_1" data-toggle="pill" Pages
+        - if Cardobard.used_with_pages?
+          li
+            a href="#link_pane_1" data-toggle="pill" Pages
         li
           a href="#link_pane_2" data-toggle="pill" URL
         li
           a href="#link_pane_3" data-toggle="pill" Email
 
       div class="tab-content"    
-        div.tab-pane class="link_pages" id="link_pane_1" 
-          ul
-            = nested_pages do |page, subpages|
-              li
-                = link_to page.title, "#", "data-url" => page.url
-                = content_tag(:ul, subpages) if subpages
+        - if Cardobard.used_with_pages?
+          div.tab-pane class="link_pages" id="link_pane_1" 
+            ul
+              = nested_pages do |page, subpages|
+                li
+                  = link_to page.title, "#", "data-url" => page.url
+                  = content_tag(:ul, subpages) if subpages
 
         div.tab-pane id="link_pane_2" 
           input placeholder='http://website.com' class='input-xlarge' value='http://'
