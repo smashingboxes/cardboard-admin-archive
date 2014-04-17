@@ -22,7 +22,7 @@
 
     li.dropdown.third
       a.dropdown-toggle data-toggle="dropdown" href="#"
-        img alt="Avatar" src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(cardboard_user.email.downcase)}" width="23" height="23" style="width:23px !important;"
+        img alt="Avatar" src="https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(cardboard_user.email.downcase)}" width="23" height="23" style="width:23px !important;"
         span.user-name.hidden-phone
           = cardboard_user.email
         b class="caret"
