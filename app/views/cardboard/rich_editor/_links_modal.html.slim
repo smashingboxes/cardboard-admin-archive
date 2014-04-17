@@ -6,7 +6,7 @@ li
 
     .modal-body
       ul class="nav nav-pills"
-        - if Cardobard.used_with_pages?
+        - if Cardboard.used_with_pages?
           li
             a href="#link_pane_1" data-toggle="pill" Pages
         li
@@ -15,7 +15,7 @@ li
           a href="#link_pane_3" data-toggle="pill" Email
 
       div class="tab-content"    
-        - if Cardobard.used_with_pages?
+        - if Cardboard.used_with_pages?
           div.tab-pane class="link_pages" id="link_pane_1" 
             ul
               = nested_pages do |page, subpages|
