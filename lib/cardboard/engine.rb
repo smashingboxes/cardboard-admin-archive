@@ -21,6 +21,7 @@ require 'decorators'
 require 'bootstrap-wysihtml5-rails'
 require 'select2-rails'
 require 'jquery-rails'
+require 'cardboard/concerns/url_concern'
 
 
 module Cardboard

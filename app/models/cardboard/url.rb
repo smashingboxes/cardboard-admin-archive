@@ -14,7 +14,10 @@ module Cardboard
       #TODO: refactor
       return nil unless full_url
       path, slug = self.path_and_slug(full_url)
-      page = self.where(path: path, slug: slug, urlable_type: options[:type]).first
+      url_hash = {path: path, slug: slug}
+      url_hash.merge!(urlable_type: options[:type]) if options[:type]
+
+      page = self.where(url_hash).first
 
       if slug && page.nil?
         #use arel instead of LIKE/ILIKE

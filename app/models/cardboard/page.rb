@@ -1,6 +1,5 @@
 module Cardboard
   class Page < ActiveRecord::Base
-    has_one :url_object, class_name: "Cardboard::Url", :as => :urlable, :autosave => true
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
 
     belongs_to :template, class_name: "Cardboard::Template"
@@ -8,19 +7,10 @@ module Cardboard
     attr_accessor :parent_url, :is_root
 
 
-    def url_object_with_auto_build
-      build_url_object unless url_object_without_auto_build
-      url_object_without_auto_build #to continue the association chain
-    end
-    alias_method_chain :url_object, :auto_build
-
-    accepts_nested_attributes_for :url_object
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     # TODO: allow destroy and allow all blank only if repeatable
 
-  
-    before_validation :default_values
-
+    include UrlConcern
     include RankedModel
     ranks :position
 
@@ -35,8 +25,10 @@ module Cardboard
     scope :with_path,  -> (p) {joins(:url_object).where("cardboard_urls.path = ?",p) }
 
 
+    # Hooks
+    before_validation :default_values
+
     #delegates
-    delegate :slug, :path, :slug=, :path=, :using_slug_backup?, to: :url_object, allow_nil: true
 
     #class variables
     after_commit do
@@ -60,11 +52,6 @@ module Cardboard
         description: url_object.description
       }
     end
-
-    def url
-      url_object.to_s
-    end
-
 
     #class methods
     def self.find_by_url(full_url)

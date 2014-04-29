@@ -8,7 +8,11 @@ class PagesController < ApplicationController
         redirect_to current_page.url, status: :moved_permanently
       else
         # call controller hook
-        self.send(current_page.identifier) if self.respond_to? current_page.identifier
+        @template_path = current_page.class.name.sub(/^Cardboard::/,'').underscore
+
+        if @template_path == "page"
+          self.send(current_page.identifier) if self.respond_to? current_page.identifier
+        end
 
         render "cardboard/pages/show", layout: @layout || "layouts/application"
       end
@@ -27,7 +31,8 @@ private
     @page = if params[:id].blank?
       Cardboard::Page.root
     else
-      Cardboard::Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new("Page not found"))
+      Cardboard::Url.urlable_for(params[:id])
+      # Cardboard::Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new("Page not found"))
     end
   end
 
