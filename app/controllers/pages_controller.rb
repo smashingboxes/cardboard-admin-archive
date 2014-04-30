@@ -9,9 +9,9 @@ class PagesController < ApplicationController
       else
         # call controller hook
         @template_path = current_page.class.name.sub(/^Cardboard::/,'').underscore
-
         if @template_path == "page"
           self.send(current_page.identifier) if self.respond_to? current_page.identifier
+          @template_path = current_page.template.identifier
         end
 
         render "cardboard/pages/show", layout: @layout || "layouts/application"
@@ -31,8 +31,7 @@ private
     @page = if params[:id].blank?
       Cardboard::Page.root
     else
-      Cardboard::Url.urlable_for(params[:id])
-      # Cardboard::Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new("Page not found"))
+      Cardboard::Url.urlable_for(params[:id]) || raise(ActionController::RoutingError.new("Page not found"))
     end
   end
 

@@ -3,6 +3,7 @@ module Cardboard
     belongs_to :urlable, polymorphic: true
 
     serialize :slugs_backup, Array
+    serialize :meta_tags, Hash
 
     before_save :update_slugs_backup
 

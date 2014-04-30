@@ -6,7 +6,6 @@ module Cardboard
       
     attr_accessor :parent_url, :is_root
 
-
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     # TODO: allow destroy and allow all blank only if repeatable
 
@@ -43,14 +42,10 @@ module Cardboard
 
 
     def meta_seo=(hash)
-      self.url_object.title = hash[:title]
-      self.url_object.description = hash[:description]
+      self.meta_tags = meta_tags.merge(hash)
     end
     def meta_seo
-      {
-        title: url_object.title,
-        description: url_object.description
-      }
+      meta_tags.slice("description", "title")
     end
 
     #class methods

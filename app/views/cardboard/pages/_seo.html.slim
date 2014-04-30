@@ -1,6 +1,6 @@
 
-- if current_page.meta_seo[:title]
-  title = current_page.meta_seo[:title]
-- current_page.meta_seo.each do |key, value|
-  - unless key == "title"
-    meta name='#{key}' content='#{value}'
+- title = (current_page.meta_tags.delete("title") || current_page.meta_tags.delete(:title))
+title = title.blank? ? Cardboard::Setting.company_name : title
+
+- current_page.meta_tags.each do |key, value|
+  meta name='#{key}' content='#{value}'

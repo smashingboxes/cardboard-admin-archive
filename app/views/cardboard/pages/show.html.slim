@@ -1,15 +1,14 @@
-- case @template_path
-- when "page"
-  - if lookup_context.exists?(current_page.template.identifier, 'templates', false) 
 
-    - content_for :seo do
-      = render "cardboard/pages/seo"
+- content_for :seo do
+  = render "cardboard/pages/seo"
 
-    = render template: "templates/#{current_page.template.identifier}"
-    
-  - elsif Rails.env.development? 
-    = render "cardboard/pages/error", missing_file: current_page.template.identifier
-
-- else
+- begin
   = render template: "templates/#{@template_path}"
   
+- rescue ActionView::MissingTemplate => e
+
+  - if Rails.env.development?
+    = render "cardboard/pages/error", missing_file: @template_path
+  - else
+    - raise ActionView::MissingTemplate, e
+

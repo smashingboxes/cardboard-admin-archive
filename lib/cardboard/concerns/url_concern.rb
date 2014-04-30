@@ -15,7 +15,11 @@ module Cardboard
 
       accepts_nested_attributes_for :url_object
 
-      delegate :slug, :path, :slug=, :path=, :using_slug_backup?, to: :url_object, allow_nil: true
+      delegate :slug, :slug=,
+               :path, :path=, 
+               :meta_tags, :meta_tags=,
+               :using_slug_backup?,  
+               to: :url_object, allow_nil: true
     end
 
     def url
