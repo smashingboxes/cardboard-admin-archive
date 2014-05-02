@@ -34,11 +34,11 @@ end
 
 # Routes for public pages
 Rails.application.routes.draw do
-  scope  :constraints => { :format => 'html' } do #:format => true,
-    get "*id", to: "pages#show"
+  scope  :constraints => PageConstraint do 
+    get "*id", to: "pages#router"
   end
 
-  root :to => "pages#show" unless @set.named_routes.routes[:root] #has_named_route?
+  root :to => "pages#router" unless @set.named_routes.routes[:root] #has_named_route?
 end
 
 
