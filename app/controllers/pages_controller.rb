@@ -5,7 +5,6 @@ class PagesController < ApplicationController
       redirect_to current_page.url, status: :moved_permanently
     else
       # call controller hook
-      @template_path = "page"
       self.send(current_page.identifier) if self.respond_to? current_page.identifier
       @template_path = current_page.template.identifier
     
