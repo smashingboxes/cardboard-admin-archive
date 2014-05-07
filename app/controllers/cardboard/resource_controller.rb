@@ -7,6 +7,11 @@ class Cardboard::ResourceController <  Cardboard::ApplicationController
 
   before_filter :check_ability
 
+  def self.singular?
+    name = controller_name
+    name == name.singularize and name != name.pluralize
+  end
+
   def collection
     @q ||= end_of_association_chain.search(params[:q])
 
