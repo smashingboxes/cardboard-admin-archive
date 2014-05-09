@@ -10,6 +10,16 @@ module Cardboard
     validates :path, presence: true
     validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
 
+    after_save :reload_routes
+    def reload_routes
+      DynamicRouter.reload
+    end
+
+    # before_save :update_homepage
+    # def update_homepage
+    #   return unless homepage_changed?
+    #   self.class.where('id != ? AND homepage', self.id).update_all(homepage: false)
+    # end
 
     def self.urlable_for(full_url, options = {})
       #TODO: refactor
@@ -40,10 +50,6 @@ module Cardboard
 
     def using_slug_backup=(value)
       @using_slug_backup = value
-    end
-
-    def is_root=(val)
-      self.sort_order_position = :first if val
     end
     
     # def to_param

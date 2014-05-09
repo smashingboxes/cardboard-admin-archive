@@ -4,10 +4,7 @@ Cardboard::Engine.routes.draw do
   get "my_account", to: "my_account#edit"
   patch "my_account", to: "my_account#update"
 
-  get "pages/new", to: "pages#new"
   post "pages/sort", to: "pages#sort"
-  get "pages/:id", to: "pages#edit"
-  
   resources :pages
 
   get "/yoda", to: "super_user#index"
@@ -15,10 +12,8 @@ Cardboard::Engine.routes.draw do
   get "/settings", to: "settings#index"
   patch "/settings/update", to: "settings#update", as: "setting"
 
-  get "/", to: "dashboard#index", as: "dashboard"
-  #Don't put a root path here, use "/" instead... (to be able to use root_path in the pages)
+  get "/", to: "dashboard#index", as: "dashboard" #Don't put a root path here
 
-  
   scope as: 'cardboard' do
     #generate routes for custom cardboard resources controllers
     Cardboard.resource_controllers.map{|x|x.controller_name}.each do |controller|

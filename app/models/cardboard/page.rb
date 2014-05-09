@@ -4,7 +4,7 @@ module Cardboard
 
     belongs_to :template, class_name: "Cardboard::Template"
       
-    attr_accessor :parent_url, :is_root
+    attr_accessor :parent_url
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     # TODO: allow destroy and allow all blank only if repeatable
@@ -35,11 +35,26 @@ module Cardboard
     end
 
     #overwritten setters/getters
+    # def is_root
+    #   self.url_object.homepage?
+    # end
 
-    def is_root=(val)
-      self.position_position = :first if val
+    # def is_root=(val)
+    #   return unless val
+    #   self.position_position = :first 
+    #   self.url.homepage? = true
+    # end
+
+    def self.root
+      #TODO: check that join work correctly
+      with_path('/').rank(:position).first
     end
+    def self.homepage; self.root; end
 
+    def root?
+      return @root unless @root.nil?
+      @root = self.id == Page.root.id
+    end
 
     def meta_seo=(hash)
       self.meta_tags = meta_tags.merge(hash)
@@ -53,16 +68,6 @@ module Cardboard
       Cardboard::Url.urlable_for(full_url, type: self.name)
     end
 
-    def self.root
-      #TODO: check that join work correctly
-      with_path('/').rank(:position).first
-    end
-    def self.homepage; self.root; end
-
-    def root?
-      @root_id ||= Page.root.id
-      @root_id == self.id
-    end
 
     #instance methods
 
