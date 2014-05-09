@@ -28,15 +28,9 @@ Cardboard::Engine.routes.draw do
 end
 
 # Routes for public pages
-Rails.application.routes.draw do
-  scope  :constraints => PageConstraint do 
-    get "*id", to: "pages#router"
-  end
+Cardboard::DynamicRouter.load
 
-  root :to => "pages#router" unless @set.named_routes.routes[:root] #has_named_route?
-end
-
-
+#legacy support
 Rails.application.routes.named_routes.module.module_eval do
   def page_path(identifier, options = {})
     url = Cardboard::Page.where(identifier: identifier.to_s).first.try(:url)

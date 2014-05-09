@@ -1,5 +1,4 @@
-# This migration comes from cardboard (originally 1)
-class CreateCardboard1 < ActiveRecord::Migration
+class CreateCardboard < ActiveRecord::Migration
   def change
     #Fields
     create_table :cardboard_fields do |t|
@@ -54,6 +53,7 @@ class CreateCardboard1 < ActiveRecord::Migration
       t.text :fields
       t.string :identifier
       t.boolean :is_page
+      t.string :controller_action
       t.timestamps
     end
     add_index :cardboard_templates, :identifier, :unique => true
@@ -62,8 +62,7 @@ class CreateCardboard1 < ActiveRecord::Migration
       t.string :slug, index: true
       t.string :path, index: true
       t.text :slugs_backup
-      t.string :title
-      t.text :description
+      t.text :meta_tags
       t.references :urlable,  polymorphic: true
 
       t.timestamps

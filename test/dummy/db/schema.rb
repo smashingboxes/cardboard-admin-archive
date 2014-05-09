@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140312180204) do
     t.text     "fields"
     t.string   "identifier"
     t.boolean  "is_page"
+    t.string   "controller_action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,8 +91,7 @@ ActiveRecord::Schema.define(version: 20140312180204) do
     t.string   "slug"
     t.string   "path"
     t.text     "slugs_backup"
-    t.string   "title"
-    t.text     "description"
+    t.text     "meta_tags"
     t.integer  "urlable_id"
     t.string   "urlable_type"
     t.datetime "created_at"

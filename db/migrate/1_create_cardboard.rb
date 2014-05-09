@@ -53,6 +53,7 @@ class CreateCardboard < ActiveRecord::Migration
       t.text :fields
       t.string :identifier
       t.boolean :is_page
+      t.string :controller_action
       t.timestamps
     end
     add_index :cardboard_templates, :identifier, :unique => true

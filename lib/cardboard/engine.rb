@@ -22,7 +22,8 @@ require 'bootstrap-wysihtml5-rails'
 require 'select2-rails'
 require 'jquery-rails'
 require 'cardboard/concerns/url_concern'
-require 'cardboard/constraints/page_constraint'
+require 'cardboard/helpers/content_for_in_controllers'
+require 'cardboard/dynamic_router'
 
 module Cardboard
   class Engine < ::Rails::Engine

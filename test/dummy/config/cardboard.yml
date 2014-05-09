@@ -1,5 +1,4 @@
-
-templates:
+pages:
   #---
   home:
     title: Welcome
@@ -26,6 +25,11 @@ templates:
           description:
             hint: This will be visible on mouse over
             type: string
+  blog:
+    title: ideas
+    controller_action: "blog#index"
+
+templates:
   #---
   about_us:
     title: About us
