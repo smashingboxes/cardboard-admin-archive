@@ -75,7 +75,8 @@ module Cardboard
       # end
     end
 
-    def self.populate_settings(settings = {})
+    def self.populate_settings(settings)
+      settings ||= {}
       settings["company_name"] ||= {type: "string", default:  Cardboard.application.site_title}
       db_settings = Cardboard::Setting.first_or_create
       db_settings.update_attributes!(template: settings)

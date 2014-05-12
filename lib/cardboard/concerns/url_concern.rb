@@ -5,7 +5,7 @@ module Cardboard
     extend ActiveSupport::Concern
 
     included do
-      has_one :url_object, class_name: "Cardboard::Url", :as => :urlable, :autosave => true
+      has_one :url_object, class_name: "Cardboard::Url", :as => :urlable, :autosave => true, :dependent => :destroy
    
       def url_object_with_auto_build
         build_url_object unless url_object_without_auto_build
