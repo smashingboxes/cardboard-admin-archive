@@ -23,10 +23,11 @@ private
 
   def current_page
     return @cardboard_page unless @cardboard_page.nil?
-    @cardboard_page = if params[:id].blank?
+
+    @cardboard_page = if request.path == "/"
       Cardboard::Page.root
     else
-      Cardboard::Url.urlable_for(params[:id]) 
+      Cardboard::Url.urlable_for(request.path) 
     end
   end
 end

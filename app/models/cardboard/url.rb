@@ -51,7 +51,15 @@ module Cardboard
     def using_slug_backup=(value)
       @using_slug_backup = value
     end
-    
+
+    def slugs_backup=(value)
+      if value.is_a?(String)
+        self[:slugs_backup] = value.split(",").map(&:strip)
+      else
+        self[:slugs_backup] = value
+      end
+    end
+
     # def to_param
     #   "#{id}-#{slug}"
     # end  
