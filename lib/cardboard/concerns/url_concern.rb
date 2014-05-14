@@ -22,10 +22,6 @@ module Cardboard
                to: :url_object, allow_nil: true
     end
 
-    def to_param
-      "#{slug}"
-    end
-
     def url
       url_object.to_s
     end
