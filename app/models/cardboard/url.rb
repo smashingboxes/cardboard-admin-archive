@@ -15,6 +15,7 @@ module Cardboard
       DynamicRouter.reload
     end
 
+    # TODO: Should we use the homepage boolean?
     # before_save :update_homepage
     # def update_homepage
     #   return unless homepage_changed?
@@ -44,6 +45,12 @@ module Cardboard
       self[:slug] = value.present? ? value.to_url : nil
     end
 
+    def path=(value)
+      return if value.nil?
+      value = value.gsub(/\//, '')
+      self[:path] = value.blank?? "/" : "/#{value}/"
+    end
+
     def using_slug_backup?
       @using_slug_backup || false
     end
@@ -59,10 +66,6 @@ module Cardboard
         self[:slugs_backup] = value
       end
     end
-
-    # def to_param
-    #   "#{id}-#{slug}"
-    # end  
 
     def to_s
       return "/" if slug.blank?
