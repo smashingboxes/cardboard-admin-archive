@@ -82,6 +82,7 @@ module Cardboard
     def update_slugs_backup
       return nil if !self.slug_changed? || self.slug_was.nil?
       self.slugs_backup |= [self.slug_was] #Yes, that's a single pipe...
+      self.slugs_backup = slugs_backup - [self.slug] #in case we are going back to a link that was in the backup
     end
 
   end
