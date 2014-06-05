@@ -14,7 +14,6 @@ module Cardboard
     ranks :position
 
     #validations
-    # validates_associated :parts
     validates :title, :template, presence:true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
                            :message => "Only downcase letters, numbers and underscores are allowed" }, presence: true
@@ -35,15 +34,6 @@ module Cardboard
     end
 
     #overwritten setters/getters
-    # def is_root
-    #   self.url_object.homepage?
-    # end
-
-    # def is_root=(val)
-    #   return unless val
-    #   self.position_position = :first 
-    #   self.url.homepage? = true
-    # end
 
     def self.root
       #TODO: check that join work correctly
@@ -204,7 +194,7 @@ module Cardboard
     def default_values
       self.title ||= self.identifier.try(:parameterize, "_")
       self.path ||=  "/"
-      self.slug ||= self.title.try(:to_url)
+      self.slug = self.title.try(:to_url) if self.slug.blank?
     end
   end
 end

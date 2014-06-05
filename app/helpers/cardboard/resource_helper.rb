@@ -9,11 +9,8 @@ module Cardboard
 
     def dragonfly_image_tag(image, options = {})
       return nil unless image
-      size = options.delete(:size) || '125x125#'
-      # height = size.split("x").last
-      # content_tag :div, style: (height.blank? ? nil : "height: #{height.sub(/[\!\#\>\<]/, '')}px; display: inline-block;") do
-        image_tag image.thumb(size).url, options
-      # end
+      size = options.delete(:size) || '125x125>'
+      image_tag image.thumb(size).url, options
     end
 
     # ActionView::Helpers::FormBuilder.class_eval do

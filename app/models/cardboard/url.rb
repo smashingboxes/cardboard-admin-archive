@@ -11,9 +11,6 @@ module Cardboard
     validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
 
     after_save :reload_routes
-    def reload_routes
-      DynamicRouter.reload
-    end
 
     # TODO: Should we use the homepage boolean?
     # before_save :update_homepage
@@ -73,6 +70,11 @@ module Cardboard
     end
 
   private
+
+    def reload_routes
+      DynamicRouter.reload
+    end
+
     def self.path_and_slug(full_url)
       *path, slug = full_url.sub(/^\//, '').split('/')
       [path.blank? ? '/' : "/#{path.join('/')}/", slug]
