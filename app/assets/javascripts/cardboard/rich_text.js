@@ -1,5 +1,5 @@
 //= require cardboard/wysihtml5-0.4.0pre 
-//= require bootstrap-wysihtml5/core
+//= require bootstrap-wysihtml5
 
 $(document).on('page:load', function(){
   window['rangy'].initialized = false
