@@ -17,7 +17,7 @@ module Cardboard
           url = page.url_object
           template = page.template
           
-          get url.to_s, :to => template.controller_action || "pages##{template.identifier}"
+          get url.to_s, :to => template.controller_action || "pages##{template.identifier}", defaults: { identifier: template.identifier }
 
           if !routes[:root] && page.root?
             root :to => template.controller_action || "pages##{template.identifier}"
