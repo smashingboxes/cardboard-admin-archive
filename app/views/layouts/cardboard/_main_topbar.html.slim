@@ -3,7 +3,7 @@
   #cardboard_logo CB
   
   = link_to main_app.root_path, id: "brand" do
-    = Cardboard::Setting.company_name || Cardboard.application.site_title
+    = Cardboard::Setting.company_name rescue Cardboard.application.site_title
 
   ul.nav.pull-right
 

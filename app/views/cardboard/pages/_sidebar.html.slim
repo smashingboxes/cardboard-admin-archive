@@ -1,6 +1,6 @@
 form class="form-inline"
   - if Cardboard.used_with_templates?
-    => link_to pages_new_path, class:"btn btn-primary" do
+    => link_to new_page_path, class:"btn btn-primary" do
       i.icon-plus
 
   .input-append style=(Cardboard.used_with_templates?? "width: 160px" : nil)

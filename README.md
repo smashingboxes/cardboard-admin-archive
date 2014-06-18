@@ -281,6 +281,7 @@ In your controllers you may want to redirect to a specific page. You can do so w
 ```ruby
 page_path("identifier_for_this_page")
 page_url("identifier_for_this_page")
+cardboard.edit_page_path(@page) #link to let your admins edit the page they see
 ```
 
 

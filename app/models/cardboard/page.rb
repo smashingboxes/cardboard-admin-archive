@@ -1,38 +1,32 @@
 module Cardboard
   class Page < ActiveRecord::Base
-
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
 
     belongs_to :template, class_name: "Cardboard::Template"
       
-    attr_accessor :parent_url, :is_root
+    attr_accessor :parent_url
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
     # TODO: allow destroy and allow all blank only if repeatable
 
-    serialize :meta_seo, Hash
-    serialize :slugs_backup, Array
-
-    before_validation :default_values
-    before_save :update_slugs_backup
-
-    #gems
-    acts_as_url :title, :url_attribute => :slug, :scope =>  :path, only_when_blank: true
-
+    include UrlConcern
     include RankedModel
-    ranks :position, :with_same => :path
+    ranks :position
 
     #validations
-    # validates_associated :parts
-    validates :title, :path, :template, presence:true
-    validates :slug, uniqueness: { :case_sensitive => false, :scope => :path }, presence: true
+    validates :title, :template, presence:true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
                            :message => "Only downcase letters, numbers and underscores are allowed" }, presence: true
-    #validate all seo keys are valid meta keys + title
 
     #scopes
-    scope :preordered, -> {order("path ASC, position ASC, slug ASC")} 
+    scope :preordered, -> {joins(:url_object).order("cardboard_urls.path ASC, position ASC, cardboard_urls.slug ASC")} 
+    scope :with_path,  -> (p) {joins(:url_object).where("cardboard_urls.path = ?",p) }
 
+
+    # Hooks
+    before_validation :default_values
+
+    #delegates
 
     #class variables
     after_commit do
@@ -40,50 +34,33 @@ module Cardboard
     end
 
     #overwritten setters/getters
-    def slug=(value)
-      # the user can overwrite the auto generated slug
-      self[:slug] = value.present? ? value.to_url : nil
-    end
-
-    def is_root=(val)
-      self.position_position = :first if val
-    end
-
-    def using_slug_backup?
-      @using_slug_backup || false
-    end
-
-    def using_slug_backup=(value)
-      @using_slug_backup = value
-    end
-
-    #class methods
-    def self.find_by_url(full_url)
-      return nil unless full_url
-      path, slug = self.path_and_slug(full_url)
-      page = self.where(path: path, slug: slug).first
-
-      if slug && page.nil?
-        #use arel instead of LIKE/ILIKE
-        page = self.where(path: path).where(self.arel_table[:slugs_backup].matches("% #{slug}\n%")).first
-        page.using_slug_backup = true if page
-      end
-
-      page
-    end
 
     def self.root
-      # Homepage is the highest position in the root path
-      where(path: "/").rank(:position).first
+      #TODO: check that join work correctly
+      with_path('/').rank(:position).first
     end
     def self.homepage; self.root; end
 
     def root?
-      @root_id ||= Page.root.id
-      @root_id == self.id
+      return @root unless @root.nil?
+      @root = self.id == Page.root.id
     end
 
+    def meta_seo=(hash)
+      self.meta_tags = meta_tags.merge(hash)
+    end
+    def meta_seo
+      meta_tags.slice("description", "title")
+    end
+
+    #class methods
+    def self.find_by_url(full_url)
+      Cardboard::Url.urlable_for(full_url, type: self.name)
+    end
+
+
     #instance methods
+
 
     def template_hash
       @template_hash ||= self.template.fields
@@ -128,14 +105,8 @@ module Cardboard
       self.meta_seo = hash.to_hash
       @_seo = nil
     end
-    
-    def url
-      return "/" if slug.blank? #|| self.root?
-      "#{path}#{slug}/"
-    end
 
     def split_path
-      # path.sub(/^\//,'').split("/") # "/path/" => ["path"]
       path[1..-1].split("/")
     end
 
@@ -172,11 +143,11 @@ module Cardboard
     end
 
     def children
-      Cardboard::Page.where(path: url)
+      Cardboard::Page.with_path(url)
     end
 
     def siblings
-      Cardboard::Page.where("path = ? AND id != ?", path, id)
+      Cardboard::Page.with_path(path).where("cardboard_pages.id != ?", id)
     end
 
     def depth
@@ -218,25 +189,12 @@ module Cardboard
       Rails.cache.delete("arranged_pages")
     end
 
-  # def to_param
-  #   "#{id}-#{slug}"
-  # end  
-
   private
-    def self.path_and_slug(full_url)
-      *path, slug = full_url.sub(/^\//, '').split('/')
-      [path.blank? ? '/' : "/#{path.join('/')}/", slug]
-    end
-
-
-    def update_slugs_backup
-      return nil if !self.slug_changed? || self.slug_was.nil?
-      self.slugs_backup |= [self.slug_was] #Yes, that's a single pipe...
-    end
 
     def default_values
-      self.path  ||= '/'
-      self.title ||= self.identifier.parameterize("_")
+      self.title ||= self.identifier.try(:parameterize, "_")
+      self.path ||=  "/"
+      self.slug = self.title.try(:to_url) if self.slug.blank?
     end
   end
 end

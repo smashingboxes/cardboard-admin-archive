@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130417134832) do
+ActiveRecord::Schema.define(version: 20140312180204) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -55,12 +55,9 @@ ActiveRecord::Schema.define(version: 20130417134832) do
 
   create_table "cardboard_pages", force: true do |t|
     t.string   "title"
-    t.string   "path"
-    t.string   "slug"
-    t.text     "slugs_backup"
     t.integer  "position"
     t.text     "meta_seo"
-    t.boolean  "in_menu",      default: true
+    t.boolean  "in_menu",     default: true
     t.string   "identifier"
     t.integer  "template_id"
     t.datetime "created_at"
@@ -68,7 +65,6 @@ ActiveRecord::Schema.define(version: 20130417134832) do
   end
 
   add_index "cardboard_pages", ["identifier"], name: "index_cardboard_pages_on_identifier", unique: true
-  add_index "cardboard_pages", ["path", "slug"], name: "index_cardboard_pages_on_path_and_slug", unique: true
 
   create_table "cardboard_settings", force: true do |t|
     t.string "name"
@@ -83,9 +79,26 @@ ActiveRecord::Schema.define(version: 20130417134832) do
     t.string   "name"
     t.text     "fields"
     t.string   "identifier"
+    t.boolean  "is_page"
+    t.string   "controller_action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cardboard_templates", ["identifier"], name: "index_cardboard_templates_on_identifier", unique: true
+
+  create_table "cardboard_urls", force: true do |t|
+    t.string   "slug"
+    t.string   "path"
+    t.text     "slugs_backup"
+    t.text     "meta_tags"
+    t.integer  "urlable_id"
+    t.string   "urlable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cardboard_urls", ["path", "slug"], name: "index_cardboard_urls_on_path_and_slug", unique: true
 
   create_table "pianos", force: true do |t|
     t.string   "name"

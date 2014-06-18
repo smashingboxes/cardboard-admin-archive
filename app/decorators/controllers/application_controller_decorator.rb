@@ -3,7 +3,9 @@ ApplicationController.class_eval do
   # helper Cardboard::PublicHelper
 
   def current_page
-    nil #this will be overwritten only for cardboard pages
+    #nil default for non cardboard pages
+    #overwritten otherwise by url controller
+    nil 
   end
   helper_method :current_page
 end
