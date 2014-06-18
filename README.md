@@ -49,7 +49,7 @@ rake cardboard:seed
 
 ## Usage
 ### Get a page
-Add a file in your `app/views/templates` with filename matching the identifier of the page. Inside this file you can access the page with:
+Add a file in your `app/views/pages` (or `app/views/templates`) with filename matching the identifier of the page. Inside this file you can access the page with:
 ```ruby
 current_page
 ```
@@ -108,7 +108,7 @@ pages:
             type: image
             required: true
             default: CrashTest.jpg
-pages:
+templates:
   two_column:
     parts:
       main:
@@ -128,7 +128,10 @@ Key | Type | Default | Definition
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment | position of the page on the nav bar (the lowest position is the home page!)
 parent_id | string | nil | identifier of the parent page (used for nested pages)
-controller_action | string | pages#identifier | go to a specific controller example "blog#index". The page identifier is passed in the params
+controller_action | string | pages#identifier | go to a specific controller example "blog#index". In that case, the page identifier is passed in the params
+
+#### Templates
+Templates are declared exactly like pages. They allow for the creation of pages directly from the admin interface. One key difference between templates and pages is the location of the view files which will be under `app/views/templates`.
 
 #### Parts
 Each part sub-section starts with the name of it's unique identifier. This name is used to reference the part in the code an thus should not change throughout the life of the project.
