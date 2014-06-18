@@ -16,6 +16,10 @@ Cardboard is a simple CMS Engine for your Rails 4 applications.
 
 ![alt text](https://github.com/smashingboxes/cardboard/wiki/images/2a.jpg "screenshot1")
 
+
+## Updating from 0.2 -> 0.3
+Some changes were made to the database. Before updating make sure to have a look at the [new migration](https://github.com/smashingboxes/cardboard/blob/master/db/migrate/1_create_cardboard.rb)
+
 ## Requirements
 * An authentication solution. For example, [here is what you need to do](https://github.com/plataformatec/devise#getting-started) to get `Devise` installed.
 * `imagemagick` (on mac do `brew install imagemagick`)
@@ -124,7 +128,7 @@ Key | Type | Default | Definition
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment | position of the page on the nav bar (the lowest position is the home page!)
 parent_id | string | nil | identifier of the parent page (used for nested pages)
-
+controller_action | string | pages#identifier | go to a specific controller example "blog#index". The page identifier is passed in the params
 
 #### Parts
 Each part sub-section starts with the name of it's unique identifier. This name is used to reference the part in the code an thus should not change throughout the life of the project.
