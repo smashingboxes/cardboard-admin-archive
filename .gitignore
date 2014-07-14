@@ -15,6 +15,10 @@ test/dummy/public/system/dragonfly/*
 .sass-cache
 capybara-*.html
 .rspec
-.rvmrc
 .project
 .DS_Store
+
+# Version Manager Files
+.rvmrc
+.ruby-version
+.ruby-gemset
