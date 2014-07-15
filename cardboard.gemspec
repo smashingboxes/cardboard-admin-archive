@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.summary     = "Rails CMS made simple"
   s.description = "Rails CMS made simple"
 
+  s.required_ruby_version = ">= 1.9.3"
+
   # s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.files         = `git ls-files`.split("\n").sort - %w(.rvmrc .gitignore)
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
