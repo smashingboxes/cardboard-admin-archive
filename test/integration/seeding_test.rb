@@ -50,6 +50,7 @@ describe "Seeding" do
       }
     }.with_indifferent_access
   end
+
   describe 'Pages' do
     before do
       Cardboard::Seed.populate_templates(@file_hash)
