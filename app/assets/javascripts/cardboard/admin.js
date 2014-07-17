@@ -3,7 +3,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.sortable
+//= require jquery-ui/sortable
 //= require cardboard/jquery.livesearch
 //= require turbolinks
 //= require bootstrap-button

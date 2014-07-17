@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ransack', '>= 1.0.0'
   s.add_dependency 'turbolinks'
   s.add_dependency 'decorators'
-  s.add_dependency 'jquery-ui-rails'
+  s.add_dependency 'jquery-ui-rails', '~> 5.0.0'
   s.add_dependency 'select2-rails'
 
   s.add_development_dependency "guard-minitest"
