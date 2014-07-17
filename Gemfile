@@ -1,5 +1,4 @@
 source "http://rubygems.org"
-ruby '2.0.0'
 
 # Declare your gem's dependencies in cardboard.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -25,12 +24,13 @@ gem 'quiet_assets'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
-gem 'pry-debugger'
+gem 'pry-byebug'
 gem 'uglifier'
 
 group :test do
   gem 'turn'
   gem 'simplecov'
+  gem 'rake'
 end
 
 
