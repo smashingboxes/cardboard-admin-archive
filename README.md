@@ -180,6 +180,7 @@ Gem | Description
 
 
 ### Menu options
+You can customize the menu for this resource by adding to the controller class:
 ```ruby
   menu  label: "Test", priority: 1
 ```
@@ -189,6 +190,7 @@ You can also choose to remove a resource from the menu
 ```
 
 ### Sorting
+You can customize the sorting for this resource by adding to the controller class:
 ```ruby
   default_order "name DESC" # default: 'updated_at desc'
 ```
