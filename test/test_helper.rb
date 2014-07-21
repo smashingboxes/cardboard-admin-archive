@@ -42,3 +42,8 @@ class ActionDispatch::IntegrationTest
     Cardboard::Engine.routes.url_helpers
   end
 end
+
+if Rails.configuration.database_configuration['test']['database'] == ':memory:'
+  puts "creating sqlite in memory database"
+  load "#{Rails.root}/db/schema.rb"
+end

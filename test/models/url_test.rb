@@ -1,11 +1,13 @@
 require "test_helper"
 
-describe Url do
+describe Cardboard::Url do
   before do
-    @url = Url.new
+    @url = Cardboard::Url.new
   end
 
   it "must be valid" do
+    @url.path = "/some/path/to/somewhere"
+    @url.slug = "some_awesome_content_page"
     @url.valid?.must_equal true
   end
 end

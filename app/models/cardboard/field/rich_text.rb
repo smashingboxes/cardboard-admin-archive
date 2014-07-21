@@ -12,7 +12,7 @@ module Cardboard
     end
 
     private
-    
+
     # def sanitize_value
     #   return nil unless value_changed?
     #   self.value = ActionController::Base.helpers.sanitize(self.value, :tags => %w(strong b i u em br p div span ul ol li a pre code blockquote h1 h2 h3 table), :attributes => %w(class style href src width height alt))

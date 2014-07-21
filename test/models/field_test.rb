@@ -97,6 +97,7 @@ describe Cardboard::Field do
   end
 
   it "should accept valid rich text" do
+    skip("used to sanitize rich text, but that was removed")
     @field = build :rich_text_field, object_with_field: @part, identifier: "rich_text_field"
     # assert_equal true, @field.save
     # @field.required = true

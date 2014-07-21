@@ -3,7 +3,7 @@ module Cardboard
     validate :is_boolean
 
     def value
-      to_boolean(value_uid) 
+      value_uid
     end
 
     def value=(val)
@@ -17,7 +17,7 @@ module Cardboard
     private
 
     def is_boolean
-      errors.add(:value, "is not a valid boolean") if value_uid.present? && value.nil?
+      errors.add(:value, "is not a valid boolean") if value.nil?
     end
 
     def to_boolean(val)
