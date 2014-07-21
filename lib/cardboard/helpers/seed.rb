@@ -36,6 +36,10 @@ module Cardboard
 
         self.populate_parts(page[:parts], db_page)
       end
+
+      for remove_page in Cardboard::Template.where(is_page: true).pluck(:identifier) - pages.map{|k,v|k.to_s}
+        Cardboard::Template.find_by(identifier: remove_page).destroy
+      end
     end
 
     def self.populate_parts(page_parts, db_page)

@@ -3,7 +3,7 @@ module Cardboard
 
     serialize :fields, Hash
 
-    has_many :pages
+    has_many :pages, dependent: :destroy
 
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
                            :message => "Only downcase letters, numbers and underscores are allowed" }
