@@ -3,7 +3,7 @@ module Cardboard
     validate :is_boolean
 
     def value
-      value_uid
+      to_boolean(value_uid) 
     end
 
     def value=(val)
