@@ -17,7 +17,7 @@ module Cardboard
     private
 
     def is_boolean
-      errors.add(:value, "is not a valid boolean") if value.nil?
+      errors.add(:value, "is not a valid boolean") if value_uid.nil?
     end
 
     def to_boolean(val)
