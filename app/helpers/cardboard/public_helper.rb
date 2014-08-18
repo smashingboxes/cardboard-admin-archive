@@ -3,8 +3,11 @@ module Cardboard
 
     def dragonfly_image_tag(image, options = {})
       return nil unless image
-      size = options.delete(:size) || '125x125>'
-      image_tag image.thumb(size).url, options
+      if size = options.delete(:size)
+        image_tag image.thumb(size).url, options
+      else
+        image_tag image.url, options
+      end
     end
 
     def link_to_file(text, file, options = {})
