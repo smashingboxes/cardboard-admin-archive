@@ -66,7 +66,7 @@ module Cardboard
 
     def to_s
       return "/" if slug.blank?
-      "#{path}#{slug}/"
+      "#{path}#{slug}"
     end
 
   private
