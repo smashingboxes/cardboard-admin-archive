@@ -8,7 +8,6 @@ $content_sidebar_width: 280px !default;
 $content_background: #f4f7f9 !default;
 $brand_color: #f9334a !default;
 $table_head: #E1E1E1 !default;
-$site_min_width: 780px !default;
 
 // Overwrite as needed
 // //
@@ -26,7 +25,7 @@ $black:                 #000 !default;
 // $gray:                  #555 !default;
 // $grayLight:             #999 !default;
 // $grayLighter:           #eee !default;
-// $white:                 #fff !default;
+$white:                 #fff !default;
 $blue:    #049cdb  !default;
 $green:   #46a546  !default;
 $red:     #9d261d  !default;
@@ -260,9 +259,9 @@ $navbarHeight:                    $main_topbar_height  !default;
 // $errorBackground:         #f2dede !default;
 // $errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
 
-// $successText:             #468847 !default;
-// $successBackground:       #dff0d8 !default;
-// $successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
+$successText:             #468847 !default;
+$successBackground:       #dff0d8 !default;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
 
 // $infoText:                #3a87ad !default;
 // $infoBackground:          #d9edf7 !default;

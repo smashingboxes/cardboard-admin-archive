@@ -1,4 +1,5 @@
 - label = ""
 / - label += '<abbr title="required">*</abbr> ' if f.object.required
 - label += field[:label] || identifier.titleize
-= f.input :value, inline_label: label.html_safe, as: field[:type], hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != false, label: false
+.checkbox
+  = f.input :value, inline_label: label.html_safe, as: field[:type], hint: field[:hint], placeholder: field[:placeholder], required: field[:required] != false, label: false
