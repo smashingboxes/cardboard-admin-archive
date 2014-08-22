@@ -6,11 +6,11 @@
 //= require jquery-ui/sortable
 //= require cardboard/jquery.livesearch
 //= require turbolinks
-//= require bootstrap-button
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-alert
-//= require bootstrap-tab
+//= require bootstrap/button
+//= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/alert
+//= require bootstrap/tab
 //= require cardboard/bootstrap-select
 //= require bootstrap-datepicker/core
 //= require cardboard/datepicker
