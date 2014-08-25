@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   #don't forget to require them in lib/cardboard/engine.rb
-  s.add_dependency "rails", "~> 4.0.0"
+  s.add_dependency "rails", "~> 4.0"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails", '~> 4.0'
   s.add_dependency 'coffee-rails'
