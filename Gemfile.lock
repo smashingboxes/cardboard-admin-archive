@@ -4,7 +4,7 @@ PATH
     cardboard_cms (0.3.1)
       bootstrap-datepicker-rails
       bootstrap-sass (~> 3.2)
-      bootstrap-wysihtml5-rails (~> 0.3.1.24)
+      bootstrap-wysihtml5-rails (~> 0.3.2.100)
       chronic
       cocoon (>= 1.2.0)
       coffee-rails
@@ -17,6 +17,7 @@ PATH
       jquery-ui-rails (~> 5.0.0)
       kaminari
       kaminari-bootstrap (~> 3.0.1)
+      lodash-rails
       rack-cache
       rails (~> 4.0)
       ranked-model (>= 0.2.1)
@@ -69,7 +70,7 @@ GEM
       railties (>= 3.0)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
-    bootstrap-wysihtml5-rails (0.3.1.24)
+    bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
     builder (3.1.4)
     byebug (2.7.0)
@@ -103,7 +104,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
-    dragonfly (1.0.6)
+    dragonfly (1.0.7)
       addressable (~> 2.3)
       multi_json (~> 1.0)
       rack
@@ -123,7 +124,7 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
-    gon (5.1.2)
+    gon (5.2.0)
       actionpack (>= 2.3.0)
       json
       multi_json
@@ -165,6 +166,8 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
+    lodash-rails (2.4.1)
+      railties (>= 3.1)
     lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
