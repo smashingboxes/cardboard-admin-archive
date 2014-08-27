@@ -63,3 +63,14 @@ body{
   margin-right: 4px;
 }
 
+.btn-primary {
+  background-color: $brand_color;
+  border-color: darken($brand_color, 10%);
+
+  &:hover, &:active, &:focus {
+    outline: none;
+    background-color: darken($brand_color, 10%);
+    border-color: darken($brand_color, 20%);
+  }
+}
+
