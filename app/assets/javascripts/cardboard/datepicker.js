@@ -1,6 +1,6 @@
 var create_datepickers = function(){
 
-  $('input.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', function() {
+  $('input.datepicker, input[id$="_on"], input[id$="_at"').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', function() {
     $(this).data('datepicker').hide();
   });
 

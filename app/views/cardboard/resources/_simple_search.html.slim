@@ -1,6 +1,7 @@
 = search_form_for @q, url: {} do |f|
   = hidden_field_tag :s, "simple"
 
-  .input-append
-    = f.text_field main_element, class:"search span5", placeholder: "Search by #{main_element.sub(/_[a-z]+$/,'').titlecase}"
-    = render "cardboard/resources/search_button", f: f
+  .input-group.col-md-5
+    = f.text_field main_element, class:"search form-control", placeholder: "Search by #{main_element.sub(/_[a-z]+$/,'').titlecase}"
+    span.input-group-btn
+      = render "cardboard/resources/search_button", f: f
