@@ -33,13 +33,15 @@ $main_topbar_zindex: 100;
       margin-left: -10px;
       @include box-sizing(border-box);
       padding: 10px 36px;
+      i {
+        font-size: 22px;
+      }
     }
     
     #brand{
       font-weight: 700;
       font-size: 20px;
       position: relative;
-      top: 4px;
       left: 50px;
     }
     
