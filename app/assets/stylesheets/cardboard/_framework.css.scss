@@ -67,14 +67,13 @@ legend + .control-group {
 }
 
 .form-actions {
-  background: #fff;
-  
   .btn {
     margin-right: 15px;
   }
 }
 
 .simple_form{
+  @extend .form-horizontal;
   input, textarea{
      @include box-sizing(border-box);
   }

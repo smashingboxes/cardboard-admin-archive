@@ -31,6 +31,10 @@ $(document).on('click', '.nav-tabs a', function(e){
 });
 
 $(document).on("page:load ready cocoon:after-insert", function(e){
+  window['rangy'].initialized = false;
+  // TODO: Get rid of this, this is a hack to get around simple form and
+  // bootstrap
+  $('input.boolean, input.file, .select').removeClass('form-control');
 
   $('select[data-search-select]').each(function() {
     var options = $(this).data("select2-options")

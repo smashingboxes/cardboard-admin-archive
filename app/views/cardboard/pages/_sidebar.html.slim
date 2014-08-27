@@ -3,10 +3,12 @@ form class="form-inline"
     => link_to new_page_path, class:"btn btn-primary" do
       i.icon-plus
 
-  .input-append style=(Cardboard.used_with_templates?? "width: 160px" : nil)
-    input id="sidebar_page_search" type="text" placeholder="Search Pages"
-      i.icon-search
+    .form-group
+      .input-group style=(Cardboard.used_with_templates?? "width: 180px" : nil)
+        input.form-control id="sidebar_page_search" type="text" placeholder="Search Pages"
+        .input-group-btn
           button.btn.btn-default type="submit"
+            i.icon-search
 
 #content_pages data-update-url="#{pages_sort_path}"
   = nested_pages do |page, subpages|

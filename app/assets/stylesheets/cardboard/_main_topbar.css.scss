@@ -39,7 +39,7 @@ $main_topbar_zindex: 100;
       font-weight: 700;
       font-size: 20px;
       position: relative;
-      top: 9px;
+      top: 4px;
       left: 50px;
     }
     
@@ -58,6 +58,7 @@ $main_topbar_zindex: 100;
     color: $black;
     text-shadow: none;
     &:hover{
+      background-color: $brand_color;
       color: $main_topbar_color;
     }
   }

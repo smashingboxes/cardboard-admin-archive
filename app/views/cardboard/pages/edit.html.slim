@@ -17,36 +17,41 @@ h1
     label Template
     = @page.template.name
 
-  = f.input :in_menu, label: false, inline_label: "Display in main menu?"
+  .form-group.checkbox
+    = f.label :in_menu do
+      = f.check_box :in_menu
+      'Display in main menu?
 
-  = field_set_tag "SEO" do
-    .nested-fields
-      = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
-        = seo.input :title, label: "Browser titlebar", required: false
-        = seo.input :description, as: :text, required: false
-        - for key in  seo.object.methods(nil).grep(/[^=]$/) - [:title, :description]
-          = seo.input key, required: false
-
-
-
-  - @page.template_hash.each do |part_identifier, part_hash|
-
-    = field_set_tag part_hash[:title] || part_identifier.titleize do
-      
-      - if parts = @page.parts.select{|ob|  ob.identifier ==  part_identifier}
-        - parts.sort!{|a,b| a.position && b.position ? a.position <=> b.position : a.position ? -1 : 1 } 
-     
-      - parts.each do |part|
-        = f.simple_fields_for :parts, part do |g|
-          = render "part_fields", f: g, part: part, part_hash: part_hash, part_identifier: part_identifier
-        
-      - if part_hash[:repeatable]
-        .links
-          / the "links" class is important for the cocoon gem
-          = link_to_add_association "Add another #{part_hash[:repeatable]}", f, :parts, render_options: {locals: {part_hash: part_hash, part: @page.parts.build(identifier: part_identifier), part_identifier: part_identifier}}, class: "btn btn-block"
+  .form-group
+    = field_set_tag "SEO" do
+      .nested-fields
+        = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
+          = seo.input :title, label: "Browser titlebar", required: false
+          = seo.input :description, as: :text, required: false, input_html: { rows: 3 }
+          - for key in  seo.object.methods(nil).grep(/[^=]$/) - [:title, :description]
+            = seo.input key, required: false
 
 
-  .form-actions
+
+    - @page.template_hash.each do |part_identifier, part_hash|
+
+      = field_set_tag part_hash[:title] || part_identifier.titleize do
+
+        - if parts = @page.parts.select{|ob|  ob.identifier ==  part_identifier}
+          - parts.sort!{|a,b| a.position && b.position ? a.position <=> b.position : a.position ? -1 : 1 } 
+
+        - parts.each do |part|
+          = f.simple_fields_for :parts, part do |g|
+            = render "part_fields", f: g, part: part, part_hash: part_hash, part_identifier: part_identifier
+
+        - if part_hash[:repeatable]
+          .links
+            / the "links" class is important for the cocoon gem
+            = link_to_add_association "Add another #{part_hash[:repeatable]}",
+              f, :parts, render_options: {locals: {part_hash: part_hash, part: @page.parts.build(identifier: part_identifier), part_identifier: part_identifier}}, class: "btn btn-default btn-block"
+
+
+  .form-group.form-actions
     = f.button :submit, "Save", class:"btn-primary"
     = link_to "Cancel", dashboard_path, class:"btn btn-default"
 
