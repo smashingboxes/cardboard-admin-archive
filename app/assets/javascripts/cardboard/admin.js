@@ -6,6 +6,7 @@
 //= require jquery-ui/sortable
 //= require cardboard/jquery.livesearch
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require bootstrap/button
 //= require bootstrap/dropdown
 //= require bootstrap/modal
