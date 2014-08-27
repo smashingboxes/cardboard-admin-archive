@@ -46,6 +46,6 @@ $(document).on("page:load ready cocoon:after-insert", function(e){
 
   $('.nav-tabs a:first').tab('show');
 
-  window.setTimeout(function() { $(".alert:not(.alert-error)").alert('close'); }, 2000);
+  window.setTimeout(function() { $(".alert:not(.alert-danger)").alert('close'); }, 2000);
 });
 
