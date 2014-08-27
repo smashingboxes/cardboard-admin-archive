@@ -2,5 +2,8 @@ h1 Create a new page
 
 = simple_form_for @page do |f|
   = f.input :title
-  = f.input :template_id, as: :select, collection: Cardboard::Template.where(is_page: false), :include_blank => false
-  = f.submit "Create", class: "btn btn-primary"
+  = f.label :template_id, "Template", class: "form-group"
+  = f.input :template_id, as: :select, collection: Cardboard::Template.where(is_page: false),
+    include_blank: false, label: false
+  .form-group
+    = f.submit "Create", class: "btn btn-primary"

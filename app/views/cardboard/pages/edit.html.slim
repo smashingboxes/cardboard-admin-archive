@@ -14,8 +14,10 @@ h1
   = render "url_field", f: f
 
   - unless @page.template.is_page?
-    label Template
-    = @page.template.name
+    .form-group
+      label Template
+      br
+      = @page.template.name
 
   .form-group.checkbox
     = f.label :in_menu do
