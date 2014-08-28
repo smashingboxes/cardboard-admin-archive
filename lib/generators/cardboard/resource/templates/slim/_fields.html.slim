@@ -1,5 +1,15 @@
-<% for field in fields.reject{|k| %w[id updated_at created_at].include?(k)} %>= <% if field[/_id$/] %>f.association :<%= field[0..-4] %><% else %>f.input :<%= field %><% end %> 
+<% for field in fields.reject{|k| %w[id updated_at created_at].include?(k)} %>
+<% if field[/_id$/] %>
+= f.association :<%= field[0..-4] %>
+<% elsif type(field) == :date || type(field) == :datetime %>
+= f.input :<%=field %>, as: :string
+<% elsif type(field) == :boolean %>
+.checkbox
+  = f.input :<%=field %>, inline_label: "<%= field.humanize %>", label: false
+<% else %>
+= f.input :<%= field %>
 <% end %>
-.form-actions
+<% end %>
+.form-group
   = f.button :submit, class:"btn-primary"
-  = link_to 'Cancel', cardboard_<%= plural_table_name %>_path, class:"btn"
+  = link_to 'Cancel', cardboard_<%= plural_table_name %>_path, class:"btn btn-default"

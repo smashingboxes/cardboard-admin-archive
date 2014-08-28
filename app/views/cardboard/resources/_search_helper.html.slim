@@ -3,7 +3,7 @@
 
 table#filter_search_header
   tr 
-    td style="text-align:left"
+    td.col-md-4 style="text-align:left"
       h3= options[:title] || model_title.pluralize
 
     - if main_element
@@ -12,6 +12,7 @@ table#filter_search_header
 
     - if options[:new_button]
       td style="text-align:right"
-        = link_to(options[:new_button][:label] || "New #{model_title}", options[:new_button][:url] || {controller: models, action: :new}, class: "btn pull-right", style:"min-width:90px;") 
+        = link_to(options[:new_button][:label] || "New #{model_title}",
+          options[:new_button][:url] || {controller: models, action: :new}, class: "btn btn-default pull-right", style:"min-width:90px;") 
 
   

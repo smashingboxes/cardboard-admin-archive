@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker";
 @import "cardboard/bootstrap-select";
@@ -66,14 +67,13 @@ legend + .control-group {
 }
 
 .form-actions {
-  background: #fff;
-  
   .btn {
     margin-right: 15px;
   }
 }
 
 .simple_form{
+  @extend .form-horizontal;
   input, textarea{
      @include box-sizing(border-box);
   }
@@ -82,9 +82,6 @@ legend + .control-group {
   }
   input.string, input.password, .uneditable-input{
     max-width: 600px;
-  }
-  input:not(.btn):not(.boolean):not(.check_boxes):not(.radio_buttons){
-    height: 30px;
   }
 }
 textarea {
