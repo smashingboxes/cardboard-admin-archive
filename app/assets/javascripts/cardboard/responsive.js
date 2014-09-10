@@ -26,7 +26,7 @@ var toggleMenu = function() {
 
 var detectSize = function(){
   var windowsize = $(window).width()
-  if(windowsize < 768) {
+  if(windowsize <= 568) {
     switchMenuSmall();
     toggleMenu();
   } else {
