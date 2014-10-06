@@ -16,12 +16,12 @@ var toggleMenu = function() {
       $content.toggleClass('open');
     }
 
-    $('#cardboard_logo').on('click', function(e){
-      e.preventDefault();
-      $sidebar.toggleClass('open');
-      $(this).toggleClass('open');
-      $content.toggleClass('open');
-    });
+  $('#cardboard_logo').on('click', function(e){
+    e.preventDefault();
+    $sidebar.toggleClass('open');
+    $(this).toggleClass('open');
+    $content.toggleClass('open');
+  });
 }
 
 var detectSize = function(){
