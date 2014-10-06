@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
+  s.add_dependency "lodash-rails"
   s.add_dependency 'bootstrap-sass', '~> 3.2'
   s.add_dependency 'bootstrap-datepicker-rails'
   s.add_dependency 'bootstrap-wysihtml5-rails', '~> 0.3.2.100'

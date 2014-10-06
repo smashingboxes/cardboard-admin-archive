@@ -1,18 +1,19 @@
 = cardboard_filters <%= singular_table_name.classify %>, :<%= fields.reject{|k| k[/(_at|^id)$/]}.first %>
 
-table class="table table-striped"
-  tr
-    <% for field in fields %>th= sort_link @q, :<%= field %>
-    <% end %>
-    th Actions
-
-  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+.table-responsive
+  table class="table table-striped"
     tr
-      <% for field in fields %>td = <% if field[/_at$/] %>l <% end %><%= singular_table_name %>.<%= field %>
+      <% for field in fields %>th= sort_link @q, :<%= field %>
       <% end %>
-      td
-        = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
-        = " | "
-        = link_to 'Delete', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { confirm: 'Are you sure?'}, :method => :delete
+      th Actions
+
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      tr
+        <% for field in fields %>td = <% if field[/_at$/] %>l <% end %><%= singular_table_name %>.<%= field %>
+        <% end %>
+        td
+          = link_to 'Edit', edit_cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>)
+          = " | "
+          = link_to 'Delete', cardboard_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { confirm: 'Are you sure?'}, :method => :delete
 
 = paginate @<%= plural_table_name %>

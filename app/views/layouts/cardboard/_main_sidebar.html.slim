@@ -5,4 +5,10 @@
 
   - Cardboard.resource_controllers.reject{|x|x.menu == false}.sort! { |a,b| a.menu[:priority] <=> b.menu[:priority] }.each do |controller|
     - if cardboard_user_can_manage?(controller.controller_name.to_sym)
-      = main_sidebar_nav_link controller.menu[:label], {controller: controller.controller_name, action: controller.singular? ? :show : :index}, class: "nav_resource_link"
+      = main_sidebar_nav_link controller.menu[:label], {controller: controller.controller_name, action: controller.singular? ? :show : :index},
+        class: "#{controller.controller_name.underscore} nav_resource_link"
+
+  = main_sidebar_nav_link "Account", my_account_path, class: "visible-xs-block"
+  = main_sidebar_nav_link "Logout",
+    main_app.send(Cardboard.application.logout_link_path), method: :delete,
+    class: "visible-xs-block"
