@@ -45,7 +45,7 @@ module Cardboard
     def path=(value)
       return if value.nil?
       value = value.gsub(/\//, '')
-      self[:path] = value.blank?? "/" : "/#{value}/"
+      self[:path] = value.blank?? "/" : "/#{value}"
     end
 
     def using_slug_backup?
