@@ -1,0 +1,86 @@
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+  #main_topbar {
+    .nav.navbar-right {
+      display: none;
+    }
+  }
+
+  #main_content {
+    min-width: 1px;
+  }
+
+  #main_sidebar {
+    position: fixed;
+    top: 40px;
+    left: -80%;
+    width: 80%;
+    height: 100%;
+    background: #3B3B3B;
+    overflow-y: auto;
+    transition: all 0.2s ease;
+
+    &.open {
+      left: 0;
+    }
+  }
+
+  #content {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    transition: all 0.2s ease;
+
+    &.open {
+
+      .add-hotel {
+        .row-fluid {
+          width: 95%;
+        }
+        
+        .tabs a {
+          padding: 5px;
+        }
+      }
+
+      .hotel-search {
+        width: 78%;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: relative;
+    float: none;
+
+    li {
+      margin: 0 auto;
+      border: 0;
+      width: 100%;
+    }
+  }
+
+  .simple_form .form-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .row {
+
+    .dropdown {
+      position: relative;
+      margin: 20px auto;
+
+      .open > .dropdown-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    .span3,
+    .span9 {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
