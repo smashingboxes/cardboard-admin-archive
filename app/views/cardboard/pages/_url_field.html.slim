@@ -1,4 +1,3 @@
-
 = f.input :url, required: true, wrapper_html:{class: f.object.errors.messages[:slug] ? "error" : nil}, hint: f.object.root? ? "This page is your home page" : nil do
   .form-inline
     - if f.object.root?
@@ -7,13 +6,7 @@
     .input-group
       .input-group-btn
         = f.select :parent_url, options_for_select(@page.parent_url_options, f.object.parent_url)
-        / .add-on
-        /   - if @page.new_record?
-        /     = f.select :parent_url, options_for_select(@page.parent_url_options, f.object.parent_url)
-        /   - else
-        /     = f.object.parent_url
       = f.text_field :slug, class: 'form-control', style: "width:160px;"
 
   br
   = f.error :slug
-
