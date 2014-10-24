@@ -22,3 +22,4 @@ capybara-*.html
 .rvmrc
 .ruby-version
 .ruby-gemset
+vendor/ruby
