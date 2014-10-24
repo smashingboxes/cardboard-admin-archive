@@ -5,3 +5,5 @@ rvm:
   - 2.1.1
 gemfile:
   - gemfiles/Gemfile.ci
+script:
+  - xvfb-run bundle exec rake test
