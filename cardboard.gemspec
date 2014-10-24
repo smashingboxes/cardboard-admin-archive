@@ -22,16 +22,17 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   #don't forget to require them in lib/cardboard/engine.rb
-  s.add_dependency "rails", "~> 4.0.0"
+  s.add_dependency "rails", "~> 4.0"
   s.add_dependency "stringex"
   s.add_dependency "sass-rails", '~> 4.0'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'slim', '>= 1.3.8'
   s.add_dependency "jquery-rails"
-  s.add_dependency 'bootstrap-sass', '~> 2.2'
+  s.add_dependency "lodash-rails"
+  s.add_dependency 'bootstrap-sass', '~> 3.2'
   s.add_dependency 'bootstrap-datepicker-rails'
-  s.add_dependency 'bootstrap-wysihtml5-rails', '~> 0.3.1.24'
-  s.add_dependency 'kaminari-bootstrap', '~> 0.1.3'
+  s.add_dependency 'bootstrap-wysihtml5-rails', '~> 0.3.2.100'
+  s.add_dependency 'kaminari-bootstrap', '~> 3.0.1'
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
   s.add_dependency 'simple_form', '>= 3.0.0'
   s.add_dependency 'kaminari'

@@ -5,7 +5,9 @@ h1 Admin User settings
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  = f.button :submit
+
+  .form-group
+    = f.button :submit
 
 - if defined?(Devise)
   .well

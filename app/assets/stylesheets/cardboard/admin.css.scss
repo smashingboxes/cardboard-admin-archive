@@ -1,6 +1,6 @@
 //Only for Cardboard Admin Area
 
-@import "variables";
+@import "cardboard/variables";
 
 @import "cardboard/framework";
 @import "cardboard/rich_text";
@@ -12,6 +12,8 @@
 @import "content";
 @import "content_sidebar";
 @import "resources";
+
+@import "main_topbar_mobile";
 
 html, body{
   min-height: 100%;
@@ -30,7 +32,7 @@ body{
   min-height: 100%;
 }
 
-#main_sidebar, #content_sidebar{
+#content_sidebar{
   top: 0;
   left: 0;
   min-height: 100%;
@@ -61,5 +63,16 @@ body{
 
 .icon-margin{
   margin-right: 4px;
+}
+
+.btn-primary {
+  background-color: $brand_color;
+  border-color: darken($brand_color, 10%);
+
+  &:hover, &:active, &:focus {
+    outline: none;
+    background-color: darken($brand_color, 10%);
+    border-color: darken($brand_color, 20%);
+  }
 }
 

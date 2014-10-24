@@ -14,4 +14,5 @@ h1 Settings
         - rescue ActionView::MissingTemplate => e 
           = render "cardboard/fields/base_input", f: f, field: field, identifier: field_identifier
 
-    = s.button :submit
+    .form-group
+      = s.button :submit
