@@ -8,7 +8,7 @@
       = main_sidebar_nav_link controller.menu[:label], {controller: controller.controller_name, action: controller.singular? ? :show : :index},
         class: "#{controller.controller_name.underscore} nav_resource_link"
 
-  = main_sidebar_nav_link "Account", my_account_path, class: "visible-xs-block"
+  = main_sidebar_nav_link "Account", my_account_path, class: "visible-xs-block visible-sm-block"
   = main_sidebar_nav_link "Logout",
     main_app.send(Cardboard.application.logout_link_path), method: :delete,
-    class: "visible-xs-block"
+    class: "visible-xs-block visible-sm-block"

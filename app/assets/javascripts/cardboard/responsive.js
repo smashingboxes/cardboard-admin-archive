@@ -24,13 +24,30 @@ var toggleMenu = function() {
     });
 }
 
+var removeSidebarMargin = function(){
+  if($('#content_sidebar').is(":visible")) {
+    $('.container-fluid').removeClass('toggle');
+    $('#content_sidebar').addClass('responsive');
+  }
+}
+
+var addSidebarMargin = function(){
+  if($('#content_sidebar').is(":visible")) {
+    $('.container-fluid').addClass('toggle');
+    $('#content_sidebar').removeClass('responsive')
+
+  }
+}
+
 var detectSize = function(){
   var windowsize = $(window).width()
-  if(windowsize <= 568) {
+  if(windowsize <= 768) {
     switchMenuSmall();
     toggleMenu();
+    removeSidebarMargin();
   } else {
     switchMenuLarge();
+    addSidebarMargin();
   }
 };
 
