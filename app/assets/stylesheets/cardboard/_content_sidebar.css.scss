@@ -22,6 +22,19 @@
     // -webkit-transition: left $page_nav_slide_speed ease;
     // -moz-transition: left $page_nav_slide_speed ease;
   }
+  &.responsive {
+    min-height: 0;
+    width: 100%;
+    margin-left: -95px;
+    position:relative;
+    float:left;
+    max-height: 200px;
+    overflow:auto;
+    .form-group{
+      margin-bottom:-13px;
+      display:inline-block;
+    }
+  }
 
   #content_pages {
     & > .page_link:first-child > .link_wrap {
