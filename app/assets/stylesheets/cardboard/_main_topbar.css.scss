@@ -10,6 +10,7 @@ $main_topbar_zindex: 100;
   min-height: $main_topbar_height;
   margin-bottom: 0px;
   position: relative;
+  border: none;
 
   .navbar-inner{
     @extend .container-fluid;
