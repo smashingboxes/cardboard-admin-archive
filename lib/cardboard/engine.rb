@@ -3,7 +3,6 @@ require 'simple_form'
 require 'stringex'
 require 'ranked-model'
 require 'cocoon'
-require 'inherited_resources'
 require 'gon'
 require 'rack/cache'
 require 'dragonfly'
@@ -72,6 +71,6 @@ module Cardboard
     rake_tasks do
       Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
     end
-  
+
   end
 end

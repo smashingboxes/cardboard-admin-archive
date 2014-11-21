@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass-rails',  '>= 3.0.0.1'
   s.add_dependency 'simple_form', '>= 3.0.0'
   s.add_dependency 'kaminari'
-  s.add_dependency 'inherited_resources'
   s.add_dependency 'ranked-model', '>= 0.2.1'
   s.add_dependency 'cocoon', '>= 1.2.0'
   s.add_dependency 'gon'
