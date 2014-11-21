@@ -1,47 +1,44 @@
 class <%= controller_name.camelize %> < Cardboard::ResourceController
-  before_action :set_<%= resource_name %>, only: [:show, :edit, :update, :destroy]
+  before_action :set_<%= singular_table_name %>, only: [:edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @<%= resource_name.pluralize %> = <%= resource_name.titleize %>.all
-    respond_with(@<%= resource_name.pluralize %>)
-  end
-
-  def show
-    respond_with(@<%= resource_name %>)
+    @q = <%= resource_name.titleize %>.search(params[:q])
+    @<%= plural_table_name %> = @q.result(distinct: true).page(params[:page])
+    respond_with(@<%= plural_table_name %>)
   end
 
   def new
-    @<% resource_name %>= @<%= resource_name.titleize %>.new
-    respond_with(@<%= resource_name %>)
+    @<%= singular_table_name %> = <%= resource_name.titleize %>.new
+    respond_with(@<%= singular_table_name %>)
   end
 
   def edit
   end
 
   def create
-    @<% resource_name %>= @<%= resource_name.titleize %>.new(<%= resource_name %>_params)
-    @<%= resource_name %>.save
-    respond_with(@<%= resource_name %>)
+    @<%= singular_table_name %> = <%= resource_name.titleize %>.new(<%= singular_table_name %>_params)
+    @<%= singular_table_name %>.save
+    respond_with(@<%= singular_table_name %>, location: cardboard_<%= plural_table_name %>_path)
   end
 
   def update
-    @<%= resource_name %>.update(<%= resource_name %>_params)
-    respond_with(@<%= resource_name %>)
+    @<%= singular_table_name %>.update(<%= singular_table_name %>_params)
+    respond_with(@<%= singular_table_name %>, location: cardboard_<%= plural_table_name %>_path)
   end
 
   def destroy
-    @<%= resource_name %>.destroy
-    respond_with(@<%= resource_name %>)
+    @<%= singular_table_name %>.destroy
+    respond_with(@<%= singular_table_name %>)
   end
 
   private
-    def set_<%= resource_name %>
-      @<%= resource_name %> = <%= resource_name.titleize %>.find(params[:id])
+    def set_<%= singular_table_name %>
+      @<%= singular_table_name %> = <%= resource_name.titleize %>.find(params[:id])
     end
 
-    def <%= resource_name %>_params
-      params[:<%= resource_name %>]
+    def <%= singular_table_name %>_params
+      params.require(:<%= singular_table_name %>).permit!
     end
 end

@@ -32,7 +32,7 @@ private
   end
 
   def check_ability
-    unless cardboard_user_can_manage?(resource_collection_name)
+    unless cardboard_user_can_manage?(controller_name)
       render :text => "You are not authorized to access this resource.", :status => :unauthorized
     end
   end
