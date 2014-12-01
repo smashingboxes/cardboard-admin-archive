@@ -8,13 +8,13 @@
 
     li
       = link_to dashboard_path do
-        i.icon-dashboard
-        ' Dashboard
+        span.glyphicon.glyphicon-dashboard aria-hidden="true"
+        =<> "Dashboard"
     - if cardboard_user_can_manage?(:settings) && Cardboard.used_with_settings?
       li
         = link_to settings_path do 
-          i.icon-cogs 
-          | Settings
+          span.glyphicon.glyphicon-cog aria-hidden="true"
+          =<> "Settings"
     
 
     li.divider
