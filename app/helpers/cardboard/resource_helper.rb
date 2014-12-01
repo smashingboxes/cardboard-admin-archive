@@ -23,7 +23,7 @@ module Cardboard
 
     # .item
     #     = link_to dashboard_path, id:"nav_dashboard_link" do
-    #       i.icon-dashboard
+    #       i.fa.fa-dashboard
     #       span Dashboard
     def main_sidebar_nav_link(text, link, options={})
       options[:class] = "#{options[:class]} active" if request.path["#{link}/"] || request.path == link
