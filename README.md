@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/smashingboxes/cardboard.png?label=ready&title=Ready)](https://waffle.io/smashingboxes/cardboard)
 # Cardboard
 [![Code Climate](https://codeclimate.com/github/smashingboxes/cardboard.png)](https://codeclimate.com/github/smashingboxes/cardboard)
 ![Travis](https://travis-ci.org/smashingboxes/cardboard.svg?branch=master)
