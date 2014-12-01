@@ -104,7 +104,7 @@ pages:
     title: Default page title
     parts:
       slideshow:
-        repeatable: true
+        repeatable: slide
         fields:
           image1:
             type: image
@@ -116,6 +116,8 @@ templates:
       main:
         fields:
           body:
+            type: rich_text
+          sidebar:
             type: rich_text
 ```
 
@@ -142,7 +144,7 @@ Key | Type | Default | Definition
 ---|--- | ---|---
 [fields](#fields) | hash | nil | list of fields that make this part's form
 position | integer | auto-increment | position of the part on the admin page
-repeatable | boolean | false | can the client add multiple of these parts (example a slide in a slideshow)
+repeatable | string | false | can the client add multiple of these parts (example a slide in a slideshow)
 
 
 ####fields
