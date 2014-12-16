@@ -36,7 +36,7 @@ $(document).on("page:load ready cocoon:after-insert", function(e){
   window['rangy'].initialized = false;
   // TODO: Get rid of this, this is a hack to get around simple form and
   // bootstrap
-  $('input.boolean, input.file, .time, .select').removeClass('form-control');
+  $('input.boolean, input.file, .time, .select, .bootstrap-select').removeClass('form-control');
   $('div.time label, .select label').after($("<br />"));
 
   $('select[data-search-select]').each(function() {
@@ -44,9 +44,6 @@ $(document).on("page:load ready cocoon:after-insert", function(e){
     $(this).select2($.extend({allowClear: true, width: "resolve"}, options));
   });
   $('select:not([data-search-select])').selectpicker();
-  
-
-  $('.nav-tabs a:first').tab('show');
 
   window.setTimeout(function() { $(".alert:not(.alert-danger)").alert('close'); }, 2000);
 });
