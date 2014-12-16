@@ -44,9 +44,6 @@ $(document).on("page:load ready cocoon:after-insert", function(e){
     $(this).select2($.extend({allowClear: true, width: "resolve"}, options));
   });
   $('select:not([data-search-select])').selectpicker();
-  
-
-  $('.nav-tabs a:first').tab('show');
 
   window.setTimeout(function() { $(".alert:not(.alert-danger)").alert('close'); }, 2000);
 });
