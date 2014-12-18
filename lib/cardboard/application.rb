@@ -43,25 +43,5 @@ module Cardboard
                                       :title,
                                       :email,
                                       :to_s ]
-
-    # private
-
-    # def register_default_assets
-    #   register_stylesheet 'cardboard.css', :media => 'screen'
-    #   register_stylesheet 'cardboard/print.css', :media => 'print'
-
-    #   register_javascript 'cardboard.js'
-    # end
-
-    # # Since we're dealing with all our own file loading, we need
-    # # to remove our paths from the ActiveSupport autoload paths.
-    # # If not, file naming becomes very important and can cause clashes.
-    # def remove_cardboard_load_paths_from_rails_autoload_and_eager_load
-    #   ActiveSupport::Dependencies.autoload_paths.reject!{|path| load_paths.include?(path) }
-    #   # Don't eagerload our configs, we'll deal with them ourselves
-    #   Rails.application.config.eager_load_paths = Rails.application.config.eager_load_paths.reject do |path|
-    #     load_paths.include?(path)
-    #   end
-    # end
   end
 end

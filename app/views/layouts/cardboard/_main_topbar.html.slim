@@ -1,8 +1,8 @@
 .navbar-inner
   #cardboard_logo CB
-  
+
   = link_to main_app.root_path, id: "brand" do
-    = Cardboard::Setting.company_name rescue Cardboard.application.site_title
+    = Cardboard::Setting.company_name || Cardboard.application.site_title
 
   ul.nav.navbar-nav.navbar-right
 
@@ -12,10 +12,10 @@
         ' Dashboard
     - if cardboard_user_can_manage?(:settings) && Cardboard.used_with_settings?
       li
-        = link_to settings_path do 
-          i.icon-cogs 
+        = link_to settings_path do
+          i.icon-cogs
           | Settings
-    
+
 
     li.divider
 
@@ -27,6 +27,6 @@
         b class="caret"
 
       ul.dropdown-menu
-        li= link_to "Account", my_account_path 
+        li= link_to "Account", my_account_path
         li= link_to "Logout", main_app.send(Cardboard.application.logout_link_path), :method => :delete
 
