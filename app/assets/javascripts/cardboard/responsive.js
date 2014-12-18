@@ -1,5 +1,5 @@
 var switchMenuSmall = function() {
-  $('#cardboard_logo').replaceWith('<a id="cardboard_logo"><i class="icon-reorder" /></a>');
+  $('#cardboard_logo').replaceWith('<a id="cardboard_logo"><i class="fa fa-reorder" /></a>');
 };
 
 var switchMenuLarge = function() {
