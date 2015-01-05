@@ -1,15 +1,16 @@
 class UrlController < ApplicationController
-  around_filter :apply_some_cardboard_magic
+  before_filter :apply_cardboard
   include Cardboard::ContentForInControllers
 
 private
 
-  def apply_some_cardboard_magic
+  def apply_cardboard
+    raise ActionController::RoutingError.new('Cardboard Page Not Found. You may want to skip the filter "apply_cardboard"') unless current_page
+
     if current_page.using_slug_backup?
       redirect_to current_page.url, status: :moved_permanently
     else
       render_seo
-      yield
     end
   end
 
