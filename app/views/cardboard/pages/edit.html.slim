@@ -3,7 +3,7 @@ h1
   - unless @page.template.is_page?
     small
       =<> link_to page_path(@page), method: :delete, data: { confirm: 'You are about to delete this page. Are you sure?' }, class: "red" do
-        i.icon-trash
+        i.fa.fa-trash
   .right
     = link_to "View Page", @page.url, class:"btn btn-default btn-lg", target: '_blank'
 

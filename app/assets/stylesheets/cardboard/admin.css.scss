@@ -4,6 +4,7 @@
 
 @import "cardboard/framework";
 @import "cardboard/rich_text";
+@import "font-awesome-sprockets";
 @import "font-awesome";
 @import "select2";
 
@@ -61,7 +62,7 @@ body{
   }
 }
 
-.icon-margin{
+.fa{
   margin-right: 4px;
 }
 

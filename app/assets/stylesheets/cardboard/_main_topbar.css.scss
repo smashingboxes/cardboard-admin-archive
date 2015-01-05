@@ -5,7 +5,7 @@ $main_topbar_zindex: 100;
 #main_topbar{
   @extend .navbar;
   @extend .navbar-inverse;
-  @include border-radius(0px);
+  border-radius: 0px;
   z-index: 100;
   min-height: $main_topbar_height;
   margin-bottom: 0px;
