@@ -23,6 +23,7 @@
 //= require cardboard/content_sidebar
 //= require cardboard/search_filter
 //= require cardboard/responsive
+//= require cardboard/new_tab_links
 //= require select2
 // require cardboard/jquery.wysihtml5imgresizer
 
