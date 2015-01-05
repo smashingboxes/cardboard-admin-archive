@@ -7,10 +7,10 @@ module Cardboard
 
     def self.populate_template(id, template)
       db_template = Cardboard::Template.where(identifier: id.to_s).first_or_initialize
-      db_template.update_attributes!(name: template[:title] || template[:name] || id.to_s, 
-                                     fields: template[:parts], 
+      db_template.update_attributes!(name: template[:title] || template[:name] || id.to_s,
+                                     fields: template[:parts],
                                      controller_action: template[:controller_action],
-                                     is_page: template[:is_page]) 
+                                     is_page: template[:is_page])
       db_template
     end
 
@@ -28,11 +28,11 @@ module Cardboard
       pages.each do |id, page|
         # create the template
         db_template = populate_template(id, page.merge(is_page: true))
-        
+
         db_page = Cardboard::Page.where(identifier: id.to_s).first_or_initialize
         db_page.position_position = page[:position] || :last
         db_page.template = db_template
-        db_page.update_attributes!(page.slice(:title, :parent_id)) 
+        db_page.update_attributes!(page.slice(:title, :parent_id))
 
         self.populate_parts(page[:parts], db_page)
       end
@@ -63,7 +63,7 @@ module Cardboard
         db_field.type = "Cardboard::Field::#{(field[:type] || "string").camelize}"
         db_field.seeding = true
         begin
-          db_field.update_attributes!(field.select{|k,v| ["default", "value"].include?(k)}) 
+          db_field.update_attributes!(field.select{|k,v| ["default", "value", :default, :value].include?(k)})
         rescue Exception => e
           # Output validation errors
           puts "-- ERROR --"
@@ -86,6 +86,6 @@ module Cardboard
       db_settings.update_attributes!(template: settings)
       self.populate_fields(settings, db_settings)
     end
-    
+
   end
 end
