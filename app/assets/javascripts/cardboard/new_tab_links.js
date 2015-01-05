@@ -1,4 +1,4 @@
-$(document).on("page:load ready", function() {
+$(document).on("page:update", function() {
   $("a").click(function() {
     var link_host = this.href.split('/')[3];
     var document_host = document.location.href.split('/')[3];
