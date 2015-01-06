@@ -23,3 +23,4 @@ capybara-*.html
 .ruby-version
 .ruby-gemset
 vendor/ruby
+dragonfly.log

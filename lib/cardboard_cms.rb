@@ -1,7 +1,7 @@
 require "cardboard/engine"
 
 module Cardboard
-  autoload :Application,              'cardboard/application'
+  autoload :Application, 'cardboard/application'
 
   class << self
 
@@ -54,5 +54,3 @@ module Cardboard
   end
 
 end
-
-
