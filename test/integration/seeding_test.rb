@@ -10,7 +10,7 @@ describe "Seeding" do
         parts:{
           intro:{
             position: 1,
-            fields:{ 
+            fields:{
               text:{
                 type: "string",
                 default: "default text",
@@ -80,5 +80,11 @@ describe "Seeding" do
   end
 
   describe 'Settings' do
+    before do
+      Cardboard::Seed.populate_settings(nil)
+    end
+    it 'Should set the company name' do
+      assert_equal "Dummy", Cardboard::Setting.company_name
+    end
   end
 end
