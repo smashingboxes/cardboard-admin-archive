@@ -182,7 +182,7 @@ GEM
       rake
     minitest-metadata (0.5.3)
       minitest (>= 4.7, < 6.0)
-    minitest-rails (1.0.0)
+    minitest-rails (1.0.1)
       minitest (~> 4.7)
       minitest-test (~> 1.0)
       railties (>= 3.0, < 4.1)
@@ -323,7 +323,7 @@ DEPENDENCIES
   guard-minitest
   jquery-rails
   letter_opener
-  minitest-rails (~> 1.0)
+  minitest-rails
   minitest-rails-capybara
   pry-byebug
   pry-rails
