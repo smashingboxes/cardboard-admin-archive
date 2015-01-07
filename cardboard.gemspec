@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency "lodash-rails"
   s.add_dependency 'bootstrap-sass', '~> 3.2'
   s.add_dependency 'bootstrap-datepicker-rails'
-  s.add_dependency 'bootstrap-wysihtml5-rails', '~> 0.3.2.100'
+  s.add_dependency 'bootstrap-wysihtml5-rails', '>= 0.3.2.100'
   s.add_dependency 'kaminari-bootstrap', '~> 3.0.1'
   s.add_dependency 'font-awesome-sass',  '~> 4.2' 
   s.add_dependency 'simple_form', '>= 3.0.0'
@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'select2-rails'
 
   s.add_development_dependency "guard-minitest"
-  s.add_development_dependency "minitest-rails"
+  s.add_development_dependency "minitest-rails", '>= 1.0'
   s.add_development_dependency "minitest-rails-capybara"
   s.add_development_dependency "factory_girl_rails"
   s.add_development_dependency "rb-fsevent"
