@@ -4,7 +4,7 @@ PATH
     cardboard_cms (0.5.0)
       bootstrap-datepicker-rails
       bootstrap-sass (~> 3.2)
-      bootstrap-wysihtml5-rails (>= 0.3.2.100)
+      bootstrap-wysihtml5-rails (~> 0.3.0)
       chronic
       cocoon (>= 1.2.0)
       coffee-rails
