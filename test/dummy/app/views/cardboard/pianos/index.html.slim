@@ -1,18 +1,23 @@
-= cardboard_filters Piano, :name
-= ok
+/ = cardboard_filters Piano, :name
 table class="table table-striped"
   tr
-    - for field in @pianos.columns
-      th= sort_link @q, field.name
+    th Name
+    th Image
+    th Rich Text
+    th Created At
+    th Updated At
     th
     th
 
   - @pianos.each do |piano|
     tr
-      - for field in piano.attributes.keys
-        td = piano.attributes[field]
+      td = piano.name
+      td = piano.image
+      td = piano.rich_text
+      td = piano.created_at
+      td = piano.updated_at
 
       td = link_to 'Edit', edit_cardboard_piano_path(piano)
       td = link_to 'Destroy', cardboard_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
 
-= paginate @pianos
+/ = paginate @pianos

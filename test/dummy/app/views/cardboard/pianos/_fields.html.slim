@@ -1,5 +1,5 @@
-
-- for field in Piano.new.attributes.keys.reject{|c|c.empty?}
-  = f.input field
+= f.input :name
+= f.input :image
+= f.input :rich_text, as: :rich_text
 
 = f.button :submit
