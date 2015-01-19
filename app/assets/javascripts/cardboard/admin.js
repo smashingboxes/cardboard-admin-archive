@@ -24,7 +24,6 @@
 //= require cardboard/search_filter
 //= require cardboard/responsive
 //= require cardboard/new_tab_links
-//= require cardboard/rich_text_toggle
 //= require select2
 // require cardboard/jquery.wysihtml5imgresizer
 

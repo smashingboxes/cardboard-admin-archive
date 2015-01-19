@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root "pianos#index"
   mount Cardboard::Engine => "/cardboard"
   resources :beans
 

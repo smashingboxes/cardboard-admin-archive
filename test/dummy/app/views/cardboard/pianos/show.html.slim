@@ -1,10 +1,14 @@
 p#notice = notice
 
-- @piano.attributes.keys.each do |attribute| 
-  p
-    strong #{attribute.titleize}:
-    = @piano.attributes[attribute]
-
+p
+  strong Name: 
+  = @piano.name
+p
+  strong Image: 
+  = @piano.image
+p
+  strong Rich Text: 
+  = markdown @piano.rich_text
 
 = link_to 'Edit', edit_cardboard_piano_path(@piano)
 '|

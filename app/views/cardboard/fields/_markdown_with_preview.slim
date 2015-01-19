@@ -1,0 +1,19 @@
+div role='tabpanel'
+  ul class='nav nav-tabs' role='tablist'
+    li role='presentation' class='active'
+      a href="#markdown" aria-controls="markdown" role="tab" data-toggle="tab"
+        | Write
+    li role='presentation'
+      a href="#preview" aria-controls="preview" role="tab" data-toggle="tab"
+        | Preview
+    li role='presentation'
+      a href="https://guides.github.com/features/mastering-markdown/" role="tab" data-toggle="tab" target="_default"
+        | Markdown Help
+
+  .tab-content
+    .tab-pane role='tabpanel' id='preview'
+      .preview-content
+        p.markdown-body
+          | I feel like this should be something with a keyUp() function to put the content from Markdown here.
+    .tab-pane.active role='tabpanel' id='markdown'
+      = f.text_area attribute_name.to_sym, as: :text, input_html: { rows: 15 }

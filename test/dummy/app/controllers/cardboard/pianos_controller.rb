@@ -17,7 +17,6 @@ class Cardboard::PianosController < Cardboard::ResourceController
   end
 
   def create
-    # binding.pry
     @piano = Piano.new(piano_params)
     if @piano.save
       redirect_to cardboard_pianos_path, notice: "Successfully created piano"
@@ -31,7 +30,6 @@ class Cardboard::PianosController < Cardboard::ResourceController
   end
 
   def update
-    # binding.pry
     @piano = Piano.find(params[:id])
     if @piano.update_attributes(piano_params)
       redirect_to cardboard_piano_path(@piano), notice: "Successfully edited piano"
@@ -49,9 +47,6 @@ class Cardboard::PianosController < Cardboard::ResourceController
   private
 
   def piano_params
-    # if params[:piano][:rich_text].blank? && params[:piano][:rich_text_markdown].present?
-    #   params[:piano][:rich_text] = params[:piano][:rich_text_markdown]
-    # end
     params.require(:piano).permit(:name, :image, :rich_text)
   end
 end
