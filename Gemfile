@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in cardboard.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -10,15 +10,12 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-
-
 # Gems used by the dummy application
-gem "sqlite3"
-gem "jquery-rails"
+gem 'sqlite3'
+gem 'jquery-rails'
 gem 'devise', '>= 3.0.0'
 
-gem "thin"
-# gem 'rack-mini-profiler'
+gem 'thin'
 gem 'letter_opener'
 gem 'quiet_assets'
 gem 'better_errors'
@@ -28,9 +25,6 @@ gem 'pry-byebug'
 gem 'uglifier'
 
 group :test do
-  gem 'turn'
-  gem 'simplecov'
+  gem 'codeclimate-test-reporter'
   gem 'rake'
 end
-
-

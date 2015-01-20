@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-datepicker-rails'
   s.add_dependency 'bootstrap-wysihtml5-rails', '~> 0.3.0'
   s.add_dependency 'kaminari-bootstrap', '~> 3.0.1'
-  s.add_dependency 'font-awesome-sass',  '~> 4.2' 
+  s.add_dependency 'font-awesome-sass',  '~> 4.2'
   s.add_dependency 'simple_form', '>= 3.0.0'
   s.add_dependency 'kaminari'
   s.add_dependency 'ranked-model', '>= 0.2.1'
@@ -48,11 +48,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-ui-rails', '~> 5.0.0'
   s.add_dependency 'select2-rails'
 
-  s.add_development_dependency "guard-minitest"
-  s.add_development_dependency "minitest-rails", '>= 1.0'
-  s.add_development_dependency "minitest-rails-capybara"
-  s.add_development_dependency "factory_girl_rails"
-  s.add_development_dependency "rb-fsevent"
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'capybara-webkit'
+  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'rb-fsevent'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'faker'
   s.add_development_dependency 'sdoc'
