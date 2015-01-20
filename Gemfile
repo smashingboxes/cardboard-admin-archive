@@ -28,6 +28,7 @@ gem 'pry-byebug'
 gem 'uglifier'
 
 group :test do
+  gem 'codeclimate-test-reporter'
   gem 'rake'
 end
 
