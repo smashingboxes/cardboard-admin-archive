@@ -3,7 +3,7 @@ module Cardboard
     has_many :parts, class_name: "Cardboard::PagePart", :dependent => :destroy, :validate => true
 
     belongs_to :template, class_name: "Cardboard::Template"
-      
+
     attr_accessor :parent_url
 
     accepts_nested_attributes_for :parts, allow_destroy: true, :reject_if => :all_blank
@@ -14,12 +14,12 @@ module Cardboard
     ranks :position
 
     #validations
-    validates :title, :template, presence:true
+    validates :title, :template, presence: true
     validates :identifier, uniqueness: {:case_sensitive => false}, :format => { :with => /\A[a-z\_0-9]+\z/,
                            :message => "Only downcase letters, numbers and underscores are allowed" }, presence: true
 
     #scopes
-    scope :preordered, -> {joins(:url_object).order("cardboard_urls.path ASC, position ASC, cardboard_urls.slug ASC")} 
+    scope :preordered, -> {joins(:url_object).order("cardboard_urls.path ASC, position ASC, cardboard_urls.slug ASC")}
     scope :with_path,  -> (p) {joins(:url_object).where("cardboard_urls.path = ?",p) }
 
 
@@ -79,7 +79,7 @@ module Cardboard
       parts = self.parts.where(identifier: f.first)
 
       if template_hash[f.first.to_sym][:repeatable]
-        raise "Part is repeatable, expected each loop" unless f.size == 1 
+        raise "Part is repeatable, expected each loop" unless f.size == 1
         parts
       else
         part = parts.first
@@ -99,7 +99,7 @@ module Cardboard
         seo
       end
     end
-    
+
     def seo=(hash)
       # to hash is important here for strong parameters
       self.meta_seo = hash.to_hash
@@ -117,7 +117,7 @@ module Cardboard
     # Get all other pages
     def parent_url_options
       # @parent_url_options ||= begin
-        Cardboard::Page.all.inject(["/"]) do |result, elm| 
+        Cardboard::Page.all.inject(["/"]) do |result, elm|
           result << elm.url unless elm.id == self.id
           result
         end.sort
@@ -130,7 +130,7 @@ module Cardboard
     end
 
     def parent=(new_parent)
-      return nil if new_parent && !new_parent.is_a?(Cardboard::Page) 
+      return nil if new_parent && !new_parent.is_a?(Cardboard::Page)
       self.path = new_parent ? new_parent.url : "/"
     end
 
@@ -155,7 +155,7 @@ module Cardboard
       split_path.size
     end
 
-    # Arrange array of nodes into a nested hash of the form 
+    # Arrange array of nodes into a nested hash of the form
     # {node => children}, where children = {} if the node has no children
     #
     # Example:
@@ -174,7 +174,7 @@ module Cardboard
 
         pages.inject(ActiveSupport::OrderedHash.new) do |ordered_hash, page|
           (["/"] + page.split_path).inject(ordered_hash) do |insertion_hash, subpath|
-            
+
             insertion_hash.each do |parent, children|
               insertion_hash = children if subpath == parent.slug
             end
@@ -183,7 +183,7 @@ module Cardboard
           ordered_hash
         end
       end
-    end 
+    end
     def self.clear_arranged_pages
       # clear cache when a page changes
       Rails.cache.delete("arranged_pages")
