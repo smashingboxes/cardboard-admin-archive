@@ -69,7 +69,7 @@ module Cardboard
     end
 
     rake_tasks do
-      Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
+      load File.expand_path('../../../spec/dummy/lib/tasks/cardboard.rake', __FILE__)
     end
 
   end
