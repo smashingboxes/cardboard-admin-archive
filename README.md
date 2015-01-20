@@ -1,7 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/smashingboxes/cardboard.png?label=ready&title=Ready)](https://waffle.io/smashingboxes/cardboard)
 # Cardboard
 [![Code Climate](https://codeclimate.com/github/smashingboxes/cardboard.png)](https://codeclimate.com/github/smashingboxes/cardboard)
-![Travis](https://travis-ci.org/smashingboxes/cardboard.svg?branch=master)
+[![Build Status](https://travis-ci.org/smashingboxes/cardboard.svg?branch=master)](https://travis-ci.org/smashingboxes/cardboard)
+[![Stories in Ready](https://badge.waffle.io/smashingboxes/cardboard.png?label=ready&title=Ready)](https://waffle.io/smashingboxes/cardboard)
 
 Cardboard is a simple CMS Engine for your Rails 4 applications.
 
@@ -130,7 +130,7 @@ Key | Type | Default | Definition
 title | string | identifier | name of the page as shown in the nav bar
 position | integer | auto-increment | position of the page on the nav bar (the lowest position is the home page!)
 parent_id | string | nil | identifier of the parent page (used for nested pages)
-controller_action | string | pages#identifier | go to a specific controller example "blog#index". In that case, the page identifier is passed in the params. If you'd like to still have the current_page goodness, make your controller inherit from `UrlController` 
+controller_action | string | pages#identifier | go to a specific controller example "blog#index". In that case, the page identifier is passed in the params. If you'd like to still have the current_page goodness, make your controller inherit from `UrlController`
 
 #### Templates
 Templates are declared exactly like pages. They allow for the creation of pages directly from the admin interface. One key difference between templates and pages is the location of the view files which will be under `app/views/templates`.
