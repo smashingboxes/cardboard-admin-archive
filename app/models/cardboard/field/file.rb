@@ -8,12 +8,17 @@ module Cardboard
 
     def value
       return nil unless value_uid
-      if value_uid =~ /^app\/assets\/files/
         Dragonfly.app.fetch_file(value_uid)
+      if value_uid =~ value_uid_regex
       else
         Dragonfly.app.fetch(value_uid)
       end
     end
 
+    protected
+
+    def value_uid_regex
+      /^app\/assets\/files/
+    end
   end
 end
