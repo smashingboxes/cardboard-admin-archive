@@ -28,8 +28,6 @@ gem 'pry-byebug'
 gem 'uglifier'
 
 group :test do
-  gem 'turn'
-  gem 'simplecov'
   gem 'rake'
 end
 
