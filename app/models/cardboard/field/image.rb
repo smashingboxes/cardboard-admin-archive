@@ -1,3 +1,5 @@
+require_relative 'file'
+
 module Cardboard
   class Field::Image < Field::File
     dragonfly_accessor :value do
