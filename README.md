@@ -32,7 +32,7 @@ Add the gem to the _Gemfile_
 gem 'cardboard_cms'
 ```
 
-Run bundler and cardbaord's install generator
+Run bundler and cardboard's install generator
 ```sh
 bundle install
 rails generate cardboard:install
