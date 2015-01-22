@@ -67,10 +67,5 @@ module Cardboard
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/images/)
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/files/)
     end
-
-    rake_tasks do
-      load File.expand_path('../../../spec/dummy/lib/tasks/cardboard.rake', __FILE__)
-    end
-
   end
 end
