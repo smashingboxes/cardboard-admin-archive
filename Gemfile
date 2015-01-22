@@ -28,3 +28,8 @@ group :test do
   gem 'codeclimate-test-reporter'
   gem 'rake'
 end
+
+group :development do
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
+end
