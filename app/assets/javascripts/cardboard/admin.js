@@ -48,4 +48,3 @@ $(document).on("page:load ready cocoon:after-insert", function(e){
 
   window.setTimeout(function() { $(".alert:not(.alert-danger)").alert('close'); }, 2000);
 });
-

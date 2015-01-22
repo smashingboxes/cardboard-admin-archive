@@ -36,11 +36,11 @@
 #     default: true
 
 pages:
-  home_page:
+  home:
     title: Default page title
     parts:
       slideshow:
-        repeatable: true
+        repeatable: slide
         fields:
           image1:
             type: image
@@ -53,3 +53,8 @@ templates:
         fields:
           body:
             type: rich_text
+
+settings:
+  more_fun:
+    type: boolean
+    default: true
