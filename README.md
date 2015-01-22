@@ -32,7 +32,7 @@ Add the gem to the _Gemfile_
 gem 'cardboard_cms'
 ```
 
-Run bundler and the the generator to install cardboard and it's migrations:
+Run bundler and cardbaord's install generator
 ```sh
 bundle install
 rails generate cardboard:install
@@ -92,7 +92,7 @@ number_to_human_size(file.size) # => "486 KB"
 ```
 
 ## Create Pages
-To add pages to cardboard edit _config/cardboard.yml_. See an sample [_cardboard.yml_](https://github.com/smashingboxes/cardboard/blob/master/spec/dummy/config/cardboard.yml)
+To add pages to cardboard edit _config/cardboard.yml_. See a sample [_cardboard.yml_](https://github.com/smashingboxes/cardboard/blob/master/spec/dummy/config/cardboard.yml)
 ```yml
 pages:
   home_page:
