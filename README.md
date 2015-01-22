@@ -218,7 +218,7 @@ We use **kaminari**, so all you need to do is add to your index view:
 ```
 
 #### Column sorting helper
-The `@q` variable which gives access to the **Ransack** gem.
+The `@q` variable gives access to the **Ransack** gem.
 ```
 = sort_link @q, :name, 'Product Name'
 ```
