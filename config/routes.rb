@@ -12,7 +12,7 @@ Cardboard::Engine.routes.draw do
   get "/settings", to: "settings#index"
   patch "/settings/update", to: "settings#update", as: "setting"
 
-  post 'render_markdown', to: 'application#render_markdown'
+  post 'markdown', to: 'application#render_markdown'
 
   get "/", to: "dashboard#index", as: "dashboard" #Don't put a root path here
 
