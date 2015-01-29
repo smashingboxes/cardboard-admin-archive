@@ -68,10 +68,5 @@ module Cardboard
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/images/)
       Dragonfly.app.fetch_file_whitelist.push(/app\/assets\/files/)
     end
-
-    rake_tasks do
-      Dir[File.join(File.dirname(__FILE__),'../tasks/*.rake')].each { |f| load f }
-    end
-
   end
 end

@@ -22,7 +22,7 @@ PATH
       ranked-model (>= 0.2.1)
       ransack (>= 1.0.0)
       redcarpet
-      sass-rails (~> 5.0)
+      sass-rails (~> 5.0, >= 5.0.1)
       select2-rails
       simple_form (>= 3.0.0)
       slim (>= 1.3.8)
@@ -30,7 +30,7 @@ PATH
       turbolinks
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.0.12)
       actionpack (= 4.0.12)
@@ -57,8 +57,10 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
-    ansi (1.4.3)
     arel (4.0.2)
+    autoprefixer-rails (5.0.0.3)
+      execjs
+      json
     bcrypt (3.1.9)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -68,25 +70,29 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.3.1.1)
       railties (>= 3.0)
-    bootstrap-sass (3.3.1.0)
-      sass (~> 3.2)
-    bootstrap-wysihtml5-rails (0.3.3.1)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
+    bootstrap-wysihtml5-rails (0.3.3.2)
       railties (>= 3.0)
     builder (3.1.4)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
-    capybara (2.1.0)
+    capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
+    capybara-webkit (1.4.1)
+      capybara (>= 2.3.0, < 2.5.0)
+      json
     chronic (0.10.2)
     cocoon (1.2.6)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -94,14 +100,14 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.8.0)
+    coffee-script-source (1.9.0)
     columnize (0.8.9)
     daemons (1.1.9)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
-    decorators (1.0.3)
-      railties (>= 3.0.19, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0, != 3.1.9, != 3.1.8, != 3.1.7, != 3.1.6, != 3.1.5, != 3.1.4, != 3.1.3, != 3.1.2, != 3.1.1, != 3.1.0)
+    decorators (2.0.0)
+      railties (>= 4.0.0, < 5.0.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -109,6 +115,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     docile (1.1.5)
     dragonfly (1.0.7)
       addressable (~> 2.3)
@@ -124,26 +131,14 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
-    ffi (1.9.6)
     font-awesome-sass (4.2.2)
       sass (~> 3.2)
-    formatador (0.2.5)
     gon (5.2.3)
       actionpack (>= 2.3.0)
       json
       multi_json
       request_store (>= 1.0.5)
-    guard (2.8.2)
-      formatador (>= 0.2.4)
-      listen (~> 2.7)
-      lumberjack (~> 1.0)
-      pry (>= 0.9.12)
-      thor (>= 0.18.1)
-    guard-minitest (2.3.2)
-      guard (~> 2.0)
-      minitest (>= 3.0)
     hike (1.2.3)
-    hitimes (1.2.2)
     i18n (0.6.11)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -151,7 +146,7 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.1)
-    kaminari (0.16.1)
+    kaminari (0.16.2)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kaminari-bootstrap (3.0.1)
@@ -161,38 +156,16 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.2.0)
       launchy (~> 2.2)
-    listen (2.8.0)
-      celluloid (>= 0.15.2)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
     lodash-rails (2.4.1)
       railties (>= 3.1)
-    lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_portile (0.6.1)
+    mini_portile (0.6.2)
     minitest (4.7.5)
-    minitest-capybara (0.5.0)
-      capybara (~> 2.1.0)
-      minitest (~> 4.0)
-      rake
-    minitest-metadata (0.5.3)
-      minitest (>= 4.7, < 6.0)
-    minitest-rails (1.0.0)
-      minitest (~> 4.7)
-      minitest-test (~> 1.0)
-      railties (>= 3.0, < 4.1)
-    minitest-rails-capybara (1.0.0)
-      capybara (~> 2.0)
-      minitest-capybara (~> 0.5.0)
-      minitest-metadata (~> 0.5.0)
-      minitest-rails (~> 1.0)
-    minitest-test (1.1.0)
-      minitest (~> 4.0)
     multi_json (1.10.1)
-    nokogiri (1.6.4.1)
+    nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     polyamorous (1.1.0)
@@ -229,23 +202,37 @@ GEM
     rake (10.3.2)
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
-    ransack (1.5.1)
+    ransack (1.6.3)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
     rb-fsevent (0.9.4)
-    rb-inotify (0.9.5)
-      ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
     redcarpet (3.2.2)
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    sass (3.4.9)
-    sass-rails (5.0.0)
+    rspec-core (3.1.7)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.3)
+      rspec-support (~> 3.1.0)
+    rspec-rails (3.1.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.2)
+    sass (3.4.10)
+    sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -254,7 +241,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    select2-rails (3.5.9.1)
+    select2-rails (3.5.9.2)
       thor (~> 0.14)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -273,13 +260,13 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.2)
+    sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.10)
     stringex (2.5.2)
-    temple (0.7.4)
+    temple (0.7.5)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -287,13 +274,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    timers (4.0.1)
-      hitimes
     turbolinks (2.5.3)
       coffee-rails
-    turn (0.9.7)
-      ansi
-      minitest (~> 4)
     tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -309,24 +291,22 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  capybara-webkit
   cardboard_cms!
+  codeclimate-test-reporter
   database_cleaner
   devise (>= 3.0.0)
   factory_girl_rails
   faker
-  guard-minitest
   jquery-rails
   letter_opener
-  minitest-rails (>= 1.0)
-  minitest-rails-capybara
   pry-byebug
   pry-rails
   quiet_assets
   rake
   rb-fsevent
+  rspec-rails
   sdoc
-  simplecov
   sqlite3
   thin
-  turn
   uglifier

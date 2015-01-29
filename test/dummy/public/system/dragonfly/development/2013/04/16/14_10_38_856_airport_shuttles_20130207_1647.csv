@@ -1,8 +1,0 @@
-Id,Story,Labels,Iteration,Iteration Start,Iteration End,Story Type,Estimate,Current State,Created at,Accepted at,Deadline,Requested By,Owned By,Description,URL
-44010137,User should see views as in the mockups,"",,,,feature,3,started,"Feb 7, 2013",,,Michael Elfassy,Michael Elfassy,https://moqups.com/michaelelfassy/HwrY4RTC,http://www.pivotaltracker.com/story/show/44010137
-43968703,Manage should be able to select all hotels even in full screen,"",,,,bug,,unstarted,"Feb 6, 2013",,,Michael Elfassy,Josh Barber,,http://www.pivotaltracker.com/story/show/43968703
-43968621,Logo should should show up at top of vendor site,"",,,,bug,,unstarted,"Feb 6, 2013",,,Michael Elfassy,,,http://www.pivotaltracker.com/story/show/43968621
-43968411,User should have it's own subdomain,"",,,,feature,2,unstarted,"Feb 6, 2013",,,Michael Elfassy,,,http://www.pivotaltracker.com/story/show/43968411
-43968397,User should be able to log in with correct role,"",,,,feature,2,unstarted,"Feb 6, 2013",,,Michael Elfassy,,,http://www.pivotaltracker.com/story/show/43968397
-43968341,Manager should be able to select all hotel from search on the map,"",,,,bug,,unstarted,"Feb 6, 2013",,,Michael Elfassy,Josh Barber,"Now it selects all will select all hotels on map, not only all hotels from the search",http://www.pivotaltracker.com/story/show/43968341
-43968151,customer should not see locations with same address as hotels ,"",,,,bug,,unstarted,"Feb 6, 2013",,,Michael Elfassy,,"On main search page, make sure if an address is shown, it doesn't match that of a hotel",http://www.pivotaltracker.com/story/show/43968151

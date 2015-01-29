@@ -1,0 +1,55 @@
+# # Pages, Templates and Settings
+
+# pages:
+#   home:
+#     title: Welcome
+#     parts:
+#       intro:
+#         fields:
+#           text1:
+#             type: string
+#           text2:
+#             type: string
+#           show_slideshow:
+#             type: boolean
+#       slideshow:
+#         repeatable: Slide
+#         fields:
+#           image:
+#             type: image
+#           description:
+#             hint: This will be visible on mouse over
+#             type: string
+#             required: false
+# templates:
+#   two_column:
+#     parts:
+#       main:
+#         fields:
+#           body:
+#             type: rich_text
+#           sidebar:
+#             type: rich_text
+# settings:
+#   more_fun:
+#     type: boolean
+#     default: true
+
+pages:
+  home_page:
+    title: Default page title
+    parts:
+      slideshow:
+        repeatable: true
+        fields:
+          image1:
+            type: image
+            required: true
+            default: CrashTest.jpg
+templates:
+  two_column:
+    parts:
+      main:
+        fields:
+          body:
+            type: rich_text
