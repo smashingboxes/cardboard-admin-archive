@@ -6,10 +6,6 @@ module Cardboard
     end
     before_filter :for_gon
     protect_from_forgery
-
-    def render_markdown
-      render text: view_context.markdown(params[:markdown])
-    end
     
   private
 
