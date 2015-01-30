@@ -1,0 +1,19 @@
+div role='tabpanel'
+  ul class='nav nav-tabs' role='tablist'
+    li role='presentation' class='active'
+      a href="#markdown" aria-controls="markdown" role="tab" data-toggle="tab"
+        | Write
+    li role='presentation'
+      a href="#preview" aria-controls="preview" role="tab" data-toggle="tab" class="preview-link"
+        | Preview
+    li role='presentation'
+      a href="https://guides.github.com/features/mastering-markdown/" role="tab" data-toggle="tab" target="_default"
+        | Markdown Help
+
+  .tab-content
+    .tab-pane role='tabpanel' id='preview'
+      .preview-content
+        p.markdown-preview
+          | Nothing to preview
+    .tab-pane.active role='tabpanel' id='markdown'
+      = f.input_field attribute_name.to_sym, as: :text, id: "markdown-body", rows: 15

@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20150119175934) do
-
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -101,6 +100,15 @@ ActiveRecord::Schema.define(version: 20150119175934) do
   end
 
   add_index "cardboard_urls", ["path", "slug"], name: "index_cardboard_urls_on_path_and_slug", unique: true
+
+  create_table "pianos", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "rich_text"
+  end
+
   add_index "cardboard_urls", ["path"], name: "index_cardboard_urls_on_path"
   add_index "cardboard_urls", ["slug"], name: "index_cardboard_urls_on_slug"
 

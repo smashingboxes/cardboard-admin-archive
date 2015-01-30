@@ -24,6 +24,7 @@ require 'lodash-rails'
 require 'cardboard/concerns/url_concern'
 require 'cardboard/helpers/content_for_in_controllers'
 require 'cardboard/dynamic_router'
+require 'redcarpet'
 
 module Cardboard
   class Engine < ::Rails::Engine

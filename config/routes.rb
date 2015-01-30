@@ -12,6 +12,8 @@ Cardboard::Engine.routes.draw do
   get "/settings", to: "settings#index"
   patch "/settings/update", to: "settings#update", as: "setting"
 
+  post 'markdown', to: 'previews#create'
+
   get "/", to: "dashboard#index", as: "dashboard" #Don't put a root path here
 
   scope as: 'cardboard' do
