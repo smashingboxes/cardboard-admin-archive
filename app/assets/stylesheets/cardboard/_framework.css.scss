@@ -14,7 +14,6 @@ a {
 label {
   margin-top: 20px;
   margin-bottom: 10px;
-  // font-weight: bold;
   text-shadow: 0px 1px #fff;
 }
 
@@ -47,7 +46,7 @@ input[type="color"],
 .uneditable-input {
   font-size: 13px;
   color: #666666;
-  font-family: $font;
+  font-family: $font-primary;
   font-weight: 300;
 }
 select.datetime{
@@ -75,8 +74,7 @@ legend + .control-group {
 
 .simple_form{
   input, textarea{
-     @include box-sizing(border-box);
-  }
+       }
   input.string, input.password, textarea, .uneditable-input{
     width: 100%;
   }

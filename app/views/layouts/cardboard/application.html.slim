@@ -12,10 +12,11 @@ html lang=I18n.locale
   body(id="#{params[:controller].parameterize('_')}")
 
 
-    #main_topbar= render 'layouts/cardboard/main_topbar'
-
+    
+    #main_sidebar= render 'layouts/cardboard/main_sidebar'
+   
     #main_content
-      #main_sidebar= render 'layouts/cardboard/main_sidebar'
+      #main_topbar= render 'layouts/cardboard/main_topbar'
 
       #content_sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
         #pages_sidebar= render 'cardboard/pages/sidebar'

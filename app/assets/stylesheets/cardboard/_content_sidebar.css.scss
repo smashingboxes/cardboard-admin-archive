@@ -1,7 +1,6 @@
 #content_sidebar{  
   z-index: $main_sidebar_background_zindex - 1;
-  @include box-sizing(border-box);
-  // position: absolute;
+    // position: absolute;
   // top: $main_topbar_height;// top: 0px;
   // left: - $main_sidebar_width - 90px;
   width: $content_sidebar_width;
@@ -15,9 +14,9 @@
   display: none;
 
   &.toggle {
-    position: absolute;
-    left: $main_sidebar_width;
-    display: inline;
+    // position: absolute;
+    // left: $main_sidebar_width;
+    // display: inline;
     // left: $main_sidebar_width;
     // -webkit-transition: left $page_nav_slide_speed ease;
     // -moz-transition: left $page_nav_slide_speed ease;

@@ -1,37 +1,59 @@
 $main_sidebar_background: lighten($black, 10%);
-$main_sidebar_background_zindex: $main_topbar_zindex - 1;
+$main_sidebar_background_zindex: $main_topbar_zindex;
 
 #main_sidebar{
-  // position: absolute;
-  // top: $main_topbar_height;
-  // left: 0px;
-  background: $main_sidebar_background;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $darkest-gray;
   width: $main_sidebar_width;
-  box-sizing: border-box;
   z-index: $main_sidebar_background_zindex + 1;
 
-  #menu{
+  #cardboard_logo {
+    display: block;
+    width: $main_sidebar_width;
+    border-top: 10px solid $charcoal;
+    padding: 40px 85px;
+
+    img {
+      width: 143px;
+      height: 27px;
+    }
+  }
+
+  #menu {
+
+    margin-left: 30px;
+
     .item{
+
+      border-top: 1px solid #696969;
+      font-family: $font-secondary;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+
+      &:last-child {
+        border-bottom: 1px solid #696969;
+      }
+
       a{
         padding: 22px 5px;
         display: block;
-        border-bottom: 1px solid darken($main_sidebar_background, 9%);
-        border-top: 1px solid lighten($main_sidebar_background, 9%);
-        text-align: center;
         word-wrap:break-word;
-        color: $white;
+        color: $gray;
+        text-decoration: none;
 
         &:hover, &.active{
-          background: lighten($main_sidebar_background, 4%);
-          //background: $brand_color;
-          text-decoration: none;
-      }
-        span{
-          display: block;
-          font-size: 12px;
-          line-height: 13px;
+          color: $brand-color-primary;
         }
-      }   
+      }
+
+      span{
+        display: block;
+        font-size: 12px;
+        line-height: 13px;
+      }
     }
   }
 }

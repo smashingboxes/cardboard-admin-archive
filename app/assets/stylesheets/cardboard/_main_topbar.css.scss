@@ -8,37 +8,22 @@ $main_topbar_zindex: 100;
   z-index: 100;
   margin-bottom: 0px;
   position: relative;
+  width: 100%;
 
   .navbar-inner{
-    @include box-sizing(border-box);
-    // background: lighten($black, 15%);
-    background: $brand_color;
-    // box-shadow: none;
     @include border-radius(0px);
-    border: none;
+    border: 0;
     padding: 0px 10px;
-    min-width: $site_min_width;
-    a{color: $main_topbar_color;}
+    // min-width: $site_min_width;
     text-shadow: $main_topbar_color_text_shadow;
     
-    #cardboard_logo{
-      display: block;
-      color: #fff;
-      float: left;
-      width: $main_sidebar_width;
-      height: $main_topbar_height;
-      background: rgba(0, 0, 0, 0.2);
-      margin-left: -10px;
-      @include box-sizing(border-box);
-      padding: 10px 36px;
+    a {
+      color: $main_topbar_color;
     }
-    
+
     #brand{
       font-weight: 700;
       font-size: 20px;
-      position: relative;
-      top: 9px;
-      left: 50px;
     }
     
     i{
