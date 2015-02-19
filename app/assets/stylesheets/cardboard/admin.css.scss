@@ -37,16 +37,13 @@ html {
 
 body{
   font-family: $font-primary;
-  -webkit-font-smoothing: antialiased;
   font-weight: 300;
   font-size: $base-font-size;
-  overflow-x: hidden;
 }
 
 .main-content {
-  position: relative;
   min-height: 100%;
-  width: auto;
+  overflow: hidden;
 }
 
 .main-sidebar, .content-sidebar{
