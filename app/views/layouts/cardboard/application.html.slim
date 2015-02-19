@@ -16,8 +16,8 @@ html lang=I18n.locale
     .main-content
       .main-topbar= render 'layouts/cardboard/main_topbar'
 
-      .content-sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
-        .pages-sidebar= render 'cardboard/pages/sidebar'
+      / .content-sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
+      /   .pages-sidebar= render 'cardboard/pages/sidebar'
 
       #content.container-fluid  class="#{'toggle' if params[:controller] =~ /pages/}"
         = render 'layouts/cardboard/flash_message'

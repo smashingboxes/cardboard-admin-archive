@@ -3,14 +3,16 @@
   // top: $main_topbar_height;// top: 0px;
   // left: - $main_sidebar_width - 90px;
   width: $content_sidebar_width;
-  
+  position: relative;
+  min-height: 100%;
+  float: left;
   // overflow: hidden;
   background: #fff;
   // -webkit-transition: left $page_nav_slide_speed ease;
   // -moz-transition: left $page_nav_slide_speed ease;
   padding: 18px 25px 10px 25px;
   box-shadow: $main_content_sidebar_shadow;
-  display: none;
+ 
 
   &.toggle {
     // position: absolute;

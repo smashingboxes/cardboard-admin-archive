@@ -1,9 +1,8 @@
 .main-topbar{
-  @extend .navbar;
-  z-index: 100;
-  margin-bottom: 0px;
   position: relative;
+  margin-bottom: 0;
   width: 100%;
+  height: 40px;
   color: $brand-color-primary;
   border-top: 10px solid $brand-color-primary;
   font-family: $font-secondary;

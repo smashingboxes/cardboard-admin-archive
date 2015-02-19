@@ -1,141 +1,141 @@
-//@import "bootstrap";
-//@import "bootstrap-datepicker";
-//@import "cardboard/bootstrap-select";
+// //@import "bootstrap";
+// //@import "bootstrap-datepicker";
+// //@import "cardboard/bootstrap-select";
 
-a {
-  color: $linkColor;
-  font-weight: 400;
+// a {
+//   color: $linkColor;
+//   font-weight: 400;
   
-  &:hover {
-    color: darken($linkColor, 30%);
-  }
-}
+//   &:hover {
+//     color: darken($linkColor, 30%);
+//   }
+// }
 
-label {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  // font-weight: bold;
-  text-shadow: 0px 1px #fff;
-}
+// label {
+//   margin-top: 20px;
+//   margin-bottom: 10px;
+//   // font-weight: bold;
+//   text-shadow: 0px 1px #fff;
+// }
 
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 0px;
-}
+// abbr[title],
+// abbr[data-original-title] {
+//   cursor: help;
+//   border-bottom: 0px;
+// }
 
-.add-on {
-  font-weight: medium;
-}
+// .add-on {
+//   font-weight: medium;
+// }
 
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
-  @include font-size(13px);
-  color: #666666;
-  font-family: $font-primary;
-  font-weight: 300;
-}
+// select,
+// textarea,
+// input[type="text"],
+// input[type="password"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="date"],
+// input[type="month"],
+// input[type="time"],
+// input[type="week"],
+// input[type="number"],
+// input[type="email"],
+// input[type="url"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="color"],
+// .uneditable-input {
+//   @include font-size(13px);
+//   color: #666666;
+//   font-family: $font-primary;
+//   font-weight: 300;
+// }
 
-select.datetime{
-  width: auto;
-}
+// select.datetime{
+//   width: auto;
+// }
 
-legend + .control-group {
-  margin-top: 0px;
-}
+// legend + .control-group {
+//   margin-top: 0px;
+// }
 
-.control-group {
-  margin-bottom: 26px;
-}
+// .control-group {
+//   margin-bottom: 26px;
+// }
 
-.help-block, .help-inline {
-  color: #898989;
-}
+// .help-block, .help-inline {
+//   color: #898989;
+// }
 
-.form-actions {
-  background: #fff;
+// .form-actions {
+//   background: #fff;
   
-  .btn {
-    margin-right: 15px;
-  }
-}
+//   .btn {
+//     margin-right: 15px;
+//   }
+// }
 
-.simple_form{
-  input, textarea{
-       }
+// .simple_form{
+//   input, textarea{
+//        }
 
-  input.string, input.password, textarea, .uneditable-input{
-    width: 100%;
-  }
+//   input.string, input.password, textarea, .uneditable-input{
+//     width: 100%;
+//   }
 
-  input.string, input.password, .uneditable-input{
-    max-width: 600px;
-  }
+//   input.string, input.password, .uneditable-input{
+//     max-width: 600px;
+//   }
 
-  input:not(.btn):not(.boolean):not(.check_boxes):not(.radio_buttons){
-    height: 30px;
-  }
+//   input:not(.btn):not(.boolean):not(.check_boxes):not(.radio_buttons){
+//     height: 30px;
+//   }
 
-}
+// }
 
-textarea {
-  height: 100px;
-}
+// textarea {
+//   height: 100px;
+// }
 
-.date_picker input{
-  padding-right: 24px;
-  background: white image-url('cardboard/calendar.png') no-repeat 100% 5px;
-}
+// .date_picker input{
+//   padding-right: 24px;
+//   background: white image-url('cardboard/calendar.png') no-repeat 100% 5px;
+// }
 
-.right{
-  float: right;
-  margin-left: 1.5em;
-}
-.nav li img{
-  margin-right: 6px;
-}
+// .right{
+//   float: right;
+//   margin-left: 1.5em;
+// }
+// .nav li img{
+//   margin-right: 6px;
+// }
 
-.alert{
-  // @include border-top-radius(0px);
-}
+// .alert{
+//   // @include border-top-radius(0px);
+// }
 
-.input-append.input-prepend .btn-group{
-  vertical-align: top;
-}
+// .input-append.input-prepend .btn-group{
+//   vertical-align: top;
+// }
 
-.table {
-  th{
-    background: $table_head !important;
-    border-bottom: 1px solid darken($table_head, 20%);
+// .table {
+//   th{
+//     background: $table_head !important;
+//     border-bottom: 1px solid darken($table_head, 20%);
 
-    a{
-      color: #333;
-      font-weight:500;
-    }
-  }
+//     a{
+//       color: #333;
+//       font-weight:500;
+//     }
+//   }
 
-  td, 
-  th {
-    vertical-align: middle
-  }
+//   td, 
+//   th {
+//     vertical-align: middle
+//   }
 
-  td {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-}
+//   td {
+//     padding-top: 14px;
+//     padding-bottom: 14px;
+//   }
+// }

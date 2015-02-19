@@ -1,0 +1,94 @@
+// GENERAL INPUTS
+input, 
+select {
+  @include font-size(16px);
+  font-family: $font-primary;
+  font-weight: 300;
+  border: 1px solid $lightest-gray;
+  padding: $input-padding;
+  border-radius: 0;
+  background: white;
+  color: $gray;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+label {
+  @include font-size(12px);
+  display: inline-block;
+  position: relative;
+  letter-spacing: .05rem;
+  font-family: $font-secondary;
+  color: $dark-gray;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+// -- ASTERISK
+[title="required"] {
+  font-weight: 100;
+}
+
+
+
+// TEXT INPUTS
+input[type="text"] {
+  letter-spacing: .04rem;
+  color: $dark-gray;
+  width: 100%;
+}
+
+// SELECT
+select,
+.select2-container.select {
+  position: relative;
+  width: 100%;
+  display: block;
+
+  .select2-choice {
+    height: auto;
+    background: white;
+    border-radius: 0;
+    padding: $input-padding;
+
+    .select2-arrow {
+      width: 50px;
+      background: black;
+      border-radius: 0;
+
+      b {
+        display: none;
+      }
+    }
+  }
+}
+
+.select2-drop {
+  box-shadow: none !important;
+  border: 1px solid $lightest-gray !important;
+  border-radius: 0 !important;
+}
+
+.select2-search {
+  padding: $input-padding !important;
+
+  input {
+    background: white !important;
+    padding: $input-padding !important;
+  }
+}
+
+.select2-results {
+  .select2-result {
+    padding: 10px 5px;
+
+    &.select2-highlighted {
+      color: $brand-color-primary;
+      background: $brand-color-alt2;
+    } 
+  }
+
+  
+}
+
