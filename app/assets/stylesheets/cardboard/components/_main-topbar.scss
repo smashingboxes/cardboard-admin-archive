@@ -19,11 +19,6 @@
     color: $brand-color-primary;
   }
 
-  #brand {
-    @include font-size(20px);
-    font-weight: 700;
-  }
-  
   i {
     margin-right: 5px;
   }
@@ -62,7 +57,7 @@
   }
 
   &:hover .dropdown-menu {
-    max-height: 100px;
+    max-height: 150px;
     transition: all $speed $ease-out;
   }
 
@@ -93,13 +88,16 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.2s $ease-out;
 
+    &:hover {
+      background: rgba(0, 0, 0, 0.1)
+    }
+
     a {
       color: white;
     }
-
   }
 
   li:last-child {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 }
