@@ -1,6 +1,6 @@
-@import "bootstrap";
-@import "bootstrap-datepicker";
-@import "cardboard/bootstrap-select";
+//@import "bootstrap";
+//@import "bootstrap-datepicker";
+//@import "cardboard/bootstrap-select";
 
 a {
   color: $linkColor;
@@ -14,6 +14,7 @@ a {
 label {
   margin-top: 20px;
   margin-bottom: 10px;
+  // font-weight: bold;
   text-shadow: 0px 1px #fff;
 }
 
@@ -44,11 +45,12 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  font-size: 13px;
+  @include font-size(13px);
   color: #666666;
   font-family: $font-primary;
   font-weight: 300;
 }
+
 select.datetime{
   width: auto;
 }
@@ -56,6 +58,7 @@ select.datetime{
 legend + .control-group {
   margin-top: 0px;
 }
+
 .control-group {
   margin-bottom: 26px;
 }
@@ -75,19 +78,25 @@ legend + .control-group {
 .simple_form{
   input, textarea{
        }
+
   input.string, input.password, textarea, .uneditable-input{
     width: 100%;
   }
+
   input.string, input.password, .uneditable-input{
     max-width: 600px;
   }
+
   input:not(.btn):not(.boolean):not(.check_boxes):not(.radio_buttons){
     height: 30px;
   }
+
 }
+
 textarea {
   height: 100px;
 }
+
 .date_picker input{
   padding-right: 24px;
   background: white image-url('cardboard/calendar.png') no-repeat 100% 5px;
@@ -102,7 +111,7 @@ textarea {
 }
 
 .alert{
-  @include border-top-radius(0px);
+  // @include border-top-radius(0px);
 }
 
 .input-append.input-prepend .btn-group{
@@ -112,16 +121,21 @@ textarea {
 .table {
   th{
     background: $table_head !important;
-    // border-left: 1px solid darken($table_head, 5%);
     border-bottom: 1px solid darken($table_head, 20%);
-    // text-align: center;
+
     a{
       color: #333;
       font-weight:500;
-
     }
   }
-  td, th{vertical-align:middle}
 
-  td{padding-top: 14px; padding-bottom: 14px;}
+  td, 
+  th {
+    vertical-align: middle
+  }
+
+  td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
 }

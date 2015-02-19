@@ -1,15 +1,12 @@
-$main_sidebar_background: lighten($black, 10%);
-$main_sidebar_background_zindex: $main_topbar_zindex;
-
-#main_sidebar{
+.main-sidebar{
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 101;
   background: $darkest-gray;
   width: $main_sidebar_width;
-  z-index: $main_sidebar_background_zindex + 1;
 
-  #cardboard_logo {
+  .cardboard-logo {
     display: block;
     width: $main_sidebar_width;
     border-top: 10px solid $charcoal;
@@ -21,16 +18,15 @@ $main_sidebar_background_zindex: $main_topbar_zindex;
     }
   }
 
-  #menu {
+  .menu {
 
     margin-left: 30px;
 
     .item{
-
+      @include font-size(12px);
       border-top: 1px solid #696969;
       font-family: $font-secondary;
       text-transform: uppercase;
-      font-size: 0.75rem;
       letter-spacing: 0.15em;
 
       &:last-child {
@@ -43,16 +39,11 @@ $main_sidebar_background_zindex: $main_topbar_zindex;
         word-wrap:break-word;
         color: $gray;
         text-decoration: none;
+        transition: all $speed $ease-out;
 
         &:hover, &.active{
           color: $brand-color-primary;
         }
-      }
-
-      span{
-        display: block;
-        font-size: 12px;
-        line-height: 13px;
       }
     }
   }

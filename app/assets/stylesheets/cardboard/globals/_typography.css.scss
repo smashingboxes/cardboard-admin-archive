@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,100,300);
+
+$font-primary: 'Roboto', 'Arial', 'sans-serif';
+$font-secondary: 'Montserrat', 'Arial', 'sans-serif';
+
+$base-font-size: 16px;
+
+@function calculateRem($size) {
+  $remSize: $size / $base-font-size;
+  @return #{$remSize}rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}

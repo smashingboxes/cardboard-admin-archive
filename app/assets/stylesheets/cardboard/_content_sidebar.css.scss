@@ -1,5 +1,4 @@
-#content_sidebar{  
-  z-index: $main_sidebar_background_zindex - 1;
+.content-sidebar{  
     // position: absolute;
   // top: $main_topbar_height;// top: 0px;
   // left: - $main_sidebar_width - 90px;
@@ -64,8 +63,8 @@
           padding-bottom: 10px;
           
           &.saving {
-            color: $successText;
-            background: $successBackground;
+            // color: $successText;
+            //background: $successBackground;
             padding-left: 10px
           }
         }

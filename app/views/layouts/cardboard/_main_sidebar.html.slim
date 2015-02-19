@@ -1,8 +1,8 @@
-#cardboard_logo
+.cardboard-logo
     = link_to main_app.root_path, id: "brand" do
       img src=image_path("cardboard/logo.svg")
 
-#menu
+.menu
   - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
     = main_sidebar_nav_link "Pages", pages_path, id: "nav_dashboard_link"
 

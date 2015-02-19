@@ -1,11 +1,11 @@
 $(function(){
   $("a#nav_dashboard_link").click(function(e){
     e.preventDefault();
-    $("#content_sidebar").toggleClass('toggle');
+    $(".content-sidebar").toggleClass('toggle');
 
-    // Expand #main_content down to fit the exposed sidebar
-    $("#main_content").css('height',
-      $('#content_sidebar').height() + $('#main_topbar').height()
+    // Expand .main-content down to fit the exposed sidebar
+    $(".main-content").css('height',
+      $('.content-sidebar').height() + $('.main-topbar').height()
     );
 
     $('#content').toggleClass('toggle');

@@ -1,22 +1,28 @@
 //Only for Cardboard Admin Area
 
-@import "variables";
-@import "typography";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "globals/variables";
+@import "globals/typography";
 
 @import "cardboard/framework";
 @import "cardboard/rich_text";
 @import "font-awesome";
 @import "select2";
 
-@import "main_topbar";
-@import "main_sidebar";
+@import "components/main_topbar";
+@import "components/main_sidebar";
 @import "content";
 @import "content_sidebar";
 @import "resources";
 
-html, body{
+html, 
+body{
   min-height: 100%;
-  height:100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -37,14 +43,15 @@ body{
   overflow-x: hidden;
 }
 
-#main_content {
+.main-content {
   position: relative;
   min-height: 100%;
   float: left;
   width: auto;
+  margin-left: $main_sidebar_width;
 }
 
-#main_sidebar, #content_sidebar{
+.main-sidebar, .content-sidebar{
   min-height: 100%;
 }
 

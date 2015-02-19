@@ -1,5 +1,15 @@
 // ANIMATION
-$page_nav_slide_speed: 0.3s !default;
+$speed:                   0.3s;
+
+// -- EASING
+$ease-out-back:           cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$ease-in-back:            cubic-bezier(0.96, -0.41, 1, 0.83);
+$ease-in-out-back:        cubic-bezier(0.74, -0.69, 0.32, 1.62);
+$ease-out:                cubic-bezier(0, 0.39, 0.24, 1);
+$ease-in:                 cubic-bezier(0.71, 0.01, 0.98, 0.44);
+$ease-in-out:             cubic-bezier(0.44, 0, 0.59, 1);
+
+
 
 // COLORS
 // -- BRAND COLORS
@@ -17,7 +27,6 @@ $yellow:                  #ffc40d;
 $orange:                  #f89406;
 $pink:                    #fd0752;
 $purple:                  #7a43b6;
-$brand_color:             #f9334a;
 $linkColor:               #08c;
 
 // -- GRAYS
@@ -30,6 +39,9 @@ $lightest-gray:           #bfbfbf;
 
 
 
+
+
+// Yet to be organized 
 
 $main_topbar_height: 40px !default;
 $main_sidebar_width: 300px !default;
