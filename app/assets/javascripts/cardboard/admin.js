@@ -6,15 +6,7 @@
 //= require jquery-ui/sortable
 //= require cardboard/jquery.livesearch
 //= require turbolinks
-//= require bootstrap-button
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-alert
-//= require bootstrap-tab
-//= require cardboard/bootstrap-select
-//= require bootstrap-datepicker/core
 //= require cardboard/datepicker
-//= require cardboard/rich_text
 //= require cardboard/jquery.wysihtml5_size_matters
 //= require cocoon
 //= require cardboard/main_sidebar
