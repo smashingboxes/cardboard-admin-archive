@@ -11,8 +11,8 @@
 @import "font-awesome";
 @import "select2";
 
-@import "components/main_topbar";
-@import "components/main_sidebar";
+@import "components/main-topbar";
+@import "components/main-sidebar";
 @import "content";
 @import "content_sidebar";
 @import "resources";
@@ -46,9 +46,7 @@ body{
 .main-content {
   position: relative;
   min-height: 100%;
-  float: left;
   width: auto;
-  margin-left: $main_sidebar_width;
 }
 
 .main-sidebar, .content-sidebar{

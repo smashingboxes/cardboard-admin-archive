@@ -1,7 +1,6 @@
-.main-sidebar{
-  position: absolute;
-  top: 0;
-  left: 0;
+.main-sidebar {
+  position: relative;
+  float: left;
   z-index: 101;
   background: $darkest-gray;
   width: $main_sidebar_width;
@@ -22,7 +21,7 @@
 
     margin-left: 30px;
 
-    .item{
+    .item {
       @include font-size(12px);
       border-top: 1px solid #696969;
       font-family: $font-secondary;
@@ -33,7 +32,7 @@
         border-bottom: 1px solid #696969;
       }
 
-      a{
+      a {
         padding: 22px 5px;
         display: block;
         word-wrap:break-word;
@@ -41,7 +40,8 @@
         text-decoration: none;
         transition: all $speed $ease-out;
 
-        &:hover, &.active{
+        &:hover, 
+        &.active{
           color: $brand-color-primary;
         }
       }

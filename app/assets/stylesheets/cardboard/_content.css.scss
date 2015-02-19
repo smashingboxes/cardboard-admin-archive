@@ -2,10 +2,10 @@
   display: block;
   padding: 20px 40px;
   height: 100%;
-  margin-left: $main_sidebar_width;
+  // margin-left: $main_sidebar_width;
   
   &.toggle{
-    margin-left: $main_sidebar_width + $content_sidebar_width;
+    // margin-left: $main_sidebar_width + $content_sidebar_width;
   }
   
   h1, 
