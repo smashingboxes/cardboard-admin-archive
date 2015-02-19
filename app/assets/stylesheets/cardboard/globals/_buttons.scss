@@ -1,0 +1,42 @@
+%button{
+  @include font-size(10px);
+  display: inline-block;
+  font-family: $font-secondary;
+  letter-spacing: 0.15em;
+  border-radius: 100px;
+  min-width: 140px;
+  border: 2px solid $brand-color-primary;
+  color: $brand-color-primary;
+  background: white;
+  text-transform: uppercase;
+  padding: 7px;
+  transition: all $speed $ease-out;
+  cursor: pointer;
+  margin: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+input[type=submit],
+input[type=button],
+.button,
+.btn {
+  @extend %button;
+
+  &:hover {
+    background: $brand-color-alt2;
+  }
+
+}
+
+.btn.btn-primary {
+  border-color: $brand-color-primary;
+  background: $brand-color-primary;
+  color: white;
+
+  &:hover {
+    background: $brand-color-secondary;
+    border-color: $brand-color-secondary;
+  }
+}

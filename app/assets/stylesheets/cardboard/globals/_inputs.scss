@@ -30,7 +30,12 @@ label {
   font-weight: 100;
 }
 
-
+.help-inline {
+  @include font-size(12px);
+  text-transform: uppercase;
+  font-family: $font-secondary;
+  color: $red;
+}
 
 // TEXT INPUTS
 input[type="text"] {
@@ -45,6 +50,7 @@ select,
   position: relative;
   width: 100%;
   display: block;
+  margin: 5px; 
 
   .select2-choice {
     height: auto;
@@ -88,7 +94,5 @@ select,
       background: $brand-color-alt2;
     } 
   }
-
-  
 }
 
