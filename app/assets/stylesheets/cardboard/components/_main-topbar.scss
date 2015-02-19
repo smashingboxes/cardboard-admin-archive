@@ -4,6 +4,7 @@
   margin-bottom: 0px;
   position: relative;
   width: 100%;
+  color: $brand-color-primary;
   border-top: 10px solid $brand-color-primary;
   font-family: $font-secondary;
   text-transform: uppercase;
@@ -51,29 +52,54 @@
 
 .account-options {
   position: relative;
+  cursor: pointer;
 
-  &.open,
-  &.open li,
-  &.open a,
-  &.open ul {
+  &:hover,
+  &:hover ul {
     background: $brand-color-primary;
     color: white;
+    transition: all $speed $ease-out;
+  }
+
+  &:hover .dropdown-menu {
+    max-height: 100px;
+    transition: all $speed $ease-out;
+  }
+
+  &:hover li {
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
     width: 100%;
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 45px;
     margin: 0;
     padding: 0;
-    padding-bottom: 5px;
+    transition: all $speed $ease-out;
   }
 
   li {
     display: block;
     margin: 0 10px;
-    padding: 8px 0 8px 7px;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-right: 7px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s $ease-out;
+
+    a {
+      color: white;
+    }
+
+  }
+
+  li:last-child {
+    margin-bottom: 5px;
   }
 }

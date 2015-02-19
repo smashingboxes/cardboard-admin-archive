@@ -19,12 +19,12 @@
 
 $(document).on 'click', '.nav-tabs a', (e) ->
   e.preventDefault()
-  $(this).tab 'show'
+  $(@).tab 'show'
   return
 $(document).on 'page:load ready cocoon:after-insert', (e) ->
   $('select[data-search-select]').each ->
-    options = $(this).data('select2-options')
-    $(this).select2 $.extend({
+    options = $(@).data('select2-options')
+    $(@).select2 $.extend({
       allowClear: true
       width: 'resolve'
     }, options)

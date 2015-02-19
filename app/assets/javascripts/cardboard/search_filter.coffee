@@ -5,13 +5,13 @@ $ ->
     $('select#advanced_field').trigger 'change'
     return
   $(document).on 'change', 'select#advanced_field', ->
-    type = $(this).find(':selected').data('type')
+    type = $(@).find(':selected').data('type')
     options = $(ransack_options).filter('optgroup[label=\'' + type + '\']').html()
     $('select#ransack_options').html(options).trigger 'change'
     $('select#ransack_options').selectpicker 'refresh'
     return
   $(document).on 'change', 'select#ransack_options', ->
-    field_name = $('select#advanced_field').find(':selected').val() + '_' + $(this).val()
+    field_name = $('select#advanced_field').find(':selected').val() + '_' + $(@).val()
     $('#advanced_query').attr('name', 'q[' + field_name + ']').val ''
     return
   $(document).on 'click', '#advanced_search_link', ->

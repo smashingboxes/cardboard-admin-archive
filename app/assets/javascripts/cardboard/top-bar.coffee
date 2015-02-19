@@ -1,2 +1,2 @@
 $ ->
-  alert "top bar"
+

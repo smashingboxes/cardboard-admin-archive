@@ -41,12 +41,12 @@ $(document).on 'ready page:load', (e) ->
     $('iframe.wysihtml5-sandbox').wysihtml5_size_matters()
     # TODO: find a better way to handle multiple RTE on a single page
     $('.bootstrap-wysihtml5-insert-link-modal .tab-content div').each (index) ->
-      $(this).attr 'id', $(this).attr('id') + index.toString()
+      $(@).attr 'id', $(@).attr('id') + index.toString()
       return
     $('.bootstrap-wysihtml5-insert-link-modal .nav li a').each (index) ->
-      $(this).attr 'href', $(this).attr('href') + index.toString()
+      $(@).attr 'href', $(@).attr('href') + index.toString()
       if index % 3 == 0
-        $(this).tab 'show'
+        $(@).tab 'show'
       return
     # END TODO
   return
@@ -57,12 +57,12 @@ $(document).on 'cocoon:after-insert', (e, insertedItem) ->
 $(document).on 'click', '.bootstrap-wysihtml5-insert-link-modal .link_pages a', (e) ->
   e.preventDefault()
   console.log 'clicked'
-  modal = $(this).closest('.bootstrap-wysihtml5-insert-link-modal')
-  modal.find('input.bootstrap-wysihtml5-insert-link-url').val $(this).data('url')
+  modal = $(@).closest('.bootstrap-wysihtml5-insert-link-modal')
+  modal.find('input.bootstrap-wysihtml5-insert-link-url').val $(@).data('url')
   modal.find('#insert_link').click()
   return
 $(document).on 'change', '.bootstrap-wysihtml5-insert-link-modal .tab-pane input', ->
-  $(this).closest('.bootstrap-wysihtml5-insert-link-modal').find('.bootstrap-wysihtml5-insert-link-url').val $(this).val()
+  $(@).closest('.bootstrap-wysihtml5-insert-link-modal').find('.bootstrap-wysihtml5-insert-link-url').val $(@).val()
   return
 
 # ---

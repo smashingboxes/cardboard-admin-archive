@@ -1,6 +1,6 @@
 create_datepickers = ->
   $('input.datepicker').datepicker(format: 'yyyy-mm-dd').on 'changeDate', ->
-    $(this).data('datepicker').hide()
+    $(@).data('datepicker').hide()
     return
   return
 
