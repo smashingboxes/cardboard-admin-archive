@@ -26,7 +26,7 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'pry-byebug'
 gem 'uglifier'
-gem 'font-awesome-sass', '~> 4.3.0'
+gem "font-awesome-rails"
 
 group :test do
   gem 'turn'

@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'decorators'
   s.add_dependency 'jquery-ui-rails', '~> 5.0.0'
   s.add_dependency 'select2-rails'
+  s.add_dependency 'font-awesome-rails'
 
   s.add_development_dependency "guard-minitest"
   s.add_development_dependency "minitest-rails"
