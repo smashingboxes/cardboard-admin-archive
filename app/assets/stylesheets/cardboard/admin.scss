@@ -26,6 +26,7 @@ body{
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html {
@@ -39,19 +40,62 @@ html {
 }
 
 body{
+  width: 100%;
+  position: relative;
+  left: 0;
   font-family: $font-primary;
   font-weight: 300;
   font-size: $base-font-size;
+  transition: all $speed $ease-out;
+}
+
+.body__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  transition: all $speed $ease-out;
+
+  &.open{
+    left: $main_sidebar_width;
+
+    @media screen and (min-width: $tablet-break) {
+      left: 0;
+    }
+
+  }
+
+
 }
 
 .main-content {
   position: relative;
   height: 100%;
   overflow: hidden;
+  transition: all $speed $ease-out;
+
+  .open & {
+    margin-left: -100px;
+  }
+
+  @media screen and (min-width: $tablet-break) {
+    width: auto;
+  }
 }
 
 .main-sidebar {
+  position: relative;
+  z-index: 2;
   min-height: 100%;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: $main_sidebar_width;
+    height: 100%;
+    background: red;
+  }
+
 }
 
 .content-sidebar {
@@ -72,16 +116,6 @@ body{
 .header {
   margin-top: 20px;
   margin-bottom: 60px;
-
-  h1,
-  h2,
-  h3,
-  h4{
-    float: left;
-    margin-top: 5px;
-    margin: 0;
-    line-height: inherit;
-  }
 }
 
 .icon-margin{

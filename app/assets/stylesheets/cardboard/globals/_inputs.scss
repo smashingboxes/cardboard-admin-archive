@@ -38,7 +38,9 @@ label {
 }
 
 // TEXT INPUTS
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   letter-spacing: .04rem;
   color: $dark-gray;
   width: 100%;
@@ -50,7 +52,7 @@ select,
   position: relative;
   width: 100%;
   display: block;
-  margin: 5px; 
+  margin: 5px 0; 
 
   .select2-choice {
     height: auto;
@@ -68,6 +70,10 @@ select,
       }
     }
   }
+}
+
+.select2-container {
+  min-width: 50%;
 }
 
 .select2-drop {

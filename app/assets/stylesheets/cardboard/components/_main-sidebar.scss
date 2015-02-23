@@ -1,9 +1,21 @@
+%hardware {
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
 .main-sidebar {
+  @extend %hardware;
   position: relative;
   float: left;
-  z-index: 101;
   background: $darkest-gray;
   width: $main_sidebar_width;
+  margin-left: 0-$main_sidebar_width;
+  transition: all $speed $ease-out;
+
+  @media screen and (min-width: $tablet-break) {
+    margin-left: 0%;
+    transition: all $speed $ease-out;
+  }
 
   .cardboard-logo {
     display: block;
@@ -45,6 +57,10 @@
         }
       }
     }
+  }
+
+  &.open {
+    margin-left: 0%
   }
 }
 

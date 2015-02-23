@@ -1,10 +1,11 @@
-#content {
+.content {
+  padding: 0 10px;
   display: block;
-  padding: 0 50px;
   height: 100%;
-  clear: both;
 
-  fieldset{
-    margin-top: 20px;
+  @media screen and (min-width: $tablet-break) {
+    padding: 0 50px;
+    width: auto;
   }
+
 }

@@ -22,19 +22,24 @@ $(document).on 'click', '.nav-tabs a', (e) ->
   e.preventDefault()
   $(@).tab 'show'
   return
+
 $(document).on 'page:load ready cocoon:after-insert', (e) ->
-  $('select[data-search-select]').each ->
-    options = $(@).data('select2-options')
-    $(@).select2 $.extend({
-      allowClear: true
-      width: 'resolve'
-    }, options)
-    return
-  $('select:not([data-search-select])').selectpicker()
-  $('.nav-tabs a:first').tab 'show'
-  window.setTimeout (->
-    $('.alert:not(.alert-error)').alert 'close'
-    return
-  ), 2000
-  return
+
+  # $(window).resize ->
+  #   console.log "Resizing"
+
+  # $('select[data-search-select]').each ->
+  #   options = $(@).data('select2-options')
+  #   $(@).select2 $.extend({
+  #     allowClear: true
+  #     width: 'resolve'
+  #   }, options)
+  #   return
+  # $('select:not([data-search-select])').selectpicker()
+  # $('.nav-tabs a:first').tab 'show'
+  # window.setTimeout (->
+  #   $('.alert:not(.alert-error)').alert 'close'
+  #   return
+  # ), 2000
+  # return
 

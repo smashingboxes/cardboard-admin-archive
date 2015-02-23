@@ -1,26 +1,23 @@
 doctype html
-/[if IE 8]
-  html class="lt-ie9" lang=I18n.locale
-/! [if gt IE 8]><!
-html lang=I18n.locale
-  /! <![endif]
-
+html.no-js lang="" 
   head
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+
     = render 'layouts/cardboard/head', title: 'Dashboard'
     = yield :head
 
   body(id="#{params[:controller].parameterize('_')}")
+    .body__container
+      .main-sidebar= render 'layouts/cardboard/main_sidebar'
+     
+      .main-content
+        .main-topbar= render 'layouts/cardboard/main_topbar'
 
-    .main-sidebar= render 'layouts/cardboard/main_sidebar'
-   
-    .main-content
-      .main-topbar= render 'layouts/cardboard/main_topbar'
+        / .content-sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
+        /   .pages-sidebar= render 'cardboard/pages/sidebar'
 
-      / .content-sidebar class="#{'toggle' if params[:controller] =~ /pages/}"
-      /   .pages-sidebar= render 'cardboard/pages/sidebar'
-
-      #content.container-fluid  class="#{'toggle' if params[:controller] =~ /pages/}"
-        = render 'layouts/cardboard/flash_message'
-        = yield
-      
-    = yield :javascript
+        .content.container-fluid  class="#{'toggle' if params[:controller] =~ /pages/}"
+          = render 'layouts/cardboard/flash_message'
+          = yield
+        
+      = yield :javascript
