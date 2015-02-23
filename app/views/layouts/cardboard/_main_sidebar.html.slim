@@ -2,8 +2,38 @@
     = link_to main_app.root_path, id: "brand" do
       img src=image_path("cardboard/logo.svg")
 .menu-toggle
+  i class="fa icon-angle-right"
+
+.sidebar-search
+  form.form-inline
+    .input-append
+      input.sidebar_page_search type="text" placeholder="Search Pages"
+    button type="submit" class="btn btn-hide"
+        i.icon-search
+    .sidebar_page_search_none style="display:none"
+      | No pages match your search
+
+   
+
+
+/ #content_pages data-update-url="#{pages_sort_path}"
+/   = nested_pages do |page, subpages|
+/     .page_link id= "pages_#{page.id}"
+/       .link_wrap
+/         = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
+/         .sort_handle
+/           i.icon-reorder
+/       - if subpages
+/         .page_group= subpages
+
 
 .menu
+  - if Cardboard.used_with_templates?
+  .item
+    => link_to new_page_path, class:"new-page" do
+      | New Page 
+      i.icon-plus
+
   - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
     = main_sidebar_nav_link "Pages", pages_path, id: "nav_dashboard_link"
 

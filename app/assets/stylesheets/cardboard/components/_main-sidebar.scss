@@ -5,8 +5,9 @@
 
 .main-sidebar {
   @extend %hardware;
-  position: relative;
-  float: left;
+  position: fixed;
+  z-index: 2;
+  min-height: 100%;
   background: $darkest-gray;
   width: $main_sidebar_width;
   margin-left: 0-$main_sidebar_width;
@@ -31,36 +32,104 @@
 
   .menu {
     margin-left: 30px;
-
-    .item {
-      @include font-size(12px);
-      border-top: 1px solid #696969;
-      font-family: $font-secondary;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-
-      &:last-child {
-        border-bottom: 1px solid #696969;
-      }
-
-      a {
-        padding: 22px 5px;
-        display: block;
-        word-wrap:break-word;
-        color: $gray;
-        text-decoration: none;
-        transition: all $speed $ease-out;
-
-        &:hover, 
-        &.active{
-          color: $brand-color-primary;
-        }
-      }
-    }
   }
 
-  &.open {
+  .open & {
     margin-left: 0%
   }
+}
+
+.item {
+  @include font-size(12px);
+  border-top: 1px solid $stroke-color;
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+
+  &:last-child {
+    border-bottom: 1px solid $stroke-color;
+  }
+
+  a {
+    padding: 22px 5px;
+    display: block;
+    word-wrap:break-word;
+    color: $gray;
+    text-decoration: none;
+    transition: all $speed $ease-out;
+
+    &:hover, 
+    &.active{
+      color: $brand-color-primary;
+    }
+  }
+}
+
+.open {
+  .menu-toggle {
+    transform: rotate(180deg);
+  }
+}
+
+.menu-toggle {
+  @include font-size(20px);
+  padding: 2px 10px;
+  position: absolute;
+  left: 100%;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background: $darkest-gray;
+  color: $lightest-gray;
+  cursor: pointer;
+
+  @media screen and (min-width: $tablet-break) {
+    display: none;
+  }
+}
+
+.sidebar-search {
+  margin-left: 30px;
+}
+
+.input-append {
+  margin: 10px;
+  margin-left: 0;
+
+  [type=text]{
+    background: transparent;
+    border-color: $dark-gray;
+    color: $lightest-gray;
+    border-radius: 50px;
+    padding: 10px 15px;
+
+    &:focus {
+      outline-width: 0;
+    }
+  }
+}
+
+.sidebar_page_search_none {
+  color: $gray;
+  margin-bottom: 10px;
+}
+
+.new-page {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.2rem;
+
+  i {
+    @include font-size(24px);
+    float: right;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background: $brand-color-primary;
+    margin-top: -15px;
+    margin-right: 3px;
+    padding: 15px 0 0 15px;
+  }
+
 }
 

@@ -22,19 +22,6 @@
   }
 }
 
-.menu-toggle {
-  position: absolute;
-  left: 100%;
-  top: 15px;
-  width: 30px;
-  height: 30px;
-  background: $darkest-gray;
-
-  @media screen and (min-width: $tablet-break) {
-    display: none;
-  }
-}
-
 .user-nav {
   @include font-size(12px);
   margin: 0;
@@ -43,10 +30,15 @@
   li {
     list-style: none;
     display: inline;
-    padding: 15px 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
 
     @media screen and(min-width: $tablet-break) {
       margin-left: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
 
@@ -56,6 +48,14 @@
 
   .account-options {
     display: inline-block;
+  }
+}
+
+.greeting:before{
+  content: "Hi,";
+
+  @media screen and (min-width: $tablet-break) {
+    content: "Welcome, "
   }
 }
 

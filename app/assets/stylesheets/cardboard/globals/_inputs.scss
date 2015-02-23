@@ -1,6 +1,7 @@
 // GENERAL INPUTS
 input, 
-select {
+select,
+textarea {
   @include font-size(16px);
   font-family: $font-primary;
   font-weight: 300;
@@ -14,7 +15,8 @@ select {
   -webkit-appearance: none;
 }
 
-label {
+label,
+legend {
   @include font-size(12px);
   display: inline-block;
   position: relative;
@@ -37,17 +39,46 @@ label {
   color: $red;
 }
 
-// TEXT INPUTS
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="file"],
+input[type="number"],
+input[type="search"],
+textarea {
   letter-spacing: .04rem;
   color: $dark-gray;
   width: 100%;
 }
 
+
+// FIELDSET
+fieldset {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  .nested-fields {
+    padding: $input-padding;
+    background: #efefef;
+  }
+}
+
+
+
+// CHECKBOXES
+input[type=checkbox] {
+  position: relative;
+  top: 9px;
+}
+
+
 // SELECT
 select,
+.select2-container,
 .select2-container.select {
   position: relative;
   width: 100%;
@@ -70,13 +101,21 @@ select,
         @extend .icon-angle-down;
         font-family: 'fontawesome';
         font-size: 24px;
-        background: none;
+        background: none !important;
         color: white;
         padding: 10px 17px;
+        -webkit-transition-duration: 0.2s;
       }
     }
   }
 }
+
+.select2-dropdown-open{
+  b {
+    transform: rotate(180deg);
+  }
+}
+
 
 .select2-container {
   min-width: 50%;

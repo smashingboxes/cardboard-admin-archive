@@ -3,7 +3,7 @@ form class="form-inline"
     => link_to new_page_path, class:"btn btn-primary" do
       i.icon-plus
 
-  .input-append style=(Cardboard.used_with_templates?? "width: 160px" : nil)
+  .input-append
     input id="sidebar_page_search" type="text" placeholder="Search Pages"
     button type="submit" class="btn"
       i.icon-search
@@ -18,5 +18,5 @@ form class="form-inline"
       - if subpages
         .page_group= subpages
 
-#sidebar_page_search_none style="display:none"
+.sidebar_page_search_none style="display:none"
   | No pages match your search

@@ -2,15 +2,15 @@
 
 @import "font-awesome";
 
+@import "cardboard/framework";
+@import "cardboard/rich_text";
+@import "select2";
+
 @import "globals/mixins";
 @import "globals/variables";
 @import "globals/typography";
 @import "globals/inputs";
 @import "globals/buttons";
-
-@import "cardboard/framework";
-@import "cardboard/rich_text";
-@import "select2";
 
 @import "components/main-topbar";
 @import "components/main-sidebar";
@@ -21,9 +21,9 @@
 html, 
 body{
   min-height: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
+  overflow: auto;
   overflow-x: hidden;
 }
 
@@ -47,53 +47,38 @@ body{
   transition: all $speed $ease-out;
 }
 
+a:not(btn) {
+  @include font-size(12px);
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  color: $brand-color-primary;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all $speed $ease-out;
+}
+
+a:hover {
+  color: $brand-color-secondary;
+}
+
 .body__container {
   position: relative;
   height: 100%;
   width: 100%;
   left: 0%;
   transition: all $speed $ease-out;
-
-  &.open{
-    left: $main_sidebar_width;
-
-    @media screen and (min-width: $tablet-break) {
-      left: 0;
-    }
-
-  }
-
-
 }
 
 .main-content {
   position: relative;
   height: 100%;
-  overflow: hidden;
+  padding-bottom: 20px;
   transition: all $speed $ease-out;
 
-  .open & {
-    margin-left: -100px;
-  }
-
   @media screen and (min-width: $tablet-break) {
+    margin-left: $main_sidebar_width;
     width: auto;
   }
-}
-
-.main-sidebar {
-  position: relative;
-  z-index: 2;
-  min-height: 100%;
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: $main_sidebar_width;
-    height: 100%;
-    background: red;
-  }
-
 }
 
 .content-sidebar {
