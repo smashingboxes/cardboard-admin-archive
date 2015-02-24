@@ -1,12 +1,12 @@
 $(document).on 'ready page:load cocoon:after-insert', ->
-  $('a#nav_dashboard_link').click (e) ->
-    e.preventDefault()
-    $('.content-sidebar').toggleClass 'toggle'
-    # Expand .main-content down to fit the exposed sidebar
-    $('.main-content').css 'height', $('.content-sidebar').height() + $('.main-topbar').height()
-    $('#content').toggleClass 'toggle'
-    # $(this).toggleClass('active');
-    return
+  # $('a#nav_dashboard_link').click (e) ->
+  #   e.preventDefault()
+  #   $('.content-sidebar').toggleClass 'toggle'
+  #   # Expand .main-content down to fit the exposed sidebar
+  #   $('.main-content').css 'height', $('.content-sidebar').height() + $('.main-topbar').height()
+  #   $('#content').toggleClass 'toggle'
+  #   # $(this).toggleClass('active');
+  #   return
   # Filter page sidebar
   $('.sidebar_page_search').search '.page_link', (event) ->
     event.all (results) ->
