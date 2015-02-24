@@ -77,6 +77,49 @@ input[type="search"] {
 }
 
 
+// NUMBERS
+input[type="number"] {
+  position: relative;
+}
+/* Spin Buttons modified */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    width: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button:before,
+input[type="number"]::-webkit-inner-spin-button:after {
+  background: $charcoal;
+  position: absolute;
+  font-family: "fontawesome";
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button:before {
+  content: "\f106";
+  top: 0;
+  border-bottom: 1px solid black;
+}
+
+input[type="number"]::-webkit-inner-spin-button:after {
+  content: "\f107";
+  bottom: 0;
+  border-top: 1px solid $stroke-color;
+
+}
+
+
+
 // FIELDSET
 fieldset {
   position: relative;
