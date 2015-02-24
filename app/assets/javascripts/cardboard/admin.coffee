@@ -23,7 +23,7 @@ $(document).on 'click', '.nav-tabs a', (e) ->
   $(@).tab 'show'
   return
 
-$(document).on 'page:load ready cocoon:after-insert', (e) ->
+#$(document).on 'page:load ready cocoon:after-insert', (e) ->
 
   # $(window).resize ->
   #   console.log "Resizing"

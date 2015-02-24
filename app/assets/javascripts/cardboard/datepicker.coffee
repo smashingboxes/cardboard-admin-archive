@@ -5,5 +5,5 @@ create_datepickers = ->
   return
 
 $(document).on 'ready page:load cocoon:after-insert', ->
-  create_datepickers()
+  #create_datepickers()
   return

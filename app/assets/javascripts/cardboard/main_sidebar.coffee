@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'ready page:load cocoon:after-insert', ->
   $('a#nav_dashboard_link').click (e) ->
     e.preventDefault()
     $('.content-sidebar').toggleClass 'toggle'
