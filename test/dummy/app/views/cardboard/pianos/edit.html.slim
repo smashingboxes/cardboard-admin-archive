@@ -3,4 +3,4 @@ h1 Editing piano
 = simple_form_for @piano, url: cardboard_piano_path(@piano) do |f|
   == render 'fields', f: f
 
-= link_to 'Back', cardboard_pianos_path
+= link_to 'Back', cardboard_pianos_path, class:"btn"

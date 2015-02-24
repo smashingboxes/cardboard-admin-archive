@@ -23,7 +23,7 @@ h1
     .nested-fields
       = f.simple_fields_for :meta_seo, OpenStruct.new(@page.seo) do |seo|
         = seo.input :title, label: "Browser titlebar", required: false
-        = seo.input :description, as: :text, required: false
+        = seo.input :description, as: :text, required: false, maxlength: 100
         - for key in  seo.object.methods(nil).grep(/[^=]$/) - [:title, :description]
           = seo.input key, required: false
 

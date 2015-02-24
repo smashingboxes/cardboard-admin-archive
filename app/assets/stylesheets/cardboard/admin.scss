@@ -2,8 +2,6 @@
 
 @import "font-awesome";
 
-@import "cardboard/framework";
-@import "cardboard/rich_text";
 @import "select2";
 
 @import "globals/mixins";
@@ -14,8 +12,7 @@
 
 @import "components/main-topbar";
 @import "components/main-sidebar";
-@import "content";
-@import "content_sidebar";
+@import "components/main-content";
 @import "resources";
 
 html, 
@@ -79,11 +76,6 @@ a:hover {
     margin-left: $main_sidebar_width;
     width: auto;
   }
-}
-
-.content-sidebar {
-  float: left;
-  height: 100%;
 }
 
 .center{

@@ -36,6 +36,7 @@ rich_text_editor_defaults =
   'useLineBreaks': false
   'font-styles': false
 $(document).on 'ready page:load', (e) ->
+  console.log $('.wysihtml5').length
   if $('.wysihtml5').length
     $('.wysihtml5').wysihtml5 rich_text_editor_defaults
     $('iframe.wysihtml5-sandbox').wysihtml5_size_matters()

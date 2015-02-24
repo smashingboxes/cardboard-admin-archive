@@ -62,6 +62,7 @@
 .account-options {
   position: relative;
   cursor: pointer;
+  z-index: 10;
 
   &:hover,
   &:hover ul {

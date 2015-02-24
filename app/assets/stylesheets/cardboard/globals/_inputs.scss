@@ -131,7 +131,7 @@ fieldset {
 
   .nested-fields {
     padding: $input-padding;
-    background: #efefef;
+    background: #f9f9f9;
   }
 }
 
@@ -216,7 +216,20 @@ select,
 }
 
 
+// FILE SELECT
+input[type="file"] {
+  @include font-size(12px);
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  border: 0;
+  background: transparent;
+  padding: 0;
 
+  &::-webkit-file-upload-button {
+    @extend .button;
+  }
+
+}
 
 // TABLES
 table {
