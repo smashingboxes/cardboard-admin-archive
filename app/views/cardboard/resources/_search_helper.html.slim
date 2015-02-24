@@ -1,17 +1,10 @@
 - models = klass.underscore.pluralize
 - model_title = klass.demodulize.titleize
 
-table#filter_search_header
-  tr 
-    td style="text-align:left"
-      h3= options[:title] || model_title.pluralize
+h1.pull-left= options[:title] || model_title.pluralize
 
-    - if main_element
-      td style="text-align:center"
-        #simple_search= render "cardboard/resources/simple_search", main_element: main_element
+- if options[:new_button]
+  = link_to(options[:new_button][:label] || "New #{model_title}", options[:new_button][:url] || {controller: models, action: :new}, class: "btn pull-right", style:"min-width:90px;") 
 
-    - if options[:new_button]
-      td style="text-align:right"
-        = link_to(options[:new_button][:label] || "New #{model_title}", options[:new_button][:url] || {controller: models, action: :new}, class: "btn pull-right", style:"min-width:90px;") 
-
-  
+- if main_element
+  = render "cardboard/resources/simple_search", main_element: main_element
