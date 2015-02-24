@@ -4,12 +4,13 @@
 .menu-toggle
   i class="fa icon-angle-right"
 
-.sidebar-search
+.sidebar-search.search-container
   form.form-inline
     .input-append
-      input.sidebar_page_search type="text" placeholder="Search Pages"
-    button type="submit" class="btn btn-hide"
+      label.search-icon for="page-search"
         i.icon-search
+      input.sidebar_page_search type="search" placeholder="Search Pages" name="page-search"
+    button type="submit" class="btn btn-hide"
     .sidebar_page_search_none
       | No pages match your search
 

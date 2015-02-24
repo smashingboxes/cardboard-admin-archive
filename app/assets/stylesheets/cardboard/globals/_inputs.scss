@@ -52,6 +52,30 @@ textarea {
 }
 
 
+// SEARCH
+.input-append {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: $gray;
+}
+
+input[type="search"] {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid $stroke-color;
+  padding-left: 25px;
+
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+
 // FIELDSET
 fieldset {
   position: relative;

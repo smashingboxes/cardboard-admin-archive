@@ -2,5 +2,7 @@
   = hidden_field_tag :s, "simple"
 
   .input-append
-    = f.text_field main_element, class:"search span5", placeholder: "Search by #{main_element.sub(/_[a-z]+$/,'').titlecase}"
+    label.search-icon
+      i.icon-search
+    = f.text_field main_element, class:"search span5", placeholder: "Search by #{main_element.sub(/_[a-z]+$/,'').titlecase}", type:"search"
     = render "cardboard/resources/search_button", f: f
