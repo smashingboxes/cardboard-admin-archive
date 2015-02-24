@@ -5,7 +5,7 @@ table class="table table-striped"
     tr
       - for field in @pianos.columns
         th= sort_link @q, field.name
-      th= link_to "Actions","#"
+      th.actions= link_to "Actions","#"
 
   tbody
     - @pianos.each do |piano|
@@ -13,7 +13,7 @@ table class="table table-striped"
         - for field in piano.attributes.keys
           td = piano.attributes[field]
 
-        td 
+        td.actions
           = link_to 'Edit | ', edit_cardboard_piano_path(piano) 
           = link_to 'Destroy', cardboard_piano_path(piano), :confirm => 'Are you sure?', :method => :delete
 

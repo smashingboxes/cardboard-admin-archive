@@ -182,7 +182,6 @@ table {
   color: $gray;
 
   thead {
-    display: none;
     background: $charcoal;
     text-transform: uppercase;
     color: $gray;
@@ -202,25 +201,29 @@ table {
     th {
       text-align: left;
     }
+
   }
 
   td,
   th {
     padding: 20px;
-    padding-left: 0;
 
-    &:first-child {
-      padding-left: 20px;
+    &:nth-child(n+3) {
+      display: none;
     }
+
+    &.actions {
+      display: table-cell;
+    }
+
   }
 
   td {
-    width: 100%;
-    display: block;
     font-family: $font-primary;
     font-weight: 100;
     font-size: 16px;
   }
+
 
   tr {
     border-bottom: 1px dotted $lightest-gray;
@@ -233,12 +236,14 @@ table {
   @media screen and (min-width:$tablet-break) {
     display: table;
 
-    .cell-label {
-      display: none;
-    }
-
-    thead {
-      display: table-header-group;
+    td,
+    th {
+    
+      &:nth-child(n+3),
+      &.actions{
+        display: table-cell;
+      }
+  
     }
 
     td {
