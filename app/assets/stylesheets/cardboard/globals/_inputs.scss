@@ -15,6 +15,7 @@ textarea {
   -webkit-appearance: none;
 }
 
+
 label,
 legend {
   @include font-size(12px);
@@ -25,6 +26,10 @@ legend {
   color: $dark-gray;
   text-transform: uppercase;
   margin: 10px 0;
+}
+
+label {
+  cursor: pointer;
 }
 
 // -- ASTERISK
@@ -137,14 +142,17 @@ fieldset {
 
 
 
-// CHECKBOXES
-[type='checkbox'] {
+// CHECKBOXES & RADIOS
+[type='checkbox'],
+[type='radio'] {
   position: absolute;
-  left: -100%;
+  left: -50px;
   visibility: hidden;
 }
 
-.checkbox__custom {
+.checkbox__cardboard,
+.radio__cardboard {
+  position: relative;
   font-family: $font-primary;
   padding-left: 10px;
   padding-right: 40px;
@@ -152,8 +160,6 @@ fieldset {
   color: $gray;
   border: 1px solid $light-gray;
   transition: all $speed $ease-out;
-
-  
 
   &.selected {
     background: $brand-color-primary;
@@ -167,6 +173,27 @@ fieldset {
       right: 10px;
     }
   }
+}
+
+
+// RADIO BUTTONS
+.radio__cardboard {
+  margin: 0;
+  width: 50%;
+  border-top: 0;
+
+  &:nth-child(2n) {
+    border-left: 0;
+  }
+
+  &:nth-child(1) {
+    border-top: 1px solid $gray
+  }
+
+  &:nth-child(2) {
+    border-top: 1px solid $gray
+  }
+
 }
 
 

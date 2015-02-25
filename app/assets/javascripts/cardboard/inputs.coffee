@@ -4,13 +4,24 @@ $(document).on 'ready page:load cocoon:after-insert', ->
   $.each $('textarea'), (index, item) ->
     console.log $(@).attr("maxlength")
 
-  $.each $('input:checkbox'), (index, item) ->
+  $.each $(':checkbox'), (index, item) ->
     
-    $(item).on 'change', ->
+    $(item).change ->
+
       me = $(@)
 
       if me.is ":checked"
         me.parent().addClass "selected"
       else
         me.parent().removeClass "selected"
-        
+      
+
+  $.each $(':radio'), (index, item) ->
+    
+    $(item).change ->
+      
+      me = $(@)
+
+      $(":radio[name= '#{me.attr 'name'}']").parent().removeClass "selected"
+
+      me.parent().addClass "selected"
