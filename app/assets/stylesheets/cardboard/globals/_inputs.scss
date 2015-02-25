@@ -139,22 +139,34 @@ fieldset {
 
 // CHECKBOXES
 [type='checkbox'] {
-  position: relative;
-  top: 9px;
+  position: absolute;
+  left: -100%;
   visibility: hidden;
 }
 
 .checkbox__custom {
   font-family: $font-primary;
-  padding-right: 10px;
+  padding-left: 10px;
   line-height: 50px;
   color: $gray;
+  width: 50%;
+  border: 1px solid $light-gray;
+  transition: all $speed $ease-out;
+
+  
 
   &.selected {
     background: $brand-color-primary;
     color: $white;
-  }
 
+    &::before {
+      font-family: 'fontawesome';
+      content: '\f00c';
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
 }
 
 
