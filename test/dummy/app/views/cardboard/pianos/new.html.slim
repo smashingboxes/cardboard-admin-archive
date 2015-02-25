@@ -1,6 +1,54 @@
-h1 New piano
+/ h1 New piano
 
-= simple_form_for @piano, url: cardboard_pianos_path do |f|
-  == render 'fields', f: f
+/ = simple_form_for @piano, url: cardboard_pianos_path do |f|
+/   == render 'fields', f: f
 
-= link_to 'Back', cardboard_pianos_path
+/ = link_to 'Back', cardboard_pianos_path
+
+h1 Test title
+
+.input
+  label for="textinput" 
+    | Text Input
+    input id="textinput" type="text"
+
+.input
+  label for="datepicker" 
+    | Date picker
+    input id="datepicker" type="date"
+
+.input
+  label for="numberpicker" 
+    | Number Input
+    input id="numberpicker" type="number"
+
+.input
+  label for="dropdown" Dropdown
+  select id="dropdown"
+    option value="option 1" Option 1
+    option value="option 2" Option 2
+    option value="option 3" Option 3
+    option value="option 4" Option 4
+
+.input
+  label for="fileinput" File input
+  input id="fileinput" type="file"
+
+.input
+  textarea id="textarea"
+
+.input
+  label.checkbox__custom
+    input type="checkbox" 
+    | Checkbox 
+
+.input
+  label
+    input type="radio" name="group1" value="Milk" 
+    | Milk
+  label  
+    input type="radio" name="group1" value="Butter" checked="checked"
+    | Butter
+  label  
+    input type="radio" name="group1" value="Cheese"
+    | Cheese

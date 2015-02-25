@@ -1,4 +1,4 @@
-%button{
+%button {
   @include font-size(10px);
   display: inline-block;
   font-family: $font-secondary;
@@ -7,7 +7,7 @@
   min-width: 140px;
   border: 2px solid $brand-color-primary;
   color: $brand-color-primary;
-  background: white;
+  background: $white;
   text-transform: uppercase;
   padding: 7px;
   transition: all $speed $ease-out;
@@ -19,8 +19,8 @@
 }
 
 
-input[type=submit],
-input[type=button],
+[type=submit],
+[type=button],
 .button,
 .btn {
   @extend %button;
@@ -34,7 +34,7 @@ input[type=button],
 .btn.btn-primary {
   border-color: $brand-color-primary;
   background: $brand-color-primary;
-  color: white;
+  color: $white;
 
   &:hover {
     background: $brand-color-secondary;

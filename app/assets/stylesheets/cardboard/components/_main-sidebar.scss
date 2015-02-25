@@ -35,7 +35,7 @@
   }
 
   .open & {
-    margin-left: 0%
+    margin-left: 0%;
   }
 }
 
@@ -53,14 +53,14 @@
   a {
     padding: 22px 5px;
     display: block;
-    word-wrap:break-word;
+    word-wrap: break-word;
     color: $gray;
     text-decoration: none;
     transition: all $speed $ease-out;
 
     &:hover, 
-    &.active{
-      color: white;
+    &.active {
+      color: $white;
     }
   }
 }
@@ -96,7 +96,7 @@
   margin: 10px;
   margin-left: 0;
 
-  [type=text]{
+  [type=text] {
     background: transparent;
     border-color: $dark-gray;
     color: $lightest-gray;
@@ -123,7 +123,7 @@
   i {
     @include font-size(24px);
     float: right;
-    color: white;
+    color: $white;
     width: 50px;
     height: 50px;
     background: $brand-color-primary;
@@ -145,7 +145,7 @@
   text-transform: capitalize;
 
   &:hover {
-    color: white;
+    color: $white;
   }
 }
 

@@ -20,14 +20,7 @@ $brand-color-alt2:        #ffc9a5;
 
 // -- GENERAL COLORS
 $black:                   #000;
-$blue:                    #049cdb;
-$green:                   #46a546;
-$red:                     #9d261d;
-$yellow:                  #ffc40d;
-$orange:                  #f89406;
-$pink:                    #fd0752;
-$purple:                  #7a43b6;
-$linkColor:               #08c;
+$white:                   #fff;
 
 // -- GRAYS
 $charcoal:                #181818;
@@ -39,40 +32,13 @@ $lightest-gray:           #bfbfbf;
 $stroke-color:            #696969;
 
 
-
 // INPUTS
 $input-padding:           10px;
-
-
 
 // BREAKPOINTS
 $tablet-break:            760px;
 
-
-// Yet to be organized 
-
-$main_topbar_height: 40px !default;
+// SIZING
 $main_sidebar_width: 300px !default;
-
-$main_content_sidebar_shadow: inset 0px 0px 20px #707070 !default;
-$content_sidebar_width: 280px !default;
-$content_background: #f4f7f9 !default;
-$table_head: #E1E1E1 !default;
-$site_min_width: 780px !default;
-
-
-
-
-
-
-$btnPrimaryBackground:              $brand_color !default;
-$btnPrimaryBackgroundHighlight:     $btnPrimaryBackground !default;
-
-
-
-$dropdownLinkBackgroundHover: $brand_color  !default;
-
-$navbarHeight:                    $main_topbar_height  !default;
-
 
 

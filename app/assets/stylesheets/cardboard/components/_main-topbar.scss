@@ -1,4 +1,4 @@
-.main-topbar{
+.main-topbar {
   position: relative;
   margin-bottom: 0;
   width: 100%;
@@ -9,7 +9,7 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
 
-  .navbar-inner{
+  .navbar-inner {
     border: 0;
   }
 
@@ -51,11 +51,11 @@
   }
 }
 
-.greeting:before{
-  content: "Hi,";
+.greeting:before {
+  content: 'Hi,';
 
   @media screen and (min-width: $tablet-break) {
-    content: "Welcome, "
+    content: 'Welcome, ';
   }
 }
 
@@ -67,7 +67,7 @@
   &:hover,
   &:hover ul {
     background: $brand-color-primary;
-    color: white;
+    color: $white;
     transition: all $speed $ease-out;
   }
 
@@ -99,16 +99,16 @@
     padding-right: 7px;
     padding-bottom: 4px;
     padding-top: 4px;
-    color: white;
+    color: $white;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.2s $ease-out;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.1)
+      background: rgba(0, 0, 0, 0.1);
     }
 
     a {
-      color: white;
+      color: $white;
     }
   }
 

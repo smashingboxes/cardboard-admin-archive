@@ -17,6 +17,3 @@
 #= require cardboard/inputs
 #= require cardboard/rich_text
 #= require cardboard/jquery.wysihtml5imgresizer
-
-
-

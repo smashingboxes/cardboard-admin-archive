@@ -8,7 +8,7 @@ textarea {
   border: 1px solid $lightest-gray;
   padding: $input-padding;
   border-radius: 0;
-  background: white;
+  background: $white;
   color: $gray;
   box-shadow: none;
   appearance: none;
@@ -20,7 +20,7 @@ legend {
   @include font-size(12px);
   display: inline-block;
   position: relative;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   font-family: $font-secondary;
   color: $dark-gray;
   text-transform: uppercase;
@@ -28,7 +28,7 @@ legend {
 }
 
 // -- ASTERISK
-[title="required"] {
+[title='required'] {
   font-weight: 100;
 }
 
@@ -36,17 +36,17 @@ legend {
   @include font-size(12px);
   text-transform: uppercase;
   font-family: $font-secondary;
-  color: $red;
+  color: red;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="file"],
-input[type="number"],
-input[type="search"],
+[type='text'],
+[type='email'],
+[type='password'],
+[type='file'],
+[type='number'],
+[type='search'],
 textarea {
-  letter-spacing: .04rem;
+  letter-spacing: 0.04rem;
   color: $dark-gray;
   width: 100%;
 }
@@ -65,7 +65,7 @@ textarea {
   color: $gray;
 }
 
-input[type="search"] {
+[type='search'] {
   background: none;
   border: 0;
   border-bottom: 1px solid $stroke-color;
@@ -78,41 +78,41 @@ input[type="search"] {
 
 
 // NUMBERS
-input[type="number"] {
+[type='number'] {
   position: relative;
 }
-/* Spin Buttons modified */
-input[type="number"]::-webkit-outer-spin-button, 
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    width: 50px;
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+
+[type='number']::-webkit-outer-spin-button, 
+[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  width: 50px;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
-input[type="number"]::-webkit-inner-spin-button:before,
-input[type="number"]::-webkit-inner-spin-button:after {
+[type='number']::-webkit-inner-spin-button:before,
+[type='number']::-webkit-inner-spin-button:after {
   background: $charcoal;
   position: absolute;
-  font-family: "fontawesome";
-  color: white;
+  font-family: 'fontawesome';
+  color: $white;
   text-align: center;
   width: 100%;
   height: 50%;
   cursor: pointer;
 }
 
-input[type="number"]::-webkit-inner-spin-button:before {
-  content: "\f106";
+[type='number']::-webkit-inner-spin-button:before {
+  content: '\f106';
   top: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $black;
 }
 
-input[type="number"]::-webkit-inner-spin-button:after {
-  content: "\f107";
+[type='number']::-webkit-inner-spin-button:after {
+  content: '\f107';
   bottom: 0;
   border-top: 1px solid $stroke-color;
 
@@ -138,9 +138,23 @@ fieldset {
 
 
 // CHECKBOXES
-input[type=checkbox] {
+[type='checkbox'] {
   position: relative;
   top: 9px;
+  visibility: hidden;
+}
+
+.checkbox__custom {
+  font-family: $font-primary;
+  padding-right: 10px;
+  line-height: 50px;
+  color: $gray;
+
+  &.selected {
+    background: $brand-color-primary;
+    color: $white;
+  }
+
 }
 
 
@@ -155,30 +169,30 @@ select,
 
   .select2-choice {
     height: auto;
-    background: white;
+    background: $white;
     border-radius: 0;
     padding: $input-padding;
 
     .select2-arrow {
       width: 50px;
-      background: black;
+      background: $black;
       border-radius: 0;
+    }
 
-      b {
-        @extend .fa;
-        @extend .icon-angle-down;
-        font-family: 'fontawesome';
-        font-size: 24px;
-        background: none !important;
-        color: white;
-        padding: 10px 17px;
-        -webkit-transition-duration: 0.2s;
-      }
+    b {
+      @extend .fa;
+      @extend .icon-angle-down;
+      font-family: 'fontawesome';
+      font-size: 24px;
+      background: none !important;
+      color: $white;
+      padding: 10px 17px;
+      transition-duration: 0.2s;
     }
   }
 }
 
-.select2-dropdown-open{
+.select2-dropdown-open {
   b {
     transform: rotate(180deg);
   }
@@ -199,7 +213,7 @@ select,
   padding: $input-padding !important;
 
   input {
-    background: white !important;
+    background: $white !important;
     padding: $input-padding !important;
   }
 }
@@ -216,8 +230,11 @@ select,
 }
 
 
+// CHECKBOXES
+
+
 // FILE SELECT
-input[type="file"] {
+[type='file'] {
   @include font-size(12px);
   font-family: $font-secondary;
   text-transform: uppercase;
@@ -226,7 +243,7 @@ input[type="file"] {
   padding: 0;
 
   &::-webkit-file-upload-button {
-    @extend .button;
+    @extend %button;
   }
 
 }
@@ -251,7 +268,7 @@ table {
       color: $gray;
 
       &:hover {
-        color: white;
+        color: $white;
       }
     }
 
@@ -297,7 +314,7 @@ table {
     th {
     
       &:nth-child(n+3),
-      &.actions{
+      &.actions {
         display: table-cell;
       }
   
