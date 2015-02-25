@@ -319,6 +319,7 @@ DEPENDENCIES
   font-awesome-rails
   guard-minitest
   jquery-rails
+  jquery-ui-rails
   letter_opener
   minitest-rails
   minitest-rails-capybara

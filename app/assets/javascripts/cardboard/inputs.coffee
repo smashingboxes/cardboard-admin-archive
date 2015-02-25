@@ -25,3 +25,8 @@ $(document).on 'ready page:load cocoon:after-insert', ->
       $(":radio[name= '#{me.attr 'name'}']").parent().removeClass "selected"
 
       me.parent().addClass "selected"
+
+  $.each $('.datepicker'), (index, item) ->
+    $(item).datepicker({
+      showOtherMonths: true
+    })

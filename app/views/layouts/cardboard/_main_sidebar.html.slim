@@ -22,13 +22,14 @@
       i.icon-plus
 
   - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
-    = main_sidebar_nav_link "Pages", pages_path, id: "nav_dashboard_link"
-    .sub-pages data-update-url="#{pages_sort_path}"
-      = nested_pages do |page, subpages|
-        .sub-page id= "pages_#{page.id}"
-          = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
-        - if subpages
-          .page_group= subpages
+      .item
+        = link_to "<span>Pages</span>".html_safe, pages_path, class: "menu__pages"
+        .sub-pages data-update-url="#{pages_sort_path}"
+          = nested_pages do |page, subpages|
+            .sub-page id= "pages_#{page.id}"
+              = link_to page.title, edit_page_path(page), class: "offset-#{page.depth}"
+            - if subpages
+              .page_group= subpages
 
   - Cardboard.resource_controllers.reject{|x|x.menu == false}.sort! { |a,b| a.menu[:priority] <=> b.menu[:priority] }.each do |controller|
     - if cardboard_user_can_manage?(controller.controller_name.to_sym)

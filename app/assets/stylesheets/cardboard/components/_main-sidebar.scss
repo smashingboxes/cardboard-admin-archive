@@ -45,9 +45,16 @@
   font-family: $font-secondary;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  max-height: 64px;
+  overflow: hidden;
+  transition: all $speed $ease-out;
 
   &:last-child {
     border-bottom: 1px solid $stroke-color;
+  }
+
+  &.expanded {
+    max-height: 500px;
   }
 
   a {
@@ -135,14 +142,19 @@
 
 .sub-pages {
   margin-left: 30px;
+  margin-top: -10px;
+  margin-bottom: 20px;
 }
 
 .sub-page a {
   font-family: $font-primary;
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   color: $gray;
   text-transform: capitalize;
+  padding: 0;
+  margin: 15px 0;
+  letter-spacing: 0.05rem;
 
   &:hover {
     color: $white;

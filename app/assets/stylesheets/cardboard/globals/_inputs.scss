@@ -177,6 +177,79 @@ fieldset {
 }
 
 
+// DATEPICKER
+.ui-datepicker {
+  font-family: $font-primary;
+  background: $white;
+  border: 1px solid $lightest-gray;
+
+  thead {
+    @include font-size(12px);
+    letter-spacing: 0.15rem;
+    font-family: $font-secondary;
+    background: none;
+  }
+
+  th {
+    padding: 10px;
+  }
+
+  tr {
+    border: 0;
+  }
+
+  td {
+    @include font-size(12px);
+    padding: 10px;
+    text-align: center;
+  }
+
+  a {
+    font-weight: 300;
+    font-family: $font-primary;
+    color: $gray;
+  }
+
+  .ui-datepicker-other-month {
+    @include font-size(12px);
+    font-weight: 100;
+    color: $lightest-gray;
+  }
+
+  .ui-datepicker-current-day {
+    position: relative;
+
+    &:hover {
+       &::before { 
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 0.25rem;
+      }
+    }
+
+    &::before { 
+      content: ''; 
+      position: absolute;
+      background: $brand-color-primary;
+      border-radius: 50px;
+      width: 2rem;
+      height: 2rem;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      transition: all $speed $ease-out;
+    }
+
+    a {
+      color: $white;
+    }
+  }
+
+}
+
+
+
 // RADIO BUTTONS
 .radio__cardboard {
   margin: 0;

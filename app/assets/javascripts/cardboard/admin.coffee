@@ -4,6 +4,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui/sortable
+#= require jquery-ui/datepicker
 #= require cardboard/jquery.livesearch
 #= require turbolinks
 #= require cardboard/datepicker
