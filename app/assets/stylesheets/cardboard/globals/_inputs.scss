@@ -147,9 +147,9 @@ fieldset {
 .checkbox__custom {
   font-family: $font-primary;
   padding-left: 10px;
+  padding-right: 40px;
   line-height: 50px;
   color: $gray;
-  width: 50%;
   border: 1px solid $light-gray;
   transition: all $speed $ease-out;
 
