@@ -1,7 +1,4 @@
-// GENERAL INPUTS
-input, 
-select,
-textarea {
+%inputs {
   @include font-size(16px);
   font-family: $font-primary;
   font-weight: 300;
@@ -13,6 +10,14 @@ textarea {
   box-shadow: none;
   appearance: none;
   -webkit-appearance: none;
+}
+
+
+// GENERAL INPUTS
+input, 
+select,
+textarea {
+  @extend %inputs;
 }
 
 
@@ -339,6 +344,37 @@ select,
   display: block;
   margin: 5px 0; 
 
+  .select2-search-choice {
+    @include font-size(12px);
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    background: $white;
+    color: $dark-gray;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .select2-choices {
+    @extend %inputs;
+  }
+  
+
+  .select2-search-choice-close {
+    left: 10px;
+    top: 10px;
+    background: none;
+
+    &:before {
+      @include font-size(12px);
+      font-family: 'fontawesome';
+      content: '\f00d';
+      color: $brand-color-primary;
+    }
+
+  }
+
   .select2-choice {
     height: auto;
     background: $white;
@@ -452,6 +488,8 @@ table {
 
   td,
   th {
+    @include font-size(12px);
+    font-family: $font-secondary;
     padding: 20px;
 
     &:nth-child(n+3) {
