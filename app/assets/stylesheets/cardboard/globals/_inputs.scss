@@ -182,6 +182,7 @@ fieldset {
   font-family: $font-primary;
   background: $white;
   border: 1px solid $lightest-gray;
+  margin-top: -41px;
 
   thead {
     @include font-size(12px);
@@ -216,7 +217,8 @@ fieldset {
     color: $lightest-gray;
   }
 
-  .ui-datepicker-current-day {
+  .ui-datepicker-current-day,
+  .ui-datepicker-today {
     position: relative;
 
     &:hover {
@@ -244,6 +246,63 @@ fieldset {
     a {
       color: $white;
     }
+  }
+
+  .ui-datepicker-today {
+    &::before {
+      background: $lightest-gray;
+    }
+  }
+
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+
+    .ui-icon {
+      display: none;
+    }
+
+    &:after {
+      font-family: 'fontawesome';
+    }
+  }
+
+  .ui-datepicker-prev {
+    float: left;
+
+    &:after {
+      content: '\f0d9';
+    }
+
+  }
+
+  .ui-datepicker-next {
+    float: right;
+
+    &:after {
+      content: '\f0da';
+    }
+
+  }
+
+  .ui-icon {
+    font-family: 'fontawesome';
+    content: '\f0d9';
+  }
+
+  .ui-datepicker-title {
+    font-family: $font-primary;
+    color: $gray;
+    text-transform: uppercase;
+    margin: 0 10px;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+
+  .ui-datepicker-header {
+    padding: 10px 10px 0;
+    margin: 0 10px;
+    border-bottom: 1px solid $light-gray;
+    overflow: auto;
   }
 
 }
