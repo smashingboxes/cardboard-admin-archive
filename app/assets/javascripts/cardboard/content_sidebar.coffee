@@ -22,3 +22,5 @@ $(document).ready ->
 
   $('#content_pages, .page_group').sortable sortableSettings
   return
+
+  

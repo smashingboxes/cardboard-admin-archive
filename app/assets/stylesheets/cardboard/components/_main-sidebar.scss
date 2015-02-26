@@ -5,7 +5,7 @@
 
 .main-sidebar {
   @extend %hardware;
-  position: fixed;
+  position: absolute;
   z-index: 2;
   min-height: 100%;
   background: $darkest-gray;
@@ -22,7 +22,7 @@
     display: block;
     width: 100%;
     border-top: 10px solid $charcoal;
-    padding: 40px 85px;
+    padding: 40px 85px 10px 30px;
 
     img {
       width: 80%;
@@ -44,7 +44,7 @@
   color: $dark-gray;
   text-transform: uppercase;
   margin-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   img {
     position: relative;
@@ -113,6 +113,20 @@
 
 .sidebar-search {
   margin-left: 30px;
+  margin-bottom: 30px;
+
+  [type='search']{
+    border: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    color: $light-gray;
+
+  }
+
+  ::-webkit-input-placeholder {
+    color: $dark-gray;
+  }
+
 }
 
 .input-append {

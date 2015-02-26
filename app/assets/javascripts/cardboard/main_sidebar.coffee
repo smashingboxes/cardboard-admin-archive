@@ -21,3 +21,7 @@ $(document).on 'ready page:load cocoon:after-insert', ->
   $(".menu__pages").click (e)->
     e.preventDefault()
     $(@).parent().toggleClass "expanded"
+
+  $(".body__container").css
+    minHeight: $(".main-sidebar").height()
+
