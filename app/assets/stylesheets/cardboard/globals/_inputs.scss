@@ -379,6 +379,7 @@ select,
     background: $white;
     border-radius: 0;
     padding: $input-padding;
+    min-height: 50px;
 
     .select2-arrow {
       width: 50px;
@@ -436,10 +437,14 @@ select,
 }
 
 .select2-container-multi {
+
+  position: relative;
+
   &:after {
     @include font-size(32px);
     pointer-events: none;
     padding: 15px;
+    padding-top: 10px;
     font-family: 'fontawesome';
     color: white;
     content: '\f107';
@@ -452,7 +457,6 @@ select,
     z-index: 1;
   }
 }
-
 
 // FILE SELECT
 [type='file'] {
