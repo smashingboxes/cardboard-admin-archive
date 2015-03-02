@@ -437,7 +437,12 @@ select,
 
 .select2-container-multi {
   &:after {
-    content: '';
+    @include font-size(32px);
+    pointer-events: none;
+    padding: 15px;
+    font-family: 'fontawesome';
+    color: white;
+    content: '\f107';
     position: absolute;
     right: 0;
     top: 0;
