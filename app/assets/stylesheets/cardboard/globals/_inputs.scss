@@ -359,7 +359,6 @@ select,
   .select2-choices {
     @extend %inputs;
   }
-  
 
   .select2-search-choice-close {
     left: 10px;
@@ -406,7 +405,6 @@ select,
   }
 }
 
-
 .select2-container {
   min-width: 50%;
 }
@@ -437,8 +435,18 @@ select,
   }
 }
 
-
-// CHECKBOXES
+.select2-container-multi {
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: $black;
+    z-index: 1;
+  }
+}
 
 
 // FILE SELECT

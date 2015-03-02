@@ -27,7 +27,7 @@ module Cardboard
     #       span Dashboard
     def main_sidebar_nav_link(text, link, options={})
       options[:class] = "#{options[:class]} active" if request.path["#{link}/"] || request.path == link
-      out = content_tag(:div, class:"item") do
+      out = content_tag(:div, class:"menu__item") do
         link_to("<span>#{text}</span>".html_safe, link, options)
       end
       out.html_safe

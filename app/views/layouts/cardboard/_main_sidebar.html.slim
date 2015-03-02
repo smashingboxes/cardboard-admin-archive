@@ -3,7 +3,8 @@
       img src=image_path("logo.svg")
 .powered-by
   | Powered by
-  img src=image_path("cardboard/logo.svg")
+  .cardboard-logo
+    img src=image_path("cardboard/logo.svg")
 .menu-toggle
   i class="fa icon-angle-right"
 
@@ -19,13 +20,13 @@
 
 .menu
   - if Cardboard.used_with_templates?
-  .item
+  .menu__item
     => link_to new_page_path, class:"new-page" do
       | New Page 
       i.icon-plus
 
   - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
-      .item
+      .menu__item
         = link_to "<span>Pages</span>".html_safe, pages_path, class: "menu__pages"
         .sub-pages data-update-url="#{pages_sort_path}"
           = nested_pages do |page, subpages|

@@ -58,6 +58,12 @@ module Cardboard
       inner_nested_pages(Cardboard::Page.arrange(page), &block).try(:html_safe)
     end
 
+    def inline_svg(path)
+      File.open("#{Rails.root}/app/assets/images/#{path}", "rb") do |file|
+        raw file.read
+      end
+    end
+
   private
 
     def inner_nested_pages(pages, &block)

@@ -1,6 +1,5 @@
 module Cardboard
   class ApplicationController < ActionController::Base
-
     before_filter do #:authenticate_admin_user!
       self.send(Cardboard.application.authentication_method)
     end
@@ -40,6 +39,5 @@ module Cardboard
       # #remove once conversion to strong params is complete
       params.permit!
     end
-
   end
 end
