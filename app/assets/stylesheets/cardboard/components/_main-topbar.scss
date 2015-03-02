@@ -63,6 +63,7 @@
   position: relative;
   cursor: pointer;
   z-index: 10;
+  min-width: 110px;
 
   &:hover,
   &:hover ul {
