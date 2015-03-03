@@ -8,23 +8,7 @@
 .menu-toggle
   i class="fa icon-angle-right"
 
-/ .sidebar-search.search-container
-/   form.form-inline
-/     .input-append
-/       label.search-icon for="page-search"
-/         i.icon-search
-/       input.sidebar_page_search type="search" placeholder="Search Pages" name="page-search"
-/     button type="submit" class="btn btn-hide"
-/     .sidebar_page_search_none
-/       | No pages match your search
-
 .menu
-  - if Cardboard.used_with_templates?
-  .menu__item
-    => link_to new_page_path, class:"new-page" do
-      | New Page 
-      i.icon-plus
-
   - if Cardboard.used_as_cms? && cardboard_user_can_manage?(:pages)
       .menu__item
         = link_to "<span>Pages</span>".html_safe, pages_path, class: "menu__pages"
