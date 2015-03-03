@@ -15,8 +15,8 @@
       ul.dropdown-menu
         li= link_to "Account", my_account_path 
         - if cardboard_user_can_manage?(:settings) && Cardboard.used_with_settings?
-        li
-          = link_to settings_path do 
-            | Settings
+        / li
+        /   = link_to settings_path do 
+        /     | Settings
         li= link_to "Logout", main_app.send(Cardboard.application.logout_link_path), :method => :delete
 
