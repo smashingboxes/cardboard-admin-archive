@@ -10,11 +10,12 @@
 #= require cardboard/datepicker
 #= require cardboard/jquery.wysihtml5_size_matters
 #= require cocoon
-#= require cardboard/main_sidebar
-#= require cardboard/content_sidebar
-#= require cardboard/search_filter
+#= require cardboard/main-sidebar
+#= require cardboard/content-sidebar
+#= require cardboard/search-filter
 #= require cardboard/top-bar
+#= require cardboard/flash-message
 #= require select2
 #= require cardboard/inputs
-#= require cardboard/rich_text
+#= require cardboard/rich-text
 #= require cardboard/jquery.wysihtml5imgresizer

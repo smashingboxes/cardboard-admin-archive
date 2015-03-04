@@ -1,0 +1,22 @@
+.alert-notice {
+  @include font-size(12px);
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  background: $white;
+  color: $dark-gray;
+  padding: 10px;
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid $lightest-gray;
+  overflow: auto;
+  margin-bottom: 10px;
+
+  .close {
+    float: left;
+    cursor: pointer;
+  }
+
+  #flash_notice {
+    margin-left: 20px;
+  }
+}
