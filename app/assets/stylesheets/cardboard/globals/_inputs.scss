@@ -445,10 +445,10 @@ select,
   position: relative;
 
   &:after {
-    @include font-size(32px);
+    @include font-size(24px);
     pointer-events: none;
-    padding: 15px;
-    padding-top: 10px;
+    padding: 18px;
+    padding-top: 14px;
     font-family: 'fontawesome';
     color: white;
     content: '\f107';
