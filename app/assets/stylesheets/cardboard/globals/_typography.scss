@@ -22,13 +22,12 @@ h1 {
   color: $brand-color-primary;
 }
 
+h3 {
+  @extend %labels;
+}
+
 h6 {
   @include font-size(12px);
   font-family: $font-secondary;
   color: $dark-gray;
 }
-
-
-
-
-

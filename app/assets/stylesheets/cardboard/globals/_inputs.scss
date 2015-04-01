@@ -12,6 +12,17 @@
   -webkit-appearance: none;
 }
 
+%labels {
+  @include font-size(12px);
+  display: inline-block;
+  position: relative;
+  letter-spacing: 0.05rem;
+  font-family: $font-secondary;
+  color: $dark-gray;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
 
 // GENERAL INPUTS
 input, 
@@ -23,14 +34,7 @@ textarea {
 
 label,
 legend {
-  @include font-size(12px);
-  display: inline-block;
-  position: relative;
-  letter-spacing: 0.05rem;
-  font-family: $font-secondary;
-  color: $dark-gray;
-  text-transform: uppercase;
-  margin: 10px 0;
+  @extend %labels;
 }
 
 label {

@@ -1,0 +1,35 @@
+.pagination {
+  width: 100%;
+  overflow: auto;
+  text-align: center;
+  margin-top: 10px;
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    display: inline;
+    overflow: auto;
+    padding: 0 5px;
+
+  }
+
+}
+
+
+.page {
+
+  a {
+    color: $light-gray;
+  }
+
+  &.active a{
+    color: $brand-color-primary;
+  }
+
+
+
+}
