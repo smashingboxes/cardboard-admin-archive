@@ -11,7 +11,7 @@ module Cardboard
 
       def install_assets
         template 'javascripts/cardboard.js', 'app/assets/javascripts/cardboard.js'
-        template 'stylesheets/cardboard.css.scss', 'app/assets/stylesheets/cardboard.css.scss'
+        template 'stylesheets/cardboard.scss', 'app/assets/stylesheets/cardboard.scss'
       end
     end
   end
