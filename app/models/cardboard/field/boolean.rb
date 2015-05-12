@@ -17,6 +17,7 @@ module Cardboard
     private
 
     def is_boolean
+      return if seeding
       errors.add(:value, "is not a valid boolean") if value_uid.nil?
     end
 
