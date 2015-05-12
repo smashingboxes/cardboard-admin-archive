@@ -1,0 +1,10 @@
+= f.input :value, \
+  label: field[:label] || identifier.titleize, \
+  as: :select, \
+  hint: field[:hint], \
+  placeholder: field[:placeholder], \
+  required: field[:required] != false, \
+  collection: f.object.all_options, \
+  input_html: {data: {"search-select" => true, "select2-options" => { width: '100%' }}, "multiple" => "multiple"}, \
+  selected: f.object.value
+
