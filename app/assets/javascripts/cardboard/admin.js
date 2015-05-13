@@ -15,13 +15,11 @@
 //= require bootstrap-datepicker/core
 //= require cardboard/datepicker
 //= require cardboard/rich_text
-//= require cardboard/jquery.wysihtml5_size_matters
 //= require cocoon
 //= require cardboard/main_sidebar
 //= require cardboard/content_sidebar
 //= require cardboard/search_filter
 //= require select2
-// require cardboard/jquery.wysihtml5imgresizer
 
 
 $(document).on('click', '.nav-tabs a', function(e){

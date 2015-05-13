@@ -1,10 +1,11 @@
 //= require cardboard/wysihtml5-0.4.0pre 
 //= require bootstrap-wysihtml5/core
+//= require cardboard/jquery.wysihtml5_size_matters
 
 $(document).on('page:load', function(){
   window['rangy'].initialized = false
 })
-
+ 
 var wysihtml5ParserRules = {
   tags: {
       "b":  {},
