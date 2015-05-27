@@ -28,6 +28,7 @@ gem 'pry-byebug'
 gem 'uglifier'
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
+gem "select2-rails"
 
 group :test do
   gem 'turn'

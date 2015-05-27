@@ -1,5 +1,6 @@
 //Only for Cardboard Admin Area
 
+@import "font-awesome-sprockets";
 @import "font-awesome";
 @import "select2";
 
@@ -16,11 +17,14 @@
 @import "components/flash-message";
 @import "components/pagination";
 
+@import "layouts/user-settings";
+
 @import "resources";
 
 html, 
 body{
-  min-height: 100%;
+  position: relative;
+  height: 100%;
   margin: 0;
   padding: 0;
   overflow: auto;

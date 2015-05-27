@@ -1,0 +1,9 @@
+.well h3 {
+  margin: 0;
+  margin-top: 20px;
+}
+
+
+.user-info {
+  @include font-size(12px);
+}

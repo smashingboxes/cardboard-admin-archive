@@ -10,20 +10,21 @@ h1 Admin User settings
 - if defined?(Devise)
   .well
     h3 Usage info
-    p
-      b sign in count:
-      =< @user.sign_in_count
-    p
-      b last sign in time:
-      =< l @user.last_sign_in_at, format: :long
-    p
-      b current sign in ip:
-      =< @user.current_sign_in_ip
-    p
-      b last sign in ip:
-      =< @user.last_sign_in_ip
-
-    - if @user.respond_to?(:failed_attempts)
+    .user-info
       p
-        b failed login attempts:
-        =< @user.failed_attempts
+        b sign in count:
+        =< @user.sign_in_count
+      p
+        b last sign in time:
+        =< l @user.last_sign_in_at, format: :long
+      p
+        b current sign in ip:
+        =< @user.current_sign_in_ip
+      p
+        b last sign in ip:
+        =< @user.last_sign_in_ip
+
+      - if @user.respond_to?(:failed_attempts)
+        p
+          b failed login attempts:
+          =< @user.failed_attempts
