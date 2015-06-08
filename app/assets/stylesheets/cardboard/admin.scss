@@ -24,7 +24,6 @@
 html, 
 body{
   position: relative;
-  height: 100%;
   margin: 0;
   padding: 0;
   overflow: auto;
@@ -33,6 +32,7 @@ body{
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *, 
@@ -43,6 +43,7 @@ html {
 
 body{
   width: 100%;
+  min-height: 100%;
   position: relative;
   left: 0;
   font-family: $font-primary;

@@ -23,5 +23,5 @@ $(document).on 'ready page:load cocoon:after-insert', ->
     $(@).parent().toggleClass "expanded"
 
   $(".body__container").css
-    minHeight: $(".main-sidebar").outerHeight()
+    minHeight: $(window).outerHeight()
 
