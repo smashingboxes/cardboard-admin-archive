@@ -362,6 +362,7 @@ select,
 
   .select2-choices {
     @extend %inputs;
+    padding: 10px 50px 10px 10px;
   }
 
   .select2-search-choice-close {

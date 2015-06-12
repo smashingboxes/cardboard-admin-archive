@@ -47,8 +47,23 @@
 }
 
 .remove_fields {
+  position: relative;
   float: right;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   min-width: 0;
+  border: none;
+  overflow: hidden;
+  text-index: -10px;
+  color: transparent;
+  font-size: 0;
+  padding: 3px 0 0;
+
+  &:after {
+    content: '\f00d';
+    font-family: 'fontawesome';
+    color: $brand-color-primary;
+    font-size: 16px;
+  }
+
 }

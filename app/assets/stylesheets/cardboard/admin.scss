@@ -90,10 +90,18 @@ a:hover {
   text-align: center;
 }
 
-.nested-fields {
+.nested-fields {  
   margin-bottom: 20px;
-  padding: 20px;
-  background: #fafafa;
+  padding: 10px;
+  background: #f7f7f7;
+
+  .properties &:first-child {
+    margin-bottom: 10px;
+  }
+
+  p {
+    display: none;
+  }
 }
 
 .header {
