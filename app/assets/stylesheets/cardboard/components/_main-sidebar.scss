@@ -6,13 +6,13 @@
 .main-sidebar {
   @extend %hardware;
   position: absolute;
+  display: block;
   z-index: 11;
-  min-height: 100%;
   background: $darkest-gray;
   width: $main_sidebar_width;
   margin-left: 0-$main_sidebar_width;
   transition: all $speed $ease-out;
-  height: 100vh;
+  min-height: 100vh;
 
   @media screen and (min-width: $tablet-break) {
     margin-left: 0%;

@@ -25,3 +25,9 @@ $(document).on 'ready page:load cocoon:after-insert', ->
   $(".body__container").css
     minHeight: $(window).outerHeight()
 
+  $(".main-sidebar").css
+    minHeight: $(".main-content").outerHeight()
+
+
+
+
