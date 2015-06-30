@@ -15,7 +15,7 @@
 #= require cardboard/search-filter
 #= require cardboard/top-bar
 #= require cardboard/flash-message
-#= require select2
+#= require cardboard/select2
 #= require cardboard/inputs
 #= require cardboard/rich-text
 #= require cardboard/jquery.wysihtml5imgresizer
