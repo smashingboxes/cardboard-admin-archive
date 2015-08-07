@@ -18,12 +18,14 @@ module Cardboard
       templates ||= {}
       templates.each do |id, template|
         db_template = populate_template(id, template.merge(is_page: false))
+        db_template.pages.each do |db_page|
+          self.populate_parts(template[:parts], db_page)
+        end
       end
     end
 
     def self.populate_pages(pages)
       pages ||= {}
-
       # add the page
       pages.each do |id, page|
         # create the template
