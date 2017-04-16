@@ -49,11 +49,10 @@ h1
         - if part_hash[:repeatable]
           .links
             / the "links" class is important for the cocoon gem
-            = link_to_add_association "Add another #{part_hash[:repeatable]}",
+            = link_to_add_association "Add another #{part_identifier.singularize}",
               f, :parts, render_options: {locals: {part_hash: part_hash, part: @page.parts.build(identifier: part_identifier), part_identifier: part_identifier}}, class: "btn btn-default btn-block"
 
 
   .form-group.form-actions
     = f.button :submit, "Save", class:"btn-primary"
     = link_to "Cancel", dashboard_path, class:"btn btn-default"
-
